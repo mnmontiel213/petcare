@@ -1,0 +1,28 @@
+
+.contenedorFoto1{
+    position: relative;
+}
+
+.foto1{
+    opacity: 0.5;
+    /* position: absolute; */
+}
+
+.prueba{
+    text-shadow: 5px 5px 5px rgba(0, 0, 0, 0.5);  
+    font-family: "Playfair Display", serif;
+    position: absolute;
+    font-weight: bold;
+    font-size: 7rem;
+    color: white;
+    top: 50%;
+    left: 10%;
+}
+
+.text-logo{
+    font-family: "Playfair Display", serif;
+    font-weight: bolder;
+   /* color: rgb(231, 0, 0); */
+    font-size: 40px;
+}
+

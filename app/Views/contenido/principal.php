@@ -3,8 +3,9 @@
 <div class="container-sm">
     <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
         <div class="carousel-inner">
-            <div class="carousel-item active">
-                <img src= "<?php echo base_url("assets/img/messi.jpg") ?>"  class="d-block vh-100 mx-auto" alt="...">
+            <div class="carousel-item active contenedorFoto1">
+                <img src= "<?php echo base_url("assets/img/messi.jpg") ?>"  class="d-block vh-100 mx-auto foto1" alt="foto1">
+                <p class="prueba">prueba foto 1</p>
             </div>
             <div class="carousel-item">
                 <img src="<?php echo base_url("assets/img/cuti.jpg") ?>" class="d-block vh-100 mx-auto" alt="...">
