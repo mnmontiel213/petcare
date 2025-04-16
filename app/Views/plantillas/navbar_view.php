@@ -1,7 +1,10 @@
 
+    <!---
+    NAV BAR BASADO EN BOOTSTRAP
+
     <nav class="navbar navbar-expand-lg bg-body-tertiary">
             <div class="container">
-            <div class="container-fluid justify-content-between collapse navbar-collapse" id="navbarNav">
+                <div class="container-fluid justify-content-between collapse navbar-collapse" id="navbarNav">
                     <ul class="navbar-nav">
                         <li class="nav-item">
                             <a class="nav-link" href=" <?php echo base_url('comercializacion') ?> ">Comercializacion</a>
@@ -40,4 +43,19 @@
 
             </div>
         </nav>
+        --->
+
+        <!-- CUSTOM NAV BAR-->
+        <nav class="cs-navbar">
+            <div class="cs-left-elements">
+                <a class="cs-navbar-link" href=" <?php echo base_url('catalogo') ?> ">Catalogo</a>
+                <a class="cs-navbar-link" href=" <?php echo base_url('comercializacion') ?> ">Entregas</a>
+            </div>
+            <a class="cs-navbar-fedora-logo cs-navbar-link" href="  <?php echo base_url('principal') ?>  "> Fedora </a>
+            <div class="cs-right-elements">
+                <a class="cs-navbar-link" href=" <?php echo base_url('quienes_somos') ?> ">Nosotros</a>
+                <a class="cs-navbar-link" href=" <?php echo base_url('terminos') ?> ">Terminos</a>
+            </div>           
+        </nav>
+
     </header>
