@@ -1,82 +1,51 @@
 
-/*.contenedorFoto1{
-    position: relative;
-}
-*/
-
-/*
-.foto1{
-    opacity: 0.5;
-    position: absolute;
-}
-*/
-
-/*
-.prueba{
-    text-shadow: 5px 5px 5px rgba(0, 0, 0, 0.5);  
+*{
     font-family: "Playfair Display", serif;
-    position: absolute;
-    font-weight: bold;
-    font-size: 7rem;
-    color: white;
-    top: 50%;
-    left: 10%;
 }
-*/
-
-/* NAVBAR*/
-
-/*contenedor de toda la navbar*/
-
-.cs-navbar{
-    background-color: aliceblue;
-    font-family: "Playfair Display", serif;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
+body{
+    margin: 0;
 }
 
-/*elementos a la izquierda*/
+/*-----------------------*/
+/*        COLORS         */
+/*-----------------------*/
 
-.cs-left-elements{
-    margin-left: 5%;
+:root{
+    --main-color: #f5e3ae;
+    --bg-color: #fff5d6;
+    --secondary-color: #e1e6d3;
+    --ternary-color: #b1ccc4;
+    --bg-dark: #4E5861;
 }
 
-/*elementos a la derecha*/
-
-.cs-right-elements{
-    margin-right: 5%;
+/* ----------------------*/
+/*        NAVBAR         */
+/* ----------------------*/
+.logo{
+    width: 50px;
 }
 
-/*links, incluye al logo porque tambien lo es*/
-
-.cs-navbar-link{
-    margin-left: 15px;
-    margin-right: 15px;
-    text-decoration: none;
-    color: black;
+.navbar{
+    background-color: #4E5861 !important;
+    width: 100vw;
 }
 
-.cs-navbar-link:hover{
-    text-decoration: underline;
-    transition: .4s;
+ul > .navbar-nav{
+    justify-content: space-between !important;
 }
 
-/*logo en medio de la navbar*/
-
-.cs-navbar-fedora-logo{
-    font-size: 2.5rem;
-    font-weight: bolder;
-    transition: .4s; 
+.nav-item > a{
+    margin: 0 15px 0 15px;
+    color: white !important;
 }
 
-.cs-navbar-fedora-logo:hover{
-    font-size: 2.5rem;
-    font-weight: bolder;
-    transform: scale(1.2);
-}
 
-/* FOOTER */
+.my_collapse_div3{
+    justify-content: end;
+}
+/* ----------------------*/
+/*        FOOTER         */
+/* ----------------------*/
 
 .cs-footer{
     font-size: medium;
@@ -113,4 +82,144 @@ footer h2{
     font-size: small;
     font-family: "Playfair Display", serif;
     text-align: center;
+}
+
+
+/* ----------------------*/
+/*     QUIENES SOMOS     */
+/* ----------------------*/
+
+/*quienes somos*/
+
+#quienes_somos{
+    padding-top: 5rem;
+}
+
+#quienes_somos h2{
+    text-align: center;
+}
+
+#quienes_somos_contenido img{
+    height: 100vh;
+}
+
+#quienes_somos_contenido p{
+    text-align:justify;
+    position:absolute;
+    top: 55%;
+    left: 50%;
+    height: 10vh;
+    width: 35%;
+    font-size: large;
+}
+
+/*nuestros valores*/
+.cs-list-title{
+    font-size: medium;
+    font-weight: bold;
+}
+
+.cs-list-element{
+    width: 35vw;
+    text-align: justify;
+}
+
+#nuestros_valores{
+    height: 100vh;
+    vertical-align: middle;
+}
+
+#nuestros_valores h2{
+    text-align: center;
+}
+
+#nuestros_valores ul{
+    list-style-type: none;
+}
+
+#nuestros_valores img{
+    width: 35%;
+    position: absolute;
+    top: 135vh;
+    left: 50%;
+}
+
+.cs-turno{
+    margin-left: 40%;
+    padding: 15px;
+    background-color:black;
+    border-radius: 20px;
+    text-decoration: none;
+    color: white;
+    font-size: 2rem;
+}
+
+/* FORMULARIO*/
+
+.cs-titulo-form{
+    position: relative;
+    margin: 50px;
+    padding-left: 200px;
+}
+
+.conteiner-form{
+    display: flex;
+    justify-content: center;
+    margin: 0;
+    background-color: #E1E6D3;
+    padding: auto;
+}
+
+.img-vet{
+    margin-left: 150px;
+}
+
+.form-control{
+    width: 400px;
+}
+
+.cs-btn-submit{
+    display: flex;
+    justify-content: center;
+    margin: 0;
+    
+}
+
+.cs-btn{
+    margin-top: 50px;
+    background-color: #4E5861;
+    color: white;
+    border-radius: 50px;
+    width: 100px;
+    padding: 10px;
+    font-weight: bold;
+}
+
+
+.cs-img-huella{
+    position: absolute;
+    top: 12%;
+    left: 10%;
+    opacity: 0.6;
+    z-index: -2;
+    rotate: 45deg;
+}
+
+.cs-img-huella > img{
+    width: 200px;
+    height: auto;
+}
+
+.cs-medios{
+    position: relative;
+    margin: 50px;
+    padding-left: 200px;
+}
+
+.cs-medios-otros{
+    margin: 15px;
+}
+
+ul > li {
+    margin: 25px;
 }

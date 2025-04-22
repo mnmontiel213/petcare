@@ -31,8 +31,6 @@ $_SERVER['SCRIPT_NAME'] = '/index.php';
 // Full path
 $path = $_SERVER['DOCUMENT_ROOT'] . DIRECTORY_SEPARATOR . ltrim($uri, '/');
 
-echo($_SERVER['DOCUMENT_ROOT']);
-
 // If $path is an existing file or folder within the public folder
 // then let the request handle it like normal.
 if ($uri !== '/' && (is_file($path) || is_dir($path))) {
