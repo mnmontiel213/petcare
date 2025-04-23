@@ -53,41 +53,54 @@ body{
 /*        FOOTER         */
 /* ----------------------*/
 
-.cs-footer{
-    font-size: medium;
+.cs-footer {
     background-color: aliceblue;
     font-family: "Playfair Display", serif;
     color: black;
-    text-decoration: none;
     display: flex;
-    justify-content: end;
+    justify-content: center;
+    width: 100%;
 }
 
-.cs-footer-elements{
-    text-align: center;
-    margin: auto;
+.cs-footer .container {
+    width: 100%;
 }
 
-.cs-footer-elements ul li{
-    list-style-type: none;
+.cs-footer-elements {
+    margin: 0 auto;
     text-align: center;
+    padding: 10px;
+}
+
+
+.cs-footer-elements ul {
+    list-style: none;
+    padding-left: 0;
+    margin: 0;
+}
+
+.cs-footer-elements ul li {
     margin-bottom: 10px;
 }
 
-.cs-footer-elements ul li a{
+/* Enlaces del footer */
+.cs-footer-elements ul li a {
     text-decoration: none;
     color: black;
+    transition: all 0.3s ease;
 }
 
-.cs-footer-elements ul li a:hover{
+.cs-footer-elements ul li a:hover {
     text-decoration: underline;
-    color: black;
+    color: #333;
 }
 
-footer h2{
-    font-size: small;
+footer h2 {
+    font-size: 0.9rem;
     font-family: "Playfair Display", serif;
     text-align: center;
+    margin-top: 20px;
+    margin-bottom: 0;
 }
 
 
