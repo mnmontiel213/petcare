@@ -11,7 +11,7 @@
 
                 Escuchamos, acompañamos y brindamos soluciones personalizadas, porque entendemos que cada animal es único y forma parte fundamental de tu vida. Estamos para vos, siempre que lo necesites.</p>
             <div>
-            <a href="<?php echo base_url('contacto') ?>" class="btn-contacto">Contáctenos</a>
+                <a href="<?php echo base_url('contacto') ?>" class="btn-contacto">Contáctenos</a>
             </div>
         </div>
         <div class="cs-img-huella1">
@@ -25,28 +25,28 @@
         </div>
 
     </div>
-
 <!-- TARJETAS SELECCION DE MASCOTAS -->
 
+    
 <div class="text-center p-5">
 
-<h3>¿Para que mascota necesitas consultar?</h3>
+    <h3>¿Para que mascota necesitas consultar?</h3>
 
-<div class="d-flex p-2 justify-content-around">
+    <div class="d-flex p-2 justify-content-around">
 
-    <div class="tarjeta-mascota">
-        <p>Perro</p>
+        <div class="tarjeta-mascota">
+            <p>Perro</p>
+        </div>
+
+        <div class="tarjeta-mascota">
+            <p>Gato</p>
+        </div>
+
+        <div class="tarjeta-mascota">
+            <p>Otro</p>
+        </div>
+
     </div>
-
-    <div class="tarjeta-mascota">
-        <p>Gato</p>
-    </div>
-
-    <div class="tarjeta-mascota">
-        <p>Otro</p>
-    </div>
-
-</div>
 
 
 </div>
@@ -58,4 +58,8 @@
 
 
 <!--        VETERINARIAS           -->
+</div>
+
+
+    
 </div>

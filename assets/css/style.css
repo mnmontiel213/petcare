@@ -34,6 +34,14 @@
     text-shadow: 2px 2px 2px #f5e3ae;
     font-size: 17px;
 }
+
+.nav-img{
+    box-shadow: 0 15px;
+}
+.nav-img:hover{
+    box-shadow: 2px 2px 2px #f5e3ae;
+}
+
 .navbar-toggler{
     margin-right: 5%;
     margin-right: 20px;
