@@ -11,29 +11,22 @@ body{
 /*-----------------------*/
 
 :root{
-    --main-color: #f5e3ae;
-    --bg-color: #fff5d6;
-    --secondary-color: #e1e6d3;
-    --ternary-color: #b1ccc4;
-    --bg-dark: #4E5861;
+    --color-yellow: #f5e3ae;
+    --color-light-yellow: #fff5d6;
+    --color-mustard: #e1e6d3;
+    --color-green: #b1ccc4;
+    --color-grey: #4E5861;
 }
 
 /* ----------------------*/
 /*        NAVBAR         */
 /* ----------------------*/
+.logo{
+    width: 50px;
+}
 
 .navbar{
-    background-color: #4E5861 !important;
-    width: 100vw;
-}
-
-.logo > img{
-    height: 85px;
-    margin-left: 80px;
-}
-
-.navbar-nav{
-    justify-content: space-between !important;
+    background-color: var(--color-grey) !important;
 }
 
 .nav-item > a{
@@ -44,11 +37,10 @@ body{
     text-shadow: 2px 2px 2px #f5e3ae;
     font-size: 17px;
 }
-
 .navbar-toggler{
+    margin-right: 5%;
     margin-right: 20px;
 }
-
 /* ----------------------*/
 /*        FOOTER         */
 /* ----------------------*/
