@@ -25,4 +25,37 @@
         </div>
 
     </div>
+
+<!-- TARJETAS SELECCION DE MASCOTAS -->
+
+<div class="text-center p-5">
+
+<h3>¿Para que mascota necesitas consultar?</h3>
+
+<div class="d-flex p-2 justify-content-around">
+
+    <div class="tarjeta-mascota">
+        <p>Perro</p>
+    </div>
+
+    <div class="tarjeta-mascota">
+        <p>Gato</p>
+    </div>
+
+    <div class="tarjeta-mascota">
+        <p>Otro</p>
+    </div>
+
+</div>
+
+
+</div>
+
+
+<!--      MUESTRAS SERVICIOS        -->
+
+
+
+
+<!--        VETERINARIAS           -->
 </div>

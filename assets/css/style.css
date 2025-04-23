@@ -2,9 +2,6 @@
 *{
     font-family: "Playfair Display", serif;
 }
-body{
-    margin: 0;
-}
 
 /*-----------------------*/
 /*        COLORS         */
@@ -256,9 +253,4 @@ footer h2 {
 
 ul > li {
     margin: 25px;
-    list-style: none;
-}
-
-.contacto-tel > p{
-    margin-left: 50px;
 }
