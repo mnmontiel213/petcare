@@ -1,0 +1,72 @@
+.seccion-comercializacion {
+    padding: 50px 20px;
+    background-color: #fefefe;
+    font-family: "Playfair Display", serif;
+    max-width: 1100px;
+    margin: auto;
+}
+
+.titulo-comercializacion {
+    font-size: 2rem;
+    color: #4E5861;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.intro-comercializacion {
+    text-align: center;
+    font-size: 1.1rem;
+    margin-bottom: 40px;
+}
+
+.contenedor-servicios {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 25px;
+}
+
+.servicio {
+    background-color: #f4f8fc;
+    border: 1px solid #dce3ea;
+    padding: 20px;
+    border-radius: 10px;
+    text-align: center;
+    transition: transform 0.3s;
+}
+
+.servicio:hover {
+    transform: scale(1.03);
+}
+
+.servicio h3 {
+    color: #2f3e46;
+    margin-bottom: 10px;
+}
+
+.metodos-pago {
+    margin-top: 50px;
+    background-color: #e8f0f8;
+    padding: 20px;
+    border-radius: 8px;
+}
+
+.metodos-pago h3 {
+    color: #2f3e46;
+    margin-bottom: 15px;
+}
+
+.metodos-pago ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.metodos-pago li {
+    margin-bottom: 10px;
+    font-size: 1rem;
+}
+
+.nota {
+    font-size: 0.9rem;
+    color: #555;
+    margin-top: 10px;
+}

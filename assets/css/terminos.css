@@ -1,0 +1,45 @@
+.seccion-terminos {
+    padding: 50px 20px;
+    background-color: #fff;
+    font-family: "Playfair Display", serif;
+    color: #2f3e46;
+    max-width: 900px;
+    margin: auto;
+}
+
+.titulo-terminos {
+    font-size: 2rem;
+    text-align: center;
+    color: #4E5861;
+    margin-bottom: 20px;
+}
+
+.intro-terminos {
+    font-size: 1.1rem;
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.bloque-terminos h3 {
+    margin-top: 25px;
+    font-size: 1.2rem;
+    color: #37474F;
+}
+
+.bloque-terminos p {
+    font-size: 1rem;
+    line-height: 1.6;
+    margin-top: 10px;
+}
+
+.ultima-linea {
+    margin-top: 40px;
+    text-align: center;
+    font-size: 0.95rem;
+    color: #666;
+}
+
+.ultima-linea a {
+    color: #4E5861;
+    text-decoration: underline;
+}

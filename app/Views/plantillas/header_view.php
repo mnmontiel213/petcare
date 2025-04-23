@@ -6,6 +6,8 @@
     <link rel="stylesheet" href=" <?php echo base_url("assets/css/bootstrap.min.css"); ?> ">
     <link rel="stylesheet" href=" <?php echo base_url("assets/css/style.css"); ?> ">
     <link rel="stylesheet" href=" <?php echo base_url("assets/css/principal.css"); ?> ">
+    <link rel="stylesheet" href=" <?php echo base_url("assets/css/comercializacion.css"); ?> ">
+    <link rel="stylesheet" href=" <?php echo base_url("assets/css/terminos.css"); ?> ">
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
