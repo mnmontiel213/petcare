@@ -91,6 +91,7 @@
 .bg-huella7{
     position: absolute;
     z-index: -1;
+    rotate: 45deg;
     animation: pisada 5s infinite;
 }
 
