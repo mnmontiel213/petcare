@@ -21,28 +21,34 @@ body{
 /* ----------------------*/
 /*        NAVBAR         */
 /* ----------------------*/
-.logo{
-    width: 50px;
-}
 
 .navbar{
     background-color: #4E5861 !important;
     width: 100vw;
 }
 
-ul > .navbar-nav{
+.logo > img{
+    height: 85px;
+    margin-left: 80px;
+}
+
+.navbar-nav{
     justify-content: space-between !important;
 }
 
 .nav-item > a{
-    margin: 0 15px 0 15px;
+    margin: 0 15px;
     color: white !important;
 }
-
-
-.my_collapse_div3{
-    justify-content: end;
+.nav-item > a:hover{
+    text-shadow: 2px 2px 2px #f5e3ae;
+    font-size: 17px;
 }
+
+.navbar-toggler{
+    margin-right: 20px;
+}
+
 /* ----------------------*/
 /*        FOOTER         */
 /* ----------------------*/
@@ -54,7 +60,7 @@ ul > .navbar-nav{
     color: black;
     text-decoration: none;
     display: flex;
-    justify-content: center;
+    justify-content: end;
 }
 
 .cs-footer-elements{
@@ -155,19 +161,13 @@ footer h2{
 }
 
 /* FORMULARIO*/
-
-.cs-titulo-form{
-    position: relative;
-    margin: 50px;
-    padding-left: 200px;
-}
-
 .conteiner-form{
     display: flex;
     justify-content: center;
-    margin: 0;
+    margin: 50px;
     background-color: #E1E6D3;
-    padding: auto;
+    padding: 50px;
+    box-shadow: 5px 5px 15px #4E5861;
 }
 
 .img-vet{
@@ -196,30 +196,64 @@ footer h2{
 }
 
 
-.cs-img-huella{
+.cs-img-huella1{
     position: absolute;
-    top: 12%;
+    top: 18%;
     left: 10%;
-    opacity: 0.6;
-    z-index: -2;
+    opacity: 0.3;
+    z-index: -1;
     rotate: 45deg;
 }
 
-.cs-img-huella > img{
+.cs-img-huella1 > img{
     width: 200px;
     height: auto;
 }
 
+.cs-img-huella2{
+    position: absolute;
+    top: 85%;
+    left: 75%;
+    opacity: 0.3;
+    z-index: -2;
+    rotate: 45deg;
+}
+
+.cs-img-huella2 > img{
+    width: 300px;
+    height: auto;
+}
+
+.cs-img-huella3{
+    position: absolute;
+    top: 90%;
+    left: 10%;
+    opacity: 0.1;
+    z-index: -2;
+    rotate: 45deg;
+}
+
+.cs-img-huella3 > img{
+    width: 700px;
+    height: auto;
+}
 .cs-medios{
-    position: relative;
     margin: 50px;
     padding-left: 200px;
 }
 
 .cs-medios-otros{
-    margin: 15px;
+    margin: 25px;
+}
+.cs-medios > h2{
+    margin-bottom: -25px;
 }
 
 ul > li {
     margin: 25px;
+    list-style: none;
+}
+
+.contacto-tel > p{
+    margin-left: 50px;
 }
