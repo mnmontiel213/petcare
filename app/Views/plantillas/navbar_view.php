@@ -32,10 +32,10 @@
                     </ul>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="<?php echo base_url(''); ?>"><img class="nav-img" src="<?php echo base_url("assets/img/carritoCompras.svg"); ?>" alt="carritoCompras"></a>
+                    <a class="nav-link-img" href="<?php echo base_url(''); ?>"><img class="nav-img" src="<?php echo base_url("assets/img/carritoCompras.svg"); ?>" alt="carritoCompras"></a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="<?php echo base_url(''); ?>"><img class="nav-img" src="<?php echo base_url("assets/img/login.svg"); ?>" alt="login"></a>
+                    <a class="nav-link-img" href="<?php echo base_url(''); ?>"><img class="nav-img" src="<?php echo base_url("assets/img/login.svg"); ?>" alt="login"></a>
                 </li>
             </ul>
         </div>

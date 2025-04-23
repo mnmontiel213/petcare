@@ -14,52 +14,65 @@
                 <a href="<?php echo base_url('contacto') ?>" class="btn-contacto">Contáctenos</a>
             </div>
         </div>
-        <div class="cs-img-huella1">
-            <img src="<?php echo base_url("assets/img/huella.svg") ?> " alt="">
-        </div>
-        <div class="cs-img-huella2">
-            <img src="<?php echo base_url("assets/img/huella.svg") ?> " alt="">
-        </div>
-        <div class="cs-img-huella3">
-            <img src="<?php echo base_url("assets/img/huella.svg") ?> " alt="">
-        </div>
 
     </div>
-<!-- TARJETAS SELECCION DE MASCOTAS -->
+    
+    <!-- TARJETAS SELECCION DE MASCOTAS -->
 
     
-<div class="text-center p-5">
+    <div class="text-center p-5">
 
-    <h3>¿Para que mascota necesitas consultar?</h3>
+        <h3>¿Para que mascota necesitas consultar?</h3>
 
-    <div class="d-flex p-2 justify-content-around">
+        <div class="d-flex p-2 justify-content-around">
 
-        <div class="tarjeta-mascota">
-            <p>Perro</p>
+            <div class="tarjeta-mascota">
+                <p>Perro</p>
+            </div>
+
+            <div class="tarjeta-mascota">
+                <p>Gato</p>
+            </div>
+
+            <div class="tarjeta-mascota">
+                <p>Otro</p>
+            </div>
+
         </div>
 
-        <div class="tarjeta-mascota">
-            <p>Gato</p>
-        </div>
-
-        <div class="tarjeta-mascota">
-            <p>Otro</p>
-        </div>
 
     </div>
 
 
-</div>
-
-
-<!--      MUESTRAS SERVICIOS        -->
+    <!--      MUESTRAS SERVICIOS        -->
 
 
 
 
-<!--        VETERINARIAS           -->
+    <!--        VETERINARIAS           -->
 </div>
 
 
     
+
+<div class="bg-huella1">
+    <img src="<?php echo base_url("assets/img/huella.svg") ?> " alt="">
+</div>
+<div class="bg-huella2">
+    <img src="<?php echo base_url("assets/img/huella.svg") ?> " alt="">
+</div>
+<div class="bg-huella3">
+    <img src="<?php echo base_url("assets/img/huella.svg") ?> " alt="">
+</div>
+<div class="bg-huella4">
+    <img src="<?php echo base_url("assets/img/huella.svg") ?> " alt="">
+</div>
+<div class="bg-huella5">
+    <img src="<?php echo base_url("assets/img/huella.svg") ?> " alt="">
+</div>
+<div class="bg-huella6">
+    <img src="<?php echo base_url("assets/img/huella.svg") ?> " alt="">
+</div>
+<div class="bg-huella7">
+    <img src="<?php echo base_url("assets/img/huella.svg") ?> " alt="">
 </div>
