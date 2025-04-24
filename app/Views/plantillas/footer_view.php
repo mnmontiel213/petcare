@@ -9,6 +9,8 @@
                     <li><a href="#">Castracion</a></li>
                     <li><a href="#">Radiologia y ultrasonidos</a></li>
                     <li><a href="#">Farmacia</a></li>
+                    <li><a href="#">Consulta general</a></li>
+                    <li><a href="#">Baños y cortes</a></li>
                 </ul>
             </div>
 
@@ -37,6 +39,19 @@
             <h2>PetCare</h2>
         </div>
     </div>
+
+    <div id="map" style="width: 400px; height: 300px"></div> 
+
+   <script type="text/javascript"> 
+      var myOptions = {
+         zoom: 8,
+         center: new google.maps.LatLng(-27.472492, -58.811245),
+         mapTypeId: google.maps.MapTypeId.ROADMAP
+      };
+
+      var map = new google.maps.Map(document.getElementById("map"), myOptions);
+   </script> 
+
 </footer>
 
         <script src="<?php echo base_url("assets/js/bootstrap.bundle.min.js"); ?>"></script>
