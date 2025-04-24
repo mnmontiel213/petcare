@@ -9,6 +9,7 @@
     <link rel="stylesheet" href=" <?php echo base_url("assets/css/comercializacion.css"); ?> ">
     <link rel="stylesheet" href=" <?php echo base_url("assets/css/terminos.css"); ?> ">
     <link rel="stylesheet" href=" <?php echo base_url("assets/css/quienes_somos.css"); ?> ">
+    <link rel="stylesheet" href=" <?php echo base_url("assets/css/footer.css"); ?> ">
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
