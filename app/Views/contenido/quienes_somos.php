@@ -49,7 +49,9 @@
             </p>
         </div>
     </ul>
-    
+
     <img src="<?php echo base_url('assets/img/gato.webp') ?>" alt="">    
-    <a href="#" class="cs-turno">Pedir un turno</a>
+    <div style="padding-bottom: 200px;">
+        <a href="#" class="cs-turno">Pedir un turno</a>
+    </div>
 </div>

@@ -15,9 +15,6 @@
 }
 
 #quienes_somos_contenido{
-    border-style: solid;
-    border-width: 1px;
-    border-color: black;
     background-color: whitesmoke;
     text-align: justify;
 }
@@ -53,6 +50,9 @@
     padding: 10px;
     text-align: center;
     background-color: var(--color-green);
+    border-style: solid;
+    border-width: 1px;
+    border-color: black;
 }
 
 #nuestros_valores ul{
@@ -64,7 +64,9 @@
 
 #nuestros_valores img{
     position: absolute;
-    top: 0;
+    top: 210%;
+    left: 45%;
+    z-index: -1;
 }
 
 .cs-list-container{
