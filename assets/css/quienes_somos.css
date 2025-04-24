@@ -1,0 +1,101 @@
+/*               */
+/* QUIENES SOMOS */
+/*               */
+
+#quienes_somos{
+    padding: 0;
+    margin: 0;
+    text-align: center;
+    background-color: var(--color-light-yellow);
+}
+
+#quienes_somos h2{
+    padding: 10px;
+    background-color: var(--color-light-yellow);
+}
+
+#quienes_somos_contenido{
+    border-style: solid;
+    border-width: 1px;
+    border-color: black;
+    background-color: whitesmoke;
+    text-align: justify;
+}
+
+#quienes_somos_contenido img{
+    width: 50%;
+}
+
+#quienes_somos_contenido p{
+    padding: 15px;
+    border-style: solid;
+    border-width: 1px;
+    border-color: black;
+    box-shadow: 10px 5px 0 rgb(138, 138, 138);
+    background-color: var(--color-yellow);
+    position: absolute;
+    font-size: 2rem;
+    width: 40%;
+    right: 15%;
+    top: 40%;
+}
+
+/*                  */
+/* NUESTROS VALORES */
+/*                  */
+
+#nuestros_valores{
+    margin: 0;
+    padding: 0;
+}
+
+#nuestros_valores h2{
+    padding: 10px;
+    text-align: center;
+    background-color: var(--color-green);
+}
+
+#nuestros_valores ul{
+    display: flex;
+    justify-content: space-around;
+    padding: 20px;
+    margin: 75px;
+}
+
+#nuestros_valores img{
+    position: absolute;
+    top: 0;
+}
+
+.cs-list-container{
+    width: 25%;
+    list-style-type: none;
+    border-style: solid;
+    border-width: 1px;
+    border-color: black;
+    box-shadow: 10px 5px 0 rgb(138, 138, 138);
+    padding: 15px;
+    background-color: var(--color-mustard);
+}
+
+.cs-list-container li{
+    text-align: center;
+    font-size:large;
+    font-weight: bold;
+}
+
+.cs-list-container p{
+    text-align: justify;
+}
+
+.cs-turno{
+    margin: 45%;
+    text-decoration: none;
+    color: whitesmoke;
+    background-color: var(--color-grey);
+    padding: 15px;
+    border-style: solid;
+    border-width: 1px;
+    border-color: black;
+    box-shadow: 10px 5px 0 rgb(138, 138, 138);
+}
