@@ -25,7 +25,7 @@
         </div>
         
         <div class="cs-btn-submit">
-            <button type="submit" class="cs-btn">Submit</button><br>
+            <button type="submit" class="cs-btn">Enviar</button><br>
         </div>
         
     </form>

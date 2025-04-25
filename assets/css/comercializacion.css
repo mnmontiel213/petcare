@@ -53,6 +53,8 @@
 .metodos-pago h3 {
     color: #2f3e46;
     margin-bottom: 15px;
+    margin-left: 360px !important;
+
 }
 
 .metodos-pago ul {

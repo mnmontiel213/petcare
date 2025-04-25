@@ -37,10 +37,12 @@
 
         <div class="mt-4">
             <h2>PetCare</h2>
+            <a href="<?php echo base_url('quienes_somos#ubicacion'); ?>" class="">Ver Ubicación</a>
+
         </div>
     </div>
-
-    <div id="map" style="width: 400px; height: 300px"></div> 
+    <!-- <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d5953.432870765384!2d-58.81293762392319!3d-27.47136494763336!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1ses!2sar!4v1745597830378!5m2!1ses!2sar" width="400" height="300" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe> -->
+    <!-- <div id="map" style="width: 400px; height: 300px"></div> 
 
    <script type="text/javascript"> 
       var myOptions = {
@@ -50,7 +52,7 @@
       };
 
       var map = new google.maps.Map(document.getElementById("map"), myOptions);
-   </script> 
+   </script>  -->
 
 </footer>
 

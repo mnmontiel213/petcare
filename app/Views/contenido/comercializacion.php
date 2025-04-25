@@ -1,4 +1,4 @@
-<section class="seccion-comercializacion">
+<div class="seccion-comercializacion">
     <h2 class="titulo-comercializacion">Servicios y Comercialización</h2>
     <p class="intro-comercializacion">
         En VetCare te ofrecemos atención integral y accesible para tus mascotas, con diversas formas de pago y precios claros.
@@ -37,4 +37,6 @@
         </ul>
         <p class="nota">*Se aceptan planes de financiación sin interés en servicios seleccionados.</p>
     </div>
-</section>
+    
+</div>
+

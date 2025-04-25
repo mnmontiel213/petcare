@@ -1,103 +1,210 @@
 /*               */
 /* QUIENES SOMOS */
 /*               */
-
-#quienes_somos{
-    padding: 0;
+.quienes-somos{
+    padding: 50px;
     margin: 0;
     text-align: center;
-    background-color: var(--color-light-yellow);
-}
-
-#quienes_somos h2{
-    padding: 10px;
-    background-color: var(--color-light-yellow);
-}
-
-#quienes_somos_contenido{
     background-color: whitesmoke;
-    text-align: justify;
 }
 
-#quienes_somos_contenido img{
+.titulo-nosotros{
+    margin: 0 auto;
+    width: 400px;
+    padding: 40px 50px;
+    text-shadow: 5px 5px 8px #000;
+}
+
+.quienes-somos-contenido{
+    padding: 50px;
+    background-color: whitesmoke;
+    display: inline-flex;
+    justify-content: space-around;
+}
+
+.img-perro-nosotros{
     width: 50%;
+    height: 50%;
 }
 
-#quienes_somos_contenido p{
-    padding: 15px;
-    border-style: solid;
-    border-width: 1px;
-    border-color: black;
-    box-shadow: 10px 5px 0 rgb(138, 138, 138);
+.texto-nosotros{
+    padding: 35px;
+    /* border: 1px solid black; */
+    border-radius: 10px;
+    box-shadow: 10px 5px 25px rgb(138, 138, 138);
     background-color: var(--color-yellow);
-    position: absolute;
-    font-size: 2rem;
-    width: 40%;
-    right: 15%;
-    top: 40%;
+    font-size: 1.5rem;
+    width: 50%;
 }
 
 /*                  */
 /* NUESTROS VALORES */
 /*                  */
 
-#nuestros_valores{
+.nuestros-valores{
     margin: 0;
     padding: 0;
+    /* border-top: solid 1px #000; */
+    background-color: var(--color-mustard);
+    border-radius: 10px;
 }
 
-#nuestros_valores h2{
+.titulo-valores{
+    margin-top: 50px;
     padding: 10px;
     text-align: center;
-    background-color: var(--color-green);
-    border-style: solid;
-    border-width: 1px;
-    border-color: black;
+    text-shadow: 5px 5px 8px #000;
 }
 
-#nuestros_valores ul{
+.nuestros-valores ul{
     display: flex;
     justify-content: space-around;
     padding: 20px;
     margin: 75px;
 }
 
-#nuestros_valores img{
+.img-gato-nosotros{
     position: absolute;
+    width: 28%;
+    height: 43%;
     top: 210%;
-    left: 45%;
-    z-index: -1;
+    left: 48%;
+    z-index: 1;
+    
 }
 
 .cs-list-container{
     width: 25%;
     list-style-type: none;
-    border-style: solid;
-    border-width: 1px;
-    border-color: black;
-    box-shadow: 10px 5px 0 rgb(138, 138, 138);
-    padding: 15px;
-    background-color: var(--color-mustard);
+    /* border: solid 1px #000; */
+    border-radius: 10px;
+    box-shadow: 10px 5px 25px rgb(138, 138, 138);
+    padding: 20px;
+    background-color: whitesmoke;
 }
 
-.cs-list-container li{
+.cs-list-title{
+    margin: 10px 0;
     text-align: center;
     font-size:large;
     font-weight: bold;
 }
 
-.cs-list-container p{
-    text-align: justify;
+.cs-list-element{
+    text-align: center;
+}
+
+.btn-conteiner{
+    display: flex;
+    justify-content: center;
+    margin: 100px 0;
+    padding-bottom: 200px;
+    z-index: 2;
 }
 
 .cs-turno{
-    margin: 45%;
     text-decoration: none;
     color: whitesmoke;
     background-color: var(--color-grey);
     padding: 15px;
-    border-style: solid;
-    border-width: 1px;
-    border-color: black;
-    box-shadow: 10px 5px 0 rgb(138, 138, 138);
+    /* border: solid 1px #000; */
+    border-radius: 10px;
+    box-shadow: 10px 5px 25px rgb(138, 138, 138);
+}
+
+
+.seccion-veterinarios {
+    padding: 60px 20px;
+    background-color: #fdfdfd;
+    text-align: center;
+    font-family: "Playfair Display", serif;
+}
+
+.titulo-veterinarios {
+    font-size: 2rem;
+    color: #4E5861;
+    margin-bottom: 40px;
+}
+
+.contenedor-cards {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 30px;
+}
+
+.card-veterinario {
+    background-color: #ffffff;
+    border-radius: 15px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    width: 280px;
+    padding: 20px;
+    transition: transform 0.3s ease;
+}
+
+.card-veterinario:hover {
+    transform: translateY(-5px);
+}
+
+.card-veterinario img {
+    width: 100%;
+    height: 220px;
+    object-fit: cover;
+    border-radius: 10px;
+    margin-bottom: 15px;
+}
+
+.card-veterinario h3 {
+    color: #2c3e50;
+    margin-bottom: 10px;
+    font-size: 1.3rem;
+}
+
+.card-veterinario p {
+    font-size: 1rem;
+    color: #444;
+    line-height: 1.5;
+}
+
+
+
+
+.nuestra-ubicacion{
+    margin: 0 auto 100px;
+    background-color: black;
+    border-radius: 20px;
+    box-shadow: 15px 18px 50px #2c3e50;
+    padding: 80px;
+    width: 85%;
+    transition: transform 0.3s ease;
+}
+
+.nuestra-ubicacion:hover {
+    transform: translateY(-8px);
+}
+
+.ubicacion-titulo{
+    color: white;
+    text-shadow: 5px 5px 8px whitesmoke;
+    margin-bottom: 100px;
+    text-align: center;
+}
+
+.ubicacion-detalle{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.detalle-conteiner{
+    color: white;
+    font-size: larger;
+}
+
+.aviso{
+    color: rgb(193, 28, 28);
+    padding-top: 80px;
+    margin-left: 20%;
+    font-size: larger;
+    font-weight: bold;
 }

@@ -1,4 +1,4 @@
-<section class="seccion-terminos">
+<div class="seccion-terminos">
     <h2 class="titulo-terminos">Términos y Condiciones</h2>
     
     <p class="intro-terminos">
@@ -40,4 +40,4 @@
     <p class="ultima-linea">
         Si tenés dudas sobre nuestras políticas, podés contactarnos desde la sección <a href="<?php echo base_url('contacto'); ?>">Contacto</a>.
     </p>
-</section>
+</div>
