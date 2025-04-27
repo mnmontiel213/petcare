@@ -1,9 +1,14 @@
 
 <nav class="navbar navbar-expand-lg bg-light">
     <div class="container-fluid">
+
+        <div>
         <a class="navbar-brand logo" href="<?php echo base_url('principal'); ?>">
             <img src="<?php echo base_url('assets/img/marca.svg') ?>" alt="">
-        </a>
+        </a>    
+        </div>
+        
+
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown"
             aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>

@@ -29,10 +29,10 @@
 .nav-item > a{
     margin: 0 15px;
     color: white !important;
+    text-shadow: 2px 2px 2px #f5e3ae00;
 }
 .nav-item > a:hover{
-    text-shadow: 2px 2px 2px #f5e3ae;
-    font-size: 17px;
+    text-shadow: 2px 2px 10px var(--color-light-yellow);
 }
 
 .navbar-toggler{
