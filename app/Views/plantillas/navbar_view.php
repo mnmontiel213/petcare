@@ -1,15 +1,13 @@
 
-        <nav class="navbar navbar-expand-lg">
-            <div class="container-fluid">
-                <a class="navbar-brand logo" href="<?php echo base_url('principal'); ?>">PetCare
-                    <img class="huella1" src="<?php echo base_url('assets/img/patas.png') ?>" alt="huella1">
-                    <img class="huella2" src="<?php echo base_url('assets/img/patas.png') ?>" alt="huella2">
-                </a>
-
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown"
-                    aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
+<nav class="navbar navbar-expand-lg bg-light">
+    <div class="container-fluid">
+        <a class="navbar-brand logo" href="<?php echo base_url('principal'); ?>">
+            <img src="<?php echo base_url('assets/img/marca.svg') ?>" alt="">
+        </a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown"
+            aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
 
                 <div class="collapse navbar-collapse" id="navbarNavDropdown">
                     <ul class="navbar-nav nav-list">

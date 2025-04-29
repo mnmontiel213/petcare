@@ -53,8 +53,10 @@
                 </p>
             </div>
         </ul>
+        <div class="container-gato">
+            <img class="img-gato-nosotros" src="<?php echo base_url('assets/img/gato.webp') ?>" alt="gato">    
+        </div>
 
-        <img class="img-gato-nosotros" src="<?php echo base_url('assets/img/gato.webp') ?>" alt="gato">    
         <div class="btn-conteiner" >
             <a href="#" class="cs-turno">Pedir un turno</a>
         </div>
