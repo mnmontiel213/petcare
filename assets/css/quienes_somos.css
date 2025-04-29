@@ -42,6 +42,7 @@
     background-color: var(--color-yellow);
     font-size: 1.5rem;
     width: 50%;
+    }
 }
 
 /*                  */
@@ -96,14 +97,15 @@
         margin: 75px;
     }
 
-.cs-list-container{
+    .cs-list-container{
     width: 25%;
-    list-style-type: none;
-    /* border: solid 1px #000; */
-    border-radius: 10px;
-    box-shadow: 10px 5px 25px rgb(138, 138, 138);
-    padding: 20px;
-    background-color: whitesmoke;
+        list-style-type: none;
+        /* border: solid 1px #000; */
+        border-radius: 10px;
+        box-shadow: 10px 5px 25px rgb(138, 138, 138);
+        padding: 20px;
+        background-color: whitesmoke;
+    }
 }
 
 .cs-list-title{
