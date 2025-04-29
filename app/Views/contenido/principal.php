@@ -5,7 +5,7 @@
         <img class="banner" src="<?php echo base_url("assets/img/banner.svg") ?>" alt="banner">
     </figure>
     <div class="main-content">
-        <div class="main-conpromiso">
+        <div class="main-compromiso">
             <h2 class="title-compromiso">Compromiso con el Servicio</h2>
             <p class="text-compromiso">En VetCare, creemos que cada mascota merece atención de calidad, cariño y respeto. Nuestro compromiso con el servicio va más allá del cuidado médico: nos esforzamos por crear un ambiente de confianza y cercanía con cada familia que nos elige.
 
@@ -18,61 +18,119 @@
     </div>
     
     <!-- TARJETAS SELECCION DE MASCOTAS -->
-
-    
-    <div class="text-center p-5">
-
-        <h3>¿Para que mascota necesitas consultar?</h3>
-
-        <div class="d-flex p-2 justify-content-around">
-
-            <div class="tarjeta-mascota">
-                <p>Perro</p>
+    <h3 class="titulo-consejo">Recomendaciones</h3>
+    <div class="card-concejos">
+        
+        <div class="card mb-3" style="max-width: 600px;">
+            <div class="row g-0">
+                <div class="col-md-4 img-mascotas">
+                    <img src="<?php echo base_url("assets/img/card-perro.jpg")?>" class="img-fluid rounded-start" alt="perro">
+                </div>
+                <div class="col-md-8">
+                    <div class="card-body">
+                        <h5 class="card-title">Perro</h5>
+                        <p class="card-text">Todo sobre perros</p>
+                        <ul class="list-consejo">
+                            <li class="item-consejo">
+                                <a href="">Informacion para cuidados de perros</a>
+                                <img class="img-flecha" src="<?php echo base_url("assets/img/flecha.png") ?>" class="img-fluid rounded-start" alt="...">
+                            </li>
+                            <li class="item-consejo">
+                                <a href="">Consejos de salud para perros</a>
+                                <img class="img-flecha" src="<?php echo base_url("assets/img/flecha.png") ?>" class="img-fluid rounded-start" alt="...">
+                            </li>
+                            <li class="item-consejo">
+                                <a href="">Selector de razas de perros</a>
+                                <img class="img-flecha" src="<?php echo base_url("assets/img/flecha.png") ?>" class="img-fluid rounded-start" alt="...">
+                            </li>
+                        </ul>
+                    </div>
+                </div>
             </div>
-
-            <div class="tarjeta-mascota">
-                <p>Gato</p>
-            </div>
-
-            <div class="tarjeta-mascota">
-                <p>Otro</p>
-            </div>
-
         </div>
 
+        <div class="card mb-3" style="max-width: 600px;">
+            <div class="row g-0">
+                <div class="col-md-4 img-mascotas">
+                    <img src="<?php echo base_url("assets/img/card-gato.jpg") ?>" class="img-fluid rounded-start" alt="...">
+                </div>
+                <div class="col-md-8">
+                    <div class="card-body">
+                        <h5 class="card-title">Gato</h5>
+                        <p class="card-text">Todo sobre gatos</p>
+                        <ul class="list-consejo">
+                            <li class="item-consejo">
+                                <a href="">Informacion para cuidados de gatos</a>
+                                <img class="img-flecha" src="<?php echo base_url("assets/img/flecha.png") ?>" class="img-fluid rounded-start" alt="...">
+                            </li>
+                            <li class="item-consejo">
+                                <a href="">Consejos de salud para gatos</a>
+                                <img class="img-flecha" src="<?php echo base_url("assets/img/flecha.png") ?>" class="img-fluid rounded-start" alt="...">
+                            </li>
+                            <li class="item-consejo">
+                                <a href="">Selector de razas de gatos</a>
+                                <img class="img-flecha" src="<?php echo base_url("assets/img/flecha.png") ?>" class="img-fluid rounded-start" alt="...">
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
 
+        <div class="card mb-3" style="max-width: 600px;">
+            <div class="row g-0">
+                <div class="col-md-4 img-mascotas">
+                    <img src="<?php echo base_url("assets/img/card-mascota.jpg") ?>" class="img-fluid rounded-start" alt="...">
+                </div>
+                <div class="col-md-8">
+                    <div class="card-body">
+                        <h5 class="card-title">Mascota</h5>
+                        <p class="card-text">Todo sobre mascotas</p>
+                        <ul class="list-consejo">
+                            <li class="item-consejo">
+                                <a href="">Informacion para cuidados de mascotas</a>
+                                <img class="img-flecha" src="<?php echo base_url("assets/img/flecha.png") ?>" class="img-fluid rounded-start" alt="...">
+                            </li>
+                            <li class="item-consejo">
+                                <a href="">Consejos de salud para mascotas</a>
+                                <img class="img-flecha" src="<?php echo base_url("assets/img/flecha.png") ?>" class="img-fluid rounded-start" alt="...">
+                            </li>
+                            <li class="item-consejo">
+                                <a href="">Selector de razas de mascotas</a>
+                                <img class="img-flecha" src="<?php echo base_url("assets/img/flecha.png") ?>" class="img-fluid rounded-start" alt="...">
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 
 
-    <!--      MUESTRAS SERVICIOS        -->
 
-
-
-
-    <!--        VETERINARIAS           -->
+    <div class="bg-huella1">
+        <img src="<?php echo base_url("assets/img/huella.svg") ?> " alt="">
+    </div>
+    <div class="bg-huella2">
+        <img src="<?php echo base_url("assets/img/huella.svg") ?> " alt="">
+    </div>
+    <div class="bg-huella3">
+        <img src="<?php echo base_url("assets/img/huella.svg") ?> " alt="">
+    </div>
+    <div class="bg-huella4">
+        <img src="<?php echo base_url("assets/img/huella.svg") ?> " alt="">
+    </div>
+    <div class="bg-huella5">
+        <img src="<?php echo base_url("assets/img/huella.svg") ?> " alt="">
+    </div>
+    <div class="bg-huella6">
+        <img src="<?php echo base_url("assets/img/huella.svg") ?> " alt="">
+    </div>
+    <div class="bg-huella7">
+        <img src="<?php echo base_url("assets/img/huella.svg") ?> " alt="">
+    </div>
 </div>
 
 
     
 
-<div class="bg-huella1">
-    <img src="<?php echo base_url("assets/img/huella.svg") ?> " alt="">
-</div>
-<div class="bg-huella2">
-    <img src="<?php echo base_url("assets/img/huella.svg") ?> " alt="">
-</div>
-<div class="bg-huella3">
-    <img src="<?php echo base_url("assets/img/huella.svg") ?> " alt="">
-</div>
-<div class="bg-huella4">
-    <img src="<?php echo base_url("assets/img/huella.svg") ?> " alt="">
-</div>
-<div class="bg-huella5">
-    <img src="<?php echo base_url("assets/img/huella.svg") ?> " alt="">
-</div>
-<div class="bg-huella6">
-    <img src="<?php echo base_url("assets/img/huella.svg") ?> " alt="">
-</div>
-<div class="bg-huella7">
-    <img src="<?php echo base_url("assets/img/huella.svg") ?> " alt="">
-</div>

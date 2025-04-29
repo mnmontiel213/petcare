@@ -1,0 +1,141 @@
+/* FORMULARIO*/
+.conteiner-form{
+    display: flex;
+    flex-wrap: wrap-reverse;
+    justify-content: space-around;
+    width: 80vw;
+    margin: 50px;
+    background-color: #E1E6D3;
+    padding: 30px;
+    box-shadow: 5px 5px 15px #4E5861;
+    border-radius: 15px;
+}
+
+
+.cs-titulo-form > h1{
+    margin-top: 5%;
+    font-size: 2.5rem;
+}
+
+.cs-titulo-form > p{
+    font-size: 1.5rem;
+}
+
+.img-vet{
+    margin: 0;
+    text-align: center;
+    padding-left: 50px;
+    width: 450px;
+    height: 450px;
+    background-image: radial-gradient(grey,white);
+    border-radius: 30%;
+    
+}
+
+
+.form-control{
+    width: 400px;
+}
+
+
+.cs-btn-submit{
+    display: flex;
+    justify-content: center;
+    margin: 0;
+    
+}
+
+.cs-btn{
+    margin-top: 50px;
+    background-color: #4E5861;
+    color: white;
+    border-radius: 50px;
+    width: 100px;
+    padding: 10px;
+    font-weight: bold;
+}
+
+
+
+.cs-btn:hover{
+    background-color: var(--color-light-yellow);
+    color: #4E5861;
+}
+
+
+
+
+/* otros medios */
+
+
+.cs-medios{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    width: 80vw;
+    margin: 150px 0;
+}
+
+.card{
+    padding: 20px;
+}
+.card-header{
+    font-size: 2rem;
+}
+
+.contacto{
+    padding: 30px;
+    background: #f2dac4;
+}
+
+
+
+
+
+
+
+
+
+.cs-img-huella1{
+    position: absolute;
+    top: 18%;
+    left: 10%;
+    opacity: 0.3;
+    z-index: -1;
+    rotate: 45deg;
+}
+
+.cs-img-huella1 > img{
+    width: 200px;
+    height: auto;
+}
+
+.cs-img-huella2{
+    position: absolute;
+    top: 85%;
+    left: 75%;
+    opacity: 0.3;
+    z-index: -2;
+    rotate: 45deg;
+}
+
+.cs-img-huella2 > img{
+    width: 300px;
+    height: auto;
+}
+
+.cs-img-huella3{
+    position: absolute;
+    top: 90%;
+    left: 10%;
+    opacity: 0.1;
+    z-index: -2;
+    rotate: 45deg;
+}
+
+.cs-img-huella3 > img{
+    width: 700px;
+    height: auto;
+}
+
+

@@ -10,17 +10,17 @@
 
 .banner{
     width: 100vw;
-    height: 70vh;
+    height: auto;
     /* opacity: 0.8; */
 }
 
 
 
 .main-content{
-     min-height: 100vh;
+    min-height: 70vh;
 }
 
-.main-conpromiso{
+.main-compromiso{
     margin: 0 auto;
     text-align: center;
     padding: 50px 20px;
@@ -65,10 +65,70 @@
 
 
 
+.titulo-consejo{
+    text-align: center;
+    font-size: 3rem;
+    margin-bottom: 5%;
+    color: #4E5861;
+}
+
+.card-concejos{
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin: 0;
+}
+
+.card{
+    margin: 20px;
+    border: none;
+    border-radius: 20px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);   
+}
+
+.card-title{
+    font-size: 1.5rem;
+}
+
+.img-mascotas{
+    align-items: center;
+}
+
+.list-consejo {
+    padding-left: 0;
+    list-style: none;
+  }
+
+.item-consejo{
+    background-color: var(--bg-color);
+    margin: 5px 0;
+    padding: 8px;
+    border: 1px solid var(--bg-dark);
+    border-radius: 10px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.item-consejo:hover{
+    background-color: var(--ternary-color);
+}
+
+.item-consejo > a{
+    text-decoration: none;
+    color: var(--bg-dark);
+}
+
+.img-flecha{
+    width: 25px;
+    height: auto;
+    margin: 0;
+}
+
+
 /* Animación */
 @keyframes pisada {
     0% {
-        opacity: 1;
+        opacity: 0.8;
         transform: scale(1);
     }
     50% {
@@ -81,7 +141,7 @@
     }
 }
 
-/* Estilo general para las huellas */
+
 .bg-huella1,
 .bg-huella2,
 .bg-huella3,
@@ -95,7 +155,7 @@
     animation: pisada 5s infinite;
 }
 
-/* Posiciones distintas para dar efecto aleatorio */
+
 .bg-huella1 {
     top: 80%;
     left: 10%;
@@ -136,7 +196,8 @@
     left: 40vw;
     animation-delay: 3s;
 }
-/* Tamaño de las huellas */
+
+
 .bg-huella1 img,
 .bg-huella2 img,
 .bg-huella3 img,
@@ -149,4 +210,16 @@
     opacity: 0.7;
     pointer-events: none;
 }
-/* ------------- */
+
+
+@media only screen and (max-width: 600px) {
+    .bg-huella1 img,
+    .bg-huella2 img,
+    .bg-huella3 img,
+    .bg-huella4 img,
+    .bg-huella5 img,
+    .bg-huella6 img,
+    .bg-huella7 img {
+        display: none;
+    }
+  }
