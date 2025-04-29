@@ -99,7 +99,5 @@
             </div>
         </div>
         <p class="aviso">¡Muy pronto nos expandiremos al interior de la provincia!</p>
-        <!-- <div>
-            <img src="<?php echo base_url("assets/img/ubicacion.png") ?>" alt="ubicacion">
-        </div> -->
+        
     </div>
