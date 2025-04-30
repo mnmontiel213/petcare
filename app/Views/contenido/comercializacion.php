@@ -1,42 +1,55 @@
-<div class="seccion-comercializacion">
-    <h2 class="titulo-comercializacion">Servicios y Comercialización</h2>
-    <p class="intro-comercializacion">
-        En VetCare te ofrecemos atención integral y accesible para tus mascotas, con diversas formas de pago y precios claros.
-    </p>
+    <div class="container py-5" id="comercializacion">
+        <h2 class="text-center mb-4 titulo-comercial" style="font-size: 3rem; color: #4E5861;">Comercialización</h2>
+        <p class="text-center mb-5">En VetCare nos esforzamos por facilitarte cada paso en la compra de productos y servicios para tus mascotas. Aquí te contamos cómo trabajamos:</p>
 
-    <div class="contenedor-servicios">
-        <div class="servicio">
-            <h3>Consulta General</h3>
-            <p>$3.500</p>
-            <p>Incluye revisión médica, control de peso, estado general y orientación.</p>
+        <div class="row g-4">
+
+            <!-- Entregas -->
+            <div class="col-md-4">
+            <div class="card h-100 shadow-sm">
+                <div class="card-body">
+                <h5 class="card-title"><i class="bi bi-truck"></i> Tipos de Entrega</h5>
+                <ul class="list-unstyled mt-3">
+                    <li>  >   Retiro en sucursal (lun-sáb 9 a 19 hs)</li>
+                    <li>  >   Entrega a domicilio en Corrientes Capital</li>
+                    <li>  >   Envíos programados con horario a elección</li>
+                </ul>
+                </div>
+            </div>
+            </div>
+
+            <!-- Envíos -->
+            <div class="col-md-4">
+            <div class="card h-100 shadow-sm">
+                <div class="card-body">
+                <h5 class="card-title"><i class="bi bi-box-seam"></i> Formas de Envío</h5>
+                <ul class="list-unstyled mt-3">
+                    <li>  >   Moto mensajería (urgencias)</li>
+                    <li>  >  Correo Argentino (interior del país)</li>
+                    <li>  >  Personal de VetCare para productos especiales</li>
+                </ul>
+                </div>
+            </div>
+            </div>
+
+            <!-- Pagos -->
+            <div class="col-md-4">
+            <div class="card h-100 shadow-sm">
+                <div class="card-body">
+                <h5 class="card-title"><i class="bi bi-credit-card"></i> Métodos de Pago</h5>
+                <ul class="list-unstyled mt-3">
+                    <li>  >  Tarjetas de crédito/débito</li>
+                    <li>  >  Efectivo (retiro o entrega)</li>
+                    <li>  >  Transferencia bancaria</li>
+                    <li>  >  MercadoPago o código QR</li>
+                </ul>
+                </div>
+            </div>
+            </div>
+
         </div>
-        <div class="servicio">
-            <h3>Vacunación</h3>
-            <p>Desde $4.200</p>
-            <p>Aplicación de vacunas obligatorias y opcionales. Incluye certificado.</p>
-        </div>
-        <div class="servicio">
-            <h3>Baño y Corte</h3>
-            <p>Pequeños: $2.800 | Grandes: $4.500</p>
-            <p>Servicio de estética con productos hipoalergénicos.</p>
-        </div>
-        <div class="servicio">
-            <h3>Emergencias 24/7</h3>
-            <p>Desde $6.000</p>
-            <p>Atención inmediata para urgencias veterinarias.</p>
+
+        <div class="text-center mt-5">
+            <p class="fw-bold">🐾 ¿Tenés dudas? <a href="<?php echo base_url('contacto'); ?>" class="text-decoration-none">Contactanos</a>. ¡Estamos para ayudarte!</p>
         </div>
     </div>
-
-    <div class="metodos-pago">
-        <h3>Métodos de Pago Aceptados</h3>
-        <ul>
-            <li>💳 Tarjetas de crédito y débito (Visa, MasterCard, Naranja)</li>
-            <li>💵 Efectivo</li>
-            <li>📱 Transferencias bancarias (CBU - Alias)</li>
-            <li>🛒 Mercado Pago / Cuenta DNI</li>
-        </ul>
-        <p class="nota">*Se aceptan planes de financiación sin interés en servicios seleccionados.</p>
-    </div>
-    
-</div>
-
