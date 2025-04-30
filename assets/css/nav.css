@@ -10,7 +10,7 @@
     width: 150px;
     color: white;
     font-size: 2.5rem;
-    z-index: 1;
+    z-index: 4;
 }
 
 .huella1{
@@ -39,23 +39,21 @@
 }
 
 
-
 .nav-item > a{
-    font-size: large;
+    font-size: 1.5rem;
     margin: 0 15px;
     color: white !important;
     
 }
 .nav-item > a:hover{
     text-shadow: 2px 2px 2px #f5e3ae;
-    font-size: 19px; 
+    font-size: 1.4rem; 
 }
 
 .nav-img-user{
     width: 25px;
     margin: 0 15px;
 }
-
 
 .navbar-toggler{
     margin-right: 5%;
