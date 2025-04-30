@@ -2,7 +2,7 @@
 <!--- CAROUSEL --->
 <div class="main-conteiner">
     <figure class="conteiner-banner">
-        <img class="banner" src="<?php echo base_url("assets/img/banner.svg") ?>" alt="banner">
+        <img class="img-fluid banner" src="<?php echo base_url("assets/img/banner.svg") ?>" alt="banner">
     </figure>
     <div class="main-content">
         <div class="main-compromiso">
