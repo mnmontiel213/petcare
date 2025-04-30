@@ -22,7 +22,7 @@
     <div class="nuestros-valores">
         <h2 class="titulo-valores">Nuestros valores</h2>
         <ul class="lista-valores">
-            <div class="cs-list-container">
+            <div class="cs-list-conteiner">
                 <li class="cs-list-title">Comunicacion</li>
                 <p class="cs-list-element">
                     Creemos en la importancia de informar y educar a los familiares de las
@@ -31,7 +31,7 @@
                 </p>
             </div>
             
-            <div class="cs-list-container">
+            <div class="cs-list-conteiner">
                 <li class="cs-list-title">Efectividad</li>
                 <p class="cs-list-element">
                     Consideramos fundamental poder asegurar el buen estado de las mascotas y ponemos
@@ -42,7 +42,7 @@
                 </p>
             </div>
             
-            <div class="cs-list-container">
+            <div class="cs-list-conteiner">
                 <li class="cs-list-title">Paciencia</li>
                 <p class="cs-list-element">
                     Entendemos que para algunas mascotas el espacio de la veterinaria puede ser
@@ -53,13 +53,15 @@
                 </p>
             </div>
         </ul>
-        <div class="container-gato">
-            <img class="img-gato-nosotros" src="<?php echo base_url('assets/img/gato.webp') ?>" alt="gato">    
+        <div class="conteiner-gato-btn">
+            <div class="conteiner-btn" >
+                <a href="#" class="cs-turno">Pedir un turno</a>
+            </div>
+            <div class="conteiner-gato">
+                <img class="img-gato-nosotros" src="<?php echo base_url('assets/img/gato.webp') ?>" alt="gato">    
+            </div>
         </div>
-
-        <div class="btn-conteiner" >
-            <a href="#" class="cs-turno">Pedir un turno</a>
-        </div>
+        
     </div>
 
     <div class="seccion-veterinarios">
@@ -96,6 +98,7 @@
                 <p>Corrientes Capital</p>
                 <p>Av. Sarmiento 2250</p>
                 <p>Frente al Club Huracan</p>
+
             </div>
         </div>
         <p class="aviso">¡Muy pronto nos expandiremos al interior de la provincia!</p>
