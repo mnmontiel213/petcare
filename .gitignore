@@ -1,5 +1,2 @@
 .env
-writable/debug
-writable/logs
-writable/cache
-writable/debugbar
+writable/
