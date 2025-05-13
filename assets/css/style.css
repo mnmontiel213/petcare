@@ -5,6 +5,7 @@
 }
 
 body{
+    
 }
    
 
@@ -19,6 +20,8 @@ body{
     --color-verde: #2C5F2DFF;
     --color-verde-claro: #295F2D;
     --color-amarillo: #FFE67C;
+    /*--color-texto: rgb(27, 27, 27);*/
+    --color-texto: rgb(54, 54, 54);
 }
 
 .custom-shadow{
@@ -48,19 +51,18 @@ body{
 }
 
 #custom-productos{
-    color: var(--color-azul);
+    color: var(--color-texto);
     padding: 3% 0px;
-    background-color: var(--color-amarillo);
 }
 
 #custom-productos ul li{
     width: 10%;
-    margin: 10px 0px;
+    margin: 0px 0px;
 }
 
 #custom-productos ul li img{
     width: 100%;
-    border-radius: 5px;
+    border-radius: 10px;
 }
 
 #custom-servicios{

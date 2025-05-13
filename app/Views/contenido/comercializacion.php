@@ -1,5 +1,5 @@
     <div class="container py-5" id="comercializacion">
-        <h2 class="text-center mb-4 titulo-comercial" style="font-size: 3rem; color: #4E5861;">Comercialización</h2>
+        <h2 class="text-center mb-4 titulo-comercial" style="font-size: 3rem; color: #4E5861;">Nuestros servicios</h2>
         <p class="text-center mb-5">En VetCare nos esforzamos por facilitarte cada paso en la compra de productos y servicios para tus mascotas. Aquí te contamos cómo trabajamos:</p>
 
         <div class="row g-4">

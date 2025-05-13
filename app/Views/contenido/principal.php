@@ -18,8 +18,8 @@
     </div>
 
     <!-- PRODUCTOS -->
-    <div id="custom-productos" class="w-100">
-        <h2 class="text-center">Ultimos productos</h2>
+    <div id="custom-productos" class="w-100 container">
+        <h2 class="">Ultimos productos</h2>
         <ul class="d-flex flex-wrap justify-content-around">
             <li class=""><a href="#"><img src="<?php echo base_url("assets/img/producto.png")?>" alt=""></a></li>
             <li class=""><a href="#"><img src="<?php echo base_url("assets/img/producto.png")?>" alt=""></a></li>
@@ -35,25 +35,25 @@
         <ul class="d-flex flex-wrap justify-content-around">
             <div class="card" style="width: 18rem;">
                 <div class="card-body">
-                    <h5 class="card-title">Servicio #1</h5>
-                    <p class="card-text">...</p>
-                    <a href="#" class="btn btn-primary">Go somewhere</a>
+                    <h5 class="card-title">Vacunacion</h5>
+                    <!-- <p class="card-text">...</p> -->
+                    <a href="#" class="btn btn-primary">Pedir turno</a>
                 </div>
             </div>
 
             <div class="card" style="width: 18rem;">
                 <div class="card-body">
-                    <h5 class="card-title">Servicio #2</h5>
-                    <p class="card-text">...</p>
-                    <a href="#" class="btn btn-primary">Go somewhere</a>
+                    <h5 class="card-title">Castracion</h5>
+                    <!-- <p class="card-text">...</p> -->
+                    <a href="#" class="btn btn-primary">Pedir turno</a>
                 </div>
             </div>
 
             <div class="card" style="width: 18rem;">
                 <div class="card-body">
-                    <h5 class="card-title">Servicio #3</h5>
-                    <p class="card-text">...</p>
-                    <a href="#" class="btn btn-primary">Go somewhere</a>
+                    <h5 class="card-title">Emergencias</h5>
+                    <!-- <p class="card-text">...</p> -->
+                    <a href="#" class="btn btn-primary">Pedir turno</a>
                 </div>
             </div>
         </ul>
@@ -63,7 +63,7 @@
     <div class="container">
         <h2 class="text-center">¡Contactanos!</h2>
         <div>
-            <p>
+            <p class="d-flex justify-content-around">
                 <a class="btn btn-primary" data-bs-toggle="collapse" href="#multiCollapseExample1" role="button" aria-expanded="false" aria-controls="multiCollapseExample1">Sacar Turno</a>
                 <button class="btn btn-primary" type="button" data-bs-toggle="collapse" data-bs-target="#multiCollapseExample2" aria-expanded="false" aria-controls="multiCollapseExample2">Contactanos</button>
             </p>
@@ -114,7 +114,6 @@
                                 <path d="M0 4a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2zm2-1a1 1 0 0 0-1 1v.217l7 4.2 7-4.2V4a1 1 0 0 0-1-1zm13 2.383-4.708 2.825L15 11.105zm-.034 6.876-5.64-3.471L8 9.583l-1.326-.795-5.64 3.47A1 1 0 0 0 2 13h12a1 1 0 0 0 .966-.741M1 11.105l4.708-2.897L1 5.383z"/>
                             </svg>
                             <p>PetCare@email.com</p>
-
                         </div>
                     </div>
                 </div>
