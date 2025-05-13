@@ -15,7 +15,7 @@
                 <div class="collapse navbar-collapse" id="navbarNavDropdown">
                     <ul class="navbar-nav nav-list">
                         <li class="nav-item">
-                            <a class="nav-link" aria-current="page" href="<?php echo base_url('comercializacion'); ?>">Comercialización</a>
+                            <a class="nav-link" aria-current="page" href="<?php echo base_url('comercializacion'); ?>">Servicios</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="<?php echo base_url('catalogo'); ?>">Productos</a>

@@ -1,20 +1,9 @@
-:root{
-    --main-color: #f5e3ae;
-    --bg-color: #fff5d6;
-    --secondary-color: #e1e6d3;
-    --ternary-color: #b1ccc4;
-    --bg-dark: #4E5861;
-}
-
-
 
 .banner{
     width: 100vw;
     height: auto;
     /* opacity: 0.8; */
 }
-
-
 
 .main-content{
     min-height: 70vh;
@@ -33,7 +22,7 @@
 .title-compromiso{
     font-size: 3rem;
     margin-bottom: 20px;
-    color: var(--ternary-color);
+    color: #333;
 }
 
 .text-compromiso{
@@ -45,34 +34,29 @@
 }
 
 .btn-contacto {
-    background-color: var(--ternary-color);
+    text-decoration: none;
+    background-color: var(--color-green);
     border: none;
     padding: 12px 25px;
     border-radius: 6px;
     font-size: 1rem;
-    transition: background-color 0.3s ease;
-}
-
-.btn-contacto{
-    color: white;
-    text-decoration: none;
+    transition: 0.3s;
+    color: #333;
 }
 
 .btn-contacto:hover {
-    background-color:var(--secondary-color);
+    background-color: var(--color-light-green);
 }
-
-
-
 
 .titulo-consejo{
     text-align: center;
     font-size: 3rem;
     margin-bottom: 5%;
-    color: #4E5861;
+    color: #333;
 }
 
 .card-concejos{
+    color: #333;
     display: flex;
     justify-content: center;
     flex-wrap: wrap;
@@ -83,7 +67,7 @@
     margin: 20px;
     border: none;
     border-radius: 20px;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);   
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
 }
 
 .card-title{
@@ -100,22 +84,23 @@
   }
 
 .item-consejo{
-    background-color: var(--bg-color);
+    background-color: var(--color-green);
     margin: 5px 0;
     padding: 8px;
-    border: 1px solid var(--bg-dark);
+    border: 1px solid #333;
     border-radius: 10px;
     display: flex;
     justify-content: space-between;
+    transition: 0.3s;
 }
 
 .item-consejo:hover{
-    background-color: var(--ternary-color);
+    background-color: var(--color-light-green);
 }
 
 .item-consejo > a{
     text-decoration: none;
-    color: var(--bg-dark);
+    color: #333;
 }
 
 .img-flecha{
