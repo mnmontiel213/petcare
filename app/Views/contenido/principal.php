@@ -4,6 +4,10 @@
     <figure class="conteiner-banner">
         <img class="img-fluid banner" src="<?php echo base_url("assets/img/banner.svg") ?>" alt="banner">
     </figure>
+
+
+    <!--
+
     <div class="main-content">
         <div class="main-compromiso">
             <h2 class="title-compromiso">Compromiso con el Servicio</h2>
@@ -17,6 +21,38 @@
 
     </div>
     
+    -->
+    
+    <div id="ultimos-productos" class="container">
+        <h2>Ultimos productos</h2>
+
+        <ul id="ultimos-productos-lista"> 
+            <li class="ultimo-producto-item">
+                <a href="#"><img src=" <?php echo base_url("/assets/img/producto.png") ?> "></a>
+            </li>
+            <li class="ultimo-producto-item">
+                <a href="#"><img src=" <?php echo base_url("/assets/img/producto.png") ?>"></a>
+            </li>
+            <li class="ultimo-producto-item">
+                <a href="#"><img src=" <?php echo base_url("/assets/img/producto.png") ?>"></a>
+            </li>
+            <li class="ultimo-producto-item">
+                <a href="#"> <img src=" <?php echo base_url("/assets/img/producto.png") ?>"></a>
+            </li>
+        </ul>
+
+    </div>
+
+    <!-- SERVICIOS SALUD -->
+     <div>
+        <h2>Salud de tu mascota</h2>
+        <p>Le otorgamos los mejores cuidados a tu mascota</p>
+        
+
+        <a href=" <?php echo base_url("comercializacion") ?>">Saber mas</a>
+
+     </div>
+
     <!-- TARJETAS SELECCION DE MASCOTAS -->
     <h3 class="titulo-consejo">Recomendaciones</h3>
     <div class="card-concejos">

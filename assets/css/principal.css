@@ -208,3 +208,23 @@
         display: none;
     }
   }
+
+
+  /* LISTA PRODUCTOS */
+  #ultimos_productos{
+
+  }
+
+  #ultimos-productos-lista{
+    list-style-type: none;
+    display: flex;
+    justify-content: space-between;
+  }
+
+  .ultimo-producto-item{
+    padding-top: 2rem;
+  }
+
+  .ultimo-producto-item a img{
+    width: 60%;
+  }
