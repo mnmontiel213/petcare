@@ -170,7 +170,7 @@
 
 .bg-huella3 {
     top: 185%;
-    left: 87%;
+    left: 80%;
     animation-delay: 3s;
 }
 
@@ -221,5 +221,19 @@
     .bg-huella6 img,
     .bg-huella7 img {
         display: none;
+    }
+
+    .titulo-consejo{
+        margin-top: 50px;
+        font-size: 2rem;
+    }
+
+    .title-compromiso{
+        font-size: 2rem;
+    }
+    
+    .text-compromiso{
+        font-size: 1rem;
+        line-height: 1.5;
     }
   }

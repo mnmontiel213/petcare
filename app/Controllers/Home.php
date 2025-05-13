@@ -46,4 +46,11 @@ class Home extends BaseController
         $data['titulo'] = "comercializacion";
         return view('plantillas/header_view', $data).view('plantillas/navbar_view').view('contenido/comercializacion').view('plantillas/footer_view');
     }
+
+    // En desarrollo
+    public function enDesarrollo(): string
+    {
+        $data['titulo'] = "enDesarrollo";
+        return view('plantillas/header_view', $data).view('plantillas/navbar_view').view('contenido/enDesarrollo').view('plantillas/footer_view');
+    }
 }

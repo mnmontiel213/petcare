@@ -18,7 +18,7 @@
                             <a class="nav-link" aria-current="page" href="<?php echo base_url('comercializacion'); ?>">Comercialización</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="<?php echo base_url('catalogo'); ?>">Productos</a>
+                            <a class="nav-link" href="<?php echo base_url('enDesarrollo'); ?>">Productos</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="<?php echo base_url('quienes_somos'); ?>">Nosotros</a>
@@ -30,8 +30,8 @@
                             </a>
                             <ul class="dropdown-menu">
                                 <li><a class="dropdown-item" href="<?php echo base_url('terminos'); ?>">Términos y Condiciones</a></li>
-                                <li><a class="dropdown-item" href="<?php echo base_url('consulta2'); ?>">Consulta 2</a></li>
-                                <li><a class="dropdown-item" href="<?php echo base_url('consulta3'); ?>">Consulta 3</a></li>
+                                <li><a class="dropdown-item" href="<?php echo base_url('enDesarrollo'); ?>">Consulta 2</a></li>
+                                <li><a class="dropdown-item" href="<?php echo base_url('enDesarrollo'); ?>">Consulta 3</a></li>
                             </ul>
                         </li>
                         <!-- <li class="nav-item">

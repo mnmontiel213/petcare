@@ -13,3 +13,6 @@ $routes->get('comercializacion', 'Home::comercializacion');
 $routes->get('terminos', 'Home::terminos');
 $routes->get('catalogo', 'Home::catalogo');
 $routes->get('consultas', 'Home::consultas');
+
+// Informe de desarrollo
+$routes->get('enDesarrollo', 'Home::enDesarrollo');
