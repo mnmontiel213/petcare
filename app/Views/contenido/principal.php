@@ -1,20 +1,6 @@
 
 <!--- CAROUSEL --->
-<?php 
 
-
-
-$user_model = model('Model_Usuario');
-#$user = $user_model->findAll();
-$user = $user_model->where('NOMBRE', 'agus')->findAll();
-
-#echo $user;
-
-foreach ($user as $row){
-    echo $row['NOMBRE'];
-}
-
-?>
 <div class="main-conteiner">
     <figure class="conteiner-banner">
         <img class="img-fluid banner" src="<?php echo base_url("assets/img/banner.svg") ?>" alt="banner">

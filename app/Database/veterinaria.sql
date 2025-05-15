@@ -1,0 +1,36 @@
+CREATE DATABASE veterinaria;
+
+CREATE TABLE usuarios{
+    USUARIO_ID int NOT NULL AUTO_INCREMENT,
+    CBU int UNIQUE,
+    DNI int UNIQUE NOT NULL,
+    NOMBRE varchar(255) NOT NULL,
+    APELLIDO varchar(255) NOT NULL,
+    CORREO varchar(255) UNIQUE NOT NULL,
+    CONTRASEÑA varchar(255) NOT NULL,
+    DIRECCION varchar(255),
+    PRIMARY_KEY(USUARIO_ID)
+};
+
+CREATE TABLE productos{
+    CODIGO int,
+    NOMBRE varchar(255) NOT NULL,
+    MARCA varchar(255) NOT NULL,
+    PRECIO float NOT NULL,
+    PRIMARY_KEY(CODIGO)
+};
+
+CREATE TABLE consultas{
+    TITULO varchar(255) NOT NULL,
+    CORREO varchar(255) NOT NULL,
+    CONTENIDO text NOT NULL
+};
+
+CREATE TABLE turnos{
+    TURNO_ID int AUTO_INCREMENT,
+    USUARIO_ID int NOT NULL,
+    FECHA date,
+    HORARIO time,
+    PRIMARY KEY (TURNO_ID),
+    FOREIGN KEY (USUARIO_ID) REFERENCES usuarios(USUARIO_ID)
+}
