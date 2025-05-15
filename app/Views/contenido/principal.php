@@ -1,5 +1,20 @@
 
 <!--- CAROUSEL --->
+<?php 
+
+
+
+$user_model = model('Model_Usuario');
+#$user = $user_model->findAll();
+$user = $user_model->where('NOMBRE', 'agus')->findAll();
+
+echo $user;
+
+foreach ($user as $row){
+    echo $row['NOMBRE'];
+}
+
+?>
 <div class="main-conteiner">
     <figure class="conteiner-banner">
         <img class="img-fluid banner" src="<?php echo base_url("assets/img/banner.svg") ?>" alt="banner">
@@ -68,15 +83,15 @@
                         <p class="card-text">Todo sobre perros</p>
                         <ul class="list-consejo">
                             <li class="item-consejo">
-                                <a href="">Informacion para cuidados de perros</a>
+                                <a href="<?php echo base_url('enDesarrollo') ?>">Informacion para cuidados de perros</a>
                                 <img class="img-flecha" src="<?php echo base_url("assets/img/flecha.png") ?>" class="img-fluid rounded-start" alt="...">
                             </li>
                             <li class="item-consejo">
-                                <a href="">Consejos de salud para perros</a>
+                                <a href="<?php echo base_url('enDesarrollo') ?>">Consejos de salud para perros</a>
                                 <img class="img-flecha" src="<?php echo base_url("assets/img/flecha.png") ?>" class="img-fluid rounded-start" alt="...">
                             </li>
                             <li class="item-consejo">
-                                <a href="">Selector de razas de perros</a>
+                                <a href="<?php echo base_url('enDesarrollo') ?>">Selector de razas de perros</a>
                                 <img class="img-flecha" src="<?php echo base_url("assets/img/flecha.png") ?>" class="img-fluid rounded-start" alt="...">
                             </li>
                         </ul>
@@ -96,15 +111,15 @@
                         <p class="card-text">Todo sobre gatos</p>
                         <ul class="list-consejo">
                             <li class="item-consejo">
-                                <a href="">Informacion para cuidados de gatos</a>
+                                <a href="<?php echo base_url('enDesarrollo') ?>">Informacion para cuidados de gatos</a>
                                 <img class="img-flecha" src="<?php echo base_url("assets/img/flecha.png") ?>" class="img-fluid rounded-start" alt="...">
                             </li>
                             <li class="item-consejo">
-                                <a href="">Consejos de salud para gatos</a>
+                                <a href="<?php echo base_url('enDesarrollo') ?>">Consejos de salud para gatos</a>
                                 <img class="img-flecha" src="<?php echo base_url("assets/img/flecha.png") ?>" class="img-fluid rounded-start" alt="...">
                             </li>
                             <li class="item-consejo">
-                                <a href="">Selector de razas de gatos</a>
+                                <a href="<?php echo base_url('enDesarrollo') ?>">Selector de razas de gatos</a>
                                 <img class="img-flecha" src="<?php echo base_url("assets/img/flecha.png") ?>" class="img-fluid rounded-start" alt="...">
                             </li>
                         </ul>
@@ -124,15 +139,15 @@
                         <p class="card-text">Todo sobre mascotas</p>
                         <ul class="list-consejo">
                             <li class="item-consejo">
-                                <a href="">Informacion para cuidados de mascotas</a>
+                                <a href="<?php echo base_url('enDesarrollo') ?>">Informacion para cuidados de mascotas</a>
                                 <img class="img-flecha" src="<?php echo base_url("assets/img/flecha.png") ?>" class="img-fluid rounded-start" alt="...">
                             </li>
                             <li class="item-consejo">
-                                <a href="">Consejos de salud para mascotas</a>
+                                <a href="<?php echo base_url('enDesarrollo') ?>">Consejos de salud para mascotas</a>
                                 <img class="img-flecha" src="<?php echo base_url("assets/img/flecha.png") ?>" class="img-fluid rounded-start" alt="...">
                             </li>
                             <li class="item-consejo">
-                                <a href="">Selector de razas de mascotas</a>
+                                <a href="<?php echo base_url('enDesarrollo') ?>">Selector de razas de mascotas</a>
                                 <img class="img-flecha" src="<?php echo base_url("assets/img/flecha.png") ?>" class="img-fluid rounded-start" alt="...">
                             </li>
                         </ul>

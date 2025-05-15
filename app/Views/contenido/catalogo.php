@@ -1,6 +1,6 @@
     <div class="section-catalogo">
         <!-- <h1>Catalogo</h1> -->
-            <div class="seccion-produccion d-flex align-items-center justify-content-center text-center">
+            <!-- <div class="seccion-produccion d-flex align-items-center justify-content-center text-center">
                 <div class="container">
                     <div class="alert alert-warning bg-light bg-opacity-75 border-0 shadow p-5 rounded-4">
                         <i class="bi bi-tools display-4 text-warning"></i>
@@ -18,5 +18,5 @@
                         </a>
                     </div>
                 </div>
-            </div>
+            </div> -->
     </div>
