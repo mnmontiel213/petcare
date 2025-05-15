@@ -8,7 +8,7 @@ $user_model = model('Model_Usuario');
 #$user = $user_model->findAll();
 $user = $user_model->where('NOMBRE', 'agus')->findAll();
 
-echo $user;
+#echo $user;
 
 foreach ($user as $row){
     echo $row['NOMBRE'];

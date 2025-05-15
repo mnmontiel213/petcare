@@ -16,3 +16,7 @@ $routes->get('consultas', 'Home::consultas');
 
 // Informe de desarrollo
 $routes->get('enDesarrollo', 'Home::enDesarrollo');
+
+$routes->get('login', 'Home::login');
+$routes->post('login', 'Usuario_controller::agregar_usuario');
+
