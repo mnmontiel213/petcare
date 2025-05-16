@@ -6,7 +6,7 @@ class Home extends BaseController
 {
     public function index(): string
     {
-        $data['titulo'] = "index";
+        $data['titulo'] = "PetCare";
         return view('plantillas/header_view', $data).view('plantillas/navbar_view').view('contenido/principal').view('plantillas/footer_view');
     }
 
@@ -53,9 +53,21 @@ class Home extends BaseController
         return view('plantillas/header_view', $data).view('plantillas/navbar_view').view('contenido/enDesarrollo').view('plantillas/footer_view');
     }
 
-     public function login(): string
+    public function login(): string
     {
         $data['titulo'] = "login";
         return view('plantillas/header_view', $data).view('plantillas/navbar_view').view('contenido/login').view('plantillas/footer_view');
+    }
+
+    public function productos(): string
+    {
+        
+        $db = \Config\Database::connect();
+
+        $query = $db->query("SELECT nombre, precio, peso FROM productos");
+        $result = $query->getResult();
+
+        $data = ['titulo' => "index", 'productos' => $result];
+        return view('plantillas/header_view', $data).view('plantillas/navbar_view').view('contenido/productos').view('plantillas/footer_view');
     }
 }
