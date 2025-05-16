@@ -2,9 +2,9 @@
 
     <?php foreach($productos as $producto): ?>
 
-        <?php echo $producto->nombre ?>
-        <?php echo $producto->precio ?>
-        <?php echo $producto->peso?>
+        <?php echo $producto->NOMBRE ?>
+        <?php echo $producto->PRECIO ?>
+        <?php echo $producto->PESO ?>
 
     <?php endforeach; ?>
 

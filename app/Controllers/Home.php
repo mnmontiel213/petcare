@@ -2,6 +2,8 @@
 
 namespace App\Controllers;
 
+use App\Models\ProductoModel;
+
 class Home extends BaseController
 {
     public function index(): string
@@ -62,10 +64,16 @@ class Home extends BaseController
     public function productos(): string
     {
         
+        /*
+        //sin usar el modelo
         $db = \Config\Database::connect();
 
         $query = $db->query("SELECT nombre, precio, peso FROM productos");
         $result = $query->getResult();
+        */
+
+        $productoModel = new ProductoModel();
+        $result = $productoModel->findAll();
 
         $data = ['titulo' => "index", 'productos' => $result];
         return view('plantillas/header_view', $data).view('plantillas/navbar_view').view('contenido/productos').view('plantillas/footer_view');
