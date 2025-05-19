@@ -3,28 +3,32 @@
 <!-- REGISTRARSE -->
 <div>
 
-    <div class="mb-3">
-        <label for="exampleFormControlInput1" class="form-label">Nombre</label>
-        <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="Juansito">
-    </div>
-    <div class="mb-3">
-        <label for="exampleFormControlInput1" class="form-label">Apellido</label>
-        <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="Perez">
-    </div>
-    <div class="mb-3">
-        <label for="exampleFormControlInput1" class="form-label">Correo</label>
-        <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="JuansitoPerez@gmail.com">
-    </div>
-    <div class="mb-3">
-        <label for="exampleFormControlInput1" class="form-label">Contraseña</label>
-        <input type="password" class="form-control" id="exampleFormControlInput1" placeholder="JuansitoPerez@gmail.com">
-    </div>
-    <div class="mb-3">
-        <label for="exampleFormControlInput1" class="form-label">Contraseña nuevamente</label>
-        <input type="password" class="form-control" id="exampleFormControlInput1" placeholder="JuansitoPerez@gmail.com">
-    </div>
-    <div class="col-auto">
-        <button type="submit" class="btn btn-primary mb-3">Crear cuenta</button>
-    </div>
+    <div class="container" style="width: 20%;">
+        <?php
+            helper('form');
+            
+            echo validation_list_errors();
 
+            echo form_open('login/crear_usuario', ['method' => 'post']);
+
+            echo form_label('Nombre', 'nombre', ['class' => 'form-label']);
+            echo form_input('nombre', '', ['class' => 'form-control', 'placeholder' => 'juan']);
+
+            echo form_label('Apellido', 'apellido', ['class' => 'form-label']);
+            echo form_input('apellido', '', ['class' => 'form-control', 'placeholder' => 'perez']);
+
+            echo form_label('Correo', 'correo', ['class' => 'form-label']);
+            echo form_input('correo', '', ['class' => 'form-control', 'placeholder' => 'juanperez@gmail.com']);
+
+            echo form_label('Contraseña', 'contraseña', ['class' => 'form-label']);
+            echo form_password('contraseña', '', ['class' => 'form-control']);
+
+            echo form_label('Confirmar contraseña', 'confirmacion-contraseña', ['class' => 'form-label']);
+            echo form_password('confirmacion-contraseña', '', ['class' => 'form-control']);
+
+            echo form_submit('Crear cuenta', 'Crear cuenta', ['class' => 'btn btn-primary']);
+
+            echo form_close();
+        ?>
+    </div>
 </div>

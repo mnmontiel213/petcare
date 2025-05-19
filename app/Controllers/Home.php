@@ -63,15 +63,6 @@ class Home extends BaseController
 
     public function productos(): string
     {
-        
-        /*
-        //sin usar el modelo
-        $db = \Config\Database::connect();
-
-        $query = $db->query("SELECT nombre, precio, peso FROM productos");
-        $result = $query->getResult();
-        */
-
         $productoModel = new ProductoModel();
         $result = $productoModel->findAll();
 
