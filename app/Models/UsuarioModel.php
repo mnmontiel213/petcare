@@ -12,5 +12,5 @@ class UsuarioModel extends Model{
     protected $returnType       = 'array';
     protected $allowedFields    = ['USUARIO_ID', 'CBU', 'NOMBRE', 'APELLIDO', 'CORREO', 'CONTRASEÑA', 'DIRECCION', 'ES_MAYORISTA'];
 }
-
 ?>
+   

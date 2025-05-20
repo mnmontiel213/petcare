@@ -19,7 +19,8 @@
     </div>
     
     <!-- ULTIMOS PRODUCTOS AGREGADOS -->
-
+    <!-- Aca deberiamos recibir productos desde la base de datos 
+         almenos 6 podrian entrar    -->
     <div id="custom-productos" class="container">
         <h2>Ultimos productos</h2>
 

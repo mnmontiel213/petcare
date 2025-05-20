@@ -64,13 +64,13 @@ body{
 }
 
 #custom-productos ul li{
-    width: 15%;
+    width: 10%;
     margin: auto;
 }   
 
 #custom-productos ul li img{
     width: 100%;
-    border-radius: 10px;
+    border-radius: 5px;
 }
 
 /* SERVICIOS */

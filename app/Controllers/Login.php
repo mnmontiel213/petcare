@@ -4,6 +4,11 @@ namespace App\Controllers;
 
 use App\Models\UsuarioModel;
 
+
+/*
+Logica de los usuarios y sus registros
+*/
+
 class Login extends BaseController{
 
     public function login(){
@@ -35,6 +40,46 @@ class Login extends BaseController{
 
             session()->setFlashdata('success', 'usuario registrado con exito');
             return $this->response->redirect(base_url('login'));
+        }
+
+    }
+
+    public function ingresar_usuario(){
+        //echo $this->request->getVar('correo');
+        //echo $this->request->getVar('contraseña');
+        
+        $session = session();
+        $model = new UsuarioModel();
+
+        $email = $this->request->getVar('correo');
+        $contraseña = $this->request->getVar('contraseña');
+
+        $data = $model->where('CORREO', $email)->first();
+        if($data){
+            //es necesario verificar contraseña
+            //deberiamos de encriptar esto...
+            if($data['CONTRASEÑA'] === $contraseña){
+                $session_data = [
+                    'USUARIO_ID' => $data['USUARIO_ID'],
+                    'NOMBRE' => $data['NOMBRE'],
+                    'APELLIDO' => $data['APELLIDO'],
+                    'CORREO' => $data['CORREO'],
+                    'CBU' => $data['CBU'],
+                    'DIRECCION' => $data['DIRECCION'],
+                    'ES_MAYORISTA' => $data['ES_MAYORISTA'],
+                ];
+
+                $session->set($session_data);
+
+                $session->setFlashdata('msg', 'Bienvenido');
+                return redirect()->to('/');
+            }else{
+                $session->setFlashdata('msg', 'Contraseña incorrecta');
+                return redirect()->to('/login');
+            }
+        }else{
+            $session->setFlashdata('msg', 'Correo invalido');
+            return redirect()->to('/login');
         }
 
     }

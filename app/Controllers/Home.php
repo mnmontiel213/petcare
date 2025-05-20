@@ -4,6 +4,11 @@ namespace App\Controllers;
 
 use App\Models\ProductoModel;
 
+/*
+Todas las funcionalidades de la pagina principal, primariamente tomar cosas de la base de datos para
+poder mostrarlas
+*/
+
 class Home extends BaseController
 {
     public function index(): string
@@ -42,10 +47,10 @@ class Home extends BaseController
         return view('plantillas/header_view', $data).view('plantillas/navbar_view').view('contenido/terminos').view('plantillas/footer_view');
     }
 
-    public function comercializacion(): string
+    public function servicios(): string
     {
-        $data['titulo'] = "comercializacion";
-        return view('plantillas/header_view', $data).view('plantillas/navbar_view').view('contenido/comercializacion').view('plantillas/footer_view');
+        $data['titulo'] = "servicios";
+        return view('plantillas/header_view', $data).view('plantillas/navbar_view').view('contenido/servicios').view('plantillas/footer_view');
     }
 
     // En desarrollo
@@ -61,6 +66,12 @@ class Home extends BaseController
         return view('plantillas/header_view', $data).view('plantillas/navbar_view').view('contenido/login').view('plantillas/footer_view');
     }
 
+    public function registro(): string
+    {
+        $data['titulo'] = "registro";
+        return view('plantillas/header_view', $data).view('plantillas/navbar_view').view('contenido/registro').view('plantillas/footer_view');
+    }
+
     public function productos(): string
     {
         $productoModel = new ProductoModel();
@@ -68,5 +79,11 @@ class Home extends BaseController
 
         $data = ['titulo' => "index", 'productos' => $result];
         return view('plantillas/header_view', $data).view('plantillas/navbar_view').view('contenido/productos').view('plantillas/footer_view');
+    }
+
+    public function perfil(): string
+    {
+        $data['titulo'] = "Mi perfil";
+        return view('plantillas/header_view', $data).view('plantillas/navbar_view').view('contenido/perfil').view('plantillas/footer_view');
     }
 }

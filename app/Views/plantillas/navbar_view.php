@@ -15,16 +15,11 @@
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link custom-navbar-entry" aria-current="page" href="<?php echo base_url('comercializacion'); ?>">Servicios</a>
+                            <a class="nav-link custom-navbar-entry" aria-current="page" href="<?php echo base_url('servicios'); ?>">Servicios</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link custom-navbar-entry" href="<?php echo base_url('catalogo'); ?>">Productos</a>
+                            <a class="nav-link custom-navbar-entry" href="<?php echo base_url('productos'); ?>">Productos</a>
                         </li>
-                        <!--
-                        <li class="nav-item">
-                            <a class="nav-link custom-navbar-entry" href="<?php echo base_url('quienes_somos'); ?>">Nosotros</a>
-                        </li>
-                        -->
                         <li class="nav-item custom-navbar-entry">   
                             <a href="<?php echo base_url('login') ?>" class="nav-item custom-navbar-entry" >
                                <img class="nav-item custom-navbar-entry" style="width: 200%; color: red;" src="<?php echo base_url("/assets/svg/person.svg") ?>" alt="">
