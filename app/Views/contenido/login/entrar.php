@@ -23,7 +23,8 @@
         ?>
         
         <div class="p-3">
-            <p>¿No tienes cuenta? <a href="">Crear una</a></p>
+            <p>¿No tienes cuenta?</p>
+            <a href="registro">Crear una</a>
         </div>
     </div>
 </div>

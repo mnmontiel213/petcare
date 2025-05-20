@@ -10,7 +10,7 @@ use CodeIgniter\HTTP\ResponseInterface;
 class Auth implements FilterInterface{
 
     public function before(RequestInterface $request, $arguments = null){
-        if(!session()->get('logged_in')){
+        if(!session()->get('LOGGED')){
             return redirect()->to('/login');
         }
     }

@@ -67,12 +67,12 @@ class Login extends BaseController{
                     'CBU' => $data['CBU'],
                     'DIRECCION' => $data['DIRECCION'],
                     'ES_MAYORISTA' => $data['ES_MAYORISTA'],
+                    'LOGGED' => TRUE,
                 ];
 
                 $session->set($session_data);
-
                 $session->setFlashdata('msg', 'Bienvenido');
-                return redirect()->to('/');
+                return redirect()->to('/perfil');
             }else{
                 $session->setFlashdata('msg', 'Contraseña incorrecta');
                 return redirect()->to('/login');
@@ -82,6 +82,12 @@ class Login extends BaseController{
             return redirect()->to('/login');
         }
 
+    }
+
+    public function salir_usuario(){
+        $session = session();
+        $session->destroy();
+        return redirect()->to('/');
     }
 
 }

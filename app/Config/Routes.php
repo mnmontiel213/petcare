@@ -16,13 +16,16 @@ $routes->get('terminos',         'Home::terminos');
 $routes->get('catalogo',         'Home::catalogo');
 $routes->get('consultas',        'Home::consultas');
 $routes->get('productos',        'Home::productos');
-$routes->get('login',            'Home::login');
 $routes->get('registro',         'Home::registro');
 $routes->get('enDesarrollo',     'Home::enDesarrollo');
 
 //login
-$routes->post('login/crear_usuario', 'Login::crear_usuario');
+$routes->get('login',                   'Home::login');
+$routes->get('salir',                   'Home::salir');
+$routes->post('login/crear_usuario',    'Login::crear_usuario');
 $routes->post('login/ingresar_usuario', 'Login::ingresar_usuario');
+$routes->get('login/salir',            'Login::salir_usuario');
 
 //perfil del usuario
-$routes->get('perfil', 'Perfil::index', ['filter' => 'auth']);
+$routes->get('perfil', 'Home::perfil', ['filter' => 'auth']);
+

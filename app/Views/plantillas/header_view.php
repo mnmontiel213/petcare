@@ -15,7 +15,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap" rel="stylesheet">
     <script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=false"></script>
     -->
-    <title>Document</title>
+    <title> <?= $titulo ?></title>
 </head>
 <body onunload="GUnload()">
     <header>

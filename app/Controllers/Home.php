@@ -60,18 +60,6 @@ class Home extends BaseController
         return view('plantillas/header_view', $data).view('plantillas/navbar_view').view('contenido/enDesarrollo').view('plantillas/footer_view');
     }
 
-    public function login(): string
-    {
-        $data['titulo'] = "login";
-        return view('plantillas/header_view', $data).view('plantillas/navbar_view').view('contenido/login').view('plantillas/footer_view');
-    }
-
-    public function registro(): string
-    {
-        $data['titulo'] = "registro";
-        return view('plantillas/header_view', $data).view('plantillas/navbar_view').view('contenido/registro').view('plantillas/footer_view');
-    }
-
     public function productos(): string
     {
         $productoModel = new ProductoModel();
@@ -81,9 +69,33 @@ class Home extends BaseController
         return view('plantillas/header_view', $data).view('plantillas/navbar_view').view('contenido/productos').view('plantillas/footer_view');
     }
 
+
+    public function login(): string
+    {   
+        //si ya existe una sesion redirigir a salida de sesion
+        if(session()->get('LOGGED')){
+            redirect()->to('login/salir');
+        }
+
+        $data['titulo'] = "login";
+        return view('plantillas/header_view', $data).view('plantillas/navbar_view').view('contenido/login/entrar').view('plantillas/footer_view');        
+    }
+
+    public function registro(): string
+    {
+        $data['titulo'] = "registro";
+        return view('plantillas/header_view', $data).view('plantillas/navbar_view').view('contenido/login/registrarse').view('plantillas/footer_view');
+    }
+
+    public function salir(): string
+    {
+        $data['titulo'] = "salir";
+        return view('plantillas/header_view', $data).view('plantillas/navbar_view').view('contenido/login/salir').view('plantillas/footer_view');
+    }
+
     public function perfil(): string
     {
-        $data['titulo'] = "Mi perfil";
+        $data = ['titulo' => 'Perfil', 'nombre_usuario' => session()->get('NOMBRE')];
         return view('plantillas/header_view', $data).view('plantillas/navbar_view').view('contenido/perfil').view('plantillas/footer_view');
     }
 }
