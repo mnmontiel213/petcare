@@ -42,8 +42,8 @@
     </div>
 
     <!-- SERVICIOS SALUD -->
-     <div id="custom-seccion-salud">
-        <h2>Cuidados de tu mascota</h2>
+     <div id="custom-seccion-salud" class="container">
+        <h2>Cuidados para tu mascota</h2>
         <p>Le otorgamos los mejores cuidados a tu mascota</p>
         
         <ul>
@@ -87,14 +87,20 @@
 
     
     <!-- ELEGUIR FILTRO MASCOTA -->
-    <div id="custom-seccion-filtro" class="container">
+    <div id="custom-seccion-filtro" class="container p-3">
         <!-- NOTA -->
         <!-- Aca elegiriamos perros o gatos e iriamos a la pagina de productos pero filtrando en base a la eleccion -->
-        <p>Productos para tu mascota</p>
-        <div>
-            <a href=""><img src=" <?php echo base_url('') ?>  " alt=""></a>
-            
-            <a href=""><img src=" <?php echo base_url('') ?>" alt=""></a>
+        <h2>Productos para tu mascota</h2>
+        <div class="d-flex justify-content-center">
+            <div class="">
+                <h3>Perros</h3>
+                <a href=""><img class="w-50 rounded-3" src=" <?php echo base_url('assets/img/carta-perro.png') ?>  " alt=""></a>
+            </div>
+
+            <div class="">
+                <h3>Gatos</h3>
+                <a href=""><img class="w-50 rounded-3" src=" <?php echo base_url('assets/img/carta-gato.png') ?>" alt=""></a>
+            </div>
         </div>
 
     </div>

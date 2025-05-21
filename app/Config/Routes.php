@@ -14,10 +14,13 @@ $routes->get('quienes_somos',    'Home::quienes_somos');
 $routes->get('servicios',        'Home::servicios');
 $routes->get('terminos',         'Home::terminos');
 $routes->get('catalogo',         'Home::catalogo');
-$routes->get('consultas',        'Home::consultas');
 $routes->get('productos',        'Home::productos');
 $routes->get('registro',         'Home::registro');
 $routes->get('enDesarrollo',     'Home::enDesarrollo');
+
+//consultas
+$routes->get('consultas',        'Consulta::consultas');
+$routes->post('enviar_consulta', 'Consulta::enviar_consulta');
 
 //login
 $routes->get('login',                   'Home::login');

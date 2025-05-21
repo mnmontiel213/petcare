@@ -17,8 +17,6 @@ class Login extends BaseController{
     }
 
     public function crear_usuario(){
-        print_r($_POST);
-
         $rules = [
             'nombre' => 'required',
             'apellido' => 'required',

@@ -3,6 +3,7 @@
 namespace App\Controllers;
 
 use App\Models\ProductoModel;
+use CodeIgniter\HTTP\RedirectResponse;
 
 /*
 Todas las funcionalidades de la pagina principal, primariamente tomar cosas de la base de datos para
@@ -35,12 +36,6 @@ class Home extends BaseController
         return view('plantillas/header_view', $data).view('plantillas/navbar_view').view('contenido/catalogo').view('plantillas/footer_view');
     }
 
-    public function consultas(): string
-    {
-        $data['titulo'] = "consultas";
-        return view('plantillas/header_view', $data).view('plantillas/navbar_view').view('contenido/consultas').view('plantillas/footer_view');
-    }
-
     public function terminos(): string
     {
         $data['titulo'] = "terminos";
@@ -70,11 +65,11 @@ class Home extends BaseController
     }
 
 
-    public function login(): string
+    public function login(): string | RedirectResponse
     {   
         //si ya existe una sesion redirigir a salida de sesion
         if(session()->get('LOGGED')){
-            redirect()->to('login/salir');
+            return redirect()->to('perfil');
         }
 
         $data['titulo'] = "login";
@@ -82,7 +77,7 @@ class Home extends BaseController
     }
 
     public function registro(): string
-    {
+    {   
         $data['titulo'] = "registro";
         return view('plantillas/header_view', $data).view('plantillas/navbar_view').view('contenido/login/registrarse').view('plantillas/footer_view');
     }
