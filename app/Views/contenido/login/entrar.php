@@ -1,8 +1,8 @@
 
 
 <!-- Ingresar -->
-<div class="">
-    <div class="container w-50 p-3">
+<div class="container p-5">
+    <div class="container w-50">
         <h2 class="text-center">Ingresar a tu cuenta PetCare</h2>
         <?php
             helper('form');
