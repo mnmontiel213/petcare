@@ -22,6 +22,9 @@ $routes->get('enDesarrollo',     'Home::enDesarrollo');
 $routes->get('consultas',        'Consulta::consultas');
 $routes->post('enviar_consulta', 'Consulta::enviar_consulta');
 
+//turnos
+$routes->get('turno', 'Turno::turno');
+
 //login
 $routes->get('login',                   'Home::login');
 $routes->get('salir',                   'Home::salir');

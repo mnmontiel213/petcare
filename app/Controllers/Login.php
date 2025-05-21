@@ -13,7 +13,8 @@ class Login extends BaseController{
 
     public function login(){
         //helper('form');
-        return view('contenido/login');
+        $data = ['titulo' => 'Login'];
+        return view('plantillas/header_view', $data).view('plantillas/navbar_view').view('contenido/login').view('plantillas/footer_view');
     }
 
     public function crear_usuario(){

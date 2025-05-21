@@ -83,7 +83,7 @@
             </div>
         </ul>
 
-        <a href="#" class="btn btn-primary">Pedir turno</a>
+        <a href="servicios" class="btn btn-primary">Saber mas</a>
 
     </div>
 
