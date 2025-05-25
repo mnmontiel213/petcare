@@ -71,8 +71,12 @@ class Home extends BaseController
         if(session()->get('LOGGED')){
             return redirect()->to('perfil');
         }
-
+        
+        $session = session();
+        $flash = $session->getFlashdata();
+        
         $data['titulo'] = "login";
+        $data['validation'] = $flash;
         return view('plantillas/header_view', $data).view('plantillas/navbar_view').view('contenido/login/entrar').view('plantillas/footer_view');        
     }
 
