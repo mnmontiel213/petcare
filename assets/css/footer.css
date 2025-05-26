@@ -1,0 +1,35 @@
+/* FOOTER */
+
+#custom-footer{
+    margin: 0px;
+    padding: 1%;
+    background-color: var(--color-azul);
+    color: var(--color-blanco);
+    list-style-type: none;
+    text-decoration: none;
+    text-align: center;
+}
+
+.customs-footer-title{
+    text-decoration: underline;
+}
+
+.customs-footer-elements{
+    text-align: center;
+    margin-left: auto;
+    text-align: left;
+}
+
+.customs-footer-elements a{
+   color: var(--color-amarillo);
+   text-decoration: none;
+}
+
+.customs-footer-elements a:hover{
+   color: var(--color-blanco);
+}
+
+.custom-footer-img{
+    width: 10%;
+    margin: auto;
+ }

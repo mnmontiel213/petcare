@@ -1,6 +1,6 @@
 
 
-        <nav class="navbar navbar-expand-lg custom-shadow" id="custom-navbar">
+        <nav class="navbar navbar-expand-lg custom-navbar">
             <div class="container-fluid">
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown"
                     aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
