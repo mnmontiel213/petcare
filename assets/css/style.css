@@ -1,3 +1,10 @@
+:root{
+    --color-primario: #2082D3;
+    --color-secundario: #CDD320;
+    --color-btn: #598CBA;
+}
+
+
 *{
     font-family: "Playfair Display", serif;
     list-style-type: none;
@@ -10,12 +17,3 @@ body{
 
 }
    
-
-/*-----------------------*/
-/*        COLORS         */
-/*-----------------------*/
-:root{
-    --color-primario: #2082D3;
-    --color-secundario: #CDD320;
-    --color-btn: #598CBA;
-}

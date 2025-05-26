@@ -2,7 +2,7 @@
 .custom-navbar{
     font-size: large;
     opacity: 0.9;
-    background-color: var();
+    background-color: var(--color-primario);
 }
 
 .custom-nav-elements-container{
@@ -14,7 +14,7 @@
 }
 
 .custom-navbar-entry{
-    color: var();
+    color: var(--color-secundario);
 }
 
 .custom-navbar-entry:hover{
