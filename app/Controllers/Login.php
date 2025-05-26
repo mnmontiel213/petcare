@@ -43,6 +43,8 @@ class Login extends BaseController{
 
     }
 
+    
+
     public function ingresar_usuario(){
         //echo $this->request->getVar('correo');
         //echo $this->request->getVar('contraseña');
@@ -88,6 +90,8 @@ class Login extends BaseController{
         $session->destroy();
         return redirect()->to('/');
     }
+
+    
 
 }
 

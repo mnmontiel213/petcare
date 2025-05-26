@@ -22,7 +22,7 @@
                         </li>
                         <li class="nav-item custom-navbar-entry">   
                             <a href="<?php echo base_url('login') ?>" class="nav-item custom-navbar-entry" >
-                               <img class="nav-item custom-navbar-entry" style="width: 200%; color: red;" src="<?php echo base_url("/assets/svg/person.svg") ?>" alt="">
+                                <i class="bi bi-person"></i>
                             </a>
                         </li>
                     </ul>
