@@ -53,11 +53,15 @@ class Login extends BaseController{
             session()->setFlashdata('failed', $validation->getErrors());
             return $this->response->redirect(base_url('login'));
         }
+
     }
 
     
 
     public function ingresar_usuario(){
+        //echo $this->request->getVar('correo');
+        //echo $this->request->getVar('contraseña');
+        
         $session = session();
         $model = new UsuarioModel();
 
@@ -90,6 +94,7 @@ class Login extends BaseController{
             $session->setFlashdata('msg', 'Correo invalido');
             return redirect()->to('/login');
         }
+
     }
 
     public function salir_usuario(){

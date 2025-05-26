@@ -27,9 +27,9 @@
         
         <?php
             helper('form');
-                        
-            echo validation_list_errors();
             
+            echo validation_list_errors();
+
             echo form_open('login/ingresar_usuario', ['method' => 'post']);
 
             echo form_label('Correo', 'correo', ['class' => 'form-label']);
