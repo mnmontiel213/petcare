@@ -1,6 +1,6 @@
 
 
-        <nav class="navbar navbar-expand-lg custom-shadow" id="custom-navbar">
+        <nav class="navbar navbar-expand-lg custom-navbar">
             <div class="container-fluid">
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown"
                     aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
@@ -22,7 +22,7 @@
                         </li>
                         <li class="nav-item custom-navbar-entry">   
                             <a href="<?php echo base_url('login') ?>" class="nav-item custom-navbar-entry" >
-                               <img class="nav-item custom-navbar-entry" style="width: 200%; color: red;" src="<?php echo base_url("/assets/svg/person.svg") ?>" alt="">
+                                <i class="bi bi-person"></i>
                             </a>
                         </li>
                     </ul>

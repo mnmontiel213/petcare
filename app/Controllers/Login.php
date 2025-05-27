@@ -26,22 +26,37 @@ class Login extends BaseController{
             'confirmacion-contraseña' => 'required',
         ];
 
+        $validation = \Config\Services::validation();
+        $request = \Config\Services::request();
+
+        $validation->setRules($rules, 
+        [ 'nombre' => ['required' => 'El nombre es obligatorio'],
+                    'apellido' => ['required' => 'El apellido es obligatorio'],
+                    'correo' => ['required' => 'El correo es obligatorio'],
+                    'contraseña' => ['required' => 'La contraseña es obligatoria'],
+                    'confirmacion-contraseña' => ['required' => 'Confirme la contraseña'] ]);
+
         $model = new UsuarioModel();
         
-        if($this->validate($rules)){
-
+        if($validation->withRequest($request)->run()){
+            $pass = password_hash($this->request->getPost('contraseña'), PASSWORD_BCRYPT);
             $model->save([
-                'NOMBRE' => $this->request->getVar('nombre'),
-                'APELLIDO' => $this->request->getVar('apellido'),
-                'CORREO' => $this->request->getVar('correo'),
-                'CONTRASEÑA' => $this->request->getVar('contraseña'),
+                'NOMBRE'     => $this->request->getPost('nombre'),
+                'APELLIDO'   => $this->request->getPost('apellido'),
+                'CORREO'     => $this->request->getPost('correo'),
+                'CONTRASEÑA' => $pass,
             ]);
-
+            
             session()->setFlashdata('success', 'usuario registrado con exito');
+            return $this->response->redirect(base_url('login'));
+        }else{
+            session()->setFlashdata('failed', $validation->getErrors());
             return $this->response->redirect(base_url('login'));
         }
 
     }
+
+    
 
     public function ingresar_usuario(){
         //echo $this->request->getVar('correo');
@@ -50,14 +65,13 @@ class Login extends BaseController{
         $session = session();
         $model = new UsuarioModel();
 
-        $email = $this->request->getVar('correo');
-        $contraseña = $this->request->getVar('contraseña');
+        $email = $this->request->getPost('correo');
+        $contraseña = $this->request->getPost('contraseña');
 
         $data = $model->where('CORREO', $email)->first();
+
         if($data){
-            //es necesario verificar contraseña
-            //deberiamos de encriptar esto...
-            if($data['CONTRASEÑA'] === $contraseña){
+            if(password_verify($contraseña, $data['CONTRASEÑA'])){
                 $session_data = [
                     'USUARIO_ID' => $data['USUARIO_ID'],
                     'NOMBRE' => $data['NOMBRE'],
@@ -68,7 +82,7 @@ class Login extends BaseController{
                     'ES_MAYORISTA' => $data['ES_MAYORISTA'],
                     'LOGGED' => TRUE,
                 ];
-
+                
                 $session->set($session_data);
                 $session->setFlashdata('msg', 'Bienvenido');
                 return redirect()->to('/perfil');
@@ -88,6 +102,8 @@ class Login extends BaseController{
         $session->destroy();
         return redirect()->to('/');
     }
+
+    
 
 }
 

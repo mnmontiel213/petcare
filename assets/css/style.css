@@ -1,149 +1,19 @@
+:root{
+    --color-primario: #2082D3;
+    --color-secundario: #CDD320;
+    --color-btn: #598CBA;
+}
+
+
 *{
     font-family: "Playfair Display", serif;
     list-style-type: none;
 }
 
 body{
-    
+    display: grid;
+    min-height: 100dvh;
+    grid-template-rows: auto 1fr auto;
+
 }
    
-
-/*-----------------------*/
-/*        COLORS         */
-/*-----------------------*/
-
-:root{
-    --color-azul: #01377d;
-    --color-blanco: #ecf0f5;
-    --color-celeste: #009DD1;
-    --color-celeste-claro: #97E7F5;
-    --color-verde: #2C5F2DFF;
-    --color-verde-claro: #295F2D;
-    --color-amarillo: #FFE67C;
-    /*--color-texto: rgb(27, 27, 27);*/
-    --color-texto: rgb(54, 54, 54);
-}
-
-/* FOOTER */
-#custom-footer{
-
-}
-
-/* NAVBAR */
-
-.custom-shadow{
-    
-}
-
-#custom-navbar{
-    font-size: large;
-    opacity: 0.9;
-    background-color: var(--color-celeste);
-}
-
-.custom-nav-elements-container{
-    padding: 0;
-    margin: auto;
-    display: flex;
-    justify-content:space-around;
-    align-items: center;
-}
-
-.custom-navbar-entry{
-    color: var(--color-amarillo);
-}
-
-.custom-navbar-entry:hover{
-    color: var(--color-blanco);
-}
-
-/* PRODUCTOS */
-
-#custom-productos{
-    color: var(--color-texto);
-    padding: 3% 0px;
-}
-
-#custom-productos ul{
-    display: flex;
-}
-
-#custom-productos ul li{
-    width: 10%;
-    margin: auto;
-}   
-
-#custom-productos ul li img{
-    width: 100%;
-    border-radius: 5px;
-}
-
-/* SERVICIOS */
-
-#custom-servicios{
-    padding: 100px 0px;
-}
-
-#custom-servicios h2{
-    padding-bottom: 50px;
-}
-
-/* SALUD */
-
-#custom-seccion-salud{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
-
-#custom-seccion-salud ul{
-    display: flex;
-    align-content: space-around;
-}
-
-#custom-seccion-salud ul div{
-    padding: 0px;
-    margin: 2rem;
-}
-
-#custom-seccion-salud a{
-    margin: 2rem;
-}
-
-/* FOOTER */
-
-#custom-footer{
-    margin: 0px;
-    padding: 1%;
-    background-color: var(--color-azul);
-    color: var(--color-blanco);
-    list-style-type: none;
-    text-decoration: none;
-    text-align: center;
-}
-
-.customs-footer-title{
-    text-decoration: underline;
-}
-
-.customs-footer-elements{
-    text-align: center;
-    margin-left: auto;
-    text-align: left;
-}
-
-.customs-footer-elements a{
-   color: var(--color-amarillo);
-   text-decoration: none;
-}
-
-.customs-footer-elements a:hover{
-   color: var(--color-blanco);
-}
-
-.custom-footer-img{
-    width: 10%;
-    margin: auto;
- }
-
-

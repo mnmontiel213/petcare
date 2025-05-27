@@ -1,0 +1,22 @@
+/* NAVBAR */
+.custom-navbar{
+    font-size: large;
+    opacity: 0.9;
+    background-color: var(--color-primario);
+}
+
+.custom-nav-elements-container{
+    padding: 0;
+    margin: auto;
+    display: flex;
+    justify-content:space-around;
+    align-items: center;
+}
+
+.custom-navbar-entry{
+    color: var(--color-secundario);
+}
+
+.custom-navbar-entry:hover{
+    color: var();
+}
