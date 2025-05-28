@@ -47,7 +47,6 @@
 
 
     <div class="cs-medios">
-        
         <div class="card text-bg-dark mb-3" style="min-width: 20rem;">
             <div class="card-header">Redes Sociales</div>
             <div class="card-body">

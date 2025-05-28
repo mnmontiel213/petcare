@@ -24,6 +24,7 @@ $routes->post('enviar_consulta', 'Consulta::enviar_consulta');
 
 //turnos
 $routes->get('turno', 'Turno::turno');
+$routes->post('turno/agregar_turno', 'Turno::sacar_turno');
 
 //login
 $routes->get('login',                   'Home::login');
