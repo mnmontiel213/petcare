@@ -19,9 +19,16 @@ class Turno extends BaseController{
     public function sacar_turno(): void{
         $data = ['titulo' => 'Turnos'];
         
-        $nombre = $this->request->getVar('tipo-turno');
-        echo $nombre;
+        if(isset($_POST)) {
+            echo '<pre>';
+            print_r($_POST);
+            echo '</pre>';
+        }
 
+        if(isset($_POST['tipo-turno'])){
+            echo $_POST['tipo-turno']; 
+        }
+   
         //return view('plantillas/header_view', $data).view('plantillas/navbar_view').view('contenido/turnos/turno').view('plantillas/footer_view');
     }
 }

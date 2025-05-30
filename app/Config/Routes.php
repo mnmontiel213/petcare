@@ -23,6 +23,7 @@ $routes->get('productos/agregar',            'Productos::agregar', ['filter' => 
 $routes->post('productos/registrar_producto', 'Productos::registrar_nuevo');
 
 //consultas
+$routes->get('contactos',        'Consulta::consultas');
 $routes->get('consultas',        'Consulta::consultas');
 $routes->post('enviar_consulta', 'Consulta::enviar_consulta');
 
