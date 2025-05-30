@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: May 21, 2025 at 05:33 PM
+-- Generation Time: May 30, 2025 at 09:19 PM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -72,8 +72,20 @@ CREATE TABLE `turnos` (
   `TURNO_ID` int(11) NOT NULL,
   `USUARIO_ID` int(11) NOT NULL,
   `FECHA` date NOT NULL,
-  `HORARIO` time NOT NULL
+  `HORARIO` time NOT NULL,
+  `TIPO_TURNO` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `turnos`
+--
+
+INSERT INTO `turnos` (`TURNO_ID`, `USUARIO_ID`, `FECHA`, `HORARIO`, `TIPO_TURNO`) VALUES
+(1, 7, '2025-06-11', '00:00:09', 0),
+(2, 7, '2025-06-12', '00:00:10', 0),
+(3, 7, '2025-06-27', '00:00:10', 1),
+(4, 7, '2025-06-13', '00:00:10', 8),
+(5, 7, '2025-06-19', '11:00:00', 7);
 
 -- --------------------------------------------------------
 
@@ -97,7 +109,8 @@ CREATE TABLE `usuarios` (
 --
 
 INSERT INTO `usuarios` (`USUARIO_ID`, `CBU`, `NOMBRE`, `APELLIDO`, `CORREO`, `CONTRASEÑA`, `DIRECCION`, `ES_MAYORISTA`) VALUES
-(2, NULL, 'Matias', 'Montiel', 'matiasmontiel@gmail.com', '1234', NULL, 0);
+(7, NULL, 'Matias', 'Montiel', 'petcare@gmail.com', '$2y$10$z35hSQV7rOSEslbAS3br/eXKTJxNuMuHk49e4/wBU3AHz7QEZC1BK', NULL, 0),
+(8, NULL, 'Manuel', 'Hernandez', 'manuelhz@gmail.com', '$2y$10$ud.Q4X5wgscmFcie0EC..O2hNb5Y/KH1dcpXVo7Uw11XxkiAzqzVa', NULL, 0);
 
 --
 -- Indexes for dumped tables
@@ -143,13 +156,13 @@ ALTER TABLE `consultas`
 -- AUTO_INCREMENT for table `turnos`
 --
 ALTER TABLE `turnos`
-  MODIFY `TURNO_ID` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `TURNO_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `usuarios`
 --
 ALTER TABLE `usuarios`
-  MODIFY `USUARIO_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `USUARIO_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

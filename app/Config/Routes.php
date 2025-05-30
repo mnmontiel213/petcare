@@ -8,7 +8,7 @@ use CodeIgniter\Router\RouteCollection;
 
 //index
 $routes->get('/',                'Home::index');
-//$routes->get('principal',        'Home::index');
+$routes->get('principal',        'Home::index');
 $routes->get('contacto',         'Home::contacto');
 $routes->get('quienes_somos',    'Home::quienes_somos');
 $routes->get('servicios',        'Home::servicios');
@@ -28,8 +28,8 @@ $routes->get('consultas',        'Consulta::consultas');
 $routes->post('enviar_consulta', 'Consulta::enviar_consulta');
 
 //turnos
-$routes->get('turno', 'Turno::turno');
-$routes->post('turno/agregar_turno', 'Turno::sacar_turno');
+$routes->get('turno', 'Turno::turno', ['filter' => 'auth']);
+$routes->post('turno/agregar_turno', 'Turno::sacar_turno', ['filter' => 'auth']);
 
 //login
 $routes->get('login',                   'Home::login');
