@@ -9,7 +9,6 @@ use CodeIgniter\Router\RouteCollection;
 //index
 $routes->get('/',                'Home::index');
 $routes->get('principal',        'Home::index');
-$routes->get('contacto',         'Home::contacto');
 $routes->get('quienes_somos',    'Home::quienes_somos');
 $routes->get('servicios',        'Home::servicios');
 $routes->get('terminos',         'Home::terminos');
@@ -19,6 +18,7 @@ $routes->get('registro',         'Home::registro');
 $routes->get('enDesarrollo',     'Home::enDesarrollo');
 
 //consultas
+$routes->get('contactos',        'Consulta::consultas');
 $routes->get('consultas',        'Consulta::consultas');
 $routes->post('enviar_consulta', 'Consulta::enviar_consulta');
 
