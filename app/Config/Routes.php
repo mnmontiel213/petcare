@@ -8,15 +8,19 @@ use CodeIgniter\Router\RouteCollection;
 
 //index
 $routes->get('/',                'Home::index');
-$routes->get('principal',        'Home::index');
+//$routes->get('principal',        'Home::index');
 $routes->get('contacto',         'Home::contacto');
 $routes->get('quienes_somos',    'Home::quienes_somos');
 $routes->get('servicios',        'Home::servicios');
 $routes->get('terminos',         'Home::terminos');
 $routes->get('catalogo',         'Home::catalogo');
-$routes->get('productos',        'Home::productos');
+//$routes->get('productos',        'Home::productos');
 $routes->get('registro',         'Home::registro');
 $routes->get('enDesarrollo',     'Home::enDesarrollo');
+
+$routes->get('productos',                     'Productos::listar');
+$routes->get('productos/agregar',            'Productos::agregar', ['filter' => 'admin']);
+$routes->post('productos/registrar_producto', 'Productos::registrar_nuevo');
 
 //consultas
 $routes->get('consultas',        'Consulta::consultas');

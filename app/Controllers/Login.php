@@ -12,7 +12,6 @@ Logica de los usuarios y sus registros
 class Login extends BaseController{
 
     public function login(){
-        //helper('form');
         $data = ['titulo' => 'Login'];
         return view('plantillas/header_view', $data).view('plantillas/navbar_view').view('contenido/login').view('plantillas/footer_view');
     }
@@ -56,12 +55,7 @@ class Login extends BaseController{
 
     }
 
-    
-
     public function ingresar_usuario(){
-        //echo $this->request->getVar('correo');
-        //echo $this->request->getVar('contraseña');
-        
         $session = session();
         $model = new UsuarioModel();
 
@@ -102,9 +96,6 @@ class Login extends BaseController{
         $session->destroy();
         return redirect()->to('/');
     }
-
-    
-
 }
 
 ?>
