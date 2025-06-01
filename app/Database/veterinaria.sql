@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: May 30, 2025 at 09:19 PM
+-- Generation Time: Jun 01, 2025 at 09:22 PM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -20,6 +20,32 @@ SET time_zone = "+00:00";
 --
 -- Database: `veterinaria`
 --
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `categoria`
+--
+
+CREATE TABLE `categoria` (
+  `REGISTRO_ID` int(11) NOT NULL,
+  `VALOR` varchar(32) NOT NULL,
+  `TIPO` varchar(32) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `categoria`
+--
+
+INSERT INTO `categoria` (`REGISTRO_ID`, `VALOR`, `TIPO`) VALUES
+(3, 'GATO', 'MASCOTA'),
+(4, 'PERRO', 'MASCOTA'),
+(5, 'ROYAL', 'MARCA'),
+(6, 'PURINA', 'MARCA'),
+(7, 'CORTE_PELO', 'SERVICIO'),
+(8, 'CORTE_UÑAS', 'SERVICIO'),
+(11, 'ALIMENTO', 'PRODUCTO'),
+(12, 'ACCESORIO', 'PRODUCTO');
 
 -- --------------------------------------------------------
 
@@ -50,17 +76,20 @@ INSERT INTO `consultas` (`CONSULTA_ID`, `TITULO`, `CORREO`, `CONTENIDO`) VALUES
 CREATE TABLE `productos` (
   `CODIGO` int(11) NOT NULL,
   `NOMBRE` varchar(256) NOT NULL,
-  `MARCA` varchar(256) NOT NULL,
   `PRECIO` float NOT NULL,
-  `PESO` float DEFAULT NULL
+  `PESO` float DEFAULT NULL,
+  `TIPO` varchar(32) NOT NULL,
+  `MASCOTA` varchar(32) NOT NULL,
+  `MARCA` varchar(32) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Dumping data for table `productos`
 --
 
-INSERT INTO `productos` (`CODIGO`, `NOMBRE`, `MARCA`, `PRECIO`, `PESO`) VALUES
-(1, 'Alimento Perro Adulto', 'Pedigree', 19000, 1);
+INSERT INTO `productos` (`CODIGO`, `NOMBRE`, `PRECIO`, `PESO`, `TIPO`, `MASCOTA`, `MARCA`) VALUES
+(1, 'Alimento Perro Adulto', 19000, 1, 'alimento', 'perro', 'royal'),
+(3124, 'Alimento gato', 7000, 1.5, 'alimento', 'gato', 'royal');
 
 -- --------------------------------------------------------
 
@@ -85,7 +114,9 @@ INSERT INTO `turnos` (`TURNO_ID`, `USUARIO_ID`, `FECHA`, `HORARIO`, `TIPO_TURNO`
 (2, 7, '2025-06-12', '00:00:10', 0),
 (3, 7, '2025-06-27', '00:00:10', 1),
 (4, 7, '2025-06-13', '00:00:10', 8),
-(5, 7, '2025-06-19', '11:00:00', 7);
+(5, 7, '2025-06-19', '11:00:00', 7),
+(6, 7, '2025-06-13', '10:00:00', 1),
+(7, 7, '2025-06-11', '10:00:00', 7);
 
 -- --------------------------------------------------------
 
@@ -117,6 +148,12 @@ INSERT INTO `usuarios` (`USUARIO_ID`, `CBU`, `NOMBRE`, `APELLIDO`, `CORREO`, `CO
 --
 
 --
+-- Indexes for table `categoria`
+--
+ALTER TABLE `categoria`
+  ADD PRIMARY KEY (`REGISTRO_ID`);
+
+--
 -- Indexes for table `consultas`
 --
 ALTER TABLE `consultas`
@@ -126,13 +163,16 @@ ALTER TABLE `consultas`
 -- Indexes for table `productos`
 --
 ALTER TABLE `productos`
-  ADD PRIMARY KEY (`CODIGO`);
+  ADD PRIMARY KEY (`CODIGO`),
+  ADD KEY `TIPO-PRODUCTO` (`TIPO`),
+  ADD KEY `TIPO-MASCOTA` (`MASCOTA`);
 
 --
 -- Indexes for table `turnos`
 --
 ALTER TABLE `turnos`
-  ADD PRIMARY KEY (`TURNO_ID`);
+  ADD PRIMARY KEY (`TURNO_ID`),
+  ADD KEY `USUARIO_ID` (`USUARIO_ID`);
 
 --
 -- Indexes for table `usuarios`
@@ -147,6 +187,12 @@ ALTER TABLE `usuarios`
 --
 
 --
+-- AUTO_INCREMENT for table `categoria`
+--
+ALTER TABLE `categoria`
+  MODIFY `REGISTRO_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+
+--
 -- AUTO_INCREMENT for table `consultas`
 --
 ALTER TABLE `consultas`
@@ -156,13 +202,23 @@ ALTER TABLE `consultas`
 -- AUTO_INCREMENT for table `turnos`
 --
 ALTER TABLE `turnos`
-  MODIFY `TURNO_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `TURNO_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT for table `usuarios`
 --
 ALTER TABLE `usuarios`
   MODIFY `USUARIO_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+
+--
+-- Constraints for dumped tables
+--
+
+--
+-- Constraints for table `turnos`
+--
+ALTER TABLE `turnos`
+  ADD CONSTRAINT `turnos_ibfk_1` FOREIGN KEY (`USUARIO_ID`) REFERENCES `usuarios` (`USUARIO_ID`) ON UPDATE CASCADE;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
