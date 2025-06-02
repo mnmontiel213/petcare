@@ -1,0 +1,151 @@
+.body-completo{
+    background-color: #efefef;
+}
+
+.banner{
+    margin-bottom: 100px;
+    display: inline-block;
+}
+
+
+/* Avisos */
+
+.container-avisos{
+    margin: 50px auto;
+    display: block;
+}
+
+.container-avisos > h2{
+    margin-bottom: 50px;
+    font-size: 3rem;
+    font-weight: bolder;
+    
+}
+
+.card{
+    width: 300px;
+}
+
+.card-img-top{
+    width: 300px;
+    object-fit: contain;
+}
+
+.btn-oferta{
+    background-color: var(--color-secundario);
+    padding: 10px;
+    border-radius: 20px;
+    color: black;
+    text-decoration: none;
+    font-size: 1.2rem;
+}
+
+.btn:hover{
+    background-color: var(--color-hover);
+    color: white;
+}
+
+/* Servicios y Productos */
+.content-categorias{
+    background-color: var(--color-secundario);
+    width: 100vw;
+    height: 550px;
+    margin: 0 auto;
+    padding: 10px 100px;
+}
+
+.content-categorias > h2{
+    margin-top: 50px;
+    font-size: 3rem;
+    font-weight: bolder;
+}
+
+.card-categoria{
+    height: 250px;
+    object-fit: cover;
+}
+
+.servicio-hover .hover-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.6);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    opacity: 0;
+    transition: opacity 0.3s ease-in-out;
+}
+
+.servicio-hover:hover .hover-overlay {
+    opacity: 1;
+}
+
+/* Animación pulse para el ícono */
+@keyframes pulseZoom {
+    0% {
+        transform: scale(1);
+        opacity: 0.8;
+    }
+    50% {
+        transform: scale(1.2);
+        opacity: 1;
+    }
+    100% {
+        transform: scale(1);
+        opacity: 0.8;
+    }
+}
+
+/* Aplica la animación al ícono cuando esté visible */
+.servicio-hover:hover .hover-overlay i {
+    animation: pulseZoom 1s infinite;
+} 
+
+
+
+
+/* Nosotros */
+
+
+.btn-link-nosotros{
+    margin-top: 100px;
+}
+
+.btn-link-nosotros > a{
+    background-color: var(--color-secundario);
+    padding: 10px;
+    border-radius: 20px;
+    color: black;
+    text-decoration: none;
+    font-size: 1.2rem;
+}
+
+.btn-link-nosotros:hover > a{
+    background-color: var(--color-hover);
+    color: white;
+}
+
+div > .rounded-circle{
+    height: 100px;
+    width: 100px;
+    object-fit: cover;
+}
+
+/* MARCAS*/
+.marcas{
+    text-align: center;
+    background-color: #efebe4;
+    padding: 30px;
+    margin: 0;
+    height: 240px;
+}
+
+
+.marcar-asociadas{
+    height: 180px;
+    width: 200px;
+}

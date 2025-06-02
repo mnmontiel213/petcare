@@ -1,10 +1,10 @@
 /* FOOTER */
 
-#custom-footer{
+.custom-footer{
     margin: 0px;
     padding: 1%;
-    background-color: var(--color-azul);
-    color: var(--color-blanco);
+    background-color: var(--background-footer);
+    color: white;
     list-style-type: none;
     text-decoration: none;
     text-align: center;
@@ -26,7 +26,7 @@
 }
 
 .customs-footer-elements a:hover{
-   color: var(--color-blanco);
+   color: yellow;
 }
 
 .custom-footer-img{
