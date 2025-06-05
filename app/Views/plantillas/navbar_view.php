@@ -62,7 +62,7 @@
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle text-drark" href="#" id="navbarDropdownUser"
                             role="button" data-bs-toggle="dropdown">
-                            <?= $nombre_usuario ?>
+                            <?= $session->get('NOMBRE') ?>
                         </a>
                         <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdownUser">
                             <li>

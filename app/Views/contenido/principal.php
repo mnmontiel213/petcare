@@ -32,39 +32,6 @@
         </div>
     </div>
     
-    <!--      SERVICIOS Y PRODUCTOS                                cuando tenga la base de datos 
-        
-    <div class="container my-5">
-        <h2 class="text-center mb-4">Nuestros Servicios y Productos</h2>
-        <div class="row g-4">
-            <?php
-            $servicios = [
-                ['titulo' => 'Atención Médica', 'img' => 'medicina.jpg', 'url' => 'atencion_medica'],
-                ['titulo' => 'Peluquería Canina', 'img' => 'peluqueria.jpg', 'url' => 'atencion_medica'],
-                ['titulo' => 'Alimentos', 'img' => 'alimentos.jpg', 'url' => 'atencion_medica'],
-                ['titulo' => 'Accesorios', 'img' => 'accesorio.avif', 'url' => 'atencion_medica'],
-            ];
-
-            //titulo   | img          | url          |
-            //Atencion | atencion.png | atencion.php |
-
-            foreach ($servicios as $servicio): ?>
-                <div class="col-12 col-sm-6 col-lg-3">
-                    <a href="<?= base_url($servicio['url']) ?>" class="text-decoration-none">
-                        <div class="position-relative overflow-hidden rounded shadow servicio-hover">
-                            <img src="<?= base_url('assets/img/' . $servicio['img']) ?>" class="img-fluid w-100 card-categoria" alt="<?= $servicio['titulo'] ?>">
-                            <div class="position-absolute top-0 start-0 w-100 h-100 d-flex align-items-center justify-content-center bg-dark bg-opacity-50">
-                                <h5 class="text-white text-center"><?= $servicio['titulo'] ?></h5>
-                            </div>
-                            <div class="hover-overlay">
-                                <i class="bi bi-eye fs-1 text-white"></i>
-                            </div>
-                        </div>
-                    </a>
-                </div>
-            <?php endforeach; ?>
-        </div>
-    </div>-->
     
 
     <div class="container container-avisos">

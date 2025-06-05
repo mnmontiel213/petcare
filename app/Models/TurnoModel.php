@@ -9,7 +9,7 @@ class TurnoModel extends Model{
     protected $table            = 'turnos';
     protected $primaryKey       = 'TURNO_ID';
     protected $useAutoIncrement = true;
-    protected $returnType       = 'object';
+    protected $returnType       = 'array';
     protected $allowedFields    = ['TURNO_ID', 'USUARIO_ID', 'FECHA', 'HORARIO', 'TIPO_TURNO'];
 }
 
