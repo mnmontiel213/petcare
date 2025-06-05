@@ -1,37 +1,60 @@
-.body-completo{
+/* === GENERAL === */
+.body-completo {
     background-color: #efefef;
 }
 
-.banner{
-    margin-bottom: 100px;
-    display: inline-block;
+@media (max-width: 768px) {
+    .body-completo {
+        margin: 0;
+        padding: 0;
+    }
 }
 
+img {
+    max-width: 100%;
+    height: auto;
+}
+
+
+/* === CAROUSEL === */
+.banner {
+    margin-bottom: 100px;
+    display: inline-block;
+    height: 50vh;
+}
+
+.banner img {
+    height: 60vh;
+}
+
+
+@media (max-width: 768px) {
+    .banner {
+        margin-bottom: 0;
+        height: 30vh;
+        padding: 0;
+    }
+
+    .banner img {
+        margin: 0;
+        height: 30vh;
+    }
+}
 
 /* Avisos */
 
-.container-avisos{
-    margin: 50px auto;
-    display: block;
+.container-avisos {
+    padding: 2rem 1rem;
+    margin: 0 auto;
 }
 
-.container-avisos > h2{
+.container-avisos>h2 {
     margin-bottom: 50px;
     font-size: 3rem;
     font-weight: bolder;
-    
 }
 
-.card{
-    width: 300px;
-}
-
-.card-img-top{
-    width: 300px;
-    object-fit: contain;
-}
-
-.btn-oferta{
+.btn-oferta {
     background-color: var(--color-secundario);
     padding: 10px;
     border-radius: 20px;
@@ -40,27 +63,58 @@
     font-size: 1.2rem;
 }
 
-.btn:hover{
+.btn:hover {
     background-color: var(--color-hover);
     color: white;
 }
 
-/* Servicios y Productos */
-.content-categorias{
-    background-color: var(--color-secundario);
-    width: 100vw;
-    height: 550px;
-    margin: 0 auto;
-    padding: 10px 100px;
+/* === CARDS DE PROMOCIONES === */
+
+.card {
+    width: 300px;
+    height: auto;
 }
 
-.content-categorias > h2{
-    margin-top: 50px;
+.card-img-top {
+    height: 200px;
+}
+
+@media (max-width: 800px) {
+    .card-img-top {
+        height: auto;
+    }
+
+    .container-avisos>h2 {
+        margin-bottom: 10px;
+        font-size: 1.5rem;
+    }
+
+    .card {
+        width: 80%;
+    }
+
+    .n-promo {
+        margin: 20px;
+        justify-items: center;
+    }
+}
+
+
+/* Servicios y Productos */
+.content-categorias {
+    background-color: var(--color-secundario);
+    width: 100vw;
+    height: auto;
+    margin: 0 auto;
+    padding: 10%;
+}
+
+.content-categorias>h2 {
     font-size: 3rem;
     font-weight: bolder;
 }
 
-.card-categoria{
+.card-categoria {
     height: 250px;
     object-fit: cover;
 }
@@ -90,10 +144,12 @@
         transform: scale(1);
         opacity: 0.8;
     }
+
     50% {
         transform: scale(1.2);
         opacity: 1;
     }
+
     100% {
         transform: scale(1);
         opacity: 0.8;
@@ -103,19 +159,31 @@
 /* Aplica la animación al ícono cuando esté visible */
 .servicio-hover:hover .hover-overlay i {
     animation: pulseZoom 1s infinite;
-} 
+}
+
+@media (max-width: 768px) {
+    .card-categoria {
+        height: 200px;
+    }
+
+    .content-categorias>h2 {
+        font-size: 1.5rem;
+    }
+}
 
 
+/* === SOBRE NOSOTROS === */
+#nosotros img {
+    max-width: 100%;
+    height: auto;
+    padding: 10px;
+}
 
-
-/* Nosotros */
-
-
-.btn-link-nosotros{
+.btn-link-nosotros {
     margin-top: 100px;
 }
 
-.btn-link-nosotros > a{
+.btn-link-nosotros>a {
     background-color: var(--color-secundario);
     padding: 10px;
     border-radius: 20px;
@@ -124,28 +192,34 @@
     font-size: 1.2rem;
 }
 
-.btn-link-nosotros:hover > a{
+.btn-link-nosotros:hover>a {
     background-color: var(--color-hover);
     color: white;
 }
 
-div > .rounded-circle{
-    height: 100px;
-    width: 100px;
+#nosotros .rounded-circle {
+    width: 150px;
+    height: 150px;
     object-fit: cover;
 }
 
+
 /* MARCAS*/
-.marcas{
-    text-align: center;
+.marcas {
     background-color: #efebe4;
     padding: 30px;
-    margin: 0;
-    height: 240px;
+    height: auto;
 }
 
 
-.marcar-asociadas{
+.marcar-asociadas {
     height: 180px;
-    width: 200px;
+    width: auto;
+}
+
+
+@media (max-width: 768px) {
+    .marcar-asociadas {
+        max-height: 100px;
+    }
 }

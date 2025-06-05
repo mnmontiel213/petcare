@@ -4,13 +4,20 @@ use CodeIgniter\Router\RouteCollection;
 
 /**
  * @var RouteCollection $routes
- */ 
+ */
 
 //index
 $routes->get('/',                'Home::index');
 $routes->get('principal',        'Home::index');
 $routes->get('contacto',         'Home::contacto');
-$routes->get('quienes_somos',    'Home::quienes_somos');
+
+//nosotros
+//$routes->get('nosotros_header', 'Home::nosotros');
+$routes->get('nosotros_header/quienes_somos', 'Home::nosotros');
+$routes->get('nosotros_header/equipo', 'Home::equipo');
+$routes->get('nosotros_header/mision', 'Home::mision');
+$routes->get('nosotros_header/valores', 'Home::valores');
+
 $routes->get('servicios',        'Home::servicios');
 $routes->get('terminos',         'Home::terminos');
 $routes->get('catalogo',         'Home::catalogo');
@@ -39,4 +46,3 @@ $routes->get('login/salir',             'Login::salir_usuario');
 
 //perfil del usuario
 $routes->get('perfil', 'Home::perfil', ['filter' => 'auth']);
-

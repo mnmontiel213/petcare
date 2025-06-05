@@ -1,5 +1,3 @@
-
-
 <!-- Ingresar -->
 <div class="container p-5">
     <div class="container w-50">
@@ -17,12 +15,23 @@
             echo form_open('login/ingresar_usuario', ['method' => 'post']);
 
             echo form_label('Correo', 'correo', ['class' => 'form-label']);
-            echo form_input('correo', '', ['class' => 'form-control', 'placeholder' => 'juanperez@gmail.com']);
+            echo form_input([
+                'name' => 'correo',
+                'id' => 'correo',
+                'value' => set_value('correo'),
+                'class' => 'form-control',
+                'placeholder' => 'example@gmail.com',
+                'type' => 'email'
+            ]);
 
-            echo form_label('Contraseña', 'contraseña', ['class' => 'form-label']);
-            echo form_password('contraseña', '', ['class' => 'form-control']);
+            echo form_label('Contraseña', 'password', ['class' => 'form-label']);
+            echo form_password([
+                'name' => 'password',
+                'id' => 'password',
+                'class' => 'form-control'
+            ]);
 
-            echo form_submit('Ingresar', 'ingresar', ['class' => 'btn btn-primary']);
+            echo form_submit('ingresar', 'Ingresar', ['class' => 'btn btn-ingreso']);
 
             echo form_close();
         ?>
@@ -31,5 +40,7 @@
             <p>¿No tienes cuenta?</p>
             <a href="registrar">Crear una</a>
         </div>
+
+
     </div>
 </div>
