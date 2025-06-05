@@ -14,7 +14,6 @@ $routes->get('quienes_somos',    'Home::quienes_somos');
 $routes->get('servicios',        'Home::servicios');
 $routes->get('terminos',         'Home::terminos');
 $routes->get('catalogo',         'Home::catalogo');
-$routes->get('registro',         'Home::registro');
 $routes->get('enDesarrollo',     'Home::enDesarrollo');
 
 $routes->get('productos',                          'Productos::listar');
@@ -31,7 +30,8 @@ $routes->get('turno',                'Turno::turno', ['filter' => 'auth']);
 $routes->post('turno/agregar_turno', 'Turno::sacar_turno', ['filter' => 'auth']);
 
 //login
-$routes->get('login',                   'Home::login');
+$routes->get('login/entrar',                   'Home::login');
+$routes->get('login/registrar',                'Home::registro');
 $routes->get('salir',                   'Home::salir');
 $routes->post('login/crear_usuario',    'Login::crear_usuario');
 $routes->post('login/ingresar_usuario', 'Login::ingresar_usuario');

@@ -13,32 +13,28 @@ class Login extends BaseController{
 
     public function login(){
         $data = ['titulo' => 'Login'];
-        return view('plantillas/header_view', $data).view('plantillas/navbar_view').view('contenido/login').view('plantillas/footer_view');
+        return view('plantillas/header_view', $data)
+                .view('plantillas/navbar_view')
+                .view('contenido/login')
+                .view('plantillas/footer_view');
     }
 
     public function crear_usuario(){
-        $rules = [
-            'nombre' => 'required',
-            'apellido' => 'required',
-            'correo' => 'required',
-            'contraseña' => 'required',
-            'confirmacion-contraseña' => 'required',
-        ];
-
         $validation = \Config\Services::validation();
         $request = \Config\Services::request();
 
         $validation->setRules($rules, 
-        [ 'nombre' => ['required' => 'El nombre es obligatorio'],
-                    'apellido' => ['required' => 'El apellido es obligatorio'],
-                    'correo' => ['required' => 'El correo es obligatorio'],
-                    'contraseña' => ['required' => 'La contraseña es obligatoria'],
-                    'confirmacion-contraseña' => ['required' => 'Confirme la contraseña'] ]);
-
-        $model = new UsuarioModel();
+                                    [   'nombre' => ['required' => 'El nombre es obligatorio'],
+                                        'apellido' => ['required' => 'El apellido es obligatorio'],
+                                        'correo' => ['required' => 'El correo es obligatorio'],
+                                        'contraseña' => ['required' => 'La contraseña es obligatoria'],
+                                        'confirmacion-contraseña' => ['required' => 'Confirme la contraseña'] 
+                                    ]);
         
         if($validation->withRequest($request)->run()){
+            $model = new UsuarioModel();
             $pass = password_hash($this->request->getPost('contraseña'), PASSWORD_BCRYPT);
+            
             $model->save([
                 'NOMBRE'     => $this->request->getPost('nombre'),
                 'APELLIDO'   => $this->request->getPost('apellido'),
@@ -46,49 +42,86 @@ class Login extends BaseController{
                 'CONTRASEÑA' => $pass,
             ]);
             
-            session()->setFlashdata('success', 'usuario registrado con exito');
-            return $this->response->redirect(base_url('login'));
+            return $this->response->redirect(base_url('login/registrar'));
         }else{
-            session()->setFlashdata('failed', $validation->getErrors());
-            return $this->response->redirect(base_url('login'));
+
+            $data = ['titulo' => 'Login'];
+            $data = ['validation' => $validation->getErrors()];
+
+            return view('plantillas/header_view', $data)
+                .view('plantillas/navbar_view')
+                .view('contenido/login/registrarse')
+                .view('plantillas/footer_view');
         }
 
     }
 
     public function ingresar_usuario(){
+        $validation = \Config\Services::validation();
+        $request = \Config\Services::request();
+
         $session = session();
         $model = new UsuarioModel();
 
-        $email = $this->request->getPost('correo');
-        $contraseña = $this->request->getPost('contraseña');
+        $validation->setRules([
+            'correo' => 'required',
+            'contraseña' => 'required',
+        ], 
+        [
+            'correo' => ['required' => 'El correo es obligatorio'],
+            'contraseña' => ['required' => 'La contraseña es obligatoria'],
+        ]);
 
-        $data = $model->where('CORREO', $email)->first();
 
-        if($data){
-            if(password_verify($contraseña, $data['CONTRASEÑA'])){
-                $session_data = [
-                    'USUARIO_ID' => $data['USUARIO_ID'],
-                    'NOMBRE' => $data['NOMBRE'],
-                    'APELLIDO' => $data['APELLIDO'],
-                    'CORREO' => $data['CORREO'],
-                    'CBU' => $data['CBU'],
-                    'DIRECCION' => $data['DIRECCION'],
-                    'ES_MAYORISTA' => $data['ES_MAYORISTA'],
-                    'LOGGED' => TRUE,
-                ];
-                
-                $session->set($session_data);
-                $session->setFlashdata('msg', 'Bienvenido');
-                return redirect()->to('/perfil');
+
+        if($validation->withRequest($request)->run()){
+            $email = $this->request->getPost('correo');
+            $contraseña = $this->request->getPost('contraseña');
+
+            $data = $model->where('CORREO', $email)->first();
+
+            if($data){
+                if(password_verify($contraseña, $data['CONTRASEÑA'])){
+                    $session_data = [
+                        'USUARIO_ID' => $data['USUARIO_ID'],
+                        'NOMBRE' => $data['NOMBRE'],
+                        'APELLIDO' => $data['APELLIDO'],
+                        'CORREO' => $data['CORREO'],
+                        'CBU' => $data['CBU'],
+                        'DIRECCION' => $data['DIRECCION'],
+                        'ES_MAYORISTA' => $data['ES_MAYORISTA'],
+                        'LOGGED' => TRUE,
+                    ];
+                    
+                    $session->set($session_data);
+                    return redirect()->to('/perfil');
+                }else{
+                    /* 
+                        CONTRASEÑA INCORRECTA
+                    */
+                    $data['error'] = 'contraseña incorrecta';
+                    echo $data['error'];
+                }
             }else{
-                $session->setFlashdata('msg', 'Contraseña incorrecta');
-                return redirect()->to('/login');
+                /*
+                    CORREO NO EXISTE
+                 */
+
+                 $data['error'] = 'correo incorrecto';
+                echo $data['error'];
             }
         }else{
-            $session->setFlashdata('msg', 'Correo invalido');
-            return redirect()->to('/login');
-        }
+            /*
+                VALIDACION FALLIDA
+            */
+            
+            foreach($validation->getErrors() as $error){
+                echo $error;
+                echo '<br>';
+            }
 
+            echo 'validacion fallida';
+        }
     }
 
     public function salir_usuario(){

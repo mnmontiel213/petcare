@@ -86,7 +86,7 @@
                     <?php else: ?>
                         <!-- Iniciar sesión -->
                         <li class="nav-item">
-                            <a class="nav-link" href="<?= base_url('login') ?>">
+                            <a class="nav-link" href="<?= base_url('login/entrar') ?>">
                                 <i class="bi bi-person"></i> Iniciar sesión
                             </a>
                         </li>
