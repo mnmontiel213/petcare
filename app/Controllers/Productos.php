@@ -19,14 +19,16 @@ class Productos extends BaseController{
     }
     
     public function agregar(): string{
-        $data = ['titulo' => "Agregar", 'validation' => null];
+        $data = ['titulo' => "Agregar",
+                 'validation' => null,
+                 'success' => null];
         return view('plantillas/header_view', $data)
             .view('plantillas/navbar_view')
             .view('contenido/productos/agregar')
             .view('plantillas/footer_view');
     }
 
-    public function registrar_nuevo(): string{
+    public function registrar_nuevo(){
         $validation = \Config\Services::validation();
         $request = \Config\Services::request();
 
@@ -65,20 +67,23 @@ class Productos extends BaseController{
                 'MASCOTA' => $this->request->getPost('mascota'),
                 'MARCA' => $this->request->getPost('marca'),
             ]);
+
+            $data['titulo'] = "Agregar";
+            $data['validation'] = null;
+            $data['success'] = 'Se agregó un nuevo producto correctamente';
             
-            return redirect->to('/');
+            return redirect()->to('productos/agregar');
         }else{
             // ERROR DE VALIDACION
             $data['titulo'] = 'Agregar';
             $data['validation'] = $validation->getErrors();
+            $data['success'] = null;
 
             return view('plantillas/header_view', $data)
             .view('plantillas/navbar_view')
             .view('contenido/productos/agregar')
             .view('plantillas/footer_view');            
         }
-        
-        return "asdad";
     }
 
 }
