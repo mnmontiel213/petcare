@@ -9,26 +9,22 @@
             <?php
             if ($validation) {
                 //esto podria mejorarse...
-                if (array_key_exists('failed', $validation)) {
+                foreach($validation as $val_error){
                     echo '<div class="alert alert-danger" role="alert">';
-                    foreach ($validation['failed'] as $value) {
-                        echo $value, '<br>';
-                    }
-                    echo '</div>';
-                } else {
-                    echo '<div class="alert alert-danger" role="alert">';
-                    foreach ($validation as $value) {
-                        echo $value;
-                    }
+                    echo $val_error;
                     echo '</div>';
                 }
+            }
+
+            if($error){
+                echo '<div class="alert alert-danger" role="alert">';
+                echo $error;
+                echo '</div>';
             }
             ?>
 
             <?php
             helper('form');
-
-            echo validation_list_errors();
 
             echo form_open('login/ingresar_usuario', ['method' => 'post']);
 
@@ -42,10 +38,10 @@
                 'type' => 'email'
             ]);
 
-            echo form_label('Contraseña', 'password', ['class' => 'form-label']);
+            echo form_label('Contraseña', 'contraseña', ['class' => 'form-label']);
             echo form_password([
-                'name' => 'password',
-                'id' => 'password',
+                'name' => 'contraseña',
+                'id' => 'contraseña',
                 'class' => 'form-control'
             ]);
 
@@ -56,7 +52,7 @@
 
             <div class="text-center mt-3">
                 <p class="text-center">¿No tienes cuenta?</p>
-                <a class="link-registro" href="registro">Crear una</a>
+                <a class="link-registro" href="registrar">Crear una</a>
             </div>
         </div>
 

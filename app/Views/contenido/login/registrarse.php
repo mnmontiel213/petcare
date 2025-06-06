@@ -10,7 +10,13 @@
             <?php
             helper('form');
 
-            echo validation_list_errors();
+            if($validation){
+                foreach($validation as $val_error){
+                    echo '<div class="alert alert-danger" role="alert">';
+                    echo $val_error;
+                    echo '</div>';
+                }
+            }
 
             echo form_open('login/crear_usuario', ['method' => 'post']);
 
