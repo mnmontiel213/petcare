@@ -40,7 +40,12 @@
     <div class="col">
         <?php foreach($productos as $producto): ?>
             <div class="card w-25" >
-                <img src=" <?php echo base_url('assets/img/productos/prod1.png') ?> " class="card-img-center m-auto" alt="...">
+                <?php if($producto->IMAGEN == null): ?>
+                   <img src="<?php echo base_url('assets/img/productos/prod1.png') ?> " class="card-img-center m-auto" alt="...">
+                <?php else: ?>
+                  <img src="<?php echo base_url('assets/uploads/'); echo $producto->IMAGEN ?>" class="card-img-center m-auto" alt="...">
+                <?php endif; ?>
+     
                 <div class="card-body">
                     <h5 class="card-title"><?php echo $producto->NOMBRE ?></h5>
                     <div class="card-text">
