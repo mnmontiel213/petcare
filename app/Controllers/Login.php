@@ -54,6 +54,7 @@ class Login extends BaseController{
             'apellido' => 'required',
             'correo' => 'required',
             'contraseña' => 'required',
+            'imagen' => 'is_image[imagen]|max_size[imagen, 4096]|ext_in[imagen,jpg,png,jpeg]',
             'confirmacion-contraseña' => 'required',
         ],
                               [ 'nombre' =>
@@ -73,16 +74,27 @@ class Login extends BaseController{
                                     'required' => 'La contraseña es obligatoria'
                                 ],
                                 'confirmacion-contraseña' => [
-                                    'required' => 'Confirme la contraseña']
+                                    'required' => 'Confirme la contraseña'
+                                ],
+                                'imagen' => [
+                                    'is_image' => 'El archivo adjunto no es una imagen',
+                                    'max_dims'  => 'El archivo es demasiado grande',
+                                ]
                               ]);
         
         if($validation->withRequest($request)->run()){
+
+            $img = $this->request->getFile("imagen");
+            $nombre_aleatorio = $img->getRandomName();
+            $img->move(ROOTPATH.'assets/uploads', $nombre_aleatorio);
+            
             $model = new UsuarioModel();
             $pass = password_hash($this->request->getPost('contraseña'), PASSWORD_BCRYPT);
             $model->save([
                 'NOMBRE'     => $this->request->getPost('nombre'),
                 'APELLIDO'   => $this->request->getPost('apellido'),
                 'CORREO'     => $this->request->getPost('correo'),
+                'IMAGEN'     => $nombre_aleatorio,
                 'CONTRASEÑA' => $pass,
             ]);
 
@@ -143,6 +155,7 @@ class Login extends BaseController{
                         'USUARIO_ID' => $user_data['USUARIO_ID'],
                         'NOMBRE' => $user_data['NOMBRE'],
                         'APELLIDO' => $user_data['APELLIDO'],
+                        'IMAGEN'  => $user_data['IMAGEN'],
                         'CORREO' => $user_data['CORREO'],
                         'CBU' => $user_data['CBU'],
                         'DIRECCION' => $user_data['DIRECCION'],
