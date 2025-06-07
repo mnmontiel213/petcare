@@ -35,14 +35,30 @@ class Productos extends BaseController{
         $validation->setRules(
             [
                 'nombre' => 'required',
+                'codigo' => 'required',
+                'marca'  => 'required',
                 'peso'   => 'required',
                 'precio' => 'required',
                 'categoria' => 'required',
-                //'imagen' => 'required',
+                'mascota' => 'required',
+                //'imagen' => 'is_image[imagen]|max_size[imagen, 4096]|ext_in[imagen,jpg,png,jpeg]|uploaded[imagen]',
+                'imagen' => 'is_image[imagen]'
             ],
             [
                 'nombre' =>[
                     'required' => 'Ingrese un nombre'
+                ],
+                'codigo' => [
+                    'required' => 'Ingrese el codigo del producto'
+                ],
+                'marca' => [
+                    'required' => 'Ingrese la marca del producto'
+                ],
+                'categoria' => [
+                    'required' => 'Ingrese la categoria del producto'
+                ],
+                'mascota' => [
+                    'required' => 'Ingrese la mascota a la que va diriguido el producto'
                 ],
                 'peso' =>[
                     'required' => 'Ingrese el peso'
@@ -50,12 +66,19 @@ class Productos extends BaseController{
                 'precio' =>[
                     'required' => 'Ingrese el precio'
                 ],
-                'categoria' =>[
-                    'required' => 'Ingrese la categoria'
-                ],
+                'imagen' =>[
+                    //'uploaded' => 'Es necesario una imagen para el producto',
+                    'is_image' => 'El archivo adjunto no es una imagen',
+                    //'max_size' => 'La imagen es muy grande, maximo 4mb',
+                    //'ext_in'   => 'La imagen solo puede ser PNG, JPG o JPEG',
+                ]
             ]);
 
         if($validation->withRequest($request)->run()){
+            $img = $this->request->getFile("imagen");
+            $nombre_aleatorio = $img->getRandomName();
+            $img->move(ROOTPATH.'assets/uploads', $nombre_aleatorio);
+            
             $model = new ProductoModel();
             
             $model->save([
@@ -66,6 +89,7 @@ class Productos extends BaseController{
                 'TIPO' => $this->request->getPost('categoria'),
                 'MASCOTA' => $this->request->getPost('mascota'),
                 'MARCA' => $this->request->getPost('marca'),
+                'IMAGEN' => $nombre_aleatorio,
             ]);
 
             $data['titulo'] = "Agregar";

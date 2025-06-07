@@ -49,41 +49,41 @@ class Login extends BaseController{
         $validation = \Config\Services::validation();
         $request = \Config\Services::request();
 
-        $validation->setRules([
-            'nombre' => 'required',
-            'apellido' => 'required',
-            'correo' => 'required',
-            'contraseña' => 'required',
-            'imagen' => 'is_image[imagen]|max_size[imagen, 4096]|ext_in[imagen,jpg,png,jpeg]',
-            'confirmacion-contraseña' => 'required',
-        ],
-                              [ 'nombre' =>
-                                [
-                                  'required' => 'El nombre es obligatorio'
-                                ],
-                                'apellido' =>
-                                [
-                                    'required' => 'El apellido es obligatorio'
-                                ],
-                                'correo' =>
-                                [
-                                    'required' => 'El correo es obligatorio'
-                                ],
-                                'contraseña' =>
-                                [
-                                    'required' => 'La contraseña es obligatoria'
-                                ],
-                                'confirmacion-contraseña' => [
-                                    'required' => 'Confirme la contraseña'
-                                ],
-                                'imagen' => [
-                                    'is_image' => 'El archivo adjunto no es una imagen',
-                                    'max_dims'  => 'El archivo es demasiado grande',
-                                ]
-                              ]);
+        $validation->setRules(
+            [
+                'nombre' => 'required',
+                'apellido' => 'required',
+                'correo' => 'required',
+                'contraseña' => 'required',
+                'imagen' => 'is_image[imagen]|max_size[imagen, 4096]|ext_in[imagen,jpg,png,jpeg]',
+                'confirmacion-contraseña' => 'required',
+            ],
+            [ 'nombre' =>
+              [
+                  'required' => 'El nombre es obligatorio'
+              ],
+              'apellido' =>
+              [
+                  'required' => 'El apellido es obligatorio'
+              ],
+              'correo' =>
+              [
+                  'required' => 'El correo es obligatorio'
+              ],
+              'contraseña' =>
+              [
+                  'required' => 'La contraseña es obligatoria'
+              ],
+              'confirmacion-contraseña' => [
+                  'required' => 'Confirme la contraseña'
+              ],
+              'imagen' => [
+                  'is_image' => 'El archivo adjunto no es una imagen',
+                  'max_dims'  => 'El archivo es demasiado grande',
+              ]
+            ]);
         
         if($validation->withRequest($request)->run()){
-
             $img = $this->request->getFile("imagen");
             $nombre_aleatorio = $img->getRandomName();
             $img->move(ROOTPATH.'assets/uploads', $nombre_aleatorio);

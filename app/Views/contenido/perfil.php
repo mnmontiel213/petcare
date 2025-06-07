@@ -5,7 +5,6 @@
 
         // SI EL USUARIO NO TIENE UNA IMAGEN ASOCIADA, ASIGNAR UNA POR DEFECTO
         if($usuario['imagen'] == null){
-            echo 'el usuario no tiene imagen de perfil';
             $usuario['imagen'] = 'petcare.png';
         }
       
@@ -13,7 +12,7 @@
 
         <div class="d-flex flex-column p-5">
             <img src="<?php echo base_url('assets/uploads/'); echo $usuario['imagen'] ?>" alt="" class="rounded-circle">
-            <p><?= $usuario['nombre'], $usuario['apellido']?> </p>
+            <p><?= $usuario['nombre']?> <?= $usuario['apellido']?> </p>
         </div>
      
         <div class="p-5">

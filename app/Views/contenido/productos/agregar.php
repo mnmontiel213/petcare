@@ -1,9 +1,9 @@
 
 <div class="w-25">
 <?php
-
+     helper('form');
     if($success){
-        
+        echo 'Producto agregado';
     }
     
 if($validation){
@@ -17,8 +17,7 @@ if($validation){
 ?>
 </div>
 
-<form action="registrar_producto" method="POST">
-    
+<?php echo form_open_multipart("productos/registrar_producto")?>
     <h2>Ingresar datos del producto</h2>
 
     <label>Nombre</label>
@@ -36,7 +35,6 @@ if($validation){
     <label for="">pedigree</label>     
     <input type="radio" name="marca" value="pedigree">
     <br>
-
 
     <label for="">Peso</label>
     <input type="number" name="peso">
@@ -60,6 +58,7 @@ if($validation){
     <br>
      
     <label for="">imagen</label>
-    <input type="file" id="img" name="img" accept="image/*">
+    <input type="file" name="imagen" size="20">
+    
     <input type="submit" value="registrar">
-</form>
+<?php form_close(); ?>
