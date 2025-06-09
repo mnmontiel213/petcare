@@ -1,35 +1,35 @@
 <div style="height: 50%;">
-    <p>aca podriamos poner un carrousel o algo asi</p>
+    <!-- <p>aca podriamos poner un carrousel o algo asi</p> -->
 </div>
 
+<?php
+     helper('form');
+     ?>
+     
 <div class="row">
     <div class="col-3">
         <form action=<?php echo base_url("productos")?> >
             <div>
                 <h4>Mascotas</h4>
                 <ul class="list-group">
-                    <li class="list-group-item">
-                        <input class="form-check-input me-1" type="radio" name="eleccion-mascota" value="perro" id="radio-perro">
-                        <label class="form-check-label" for="firstRadio">Perro</label>
-                    </li>
-                    <li class="list-group-item">
-                        <input class="form-check-input me-1" type="radio" name="eleccion-mascota" value="gato" id="radio-gato">
-                        <label class="form-check-label" for="secondRadio">gato</label>
-                    </li>
+                    <?php foreach($categorias['mascotas'] as $mascota){
+                        echo'<li class="list-group-item">';
+                        echo form_radio('eleccion-mascota', $mascota);
+                        echo form_label(strtolower($mascota) , '');
+                        echo '</li>';
+                     }?>
                 </ul>
             </div>
             
             <div>
                 <h4>Productos</h4>
                 <ul class="list-group">
-                    <li class="list-group-item">
-                        <input class="form-check-input me-1" type="radio" name="eleccion-producto" value="alimento" id="radio-alimento">
-                        <label class="form-check-label" for="firstRadio">Alimento</label>
-                    </li>
-                    <li class="list-group-item">
-                        <input class="form-check-input me-1" type="radio" name="eleccion-producto" value="accesorio" id="radio-producto">
-                        <label class="form-check-label" for="secondRadio">Accesorio</label>
-                    </li>
+                    <?php foreach($categorias['productos'] as $producto){
+                        echo'<li class="list-group-item">';
+                        echo form_radio('eleccion-producto', $producto);
+                        echo form_label(strtolower($producto), '');
+                        echo '</li>';
+                     }?>
                 </ul>
             </div>
             

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Jun 01, 2025 at 09:22 PM
+-- Generation Time: Jun 09, 2025 at 02:56 AM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -80,16 +80,28 @@ CREATE TABLE `productos` (
   `PESO` float DEFAULT NULL,
   `TIPO` varchar(32) NOT NULL,
   `MASCOTA` varchar(32) NOT NULL,
-  `MARCA` varchar(32) NOT NULL
+  `MARCA` varchar(32) NOT NULL,
+  `IMAGEN` varchar(123) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Dumping data for table `productos`
 --
 
-INSERT INTO `productos` (`CODIGO`, `NOMBRE`, `PRECIO`, `PESO`, `TIPO`, `MASCOTA`, `MARCA`) VALUES
-(1, 'Alimento Perro Adulto', 19000, 1, 'alimento', 'perro', 'royal'),
-(3124, 'Alimento gato', 7000, 1.5, 'alimento', 'gato', 'royal');
+INSERT INTO `productos` (`CODIGO`, `NOMBRE`, `PRECIO`, `PESO`, `TIPO`, `MASCOTA`, `MARCA`, `IMAGEN`) VALUES
+(1, 'Alimento Perro Adulto', 19000, 1, 'alimento', 'perro', 'royal', NULL),
+(124123, 'Alimento gatuno', 12123, 1, '', '', 'royal', '1749321898_b07605f168e34d3cfd53.jpg');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `servicios`
+--
+
+CREATE TABLE `servicios` (
+  `SERVICIO_ID` int(11) NOT NULL,
+  `TIPO` varchar(32) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- --------------------------------------------------------
 
@@ -132,16 +144,17 @@ CREATE TABLE `usuarios` (
   `CORREO` varchar(256) NOT NULL,
   `CONTRASEÑA` varchar(512) NOT NULL,
   `DIRECCION` text DEFAULT NULL,
-  `ES_MAYORISTA` tinyint(1) NOT NULL
+  `ES_MAYORISTA` tinyint(1) NOT NULL,
+  `IMAGEN` varchar(128) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Dumping data for table `usuarios`
 --
 
-INSERT INTO `usuarios` (`USUARIO_ID`, `CBU`, `NOMBRE`, `APELLIDO`, `CORREO`, `CONTRASEÑA`, `DIRECCION`, `ES_MAYORISTA`) VALUES
-(7, NULL, 'Matias', 'Montiel', 'petcare@gmail.com', '$2y$10$z35hSQV7rOSEslbAS3br/eXKTJxNuMuHk49e4/wBU3AHz7QEZC1BK', NULL, 0),
-(8, NULL, 'Manuel', 'Hernandez', 'manuelhz@gmail.com', '$2y$10$ud.Q4X5wgscmFcie0EC..O2hNb5Y/KH1dcpXVo7Uw11XxkiAzqzVa', NULL, 0);
+INSERT INTO `usuarios` (`USUARIO_ID`, `CBU`, `NOMBRE`, `APELLIDO`, `CORREO`, `CONTRASEÑA`, `DIRECCION`, `ES_MAYORISTA`, `IMAGEN`) VALUES
+(7, NULL, 'Matias', 'Montiel', 'petcare@gmail.com', '$2y$10$z35hSQV7rOSEslbAS3br/eXKTJxNuMuHk49e4/wBU3AHz7QEZC1BK', NULL, 0, NULL),
+(17, NULL, 'admin', 'petcare@gmail.com', 'admin@gmail.com', '$2y$10$on68HndOeLMF5thJWnPQS.G4D8ghEAdnjfZXln6NweGSeeb5i3tyO', NULL, 0, '1749318202_2b8941b624b0cf00ddf3.png');
 
 --
 -- Indexes for dumped tables
@@ -168,11 +181,18 @@ ALTER TABLE `productos`
   ADD KEY `TIPO-MASCOTA` (`MASCOTA`);
 
 --
+-- Indexes for table `servicios`
+--
+ALTER TABLE `servicios`
+  ADD PRIMARY KEY (`SERVICIO_ID`);
+
+--
 -- Indexes for table `turnos`
 --
 ALTER TABLE `turnos`
   ADD PRIMARY KEY (`TURNO_ID`),
-  ADD KEY `USUARIO_ID` (`USUARIO_ID`);
+  ADD KEY `USUARIO_ID` (`USUARIO_ID`),
+  ADD KEY `TIPO_TURNO` (`TIPO_TURNO`);
 
 --
 -- Indexes for table `usuarios`
@@ -208,11 +228,17 @@ ALTER TABLE `turnos`
 -- AUTO_INCREMENT for table `usuarios`
 --
 ALTER TABLE `usuarios`
-  MODIFY `USUARIO_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `USUARIO_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
 
 --
 -- Constraints for dumped tables
 --
+
+--
+-- Constraints for table `servicios`
+--
+ALTER TABLE `servicios`
+  ADD CONSTRAINT `servicios_ibfk_1` FOREIGN KEY (`SERVICIO_ID`) REFERENCES `turnos` (`TIPO_TURNO`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Constraints for table `turnos`

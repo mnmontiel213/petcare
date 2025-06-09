@@ -4,14 +4,96 @@ namespace App\Controllers;
 
 use App\Controllers\BaseController;
 use App\Models\ProductoModel;
+use App\Models\CategoriaModel;
 
 class Productos extends BaseController{
 
-    public function listar(): string{
+    public function listar(){
         $productoModel = new ProductoModel();
-        $result = $productoModel->findAll();
+        $categoriaModel = new CategoriaModel();
         
-        $data = ['titulo' => "productos", 'productos' => $result];
+        $mascota = $this->request->getGet('eleccion-mascota');
+        $producto = $this->request->getGet('eleccion-producto');
+
+        #recibimos parametros para filtrar mascotas?
+        if($mascota){
+            #echo 'mascota filtro: ', $mascota;
+        }
+
+        #recibimos parametros para filtrar productos?        
+        if($producto){
+            #echo 'producto filtro: ', $producto;
+        }        
+
+        # recibimos todos los tipos de productos y mascotas disponibles
+        # MASCOTA  -> perro, gato...
+        # PRODUCTO -> alimento, jueguetes...
+        # en la base de datos se veria asi:
+        # id | TIPO    | VALOR
+        # 1  | MASCOTA | PERRO
+        $result_categoria_mascota = $categoriaModel->where('TIPO', 'MASCOTA')->findAll();
+        $result_categoria_producto = $categoriaModel->where('TIPO', 'PRODUCTO')->findAll();        
+
+        # arrays UNICAMENTE con los valores de la tabla
+        # [PERRO, GATO...]
+        $mascotas_disponibles  = [];
+        $productos_disponibles = [];
+
+        # llegados a esto, esto deberia de ser obvio...
+        foreach($result_categoria_mascota as $q){
+            array_push($mascotas_disponibles, $q['VALOR']);
+        }
+
+        foreach($result_categoria_producto as $q){
+            array_push($productos_disponibles, $q['VALOR']);
+        }
+
+        # mostrar cada cosa...solo para comprobar esto deberia de estar comentado normalmente
+
+        // foreach($productos_disponibles as $q){
+        //     echo $q;
+        //     echo '<br>';
+        // }
+        // echo '<br>';
+        // foreach($mascotas_disponibles as $q){
+        //     echo $q;
+        //     echo '<br>';
+        // }
+
+        
+        $result = $productoModel->findAll();
+        $categorias = ['productos' => $productos_disponibles, 'mascotas' => $mascotas_disponibles];
+        
+        /*
+        $tipo_producto = 'ALIMENTO';
+        $tipo_mascota  = 'GATO';
+        
+        
+
+        
+        //$result = $productoModel->where('VALOR', 'GATO')->findAll();
+
+        echo 'todas las categorias';
+        echo '<br>';        
+        foreach($CategoriaModel->findAll() as $c){
+            print_r($c);
+            echo '<br>';
+        }
+
+
+        //el tipo de producto
+        $producto_id = $categoriaModel()->where('VALOR', $tipo_producto)->first();
+
+        //el tipo de mascota
+        $mascota_id  = $cateogiraModel()->where('VALOR', $tipo_mascota)->first(); 
+        
+        //where TIPO_PRODUCTO == ALIMENTO && TIPO_MASCOTA == GATO
+        $productos = $productoModel()->where('TIPO', $producto_id['CATEGORIA_ID'])->andWhere('MASCOTA', $mascota_id['CATEGORIA_ID'])->findAll();
+        
+        //return 'productos';
+        */
+        
+        $data = ['titulo' => "productos", 'productos' => $result, 'categorias' => $categorias];
         return view('plantillas/header_view', $data)
             .view('plantillas/navbar_view')
             .view('contenido/productos/listar')
