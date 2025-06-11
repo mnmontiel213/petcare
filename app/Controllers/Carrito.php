@@ -35,7 +35,7 @@ class Carrito extends BaseController{
             'price' => $request->getPost('precio'),
             'qty' => 1,
             'codigo' => $request->getPost('codigo'),
-            'img' => '',
+            'imagen' => $request->getPost('imagen'),
         ];
         
         $carrito->insert($producto);
@@ -49,26 +49,46 @@ class Carrito extends BaseController{
 
         $accion = $request->getPost('carrito-accion');
 
-        echo $request->getPost('rowid');
-        echo $request->getPost('name');
-        echo $request->getPost('codigo');
-        echo $request->getPost('price');
-        
         if($accion){
             if($accion === 'limpiar'){
                 // DESACERSE DE TODO EL CARRITO
                 $carrito->destroy();
                 echo 'limpiar';
-            }else if($accion === 'quitar'){
+            }else if($accion === 'remover'){
                 // QUITAR UNA UNIDAD DEL PRODUCTO EN EL CARRITO
-                echo 'quitar';
+                if((float)$request->getPost('qty') > 1){
+                    $producto = [
+                        'rowid' => $request->getPost('rowid'),
+                        'price' => $request->getPost('price'),
+                        'name' => $request->getPost('name'),
+                        'codigo' => $request->getPost('codigo'),
+                        'qty' => ((float)$request->getPost('qty')) - 1,
+                    ];
+                    
+                    $carrito->update($producto);                    
+                }
             }else if($accion === 'agregar'){
                 // AGREGAR UNA UNIDAD DEL PRODUCTO EN EL CARRITO
-                echo 'agregar';                
-            }else if($accion === 'remover'){
-                // REMOVER COMPLETAMENTE EL PRODUCTO DEL CARRITO                
-                echo 'remover';
+                $producto = [
+                    'rowid' => $request->getPost('rowid'),
+                    'price' => $request->getPost('price'),
+                    'name' => $request->getPost('name'),
+                    'codigo' => $request->getPost('codigo'),
+                    'qty' => ((float)$request->getPost('qty')) + 1,
+                ];
+
+                print_r($producto);
+                
+                //return '?';
+                
+                $carrito->update($producto);                    
+            }else if($accion === 'quitar'){
+                // REMOVER COMPLETAMENTE EL PRODUCTO DEL CARRITO
+
+                $carrito->remove($request->getPost('rowid'));
             }
         }
+
+        return redirect()->route('carrito');        
     }
 }

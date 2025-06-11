@@ -62,6 +62,9 @@
                              echo form_hidden('codigo', $producto->CODIGO);
                              echo form_hidden('nombre', $producto->NOMBRE);
                              echo form_hidden('precio', $producto->PRECIO);
+                             if($producto->IMAGEN){
+                                 echo form_hidden('imagen', $producto->IMAGEN);                                 
+                             }
                              echo form_submit('Comprar', 'Agregar al carrito', 'class= "btn btn-primary"');
                              echo form_close();
                          }else{
