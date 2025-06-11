@@ -40,19 +40,34 @@
     <div class="col">
         <?php foreach($productos as $producto): ?>
             <div class="card w-25" >
+
+                <!-- IMAGEN -->
                 <?php if($producto->IMAGEN == null): ?>
                    <img src="<?php echo base_url('assets/img/productos/prod1.png') ?> " class="card-img-center m-auto" alt="...">
                 <?php else: ?>
                   <img src="<?php echo base_url('assets/uploads/'); echo $producto->IMAGEN ?>" class="card-img-center m-auto" alt="...">
                 <?php endif; ?>
-     
+
+                <!-- TARJETA -->
                 <div class="card-body">
                     <h5 class="card-title"><?php echo $producto->NOMBRE ?></h5>
                     <div class="card-text">
                         <p class="card-subtitle mb-2 text-muted>">$<?php echo $producto->PRECIO ?></p>
                         <p class="card-subtitle mb-2 text-muted">Peso: <?php echo $producto->PESO ?>kg</p>
                     </div>
-                    <a href="#" class="btn btn-primary">Agregar al carrito</a>
+     
+                     <?php
+                         if(session('LOGGED')){
+                             echo form_open('carrito/agregar');
+                             echo form_hidden('codigo', $producto->CODIGO);
+                             echo form_hidden('nombre', $producto->NOMBRE);
+                             echo form_hidden('precio', $producto->PRECIO);
+                             echo form_submit('Comprar', 'Agregar al carrito', 'class= "btn btn-primary"');
+                             echo form_close();
+                         }else{
+                             echo '<a href="login/ingresar" class="btn btn-primary"> Ingresar </a>';
+                         }
+                     ?>
                 </div>
             </div>
         <?php endforeach; ?>

@@ -47,3 +47,8 @@ $routes->get('login/salir',             'Login::salir_usuario');
 
 //perfil del usuario
 $routes->get('perfil', 'Home::perfil', ['filter' => 'auth']);
+
+//carrito
+$routes->get('carrito', 'Carrito::carrito', ['filter' => 'auth']);
+$routes->post('carrito/agregar', 'Carrito::agregar_producto', ['filter' => 'auth']);
+$routes->post('carrito/update', 'Carrito::actualizar', ['filter' => 'auth']);
