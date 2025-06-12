@@ -10,29 +10,37 @@
             <?php
             helper('form');
 
-            echo validation_list_errors();
+            if($validation){
+                foreach($validation as $val_error){
+                    echo '<div class="alert alert-danger" role="alert">';
+                    echo $val_error;
+                    echo '</div>';
+                }
+            }
+           ?>
 
-            echo form_open('login/crear_usuario', ['method' => 'post']);
+               <?php echo form_open_multipart("login/crear_usuario")?>
+                <label name="" class="form-label">Nombre</label>
+                <input type="text" name="nombre" class="form-control">
 
-            echo form_label('Nombre', 'nombre', ['class' => 'form-label']);
-            echo form_input('nombre', '', ['class' => 'form-control', 'placeholder' => 'juan']);
+                <label name="" class="form-label">Apellido</label>
+                <input type="text" name="apellido" class="form-control">
 
-            echo form_label('Apellido', 'apellido', ['class' => 'form-label']);
-            echo form_input('apellido', '', ['class' => 'form-control', 'placeholder' => 'perez']);
+                <label name="" class="form-label">Correo</label>
+                <input type="text" name="correo" class="form-control">
 
-            echo form_label('Correo', 'correo', ['class' => 'form-label']);
-            echo form_input('correo', '', ['class' => 'form-control', 'placeholder' => 'example@gmail.com']);
+                <label name="" class="form-label">Contraseña</label>
+                <input type="text" name="contraseña" class="form-control">
 
-            echo form_label('Contraseña', 'contraseña', ['class' => 'form-label']);
-            echo form_password('contraseña', '', ['class' => 'form-control']);
+                <label name="" class="form-label">Confirmacion Contraseña</label>
+                <input type="text" name="confirmacion-contraseña" class="form-control">
 
-            echo form_label('Confirmar contraseña', 'confirmacion-contraseña', ['class' => 'form-label']);
-            echo form_password('confirmacion-contraseña', '', ['class' => 'form-control']);
-
-            echo form_submit('Crear cuenta', 'Crear cuenta', ['class' => 'btn btn-registro']);
-
-            echo form_close();
-            ?>
+                <input type="file" name="imagen" size="20">
+                <br>
+                
+                <input type="submit" value="Crear cuenta" class="btn">
+                
+             <?php echo form_close() ?>
         </div>
     </div>
 </div>

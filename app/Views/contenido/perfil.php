@@ -1,15 +1,25 @@
 <div class="row">
     <div class="col">
 
-        <div class="d-flex flex-column p-5">
-            <img src="<?php echo base_url("assets/img/user.png") ?>" alt="" class="rounded-circle">
-            <p> <?= $nombre_usuario?> </p>
-        </div>
+        <?php
 
+        // SI EL USUARIO NO TIENE UNA IMAGEN ASOCIADA, ASIGNAR UNA POR DEFECTO
+        if($usuario['imagen'] == null){
+            $usuario['imagen'] = 'petcare.png';
+        }
+      
+        ?>
+
+        <div class="d-flex flex-column p-5">
+            <img src="<?php echo base_url('assets/uploads/'); echo $usuario['imagen'] ?>" alt="" class="rounded-circle">
+            <p><?= $usuario['nombre']?> <?= $usuario['apellido']?> </p>
+        </div>
+     
         <div class="p-5">
             <h2>Mascotas</h2>
-
-            <?php 
+     
+            <!--  ESTO ES TEMPORAL HASTA AGREGAR ANIMALES A LA BASE DE DATOS -->
+            <?php
             $mascotas= [ 
                 [
                     'nombre' => 'fitto', 

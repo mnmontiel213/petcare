@@ -86,7 +86,7 @@
                     <?php else: ?>
                         <!-- Iniciar sesión -->
                         <li class="nav-item">
-                            <a class="nav-link" href="<?= base_url('login/entrar') ?>">
+                            <a class="nav-link" href="<?= base_url('login/ingresar') ?>">
                                 <i class="bi bi-person"></i> Iniciar sesión
                             </a>
                         </li>
@@ -120,7 +120,7 @@
                             <a class="nav-link custom-navbar-entry" href="<?php echo base_url('productos'); ?>">Productos</a>
                         </li>
                         <li class="nav-item custom-navbar-entry">   
-                            <a href="<?php echo base_url('login') ?>" class="nav-item custom-navbar-entry" >
+                            <a href="<?php echo base_url('login/ingresar') ?>" class="nav-item custom-navbar-entry" >
                                 <i class="bi bi-person"></i>
                             </a>
                         </li>
