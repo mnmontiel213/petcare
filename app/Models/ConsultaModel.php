@@ -9,7 +9,7 @@ class ConsultaModel extends Model{
     protected $table            = 'consultas';
     protected $primaryKey       = 'CONSULTA_ID';
     protected $useAutoIncrement = true;
-    protected $returnType       = 'object';
+    protected $returnType       = 'array';
     protected $allowedFields    = ['CONSULTA_ID', 'TITULO', 'CORREO', 'CONTENIDO'];
 }
 

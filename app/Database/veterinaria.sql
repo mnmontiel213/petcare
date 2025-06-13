@@ -2,10 +2,10 @@
 -- version 5.2.1
 -- https://www.phpmyadmin.net/
 --
--- Host: localhost
--- Generation Time: Jun 11, 2025 at 08:11 PM
--- Server version: 10.4.32-MariaDB
--- PHP Version: 8.2.12
+-- Servidor: localhost
+-- Tiempo de generación: 13-06-2025 a las 15:51:06
+-- Versión del servidor: 10.4.32-MariaDB
+-- Versión de PHP: 8.2.12
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -18,13 +18,13 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `veterinaria`
+-- Base de datos: `veterinaria`
 --
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `categoria`
+-- Estructura de tabla para la tabla `categoria`
 --
 
 CREATE TABLE `categoria` (
@@ -34,7 +34,7 @@ CREATE TABLE `categoria` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
--- Dumping data for table `categoria`
+-- Volcado de datos para la tabla `categoria`
 --
 
 INSERT INTO `categoria` (`REGISTRO_ID`, `VALOR`, `TIPO`) VALUES
@@ -50,63 +50,56 @@ INSERT INTO `categoria` (`REGISTRO_ID`, `VALOR`, `TIPO`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `consultas`
+-- Estructura de tabla para la tabla `consultas`
 --
 
 CREATE TABLE `consultas` (
   `CONSULTA_ID` int(11) NOT NULL,
   `TITULO` varchar(128) NOT NULL,
   `CORREO` text NOT NULL,
-  `CONTENIDO` text NOT NULL
+  `CONTENIDO` text NOT NULL,
+  `USUARIO_ID` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
--- Dumping data for table `consultas`
+-- Volcado de datos para la tabla `consultas`
 --
 
-INSERT INTO `consultas` (`CONSULTA_ID`, `TITULO`, `CORREO`, `CONTENIDO`) VALUES
-(1, 'precios', 'martinez@gmail.com', 'Hola queria consultar por el precio de una radiografia. Gracias.');
+INSERT INTO `consultas` (`CONSULTA_ID`, `TITULO`, `CORREO`, `CONTENIDO`, `USUARIO_ID`) VALUES
+(1, 'precios', 'martinez@gmail.com', 'Hola queria consultar por el precio de una radiografia. Gracias.', 0);
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `productos`
+-- Estructura de tabla para la tabla `mascotas`
+--
+
+CREATE TABLE `mascotas` (
+  `MASCOTA_ID` int(11) NOT NULL,
+  `NOMBRE` varchar(128) NOT NULL,
+  `TIPO_MASCOTA` int(11) NOT NULL,
+  `USUARIO_ID` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `productos`
 --
 
 CREATE TABLE `productos` (
   `CODIGO` int(11) NOT NULL,
   `NOMBRE` varchar(256) NOT NULL,
+  `MARCA` int(11) NOT NULL,
   `PRECIO` float NOT NULL,
   `PESO` float DEFAULT NULL,
-  `TIPO` varchar(32) NOT NULL,
-  `MASCOTA` varchar(32) NOT NULL,
-  `MARCA` varchar(32) NOT NULL,
-  `IMAGEN` varchar(123) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-
---
--- Dumping data for table `productos`
---
-
-INSERT INTO `productos` (`CODIGO`, `NOMBRE`, `PRECIO`, `PESO`, `TIPO`, `MASCOTA`, `MARCA`, `IMAGEN`) VALUES
-(1, 'Alimento Perro Adulto', 19000, 1, 'alimento', 'perro', 'royal', NULL),
-(124123, 'Alimento gatuno', 12123, 1, '', '', 'royal', '1749321898_b07605f168e34d3cfd53.jpg');
-
--- --------------------------------------------------------
-
---
--- Table structure for table `servicios`
---
-
-CREATE TABLE `servicios` (
-  `SERVICIO_ID` int(11) NOT NULL,
-  `TIPO` varchar(32) NOT NULL
+  `IMAGEN` varchar(128) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `turnos`
+-- Estructura de tabla para la tabla `turnos`
 --
 
 CREATE TABLE `turnos` (
@@ -114,26 +107,13 @@ CREATE TABLE `turnos` (
   `USUARIO_ID` int(11) NOT NULL,
   `FECHA` date NOT NULL,
   `HORARIO` time NOT NULL,
-  `TIPO_TURNO` int(11) NOT NULL
+  `CATEGORIA_TURNO` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-
---
--- Dumping data for table `turnos`
---
-
-INSERT INTO `turnos` (`TURNO_ID`, `USUARIO_ID`, `FECHA`, `HORARIO`, `TIPO_TURNO`) VALUES
-(1, 7, '2025-06-11', '00:00:09', 0),
-(2, 7, '2025-06-12', '00:00:10', 0),
-(3, 7, '2025-06-27', '00:00:10', 1),
-(4, 7, '2025-06-13', '00:00:10', 8),
-(5, 7, '2025-06-19', '11:00:00', 7),
-(6, 7, '2025-06-13', '10:00:00', 1),
-(7, 7, '2025-06-11', '10:00:00', 7);
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `usuarios`
+-- Estructura de tabla para la tabla `usuarios`
 --
 
 CREATE TABLE `usuarios` (
@@ -145,57 +125,59 @@ CREATE TABLE `usuarios` (
   `CONTRASEÑA` varchar(512) NOT NULL,
   `DIRECCION` text DEFAULT NULL,
   `ES_MAYORISTA` tinyint(1) NOT NULL,
-  `IMAGEN` varchar(128) DEFAULT NULL
+  `IMAGEN` varchar(128) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
--- Dumping data for table `usuarios`
+-- Volcado de datos para la tabla `usuarios`
 --
 
 INSERT INTO `usuarios` (`USUARIO_ID`, `CBU`, `NOMBRE`, `APELLIDO`, `CORREO`, `CONTRASEÑA`, `DIRECCION`, `ES_MAYORISTA`, `IMAGEN`) VALUES
-(7, NULL, 'Matias', 'Montiel', 'petcare@gmail.com', '$2y$10$z35hSQV7rOSEslbAS3br/eXKTJxNuMuHk49e4/wBU3AHz7QEZC1BK', NULL, 0, NULL),
-(17, NULL, 'admin', 'petcare@gmail.com', 'admin@gmail.com', '$2y$10$on68HndOeLMF5thJWnPQS.G4D8ghEAdnjfZXln6NweGSeeb5i3tyO', NULL, 0, '1749318202_2b8941b624b0cf00ddf3.png');
+(3, NULL, 'juanito', 'pere', 'juanitoperez@gmail.com', '$2y$10$YtGEpCedo6QF/gMtvt4xIuFvR.Hm2Ykemh.M5WkpDsdXnqLEkwZQS', NULL, 0, ''),
+(4, NULL, 'admin', 'petcare', 'adminpetcare@gmail.com', '$2y$10$D3aiZcMCMx8kQgVci/YukeWPwJSYA8dtJIj3CCb/4tM5DbikYQH3W', NULL, 0, '');
 
 --
--- Indexes for dumped tables
+-- Índices para tablas volcadas
 --
 
 --
--- Indexes for table `categoria`
+-- Indices de la tabla `categoria`
 --
 ALTER TABLE `categoria`
-  ADD PRIMARY KEY (`REGISTRO_ID`);
+  ADD KEY `REGISTRO_ID` (`REGISTRO_ID`);
 
 --
--- Indexes for table `consultas`
+-- Indices de la tabla `consultas`
 --
 ALTER TABLE `consultas`
-  ADD PRIMARY KEY (`CONSULTA_ID`);
+  ADD PRIMARY KEY (`CONSULTA_ID`),
+  ADD KEY `USUARIO_ID` (`USUARIO_ID`);
 
 --
--- Indexes for table `productos`
+-- Indices de la tabla `mascotas`
+--
+ALTER TABLE `mascotas`
+  ADD PRIMARY KEY (`MASCOTA_ID`),
+  ADD KEY `ID_DUEÑO` (`USUARIO_ID`),
+  ADD KEY `TIPO_MASCOTA` (`TIPO_MASCOTA`);
+
+--
+-- Indices de la tabla `productos`
 --
 ALTER TABLE `productos`
   ADD PRIMARY KEY (`CODIGO`),
-  ADD KEY `TIPO-PRODUCTO` (`TIPO`),
-  ADD KEY `TIPO-MASCOTA` (`MASCOTA`);
+  ADD KEY `marca_categoria_id` (`MARCA`);
 
 --
--- Indexes for table `servicios`
---
-ALTER TABLE `servicios`
-  ADD PRIMARY KEY (`SERVICIO_ID`);
-
---
--- Indexes for table `turnos`
+-- Indices de la tabla `turnos`
 --
 ALTER TABLE `turnos`
   ADD PRIMARY KEY (`TURNO_ID`),
   ADD KEY `USUARIO_ID` (`USUARIO_ID`),
-  ADD KEY `TIPO_TURNO` (`TIPO_TURNO`);
+  ADD KEY `categoria_turno_id` (`CATEGORIA_TURNO`);
 
 --
--- Indexes for table `usuarios`
+-- Indices de la tabla `usuarios`
 --
 ALTER TABLE `usuarios`
   ADD PRIMARY KEY (`USUARIO_ID`),
@@ -203,48 +185,50 @@ ALTER TABLE `usuarios`
   ADD UNIQUE KEY `CBU` (`CBU`);
 
 --
--- AUTO_INCREMENT for dumped tables
+-- AUTO_INCREMENT de las tablas volcadas
 --
 
 --
--- AUTO_INCREMENT for table `categoria`
---
-ALTER TABLE `categoria`
-  MODIFY `REGISTRO_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
-
---
--- AUTO_INCREMENT for table `consultas`
+-- AUTO_INCREMENT de la tabla `consultas`
 --
 ALTER TABLE `consultas`
   MODIFY `CONSULTA_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
--- AUTO_INCREMENT for table `turnos`
+-- AUTO_INCREMENT de la tabla `turnos`
 --
 ALTER TABLE `turnos`
-  MODIFY `TURNO_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `TURNO_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
--- AUTO_INCREMENT for table `usuarios`
+-- AUTO_INCREMENT de la tabla `usuarios`
 --
 ALTER TABLE `usuarios`
-  MODIFY `USUARIO_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
+  MODIFY `USUARIO_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
--- Constraints for dumped tables
+-- Restricciones para tablas volcadas
 --
 
 --
--- Constraints for table `servicios`
+-- Filtros para la tabla `mascotas`
 --
-ALTER TABLE `servicios`
-  ADD CONSTRAINT `servicios_ibfk_1` FOREIGN KEY (`SERVICIO_ID`) REFERENCES `turnos` (`TIPO_TURNO`) ON DELETE CASCADE ON UPDATE CASCADE;
+ALTER TABLE `mascotas`
+  ADD CONSTRAINT `mascota_categoria_id` FOREIGN KEY (`TIPO_MASCOTA`) REFERENCES `categoria` (`REGISTRO_ID`),
+  ADD CONSTRAINT `mascota_dueño_id` FOREIGN KEY (`USUARIO_ID`) REFERENCES `usuarios` (`USUARIO_ID`);
 
 --
--- Constraints for table `turnos`
+-- Filtros para la tabla `productos`
+--
+ALTER TABLE `productos`
+  ADD CONSTRAINT `marca_categoria_id` FOREIGN KEY (`MARCA`) REFERENCES `categoria` (`REGISTRO_ID`);
+
+--
+-- Filtros para la tabla `turnos`
 --
 ALTER TABLE `turnos`
-  ADD CONSTRAINT `turnos_ibfk_1` FOREIGN KEY (`USUARIO_ID`) REFERENCES `usuarios` (`USUARIO_ID`) ON UPDATE CASCADE;
+  ADD CONSTRAINT `categoria_turno_id` FOREIGN KEY (`CATEGORIA_TURNO`) REFERENCES `categoria` (`REGISTRO_ID`),
+  ADD CONSTRAINT `usuario_turno_id` FOREIGN KEY (`USUARIO_ID`) REFERENCES `usuarios` (`USUARIO_ID`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

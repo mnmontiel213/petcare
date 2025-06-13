@@ -2,6 +2,7 @@
 
 namespace App\Controllers;
 
+use App\Models\CategoriaModel;
 use App\Models\TurnoModel;
 use CodeIgniter\HTTP\ResponseInterface;
 
@@ -9,23 +10,23 @@ use CodeIgniter\HTTP\ResponseInterface;
 /*
 Logica de los usuarios y sus registros
 */
-
-enum TipoTurno{
-    case baño;
-    case uñas;
-    case pelo;
-    case castracion;
-    case vacunacion;
-    case dentista;
-    case radiografia;
-    case consulta_general;
-}
-
 class Turno extends BaseController{
 
     public function turno(): string{
-        $data = ['titulo' => 'Turnos'];
-        return view('plantillas/header_view', $data).view('plantillas/navbar_view').view('contenido/turnos/turno').view('plantillas/footer_view');
+        $categoriaModel = new CategoriaModel();
+        $categoria = $categoriaModel->where('TIPO', 'SERVICIO')->findAll();
+
+        $servicios = [];
+
+        foreach($categoria as $c){
+            array_push($servicios, ['servicio' => $c['VALOR'], 'id' => $c['REGISTRO_ID']]);
+        }
+
+        $data = ['titulo' => 'Turnos', 'servicios' => $servicios];
+        return view('plantillas/header_view', $data)
+                .view('plantillas/navbar_view')
+                .view('contenido/turnos/turno')
+                .view('plantillas/footer_view');
     }
 
     public function sacar_turno(): ResponseInterface {

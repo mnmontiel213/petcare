@@ -7,6 +7,18 @@
         <form action="turno/agregar_turno" method="post">
             <div class="row">
                 <div class="col">
+                    <div class="list-group">
+                    <?php
+                        foreach($servicios as $s){
+                            echo '<label class="list-group-item">';
+                            echo form_radio('tipo-turno', $s['id'], 'class="form-check-input me-1 "');
+                            echo $s['servicio'];
+                            //echo $s['servicio'];
+                            echo '</label>';
+                        }
+                    ?>
+                    </div>  
+
                     <h2>Estetica</h2>
 
                     <div class="list-group">
