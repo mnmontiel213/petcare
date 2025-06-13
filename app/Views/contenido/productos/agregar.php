@@ -29,12 +29,13 @@ if($validation){
     <br>
      
     <h3>Marca</h3>
-    <label for="">royal</label>
-    <input type="radio" name="marca" value="royal">
-    <br>
-    <label for="">pedigree</label>     
-    <input type="radio" name="marca" value="pedigree">
-    <br>
+
+    <?php foreach($categorias['marcas'] as $m){
+        echo form_label($m['VALOR']);
+        echo form_radio('marca', $m['CATEGORIA_ID']);
+        echo '<br>';
+    }    
+    ?>
 
     <label for="">Peso</label>
     <input type="number" name="peso">
@@ -44,21 +45,25 @@ if($validation){
     <input type="number" name="precio">
 
     <h3>Categoria</h3>
-    <label for="">Accesorio</label>
-    <input type="radio" name="categoria">
-    <label for="">alimento</label>
-    <input type="radio" name="categoria">
-
+    <?php foreach($categorias['productos'] as $m){
+        echo form_label($m['VALOR']);
+        echo form_radio('categoria', $m['CATEGORIA_ID']);
+        echo '<br>';
+    }    
+    ?>
+    
     <h3>Mascota</h3>
-    <label for="">perro</label>
-    <input type="radio" name="mascota" value="perro">
+    <?php foreach($categorias['mascotas'] as $m){
+        echo form_label($m['VALOR']);
+        echo form_radio('mascota', $m['CATEGORIA_ID']);
+        echo '<br>';
+    }    
+    ?>
+
     <br>
-    <label for="">gato</label>
-    <input type="radio" name="mascota" value="gato">
-    <br>
-     
     <label for="">imagen</label>
     <input type="file" name="imagen" size="20">
-    
+    <br>
+    <br>    
     <input type="submit" value="registrar">
 <?php form_close(); ?>

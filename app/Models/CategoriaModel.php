@@ -10,7 +10,7 @@ class CategoriaModel extends Model{
     protected $primaryKey       = 'REGISTRO_ID';
     protected $useAutoIncrement = true;
     protected $returnType       = 'array';
-    protected $allowedFields    = ['REGISTRO_ID', 'VALOR', 'TIPO'];
+    protected $allowedFields    = ['CATEGORIA_ID', 'VALOR', 'TIPO'];
 }
 
 ?>

@@ -85,8 +85,12 @@ class Login extends BaseController{
         
         if($validation->withRequest($request)->run()){
             $img = $this->request->getFile("imagen");
-            $nombre_aleatorio = $img->getRandomName();
-            $img->move(ROOTPATH.'assets/uploads', $nombre_aleatorio);
+            $nombre_aleatorio = null;
+
+            if($img->isValid()){
+                $nombre_aleatorio = $img->getRandomName();
+                $img->move(ROOTPATH.'assets/uploads', $nombre_aleatorio);
+            }
             
             $model = new UsuarioModel();
             $pass = password_hash($this->request->getPost('contraseña'), PASSWORD_BCRYPT);
@@ -162,7 +166,13 @@ class Login extends BaseController{
                         'DIRECCION' => $user_data['DIRECCION'],
                         'ES_MAYORISTA' => $user_data['ES_MAYORISTA'],
                         'LOGGED' => TRUE,
+                        'ADMIN' => FALSE,
                     ];
+
+                    if($user_data['USUARIO_ID'] == 1 or
+                       $user_data['NOMBRE'] == 'admin'){
+                        $session_data['ADMIN'] = TRUE;
+                    }
                 
                     $session->set($session_data);
                     return redirect()->to('perfil');

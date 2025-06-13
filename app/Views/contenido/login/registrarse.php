@@ -30,10 +30,10 @@
                 <input type="text" name="correo" class="form-control">
 
                 <label name="" class="form-label">Contraseña</label>
-                <input type="text" name="contraseña" class="form-control">
+                <input type="password" name="contraseña" class="form-control">
 
                 <label name="" class="form-label">Confirmacion Contraseña</label>
-                <input type="text" name="confirmacion-contraseña" class="form-control">
+                <input type="password" name="confirmacion-contraseña" class="form-control">
 
                 <input type="file" name="imagen" size="20">
                 <br>

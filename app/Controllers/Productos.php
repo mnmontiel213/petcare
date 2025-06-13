@@ -14,16 +14,12 @@ class Productos extends BaseController{
         
         $mascota = $this->request->getGet('eleccion-mascota');
         $producto = $this->request->getGet('eleccion-producto');
-
-        #recibimos parametros para filtrar mascotas?
-        if($mascota){
-            #echo 'mascota filtro: ', $mascota;
-        }
-
-        #recibimos parametros para filtrar productos?        
-        if($producto){
-            #echo 'producto filtro: ', $producto;
-        }        
+        
+        #---------------------------#
+        #                           #
+        # FORMULARIO PARA EL FILTRO #
+        #                           #
+        #---------------------------#
 
         # recibimos todos los tipos de productos y mascotas disponibles
         # MASCOTA  -> perro, gato...
@@ -38,7 +34,7 @@ class Productos extends BaseController{
         # [PERRO, GATO...]
         $mascotas_disponibles  = [];
         $productos_disponibles = [];
-
+        
         # llegados a esto, esto deberia de ser obvio...
         foreach($result_categoria_mascota as $q){
             array_push($mascotas_disponibles, $q['VALOR']);
@@ -59,41 +55,33 @@ class Productos extends BaseController{
         //     echo $q;
         //     echo '<br>';
         // }
-
         
-        $result = $productoModel->findAll();
         $categorias = ['productos' => $productos_disponibles, 'mascotas' => $mascotas_disponibles];
-        
-        /*
-        $tipo_producto = 'ALIMENTO';
-        $tipo_mascota  = 'GATO';
-        
-        
 
-        
-        //$result = $productoModel->where('VALOR', 'GATO')->findAll();
-
-        echo 'todas las categorias';
-        echo '<br>';        
-        foreach($CategoriaModel->findAll() as $c){
-            print_r($c);
-            echo '<br>';
-        }
-
+        #-----------------------------------------#
+        #                                         #
+        # ARRAY CON TODOS LOS PRODUCTOS FILTRADOS #
+        #                                         #
+        #-----------------------------------------#        
 
         //el tipo de producto
-        $producto_id = $categoriaModel()->where('VALOR', $tipo_producto)->first();
+        if($mascota){
+            $mascota_id = $categoriaModel->where('VALOR', $mascota)->first();
+            $productoModel->where('CATEGORIA_MASCOTA', $mascota_id['CATEGORIA_ID']);
+        }
+        
+        if($producto){
+            //se recibio filtro por producto
+            $producto_id = $categoriaModel->where('VALOR', $producto)->first();
+            $productoModel->where('CATEGORIA_PRODUCTO', $producto_id['CATEGORIA_ID']);
+        }
+        
+        $result = $productoModel->findAll();
 
-        //el tipo de mascota
-        $mascota_id  = $cateogiraModel()->where('VALOR', $tipo_mascota)->first(); 
+        $data = ['titulo' => "productos",
+                 'productos' => $result,
+                 'categorias' => $categorias];
         
-        //where TIPO_PRODUCTO == ALIMENTO && TIPO_MASCOTA == GATO
-        $productos = $productoModel()->where('TIPO', $producto_id['CATEGORIA_ID'])->andWhere('MASCOTA', $mascota_id['CATEGORIA_ID'])->findAll();
-        
-        //return 'productos';
-        */
-        
-        $data = ['titulo' => "productos", 'productos' => $result, 'categorias' => $categorias];
         return view('plantillas/header_view', $data)
             .view('plantillas/navbar_view')
             .view('contenido/productos/listar')
@@ -101,9 +89,28 @@ class Productos extends BaseController{
     }
     
     public function agregar(): string{
+        $categorias = [];
+        
+        $categoriaModel = new CategoriaModel();
+        
+        # MARCAS DISPONIBLES
+        $marcas = $categoriaModel->where('TIPO', 'MARCA')->findAll();
+
+        # TIPOS DE PRODUCTO DISPONIBLES
+        $productos = $categoriaModel->where('TIPO', 'PRODUCTO')->findAll();
+        
+        # TIPOS DE MASCOTAS DISPONIBLES
+        $mascotas = $categoriaModel->where('TIPO', 'MASCOTA')->findAll();
+
+        $categorias['marcas'] = $marcas;
+        $categorias['productos'] = $productos;
+        $categorias['mascotas'] = $mascotas;
+        
         $data = ['titulo' => "Agregar",
                  'validation' => null,
-                 'success' => null];
+                 'success' => null,
+                 'categorias' => $categorias];
+
         return view('plantillas/header_view', $data)
             .view('plantillas/navbar_view')
             .view('contenido/productos/agregar')
@@ -162,15 +169,19 @@ class Productos extends BaseController{
             $img->move(ROOTPATH.'assets/uploads', $nombre_aleatorio);
             
             $model = new ProductoModel();
-            
+
+            echo $this->request->getPost('categoria');
+            echo $this->request->getPost('mascota');
+            echo $this->request->getPost('marca');
+
             $model->save([
                 'CODIGO' => $this->request->getPost('codigo'),
                 'NOMBRE' => $this->request->getPost('nombre'),
                 'PRECIO' => $this->request->getPost('precio'),
                 'PESO' => $this->request->getPost('peso'),
-                'TIPO' => $this->request->getPost('categoria'),
-                'MASCOTA' => $this->request->getPost('mascota'),
-                'MARCA' => $this->request->getPost('marca'),
+                'CATEGORIA_PRODUCTO' => $this->request->getPost('categoria'),
+                'CATEGORIA_MASCOTA' => $this->request->getPost('mascota'),
+                'CATEGORIA_MARCA' => $this->request->getPost('marca'),
                 'IMAGEN' => $nombre_aleatorio,
             ]);
 
@@ -184,6 +195,25 @@ class Productos extends BaseController{
             $data['titulo'] = 'Agregar';
             $data['validation'] = $validation->getErrors();
             $data['success'] = null;
+
+            $categorias = [];
+        
+            $categoriaModel = new CategoriaModel();
+        
+            # MARCAS DISPONIBLES
+            $marcas = $categoriaModel->where('TIPO', 'MARCA')->findAll();
+
+            # TIPOS DE PRODUCTO DISPONIBLES
+            $productos = $categoriaModel->where('TIPO', 'PRODUCTO')->findAll();
+        
+            # TIPOS DE MASCOTAS DISPONIBLES
+            $mascotas = $categoriaModel->where('TIPO', 'MASCOTA')->findAll();
+
+            $categorias['marcas'] = $marcas;
+            $categorias['productos'] = $productos;
+            $categorias['mascotas'] = $mascotas;
+
+            $data['categorias'] = ['productos' => $productos, 'marcas' => $marcas, 'mascotas' => $mascotas];
 
             return view('plantillas/header_view', $data)
             .view('plantillas/navbar_view')
