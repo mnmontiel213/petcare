@@ -1,0 +1,152 @@
+.container-login{
+    background-color: #020202;
+    padding: 0;
+    margin: 0;
+    min-height: 100vh;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.container-registro{
+    padding: 0;
+    margin: 0;
+    min-height: 100vh;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.fondo-login{
+    width: 35%;
+    height: auto;
+    object-fit: cover;
+}
+
+.fondo-registro{
+    width: 50%;
+    height: auto;
+    object-fit: cover;
+}
+
+.seccion-login{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 50%;
+    padding: 30px;
+    color: white;
+}
+
+.seccion-registro{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 50%;
+    padding: 30px;
+    color: white;
+}
+
+.container-form{
+    background-color: #1e1e1e;
+    border-radius: 10px;
+    padding: 60px 20px;
+    width: 100%;
+    max-width: 500px;
+}
+
+.form-label{
+    margin-top: 20px;
+    display: block;
+    width: 100%;
+}
+
+.btn-ingreso{
+    background-color: var(--color-primario);
+    margin-top: 30px;
+    width: 100%;
+    border: none;
+}
+
+.btn-ingreso:hover{
+    background-color: var(--color-hover);
+    color: #020202;
+    box-shadow: 5px 5px 20px white;
+
+}
+
+.link-registro{
+    display: block;
+    text-align: center;
+    margin-top: 10px;
+    color: var(--color-primario);
+}
+
+.link-registro:hover{
+    color: rgb(243, 243, 119);
+}
+
+
+.btn-registro{
+    background-color: var(--color-primario);
+    margin-top: 30px;
+    width: 100%;
+    border: none;
+}
+.btn-registro:hover{
+    background-color: var(--color-hover);
+    color: #020202;
+    box-shadow: 5px 5px 20px white;
+}
+
+
+@media (max-width: 1023px) {
+    .container-login {
+        z-index: -1;
+        height: 100%;
+        position: relative;
+    
+    }
+
+    .fondo-login {
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        z-index: -1;
+    }
+
+    .seccion-login {
+        width: 80%;
+        padding: 20px;
+        margin: 0 auto;
+
+    }
+
+    .container-form {
+        max-width: 100%;
+        margin: 0 auto;
+
+    }
+
+    /*registro*/
+    .container-registro {
+        z-index: -1;
+        height: 100%;
+        position: relative;
+    }
+
+    .fondo-registro {
+       width: 100%;
+        height: 100%;
+        position: absolute;
+        z-index: -1;
+    }
+
+    .seccion-registro {
+       width: 80%;
+        padding: 20px;
+        margin: 0 auto;
+        opacity: 0.8;
+        
+    }
+
+}
+

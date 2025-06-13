@@ -1,0 +1,23 @@
+:root{
+    --color-primario: #98B3D5;
+    --color-secundario: #d0dbe8;
+    --color-hover: #324255;
+    --background-footer: #152333;
+    --background-img: url("/assets/img/fondo-blanco-ilustracion.jpg");
+}
+/* #8CBFFF */
+*{
+    font-family: "Montserrat", sans-serif;
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+
+}
+
+body{
+    display: grid;
+    min-height: 100dvh;
+    grid-template-rows: auto 1fr auto;
+    margin: 0;
+}
+   

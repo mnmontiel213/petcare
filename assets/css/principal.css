@@ -1,0 +1,225 @@
+/* === GENERAL === */
+.body-completo {
+    background-color: #efefef;
+}
+
+@media (max-width: 768px) {
+    .body-completo {
+        margin: 0;
+        padding: 0;
+    }
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+}
+
+
+/* === CAROUSEL === */
+.banner {
+    margin-bottom: 100px;
+    display: inline-block;
+    height: 50vh;
+}
+
+.banner img {
+    height: 60vh;
+}
+
+
+@media (max-width: 768px) {
+    .banner {
+        margin-bottom: 0;
+        height: 30vh;
+        padding: 0;
+    }
+
+    .banner img {
+        margin: 0;
+        height: 30vh;
+    }
+}
+
+/* Avisos */
+
+.container-avisos {
+    padding: 2rem 1rem;
+    margin: 0 auto;
+}
+
+.container-avisos>h2 {
+    margin-bottom: 50px;
+    font-size: 3rem;
+    font-weight: bolder;
+}
+
+.btn-oferta {
+    background-color: var(--color-secundario);
+    padding: 10px;
+    border-radius: 20px;
+    color: black;
+    text-decoration: none;
+    font-size: 1.2rem;
+}
+
+.btn:hover {
+    background-color: var(--color-hover);
+    color: white;
+}
+
+/* === CARDS DE PROMOCIONES === */
+
+.card {
+    width: 300px;
+    height: auto;
+}
+
+.card-img-top {
+    height: 200px;
+}
+
+@media (max-width: 800px) {
+    .card-img-top {
+        height: auto;
+    }
+
+    .container-avisos>h2 {
+        margin-bottom: 10px;
+        font-size: 1.5rem;
+    }
+
+    .card {
+        width: 80%;
+    }
+
+    .n-promo {
+        margin: 20px;
+        justify-items: center;
+    }
+}
+
+
+/* Servicios y Productos */
+.content-categorias {
+    background-color: var(--color-secundario);
+    width: 100vw;
+    height: auto;
+    margin: 0 auto;
+    padding: 10%;
+}
+
+.content-categorias>h2 {
+    font-size: 3rem;
+    font-weight: bolder;
+}
+
+.card-categoria {
+    height: 250px;
+    object-fit: cover;
+}
+
+.servicio-hover .hover-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.6);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    opacity: 0;
+    transition: opacity 0.3s ease-in-out;
+}
+
+.servicio-hover:hover .hover-overlay {
+    opacity: 1;
+}
+
+/* Animación pulse para el ícono */
+@keyframes pulseZoom {
+    0% {
+        transform: scale(1);
+        opacity: 0.8;
+    }
+
+    50% {
+        transform: scale(1.2);
+        opacity: 1;
+    }
+
+    100% {
+        transform: scale(1);
+        opacity: 0.8;
+    }
+}
+
+/* Aplica la animación al ícono cuando esté visible */
+.servicio-hover:hover .hover-overlay i {
+    animation: pulseZoom 1s infinite;
+}
+
+@media (max-width: 768px) {
+    .card-categoria {
+        height: 200px;
+    }
+
+    .content-categorias>h2 {
+        font-size: 1.5rem;
+    }
+}
+
+
+/* === SOBRE NOSOTROS === */
+#nosotros img {
+    max-width: 100%;
+    height: auto;
+    padding: 10px;
+}
+
+.btn-link-nosotros {
+    margin-top: 100px;
+}
+
+.btn-link-nosotros>a {
+    background-color: var(--color-secundario);
+    padding: 10px;
+    border-radius: 20px;
+    color: black;
+    text-decoration: none;
+    font-size: 1.2rem;
+}
+
+.btn-link-nosotros:hover>a {
+    background-color: var(--color-hover);
+    color: white;
+}
+
+#nosotros .rounded-circle {
+    width: 150px;
+    height: 150px;
+    object-fit: cover;
+}
+
+
+/* MARCAS*/
+.marcas {
+    background-color: #efebe4;
+    padding: 30px;
+    height: auto;
+}
+
+
+.marcar-asociadas {
+    height: 180px;
+    width: auto;
+}
+
+
+@media (max-width: 768px) {
+    .marcar-asociadas {
+        max-height: 100px;
+    }
+}
