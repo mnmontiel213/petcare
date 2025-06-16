@@ -17,7 +17,9 @@ $routes->get('nosotros_header/quienes_somos', 'Home::nosotros');
 $routes->get('nosotros_header/equipo', 'Home::equipo');
 $routes->get('nosotros_header/mision', 'Home::mision');
 $routes->get('nosotros_header/valores', 'Home::valores');
+$routes->get('nosotros_header/contacto', 'Home::contacto');
 
+$routes->get('comercializacion',        'Home::comercializacion');
 $routes->get('servicios',        'Home::servicios');
 $routes->get('terminos',         'Home::terminos');
 $routes->get('catalogo',         'Home::catalogo');

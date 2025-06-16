@@ -1,0 +1,76 @@
+/* Estilo general de la sección */
+.terminos-condiciones {
+    background-color: #f8f9fa;
+    padding: 60px 20px;
+    color: var(--color-hover);
+    border-radius: 8px;
+}
+
+/* Título principal */
+.titulo-terminos h2 {
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: var(--color-hover);
+    margin-bottom: 20px;
+}
+
+/* Párrafos introductorios */
+.titulo-terminos p {
+    font-size: 1.1rem;
+    color: #555;
+    line-height: 1.6;
+    text-align: center;
+}
+
+/* Estilo del acordeón */
+.accordion-button {
+    background-color: var(--color-primario);
+    color: #333;
+    font-weight: 600;
+    border: none;
+    box-shadow: none;
+    padding: 16px;
+    font-size: 1.1rem;
+    transition: background-color 0.3s;
+}
+
+.accordion-button:hover {
+    background-color: var(--color-primario);
+}
+
+.accordion-button.collapsed {
+    background-color: #ffffff;
+    color: var(--color-hover);
+    border-bottom: 1px solid #e0e0e0;
+}
+
+.accordion-body {
+    background-color: #ffffff;
+    font-size: 1rem;
+    color: #444;
+    border-top: 1px solid #ddd;
+    padding: 20px;
+    border-radius: 0 0 8px 8px;
+    line-height: 1.6;
+}
+
+/* Personalización del texto dentro del acordeón */
+.accordion-body p {
+    margin: 0;
+    text-align: justify;
+}
+
+/* Responsive */
+@media screen and (max-width: 768px) {
+    .titulo-terminos h2 {
+        font-size: 2rem;
+    }
+
+    .accordion-button {
+        font-size: 1rem;
+    }
+
+    .accordion-body {
+        font-size: 0.95rem;
+    }
+}

@@ -1,19 +1,21 @@
 <!-- Ingresar -->
-<div class="container p-5">
-    <div class="container w-50">
-        <h2 class="text-center">Ingresar a tu cuenta PetCare</h2>
+<div class="container-fluid container-login">
+    <img src="<?php echo base_url('assets/img/animales/fondo-login.jpg') ?>" class="fondo-login" alt="fondo gato">
+    <div class="row justify-content-center align-items-center min-vh-100 seccion-login">
+        <div class="col-11 col-sm-8 col-md-6 col-lg-4 p-4 container-form">
+            <h2 class="text-center mb-4">Iniciar Sección</h2>
 
             <?php
             if ($validation) {
                 //esto podria mejorarse...
-                foreach($validation as $val_error){
+                foreach ($validation as $val_error) {
                     echo '<div class="alert alert-danger" role="alert">';
                     echo $val_error;
                     echo '</div>';
                 }
             }
 
-            if($error){
+            if ($error) {
                 echo '<div class="alert alert-danger" role="alert">';
                 echo $error;
                 echo '</div>';
