@@ -1,120 +1,133 @@
 /* === GENERAL === */
-.body-completo {
-    background-color: #efefef;
+.body-completo{
+    min-height: 70vh;
+    position: relative;
 }
 
-@media (max-width: 768px) {
-    .body-completo {
-        margin: 0;
-        padding: 0;
-    }
+.promo{
+    padding-top: 350px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 60%;
+    margin: auto;
+    position: relative;
+    z-index: 2;
 }
 
-img {
-    max-width: 100%;
-    height: auto;
+.promo-titulo{
+    font-size: 2.5rem;
+    text-align: center;
+    color: #f3f3f3;
+    font-weight: 900;
 }
 
-
-/* === CAROUSEL === */
-.banner {
-    margin-bottom: 100px;
+.promo-boton{
     display: inline-block;
-    height: 50vh;
-}
-
-.banner img {
-    height: 60vh;
-}
-
-
-@media (max-width: 768px) {
-    .banner {
-        margin-bottom: 0;
-        height: 30vh;
-        padding: 0;
-    }
-
-    .banner img {
-        margin: 0;
-        height: 30vh;
-    }
-}
-
-/* Avisos */
-
-.container-avisos {
-    padding: 2rem 1rem;
-    margin: 0 auto;
-}
-
-.container-avisos>h2 {
-    margin-bottom: 50px;
-    font-size: 3rem;
-    font-weight: bolder;
-}
-
-.btn-oferta {
-    background-color: var(--color-secundario);
-    padding: 10px;
-    border-radius: 20px;
-    color: black;
-    text-decoration: none;
-    font-size: 1.2rem;
-}
-
-.btn:hover {
+    border: none;
+    height: 50px;
+    border-radius: 30px;
+    padding: 5px;
+    width: 200px;
     background-color: var(--color-hover);
+    font-size: 1.8rem;
     color: white;
+    font-weight: 800;
+    transition: 150ms;
+    margin: 40px;
 }
 
-/* === CARDS DE PROMOCIONES === */
-
-.card {
-    width: 300px;
-    height: auto;
+.promo-boton:focus{
+    outline: none;
 }
 
-.card-img-top {
-    height: 200px;
+.promo-boton:hover{
+    transform: translate(0,-5px);
+    background-color: var(--color-primario);
+    color: black;
 }
 
-@media (max-width: 800px) {
-    .card-img-top {
-        height: auto;
-    }
+.body-completo video{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    filter: brightness(0.4);
+}
+/*  */
 
-    .container-avisos>h2 {
-        margin-bottom: 10px;
-        font-size: 1.5rem;
-    }
+.promo-section {
+    background-color: #f5f7fa;
+}
 
-    .card {
-        width: 80%;
-    }
-
-    .n-promo {
-        margin: 20px;
-        justify-items: center;
-    }
+.promo-card {
+    background-size: cover;
+    background-position: center;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+    transition: transform 0.6s ease-in-out;
+    transform-style: preserve-3d;
+    backface-visibility: hidden;
 }
 
 
+/* Definimos la animación */
+@keyframes rotarUnaVez {
+    from {
+        transform: rotateY(0deg);
+    }
+
+    to {
+        transform: rotateY(360deg);
+    }
+}
+
+/* Al hacer hover se dispara una sola vez */
+.promo-card:hover {
+    animation: rotarUnaVez 0.8s ease-in-out 1; }
+
+.promo-bg-azul {
+    background-color: #4da6ff;
+}
+
+.promo-bg-verde {
+    background-color: #28a745;
+}
+
+.promo-bg-amarillo {
+    background-color: #f8d347;
+}
+
+.promo-bg-naranja {
+    background-color: #ff6f00;
+}
+
+.promo-bg-violeta {
+    background-color: #6f42c1;
+}
+
+.promo-bg-celeste {
+    background-color: #cce5ff;
+}
+
+/*  */
 /* Servicios y Productos */
-.content-categorias {
+.content-categorias{
     background-color: var(--color-secundario);
     width: 100vw;
     height: auto;
     margin: 0 auto;
-    padding: 10%;
+    padding: 5% 10%;
 }
 
-.content-categorias>h2 {
+.content-categorias > h2{
     font-size: 3rem;
     font-weight: bolder;
 }
 
-.card-categoria {
+.card-categoria{
     height: 250px;
     object-fit: cover;
 }
@@ -144,12 +157,10 @@ img {
         transform: scale(1);
         opacity: 0.8;
     }
-
     50% {
         transform: scale(1.2);
         opacity: 1;
     }
-
     100% {
         transform: scale(1);
         opacity: 0.8;
@@ -159,14 +170,13 @@ img {
 /* Aplica la animación al ícono cuando esté visible */
 .servicio-hover:hover .hover-overlay i {
     animation: pulseZoom 1s infinite;
-}
+} 
 
 @media (max-width: 768px) {
     .card-categoria {
         height: 200px;
     }
-
-    .content-categorias>h2 {
+    .content-categorias > h2{
         font-size: 1.5rem;
     }
 }
@@ -179,11 +189,11 @@ img {
     padding: 10px;
 }
 
-.btn-link-nosotros {
+.btn-link-nosotros{
     margin-top: 100px;
 }
 
-.btn-link-nosotros>a {
+.btn-link-nosotros > a{
     background-color: var(--color-secundario);
     padding: 10px;
     border-radius: 20px;
@@ -192,7 +202,7 @@ img {
     font-size: 1.2rem;
 }
 
-.btn-link-nosotros:hover>a {
+.btn-link-nosotros:hover > a{
     background-color: var(--color-hover);
     color: white;
 }
@@ -205,14 +215,14 @@ img {
 
 
 /* MARCAS*/
-.marcas {
+.marcas{
     background-color: #efebe4;
     padding: 30px;
     height: auto;
 }
 
 
-.marcar-asociadas {
+.marcar-asociadas{
     height: 180px;
     width: auto;
 }

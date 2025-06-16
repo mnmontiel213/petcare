@@ -2,7 +2,7 @@
     --color-primario: #98B3D5;
     --color-secundario: #d0dbe8;
     --color-hover: #324255;
-    --background-footer: #152333;
+    --background-footer: #324255;
     --background-img: url("/assets/img/fondo-blanco-ilustracion.jpg");
 }
 /* #8CBFFF */
@@ -21,3 +21,8 @@ body{
     margin: 0;
 }
    
+@media (max-width: 768px) {
+    body{
+        padding: 0;
+    }
+}

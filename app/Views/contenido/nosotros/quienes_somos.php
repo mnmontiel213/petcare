@@ -1,6 +1,6 @@
         <!-- ¿Quiénes somos? -->
-        <div id="container  quienes-somos" class="m-5">
-            <div class="row align-items-center mt-4">
+        <div id="quienes-somos" class="p-5">
+            <div class="row align-items-center pt-4">
                 <div class="col-md-6">
                     <p class="fs-5">
                         <strong>VetCare</strong> nació del sueño compartido de un grupo de profesionales amantes de los animales, con la convicción de que cada mascota merece atención médica de calidad, afecto y respeto. Lo que comenzó como un pequeño consultorio de barrio impulsado por la pasión y vocación de servicio, fue creciendo gracias a la confianza de nuestros pacientes peludos y sus familias.

@@ -10,37 +10,37 @@
             <?php
             helper('form');
 
-            if($validation){
-                foreach($validation as $val_error){
+            if ($validation) {
+                foreach ($validation as $val_error) {
                     echo '<div class="alert alert-danger" role="alert">';
                     echo $val_error;
                     echo '</div>';
                 }
             }
-           ?>
+            ?>
 
-               <?php echo form_open_multipart("login/crear_usuario")?>
-                <label name="" class="form-label">Nombre</label>
-                <input type="text" name="nombre" class="form-control">
+            <?php echo form_open_multipart("login/crear_usuario") ?>
+            <label name="" class="form-label">Nombre</label>
+            <input type="text" name="nombre" class="form-control">
 
-                <label name="" class="form-label">Apellido</label>
-                <input type="text" name="apellido" class="form-control">
+            <label name="" class="form-label">Apellido</label>
+            <input type="text" name="apellido" class="form-control">
 
-                <label name="" class="form-label">Correo</label>
-                <input type="text" name="correo" class="form-control">
+            <label name="" class="form-label">Correo</label>
+            <input type="text" name="correo" class="form-control">
 
-                <label name="" class="form-label">Contraseña</label>
-                <input type="password" name="contraseña" class="form-control">
+            <label name="" class="form-label">Contraseña</label>
+            <input type="password" name="contraseña" class="form-control">
 
-                <label name="" class="form-label">Confirmacion Contraseña</label>
-                <input type="password" name="confirmacion-contraseña" class="form-control">
+            <label name="" class="form-label">Confirmacion Contraseña</label>
+            <input type="password" name="confirmacion-contraseña" class="form-control">
 
-                <input type="file" name="imagen" size="20">
-                <br>
-                
-                <input type="submit" value="Crear cuenta" class="btn">
-                
-             <?php echo form_close() ?>
+            <input type="file" name="imagen" size="20">
+            <br>
+
+            <input type="submit" value="Crear cuenta" class="btn btn-registro">
+
+            <?php echo form_close() ?>
         </div>
     </div>
 </div>

@@ -1,10 +1,11 @@
-.container-login{
+.container-login {
+    position: relative; /* necesario para pseudo-elemento */
+    display: flex;
+    flex-wrap: wrap;
     background-color: #020202;
     padding: 0;
     margin: 0;
     min-height: 100vh;
-    display: flex;
-    flex-wrap: wrap;
 }
 
 .container-registro{
@@ -15,10 +16,25 @@
     flex-wrap: wrap;
 }
 
-.fondo-login{
+.fondo-login {
     width: 35%;
     height: auto;
     object-fit: cover;
+    display: block; /* hace que respete ancho/alto */
+}
+
+.container-login::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    width: 35%; /* mismo ancho que la imagen */
+    pointer-events: none;    /* no interfiere con clics */
+    background: linear-gradient(to left,
+            rgba(0, 0, 0, .95) 0%,
+            rgba(0, 0, 0, 0) 100%);
+    z-index: 1;    /* sobre la foto, debajo del form */
 }
 
 .fondo-registro{
@@ -27,13 +43,15 @@
     object-fit: cover;
 }
 
-.seccion-login{
+.seccion-login {
+    position: relative;    /* gana z-index por encima del gradiente */
+    z-index: 2;
     display: flex;
     align-items: center;
     justify-content: center;
     width: 50%;
     padding: 30px;
-    color: white;
+    color: #fff;
 }
 
 .seccion-registro{
@@ -99,36 +117,44 @@
 
 
 @media (max-width: 1023px) {
-    .container-login {
-        z-index: -1;
+    .container-login {        
         height: 100%;
-        position: relative;
-    
+        position: relative;    
     }
 
     .fondo-login {
         width: 100%;
         height: 100%;
         position: absolute;
-        z-index: -1;
+        top: 0;
+        left: 0;            
+        z-index: -1;            
+    }
+
+    .container-login::before {
+        width: 100%;        /* cubre todo el ancho */
+        background: linear-gradient(to bottom,                /* degradado vertical en móvil */
+                rgba(0, 0, 0, .75) 0%,
+                rgba(0, 0, 0, 0) 100%  );
     }
 
     .seccion-login {
         width: 80%;
+        margin: auto;
         padding: 20px;
-        margin: 0 auto;
-
+        opacity: .9;            /* separa un poco del fondo */
     }
 
     .container-form {
-        max-width: 100%;
-        margin: 0 auto;
-
+        background: #1e1e1e;
+        border-radius: 10px;
+        padding: 60px 20px;
+        width: 100%;
+        max-width: 500px;
     }
 
     /*registro*/
     .container-registro {
-        z-index: -1;
         height: 100%;
         position: relative;
     }
@@ -150,3 +176,13 @@
 
 }
 
+@media (max-width: 576px) {
+    .seccion-login {
+        width: 95%;
+        padding: 10px;
+    }
+
+    .container-form {
+        padding: 40px 15px;
+    }
+}
