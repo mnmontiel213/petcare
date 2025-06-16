@@ -28,9 +28,11 @@ $routes->get('productos/agregar',                  'Productos::agregar', ['filte
 $routes->post('productos/registrar_producto',      'Productos::registrar_nuevo');
 
 //consultas
-$routes->get('contactos',        'Consulta::consultas');
-$routes->get('consultas',        'Consulta::consultas');
-$routes->post('enviar_consulta', 'Consulta::enviar_consulta');
+$routes->get('contactos',         'Consulta::consultas');
+$routes->get('consultas',         'Consulta::consultas');
+$routes->post('enviar_consulta',  'Consulta::enviar_consulta');
+$routes->get('consultas/listar',  'Consulta::listar', ['filter' => 'admin']);
+$routes->post('consulta/eliminar','Consulta::eliminar', ['filter' => 'admin']);
 
 //turnos
 $routes->get('turno',                'Turno::turno', ['filter' => 'auth']);
@@ -48,6 +50,9 @@ $routes->post('login/cuenta_actualizar', 'Login::actualizar_cuenta');
 
 //perfil del usuario
 $routes->get('perfil', 'Home::perfil', ['filter' => 'auth']);
+$routes->get('usuarios/listar', 'Home::usuarios_listar', ['filter' => 'admin']);
+
+$routes->post('usuarios/actualizar', 'Home::usuarios_actualizar', ['filter' => 'admin']);
 
 //carrito
 $routes->get('carrito', 'Carrito::carrito', ['filter' => 'auth']);

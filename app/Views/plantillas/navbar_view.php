@@ -23,8 +23,8 @@
                            <ul class="dropdown-menu">
                                <li><a class="dropdown-item" href="<?= base_url('productos/agregar') ?>">Agregar productos</a></li>
                                <li><a class="dropdown-item" href="<?= base_url('servicios') ?>">Lista de usuarios</a></li>
-                               <li><a class="dropdown-item" href="<?= base_url('productos/agregar') ?>">Listar consultas</a></li>
-                               <li><a class="dropdown-item" href="<?= base_url('productos/agregar') ?>">Listar Usuarios</a></li>
+                               <li><a class="dropdown-item" href="<?= base_url('consultas/listar') ?>">Listar consultas</a></li>
+                               <li><a class="dropdown-item" href="<?= base_url('usuarios/listar') ?>">Listar Usuarios</a></li>
                            </ul>
                        </li>
                     <?php endif; ?>     
