@@ -2,6 +2,8 @@
 
 namespace App\Controllers;
 
+use App\Models\CategoriaModel;
+use App\Models\ServicioModel;
 use App\Models\TurnoModel;
 use App\Models\ProductoModel;
 use CodeIgniter\HTTP\RedirectResponse;
@@ -150,20 +152,38 @@ class Home extends BaseController
     public function perfil(): string
     {
         $turnoModel = new TurnoModel();
-        $turnos = $turnoModel->where('USUARIO_ID', session()->get('USUARIO_ID'))->findAll();
+        $servicioModel = new ServicioModel();
+
+        $turnos_row = $turnoModel->where('USUARIO_ID', session()->get('USUARIO_ID'))->findAll();
+        $servicios_row = $servicioModel->findAll();
 
         $session = session();
         
+        $servicios = [];
+
+        foreach($turnos_row as $t){
+            foreach($servicios_row as $s){
+                
+                if($s['SERVICIO_ID'] == $t['SERVICIO_ID']){
+                    $servicios[$s['SERVICIO_ID']] = $s['DESCRIPCION'];
+                }else{
+                    $servicios[$s['SERVICIO_ID']] = '?';
+                }
+            }
+        }
+
         $usuario = ['nombre' => $session->get('NOMBRE') ,
                     'apellido' => $session->get('APELLIDO'),
-                    'imagen' => $session->get('IMAGEN'),];
-        
+                    'imagen' => $session->get('IMAGEN')
+        ];
+
         $data = [
             'titulo' => 'Perfil',
             'usuario' => $usuario,
-            'turnos' => $turnos
+            'turnos' => $turnos_row,
+            'servicios' => $servicios,
         ];
-        
+
         return view('plantillas/header_view', $data)
             .view('plantillas/navbar_view')
             .view('contenido/perfil')

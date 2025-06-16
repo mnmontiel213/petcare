@@ -3,6 +3,7 @@
 namespace App\Controllers;
 
 use App\Models\CategoriaModel;
+use App\Models\ServicioModel;
 use App\Models\TurnoModel;
 use CodeIgniter\HTTP\ResponseInterface;
 
@@ -14,12 +15,20 @@ class Turno extends BaseController{
 
     public function turno(): string{
         $categoriaModel = new CategoriaModel();
-        $categoria = $categoriaModel->where('TIPO', 'SERVICIO')->findAll();
+        $servicioModel = new ServicioModel();
+
+        $categorias_row = $categoriaModel->where('TIPO', 'SERVICIO')->findAll(); 
+        $servicios_row = $servicioModel->findAll();
 
         $servicios = [];
 
-        foreach($categoria as $c){
-            array_push($servicios, ['servicio' => $c['VALOR'], 'id' => $c['REGISTRO_ID']]);
+        foreach($categorias_row as $c){
+            $servicios[$c['VALOR']] = [];
+            foreach($servicios_row as $s){
+                if($s['CATEGORIA_SERVICIO'] == $c['CATEGORIA_ID']){
+                    array_push($servicios[$c['VALOR']], $s);
+                }
+            }
         }
 
         $data = ['titulo' => 'Turnos', 'servicios' => $servicios];
@@ -29,7 +38,7 @@ class Turno extends BaseController{
                 .view('plantillas/footer_view');
     }
 
-    public function sacar_turno(): ResponseInterface {
+    public function sacar_turno(): ResponseInterface | string {
         $rules = [
             'tipo-turno' => 'required',
             'fecha' => 'required',
@@ -40,24 +49,33 @@ class Turno extends BaseController{
         $request = \Config\Services::request();
         
         $validation->setRules($rules,
-                        ['tipo-turno' => ['required' => 'seleccione el tipo de turno'],
-                         'fecha' => ['required' => 'seleccione una fecha'], 
-                         'horario' => ['required' => 'seleccione un horario'], 
-                        ]);
+        [
+        'tipo-turno' => [
+            'required' => 'seleccione el tipo de turno'
+            ],
+        'fecha' => [
+            'required' => 'seleccione una fecha'
+            ], 
+        'horario' => [
+            'required' => 'seleccione un horario'
+            ], 
+        ]);
         
         $model = new TurnoModel();     
 
         if($validation->withRequest($request)->run()){
-
+            
             $fecha = $this->request->getPost('fecha');
             $horario = $this->request->getPost('horario');
 
-            $ingresado = $model->save([
+            $data = [
                 'USUARIO_ID' => session()->get('USUARIO_ID'),
                 'FECHA'      => $fecha,
                 'HORARIO'    => $horario,
-                'TIPO_TURNO' => $this->request->getPost('tipo-turno'),
-            ]);
+                'SERVICIO_ID' => $this->request->getPost('tipo-turno'),
+            ];
+            
+            $ingresado = $model->save($data);
 
             if($ingresado){
                 session()->setFlashdata('success', 'se registro su turno con exito!');
@@ -67,7 +85,7 @@ class Turno extends BaseController{
                 return $this->response->redirect(base_url('/'));
             }
         }else{
-            session()->setFlashdata('failed', 'hubo un problema al registrar el turno');
+            session()->setFlashdata('failed', 'fallo de validacion');
             return $this->response->redirect(base_url('/'));
         }
     }

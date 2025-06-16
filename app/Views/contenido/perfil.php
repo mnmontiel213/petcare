@@ -62,12 +62,12 @@
                 foreach($turnos as $turno): ?>
                     <a href="#" class="list-group-item list-group-item-action">
                         <div class="d-flex w-100 justify-content-between">
-                            <h5 class="mb-1"><?= $turno['TIPO_TURNO'] ?></h5>
+                            <h5 class="mb-1"><?= $servicios[$turno['SERVICIO_ID']] ?></h5>
                             <small> <?= $turno['FECHA']?> </small>
                         </div>
-                        <p class="mb-1"> Turno de "nombre" para "nombre mascota" </p>
+                        <p class="mb-1"> Turno de <?= $servicios[$turno['SERVICIO_ID']]?> para "nombre mascota" </p>
                         <small> <?= $turno['HORARIO'] ?></small>
-                    </a>        
+                    </a>
             <?php endforeach?>
         </div>
 

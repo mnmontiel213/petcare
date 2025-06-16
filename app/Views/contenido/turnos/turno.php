@@ -7,64 +7,28 @@
         <form action="turno/agregar_turno" method="post">
             <div class="row">
                 <div class="col">
-                    <div class="list-group">
-                    <?php
-                        foreach($servicios as $s){
-                            echo '<label class="list-group-item">';
-                            echo form_radio('tipo-turno', $s['id'], 'class="form-check-input me-1 "');
-                            echo $s['servicio'];
-                            //echo $s['servicio'];
-                            echo '</label>';
-                        }
-                    ?>
-                    </div>  
-
-                    <h2>Estetica</h2>
-
-                    <div class="list-group">
-                        <label class="list-group-item">
-                            <input class="form-check-input me-1" type="radio" name="tipo-turno" value="1">
-                            Baño
-                        </label>
-                        <label class="list-group-item">
-                            <input class="form-check-input me-1" type="radio" name="tipo-turno" value="2">
-                            Corte de uñas
-                        </label>
-                        <label class="list-group-item">
-                            <input class="form-check-input me-1" type="radio" name="tipo-turno" value="3">
-                            Corte de pelo
-                        </label>
-                    </div>
-
-                    <h2>Salud</h2>
-
-                    <div class="list-group">
-                        <label class="list-group-item">
-                            <input class="form-check-input me-1" type="radio" name="tipo-turno" value="4">
-                            Castracion
-                        </label>
-                        <label class="list-group-item">
-                            <input class="form-check-input me-1" type="radio" name="tipo-turno" value="5">
-                            Vacunacion
-                        </label>
-                        <label class="list-group-item">
-                            <input class="form-check-input me-1" type="radio" name="tipo-turno" value="6">
-                            Dentista
-                        </label>
-                    </div>
                     
-                    <h2>Otro</h2>
+                    <!--
+                    $categorias: es un array que contiene las keys de los servicios
+                    $servicios: array que contiene los servicios agrupados por categoria
 
-                    <div class="list-group">
-                        <label class="list-group-item">
-                            <input class="form-check-input me-1" type="radio" name="tipo-turno" value="7">
-                            Radiografia
-                        </label>
-                        <label class="list-group-item">
-                            <input class="form-check-input me-1" type="radio" name="tipo-turno" value="8">
-                            Consulta general
-                        </label>
-                    </div>
+                    $servicios = [
+                        'SALUD' =>    ... ,
+                        'ESTETICA' => ... ,
+                    ]
+                    -->
+                    <?php $categorias = array_keys($servicios)?>
+                    <?php foreach($categorias as $c): ?>
+                        <h2><?= $c ?></h2>
+                        <div class="list-group">
+                            <?php foreach($servicios[$c] as $s): ?>
+                                <label class="list-group-item">
+                                    <input class="form-check-input me-1" type="radio" name="tipo-turno" value='<?= $s['SERVICIO_ID'] ?>'>
+                                    <?= $s['DESCRIPCION'] ?>
+                                </label>
+                            <?php endforeach; ?>
+                        </div>
+                    <?php endforeach; ?>
                 </div>
                 <div class="col">
                     <h2>Fecha</h2>
