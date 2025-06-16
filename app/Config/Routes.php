@@ -39,10 +39,12 @@ $routes->post('turno/agregar_turno', 'Turno::sacar_turno', ['filter' => 'auth'])
 //login
 $routes->get('login/ingresar',                   'Login::login_ingresar');
 $routes->get('login/registrar',                   'Login::login_registrarse');
+$routes->get('login/salir',             'Login::salir_usuario');
 $routes->get('salir',                   'Login::salir');
 $routes->post('login/crear_usuario',    'Login::crear_usuario');
 $routes->post('login/ingresar_usuario', 'Login::ingresar_usuario');
-$routes->get('login/salir',             'Login::salir_usuario');
+$routes->post('login/cuenta_actualizar', 'Login::actualizar_cuenta');
+
 
 //perfil del usuario
 $routes->get('perfil', 'Home::perfil', ['filter' => 'auth']);
@@ -51,3 +53,4 @@ $routes->get('perfil', 'Home::perfil', ['filter' => 'auth']);
 $routes->get('carrito', 'Carrito::carrito', ['filter' => 'auth']);
 $routes->post('carrito/agregar', 'Carrito::agregar_producto', ['filter' => 'auth']);
 $routes->post('carrito/update', 'Carrito::actualizar', ['filter' => 'auth']);
+$routes->post('carrito/pagar', 'Carrito::pagar', ['filter' => 'auth']);

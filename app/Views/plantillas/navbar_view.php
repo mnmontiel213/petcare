@@ -14,6 +14,7 @@
             <div class="collapse navbar-collapse"  id="navbarNavDropdown">
                 <ul class="navbar-nav ms-auto">
                     <?php $session = session(); ?>
+                    <!-- EL ADMIN Bv -->
                     <?php if($session->get('ADMIN') and $session->get('LOGGED')) :?>
                        <li class="nav-item dropdown">
                            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
@@ -22,9 +23,12 @@
                            <ul class="dropdown-menu">
                                <li><a class="dropdown-item" href="<?= base_url('productos/agregar') ?>">Agregar productos</a></li>
                                <li><a class="dropdown-item" href="<?= base_url('servicios') ?>">Lista de usuarios</a></li>
+                               <li><a class="dropdown-item" href="<?= base_url('productos/agregar') ?>">Listar consultas</a></li>
+                               <li><a class="dropdown-item" href="<?= base_url('productos/agregar') ?>">Listar Usuarios</a></li>
                            </ul>
                        </li>
-                    <?php endif; ?>         
+                    <?php endif; ?>     
+
                     <!-- Dropdown Servicios -->
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">

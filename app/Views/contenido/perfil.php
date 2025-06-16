@@ -2,12 +2,10 @@
     <div class="col">
 
         <?php
-
-        // SI EL USUARIO NO TIENE UNA IMAGEN ASOCIADA, ASIGNAR UNA POR DEFECTO
-        if($usuario['imagen'] == null){
-            $usuario['imagen'] = 'petcare.png';
-        }
-      
+            // SI EL USUARIO NO TIENE UNA IMAGEN ASOCIADA, ASIGNAR UNA POR DEFECTO
+            if($usuario['imagen'] == null){
+                $usuario['imagen'] = 'petcare.png';
+            }
         ?>
 
         <div class="d-flex flex-column p-5">
@@ -49,9 +47,7 @@
                     </div>
                 </div>  
             <?php endforeach ?>
-
         </div>
-
     </div>
 
     <div class="col p-5">

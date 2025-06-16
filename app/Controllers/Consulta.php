@@ -34,7 +34,7 @@ class Consulta extends BaseController{
             ]);
 
             session()->setFlashdata('success', 'Su consulta se envio');
-            return $this->response->redirect(base_url('login'));
+            return $this->response->redirect(base_url('/'));
         }
 
         return redirect()->to('/');

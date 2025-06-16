@@ -118,6 +118,46 @@ class Login extends BaseController{
 
     }
 
+    public function actualizar_cuenta(){
+        helper('url');
+
+        $validation = \Config\Services::validation();
+        $request = \Config\Services::request();
+
+        $session = session();
+
+        $validation->setRules(
+            [
+                'cbu' => 'required',
+                'direccion' => 'required'
+            ],
+            [ 'cbu' =>
+              [
+                  'required' => 'Ese necesario un CBU'
+              ],
+              'direccion' =>
+              [
+                  'required' => 'Es necesario una direccion'
+              ]
+            ]);
+        
+        if($validation->withRequest($request)->run()){
+            $model = new UsuarioModel();
+            
+            $model->update($session->get('USUARIO_ID'), ['CBU' => $request->getPost('cbu'),
+                                'DIRECCION' => $request->getPost('direccion')]);
+            
+            
+            return redirect()->to(previous_url());
+        }else{
+
+            foreach( $validation->getErrors() as $e){
+                echo $e;
+            }
+
+            echo 'faltaron weas mijo';
+        }
+    }
 
     
     /*

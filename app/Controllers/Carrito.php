@@ -2,6 +2,8 @@
 
 namespace App\Controllers;
 
+
+use App\Models\UsuarioModel;
 use App\Controllers\BaseController;
 use Codeigniter\HTTP\RedirectResponse;
 use Codeigniter\HTTP\ResponseInterface;
@@ -18,7 +20,12 @@ class Carrito extends BaseController{
 
         $productos = $carrito->contents();
 
-        $data = ['titulo' => 'carrito', 'productos' => $productos];
+        $total = 0;
+        foreach($productos as $p){
+            $total += $p['price'] * $p['qty'];
+        }
+
+        $data = ['titulo' => 'carrito', 'productos' => $productos, 'total' => $total, 'compra_finalizada' => false];
         return view('plantillas/header_view', $data)
             .view('plantillas/navbar_view')
             .view('contenido/carrito/carrito')
@@ -90,5 +97,29 @@ class Carrito extends BaseController{
         }
 
         return redirect()->route('carrito');        
+    }
+
+    public function pagar(){
+        $carrito = \Config\Services::cart();
+        $session = session();
+        $usuarioModel = new UsuarioModel();
+
+        $user_data = $usuarioModel->find($session->get('USUARIO_ID'));
+        
+        if($user_data['CBU']){
+            $carrito->destroy();
+
+            $data = ['titulo' => 'carrito', 'productos' => [], 'total' => 0, 'compra_finalizada' => true];
+            return view('plantillas/header_view', $data)
+                    .view('plantillas/navbar_view')
+                    .view('contenido/carrito/carrito')
+                    .view('plantillas/footer_view'); 
+        }else{
+            $data = ['titulo' => 'Completar cuenta', 'validation' => []];
+            return view('plantillas/header_view', $data)
+                .view('plantillas/navbar_view')
+                .view('contenido/login/cuenta_completar')
+                .view('plantillas/footer_view'); 
+        }
     }
 }

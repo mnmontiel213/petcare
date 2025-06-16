@@ -6,8 +6,6 @@
         <?php
             helper('form');
             
-            echo validation_list_errors();
-            
             echo form_open('enviar_consulta', ['method' => 'post']);
 
             echo form_label('Titulo', 'titulo', ['class' => 'form-label']);
