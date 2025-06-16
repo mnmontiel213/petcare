@@ -1,0 +1,48 @@
+.titulo {
+    font-size: 2rem;
+    color: #4e4e4e;
+    font-weight: 700;
+}
+
+.subtitulo,
+.beneficios-intro {
+    font-size: 1.1rem;
+    color: #555;
+}
+
+.card-beneficio {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card-beneficio:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+}
+
+.benef-icon {
+    max-width: 70px;
+    margin-bottom: 15px;
+    color: #343a40;
+}
+
+.metodo-pago,
+.metodo-envio {
+    max-height: 150px;
+    width: 200px;
+    transition: transform 0.3s ease;
+}
+
+.metodo-pago:hover,
+.metodo-envio:hover {
+    transform: scale(1.05);
+}
+
+.separador {
+    border-top: 2px solid #dee2e6;
+    width: 60%;
+    margin: 0 auto;
+}
