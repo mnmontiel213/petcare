@@ -2,6 +2,7 @@
 
 namespace App\Controllers;
 
+use App\Models\CategoriaModel;
 use App\Models\UsuarioModel;
 
 
@@ -261,6 +262,20 @@ class Login extends BaseController{
         $session = session();
         $session->destroy();
         return redirect()->to('/');
+    }
+
+    public function registrar_mascota(){
+
+        $categoriaModel = new CategoriaModel();
+
+        $razas = $categoriaModel->where('TIPO', 'MASCOTA')->findAll();
+
+        $data = ['titulo' => 'nueva mascota', 'razas' => $razas];
+
+        return view('plantillas/header_view', $data)
+                .view('plantillas/navbar_view')
+                .view('contenido/login/nueva_mascota')
+                .view('plantillas/footer_view');
     }
 }
 

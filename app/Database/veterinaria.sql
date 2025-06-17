@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: localhost
--- Tiempo de generación: 17-06-2025 a las 16:10:43
+-- Tiempo de generación: 17-06-2025 a las 21:27:12
 -- Versión del servidor: 10.4.32-MariaDB
 -- Versión de PHP: 8.2.12
 
@@ -67,7 +67,8 @@ CREATE TABLE `consultas` (
 
 INSERT INTO `consultas` (`CONSULTA_ID`, `TITULO`, `CORREO`, `CONTENIDO`, `USUARIO_ID`) VALUES
 (1, 'precios', 'martinez@gmail.com', 'Hola queria consultar por el precio de una radiografia. Gracias.', 0),
-(5, 'Estos es un titulo', 'titulo@gmail.com', 'eee titulo', 0);
+(5, 'Estos es un titulo', 'titulo@gmail.com', 'eee titulo', 0),
+(6, 'consulta', 'consulta', 'consuuuuuuuuuuuuuulta', 0);
 
 -- --------------------------------------------------------
 
@@ -79,7 +80,8 @@ CREATE TABLE `mascotas` (
   `MASCOTA_ID` int(11) NOT NULL,
   `NOMBRE` varchar(128) NOT NULL,
   `TIPO_MASCOTA` int(11) NOT NULL,
-  `USUARIO_ID` int(11) NOT NULL
+  `USUARIO_ID` int(11) NOT NULL,
+  `IMAGEN` varchar(128) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
 
 -- --------------------------------------------------------
@@ -157,7 +159,7 @@ CREATE TABLE `usuarios` (
 --
 
 INSERT INTO `usuarios` (`USUARIO_ID`, `CBU`, `NOMBRE`, `APELLIDO`, `CORREO`, `CONTRASEÑA`, `DIRECCION`, `ES_MAYORISTA`, `IMAGEN`) VALUES
-(3, 92834, 'juanito', 'pere', 'juanitoperez@gmail.com', '$2y$10$YtGEpCedo6QF/gMtvt4xIuFvR.Hm2Ykemh.M5WkpDsdXnqLEkwZQS', 'Poralla', 0, ''),
+(3, 92834, 'juanito', 'pere', 'juanitoperez@gmail.com', '$2y$10$YtGEpCedo6QF/gMtvt4xIuFvR.Hm2Ykemh.M5WkpDsdXnqLEkwZQS', 'Poralla', 1, ''),
 (4, 982034, 'admin', 'petcare', 'adminpetcare@gmail.com', '$2y$10$D3aiZcMCMx8kQgVci/YukeWPwJSYA8dtJIj3CCb/4tM5DbikYQH3W', 'Micasa', 1, ''),
 (5, 293742, 'Julio', 'Jules', 'julio@gmail.com', '$2y$10$Bd0QFuHBqqpa4OkrSnmjq.vvfJ0ys2OwXdokMHFdUXT9ZzSVR26di', 'AAAAAAA', 0, NULL);
 
@@ -222,7 +224,7 @@ ALTER TABLE `usuarios`
 -- AUTO_INCREMENT de la tabla `consultas`
 --
 ALTER TABLE `consultas`
-  MODIFY `CONSULTA_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `CONSULTA_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT de la tabla `servicios`

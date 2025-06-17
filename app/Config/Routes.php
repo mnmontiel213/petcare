@@ -55,6 +55,8 @@ $routes->get('perfil', 'Home::perfil', ['filter' => 'auth']);
 $routes->get('usuarios/listar', 'Home::usuarios_listar', ['filter' => 'admin']);
 
 $routes->post('usuarios/actualizar', 'Home::usuarios_actualizar', ['filter' => 'admin']);
+$routes->get('registrar/mascota', 'Login::registrar_mascota', ['filter' => 'auth']);
+
 
 //carrito
 $routes->get('carrito', 'Carrito::carrito', ['filter' => 'auth']);

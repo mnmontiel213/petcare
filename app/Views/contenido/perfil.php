@@ -16,26 +16,32 @@
         <div class="p-5">
             <h2>Mascotas</h2>
      
-            <!--  ESTO ES TEMPORAL HASTA AGREGAR ANIMALES A LA BASE DE DATOS -->
-            <?php
-            $mascotas= [ 
-                [
-                    'nombre' => 'fitto', 
-                    'tipo' => 'perro', 
-                    'id' => 1
-                ],
-                [
-                    'nombre' => 'dakota', 
-                    'tipo' => 'perro', 
-                    'id' => 2,
-                ],
-                [
-                    'nombre' => 'kaido', 
-                    'tipo' => 'gato', 
-                    'id' => 3,
-                ],
-            ];
-            ?>
+            <div>
+                <a class="btn btn-primary" href="registrar/mascota">Nueva mascota</a>
+            </div>
+
+            <div class="container py-2">
+                <!--  ESTO ES TEMPORAL HASTA AGR   EGAR ANIMALES A LA BASE DE DATOS -->
+                <?php
+                $mascotas= [ 
+                    [
+                        'nombre' => 'fitto', 
+                        'tipo' => 'perro', 
+                        'id' => 1
+                    ],
+                    [
+                        'nombre' => 'dakota', 
+                        'tipo' => 'perro', 
+                        'id' => 2,
+                    ],
+                    [
+                        'nombre' => 'kaido', 
+                        'tipo' => 'gato', 
+                        'id' => 3,
+                    ],
+                ];
+                ?>
+            </div>
 
             <?php
                 foreach($mascotas as $mascota): ?>
