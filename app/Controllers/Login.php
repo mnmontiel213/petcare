@@ -148,7 +148,7 @@ class Login extends BaseController{
                                 'DIRECCION' => $request->getPost('direccion')]);
             
             
-            return redirect()->to(previous_url());
+            return redirect()->to('carrito');
         }else{
 
             foreach( $validation->getErrors() as $e){

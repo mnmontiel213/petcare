@@ -44,7 +44,7 @@
                 <p class="invalid-feedback">Es necesaria una direccion</p>
                 
                 <div class="py-5">
-                    <input type="submit" value="Crear cuenta" class="btn btn-primary">
+                    <input type="submit" value="Actualizar cuenta" class="btn btn-primary">
                 </div>
                 
              <?php echo form_close() ?>

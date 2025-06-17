@@ -229,6 +229,6 @@ class Home extends BaseController
         
         $usuarioModel->update($id, ['ES_MAYORISTA' => $mayorista]);
         
-        return redirect()->to(previous_url());
+        return redirect()->to('carrito');
     }
 }
