@@ -75,9 +75,9 @@ class Productos extends BaseController{
             $producto_id = $categoriaModel->where('VALOR', $producto)->first();
             $productoModel->where('CATEGORIA_PRODUCTO', $producto_id['CATEGORIA_ID']);
         }
-        
-        $result = $productoModel->findAll();
 
+        $result = $productoModel->findAll();
+        
         $data = ['titulo' => "productos",
                  'productos' => $result,
                  'categorias' => $categorias];
@@ -170,11 +170,7 @@ class Productos extends BaseController{
             
             $model = new ProductoModel();
 
-            echo $this->request->getPost('categoria');
-            echo $this->request->getPost('mascota');
-            echo $this->request->getPost('marca');
-
-            $model->save([
+            $datos = [
                 'CODIGO' => $this->request->getPost('codigo'),
                 'NOMBRE' => $this->request->getPost('nombre'),
                 'PRECIO' => $this->request->getPost('precio'),
@@ -183,7 +179,9 @@ class Productos extends BaseController{
                 'CATEGORIA_MASCOTA' => $this->request->getPost('mascota'),
                 'CATEGORIA_MARCA' => $this->request->getPost('marca'),
                 'IMAGEN' => $nombre_aleatorio,
-            ]);
+            ];
+
+            $model->save($datos);
 
             $data['titulo'] = "Agregar";
             $data['validation'] = null;

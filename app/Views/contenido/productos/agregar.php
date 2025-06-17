@@ -31,8 +31,8 @@ if($validation){
     <h3>Marca</h3>
 
     <?php foreach($categorias['marcas'] as $m){
+        echo form_radio('marca', $m['CATEGORIA_ID']);
         echo form_label($m['VALOR']);
-        echo form_radio('marca', $m['VALOR']);
         echo '<br>';
     }    
     ?>
@@ -46,22 +46,23 @@ if($validation){
 
     <h3>Categoria</h3>
     <?php foreach($categorias['productos'] as $m){
-        echo form_label($m['VALOR']);
-        echo form_radio('categoria', $m['VALOR']);
+        echo form_radio('categoria', $m['CATEGORIA_ID']);
+        echo form_label($m['VALOR']);        
         echo '<br>';
     }    
     ?>
     
     <h3>Mascota</h3>
     <?php foreach($categorias['mascotas'] as $m){
+        echo form_radio('mascota', $m['CATEGORIA_ID']);
         echo form_label($m['VALOR']);
-        echo form_radio('mascota', $m['VALOR']);
         echo '<br>';
     }    
     ?>
 
     <br>
     <label for="">imagen</label>
+    <br>
     <input type="file" name="imagen" size="20">
     <br>
     <br>    
