@@ -2,10 +2,10 @@
 -- version 5.2.1
 -- https://www.phpmyadmin.net/
 --
--- Servidor: localhost
--- Tiempo de generación: 17-06-2025 a las 21:27:12
--- Versión del servidor: 10.4.32-MariaDB
--- Versión de PHP: 8.2.12
+-- Host: localhost
+-- Generation Time: Jun 18, 2025 at 07:34 PM
+-- Server version: 10.4.32-MariaDB
+-- PHP Version: 8.2.12
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -18,13 +18,13 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Base de datos: `veterinaria`
+-- Database: `veterinaria`
 --
 
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `categoria`
+-- Table structure for table `categoria`
 --
 
 CREATE TABLE `categoria` (
@@ -34,7 +34,7 @@ CREATE TABLE `categoria` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
--- Volcado de datos para la tabla `categoria`
+-- Dumping data for table `categoria`
 --
 
 INSERT INTO `categoria` (`CATEGORIA_ID`, `VALOR`, `TIPO`) VALUES
@@ -50,7 +50,7 @@ INSERT INTO `categoria` (`CATEGORIA_ID`, `VALOR`, `TIPO`) VALUES
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `consultas`
+-- Table structure for table `consultas`
 --
 
 CREATE TABLE `consultas` (
@@ -62,57 +62,62 @@ CREATE TABLE `consultas` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
--- Volcado de datos para la tabla `consultas`
+-- Dumping data for table `consultas`
 --
 
 INSERT INTO `consultas` (`CONSULTA_ID`, `TITULO`, `CORREO`, `CONTENIDO`, `USUARIO_ID`) VALUES
-(1, 'precios', 'martinez@gmail.com', 'Hola queria consultar por el precio de una radiografia. Gracias.', 0),
-(5, 'Estos es un titulo', 'titulo@gmail.com', 'eee titulo', 0),
-(6, 'consulta', 'consulta', 'consuuuuuuuuuuuuuulta', 0);
+(6, 'necesito mas comida', 'necesitomascomida@gmail.com', 'necesito mucha, basante mas comida', 0);
 
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `mascotas`
+-- Table structure for table `mascotas`
 --
 
 CREATE TABLE `mascotas` (
   `MASCOTA_ID` int(11) NOT NULL,
   `NOMBRE` varchar(128) NOT NULL,
   `TIPO_MASCOTA` int(11) NOT NULL,
-  `USUARIO_ID` int(11) NOT NULL,
-  `IMAGEN` varchar(128) DEFAULT NULL
+  `USUARIO_ID` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
+
+--
+-- Dumping data for table `mascotas`
+--
+
+INSERT INTO `mascotas` (`MASCOTA_ID`, `NOMBRE`, `TIPO_MASCOTA`, `USUARIO_ID`) VALUES
+(1, 'Fitto', 4, 4),
+(2, 'Dakota', 4, 4);
 
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `productos`
+-- Table structure for table `productos`
 --
 
 CREATE TABLE `productos` (
   `CODIGO` int(11) NOT NULL,
   `NOMBRE` varchar(256) NOT NULL,
-  `PRECIO` float NOT NULL,
-  `PESO` float DEFAULT NULL,
-  `IMAGEN` varchar(128) NOT NULL,
   `CATEGORIA_MARCA` int(11) NOT NULL,
   `CATEGORIA_PRODUCTO` int(11) NOT NULL,
-  `CATEGORIA_MASCOTA` int(11) NOT NULL
+  `CATEGORIA_MASCOTA` int(11) NOT NULL,
+  `PRECIO` float NOT NULL,
+  `PESO` float DEFAULT NULL,
+  `IMAGEN` varchar(128) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
--- Volcado de datos para la tabla `productos`
+-- Dumping data for table `productos`
 --
 
-INSERT INTO `productos` (`CODIGO`, `NOMBRE`, `PRECIO`, `PESO`, `IMAGEN`, `CATEGORIA_MARCA`, `CATEGORIA_PRODUCTO`, `CATEGORIA_MASCOTA`) VALUES
-(98123, 'Comida perro', 11000, 1, '1750168148_a9e6ac0e97040af21836.jpg', 5, 11, 4),
-(912831, 'Comida gato', 12000, 1, '1750167876_62d5886151043c9fa1e7.jpg', 5, 11, 3);
+INSERT INTO `productos` (`CODIGO`, `NOMBRE`, `CATEGORIA_MARCA`, `CATEGORIA_PRODUCTO`, `CATEGORIA_MASCOTA`, `PRECIO`, `PESO`, `IMAGEN`) VALUES
+(5324, 'Alimento papu', 5, 11, 4, 1, 1, '1749831090_3917e373719167501da5.png'),
+(1243435, 'Alimento gato la secuela', 5, 11, 3, 1, 1, '1749830111_9026c2f1fce819d4c38f.jpg');
 
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `servicios`
+-- Table structure for table `servicios`
 --
 
 CREATE TABLE `servicios` (
@@ -122,10 +127,22 @@ CREATE TABLE `servicios` (
   `DESCRIPCION` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
+--
+-- Dumping data for table `servicios`
+--
+
+INSERT INTO `servicios` (`SERVICIO_ID`, `NOMBRE`, `CATEGORIA_SERVICIO`, `DESCRIPCION`) VALUES
+(1, 'CORTE_PELO', 8, 'corte de pelo'),
+(2, 'CORTE_UÑA', 8, 'corte de uñas'),
+(3, 'BAÑO', 8, 'baño'),
+(4, 'CASTRACION', 7, 'castracion'),
+(5, 'VACUNACION', 7, 'vacunacion'),
+(6, 'DENTISTA', 7, 'dentista');
+
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `turnos`
+-- Table structure for table `turnos`
 --
 
 CREATE TABLE `turnos` (
@@ -133,13 +150,24 @@ CREATE TABLE `turnos` (
   `USUARIO_ID` int(11) NOT NULL,
   `FECHA` date NOT NULL,
   `HORARIO` time NOT NULL,
-  `CATEGORIA_TURNO` int(11) NOT NULL
+  `SERVICIO_ID` int(11) NOT NULL,
+  `MASCOTA_ID` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `turnos`
+--
+
+INSERT INTO `turnos` (`TURNO_ID`, `USUARIO_ID`, `FECHA`, `HORARIO`, `SERVICIO_ID`, `MASCOTA_ID`) VALUES
+(11, 4, '2025-06-25', '10:00:00', 2, 1),
+(12, 4, '2025-06-26', '09:00:00', 1, 2),
+(13, 4, '2025-06-27', '11:00:00', 3, 1),
+(14, 4, '2025-07-09', '10:00:00', 4, 2);
 
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `usuarios`
+-- Table structure for table `usuarios`
 --
 
 CREATE TABLE `usuarios` (
@@ -150,38 +178,38 @@ CREATE TABLE `usuarios` (
   `CORREO` varchar(256) NOT NULL,
   `CONTRASEÑA` varchar(512) NOT NULL,
   `DIRECCION` text DEFAULT NULL,
-  `ES_MAYORISTA` tinyint(1) NOT NULL,
+  `ES_MAYORISTA` tinyint(1) DEFAULT NULL,
   `IMAGEN` varchar(128) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
--- Volcado de datos para la tabla `usuarios`
+-- Dumping data for table `usuarios`
 --
 
 INSERT INTO `usuarios` (`USUARIO_ID`, `CBU`, `NOMBRE`, `APELLIDO`, `CORREO`, `CONTRASEÑA`, `DIRECCION`, `ES_MAYORISTA`, `IMAGEN`) VALUES
-(3, 92834, 'juanito', 'pere', 'juanitoperez@gmail.com', '$2y$10$YtGEpCedo6QF/gMtvt4xIuFvR.Hm2Ykemh.M5WkpDsdXnqLEkwZQS', 'Poralla', 1, ''),
-(4, 982034, 'admin', 'petcare', 'adminpetcare@gmail.com', '$2y$10$D3aiZcMCMx8kQgVci/YukeWPwJSYA8dtJIj3CCb/4tM5DbikYQH3W', 'Micasa', 1, ''),
-(5, 293742, 'Julio', 'Jules', 'julio@gmail.com', '$2y$10$Bd0QFuHBqqpa4OkrSnmjq.vvfJ0ys2OwXdokMHFdUXT9ZzSVR26di', 'AAAAAAA', 0, NULL);
+(3, NULL, 'juanito', 'pere', 'juanitoperez@gmail.com', '$2y$10$YtGEpCedo6QF/gMtvt4xIuFvR.Hm2Ykemh.M5WkpDsdXnqLEkwZQS', NULL, 0, ''),
+(4, 134531, 'admin', 'petcare', 'adminpetcare@gmail.com', '$2y$10$D3aiZcMCMx8kQgVci/YukeWPwJSYA8dtJIj3CCb/4tM5DbikYQH3W', 'MIKASA', 1, ''),
+(5, NULL, 'Matias', 'Montiel', 'petcare@gmail.com', '$2y$10$OIBAt4Ooqxk9TQza5jdKaelrTuwaTPSR0vmYb7h4ZJbh.R0pArByW', NULL, 0, NULL);
 
 --
--- Índices para tablas volcadas
+-- Indexes for dumped tables
 --
 
 --
--- Indices de la tabla `categoria`
+-- Indexes for table `categoria`
 --
 ALTER TABLE `categoria`
   ADD KEY `REGISTRO_ID` (`CATEGORIA_ID`);
 
 --
--- Indices de la tabla `consultas`
+-- Indexes for table `consultas`
 --
 ALTER TABLE `consultas`
   ADD PRIMARY KEY (`CONSULTA_ID`),
   ADD KEY `USUARIO_ID` (`USUARIO_ID`);
 
 --
--- Indices de la tabla `mascotas`
+-- Indexes for table `mascotas`
 --
 ALTER TABLE `mascotas`
   ADD PRIMARY KEY (`MASCOTA_ID`),
@@ -189,27 +217,29 @@ ALTER TABLE `mascotas`
   ADD KEY `TIPO_MASCOTA` (`TIPO_MASCOTA`);
 
 --
--- Indices de la tabla `productos`
+-- Indexes for table `productos`
 --
 ALTER TABLE `productos`
-  ADD PRIMARY KEY (`CODIGO`);
+  ADD PRIMARY KEY (`CODIGO`),
+  ADD KEY `marca_categoria_id` (`CATEGORIA_MARCA`);
 
 --
--- Indices de la tabla `servicios`
+-- Indexes for table `servicios`
 --
 ALTER TABLE `servicios`
-  ADD PRIMARY KEY (`SERVICIO_ID`);
+  ADD PRIMARY KEY (`SERVICIO_ID`),
+  ADD KEY `CATEGORIA_SERVICIO` (`CATEGORIA_SERVICIO`);
 
 --
--- Indices de la tabla `turnos`
+-- Indexes for table `turnos`
 --
 ALTER TABLE `turnos`
   ADD PRIMARY KEY (`TURNO_ID`),
   ADD KEY `USUARIO_ID` (`USUARIO_ID`),
-  ADD KEY `categoria_turno_id` (`CATEGORIA_TURNO`);
+  ADD KEY `categoria_turno_id` (`SERVICIO_ID`);
 
 --
--- Indices de la tabla `usuarios`
+-- Indexes for table `usuarios`
 --
 ALTER TABLE `usuarios`
   ADD PRIMARY KEY (`USUARIO_ID`),
@@ -217,50 +247,49 @@ ALTER TABLE `usuarios`
   ADD UNIQUE KEY `CBU` (`CBU`);
 
 --
--- AUTO_INCREMENT de las tablas volcadas
+-- AUTO_INCREMENT for dumped tables
 --
 
 --
--- AUTO_INCREMENT de la tabla `consultas`
+-- AUTO_INCREMENT for table `consultas`
 --
 ALTER TABLE `consultas`
   MODIFY `CONSULTA_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
--- AUTO_INCREMENT de la tabla `servicios`
+-- AUTO_INCREMENT for table `mascotas`
+--
+ALTER TABLE `mascotas`
+  MODIFY `MASCOTA_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
+-- AUTO_INCREMENT for table `servicios`
 --
 ALTER TABLE `servicios`
-  MODIFY `SERVICIO_ID` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `SERVICIO_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
--- AUTO_INCREMENT de la tabla `turnos`
+-- AUTO_INCREMENT for table `turnos`
 --
 ALTER TABLE `turnos`
-  MODIFY `TURNO_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `TURNO_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 
 --
--- AUTO_INCREMENT de la tabla `usuarios`
+-- AUTO_INCREMENT for table `usuarios`
 --
 ALTER TABLE `usuarios`
   MODIFY `USUARIO_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
--- Restricciones para tablas volcadas
+-- Constraints for dumped tables
 --
 
 --
--- Filtros para la tabla `mascotas`
+-- Constraints for table `mascotas`
 --
 ALTER TABLE `mascotas`
   ADD CONSTRAINT `mascota_categoria_id` FOREIGN KEY (`TIPO_MASCOTA`) REFERENCES `categoria` (`CATEGORIA_ID`),
   ADD CONSTRAINT `mascota_dueño_id` FOREIGN KEY (`USUARIO_ID`) REFERENCES `usuarios` (`USUARIO_ID`);
-
---
--- Filtros para la tabla `turnos`
---
-ALTER TABLE `turnos`
-  ADD CONSTRAINT `categoria_turno_id` FOREIGN KEY (`CATEGORIA_TURNO`) REFERENCES `categoria` (`CATEGORIA_ID`),
-  ADD CONSTRAINT `usuario_turno_id` FOREIGN KEY (`USUARIO_ID`) REFERENCES `usuarios` (`USUARIO_ID`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
