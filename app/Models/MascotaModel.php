@@ -6,7 +6,7 @@ use CodeIgniter\Model;
 
 class MascotaModel extends Model{
     protected $DBgroup          = 'veterinaria';
-    protected $table            = 'consultas';
+    protected $table            = 'mascotas';
     protected $primaryKey       = 'MASCOTA_ID';
     protected $useAutoIncrement = true;
     protected $returnType       = 'array';

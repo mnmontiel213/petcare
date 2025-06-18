@@ -51,11 +51,12 @@ $routes->post('login/cuenta_actualizar', 'Login::actualizar_cuenta');
 
 
 //perfil del usuario
-$routes->get('perfil', 'Home::perfil', ['filter' => 'auth']);
+$routes->get('perfil', 'Login::perfil', ['filter' => 'auth']);
 $routes->get('usuarios/listar', 'Home::usuarios_listar', ['filter' => 'admin']);
 
 $routes->post('usuarios/actualizar', 'Home::usuarios_actualizar', ['filter' => 'admin']);
-$routes->get('registrar/mascota', 'Login::registrar_mascota', ['filter' => 'auth']);
+$routes->get('registrar/mascota', 'Login::registrar_mascota_formulario', ['filter' => 'auth']);
+$routes->post('registrar/mascota', 'Login::registrar_mascota', ['filter' => 'auth']);
 
 
 //carrito

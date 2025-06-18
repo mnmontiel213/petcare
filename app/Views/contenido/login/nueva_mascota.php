@@ -1,26 +1,45 @@
 
+<?php helper('form') ?>
 
 <div>
+    <?php 
+        foreach($validation as $e){
+            echo $e;
+            echo '<br>';
+        }
+    ?>
+
     <h2>¡Registrar nueva mascota!</h2>
     <div class="container w-25">
-        <form action="">
-            <label for="">Nombre</label>
-            <br>
-            <input type="text">
-            
+        
+        <form action="mascota" method="post">
+
+            <?php if(isset($validation['mascota'])): ?>
+                <label for="">Nombre pls</label>
+                <br>
+                <input type="text" name="nombre">
+            <?php else: ?>
+                <label for="">Nombre</label>
+                <br>
+                <input type="text" name="nombre">
+            <?php endif ?>
             <br>
             <br>
             <label for="">Mascota</label>
-            <?php
-                foreach($razas as $r){
-                    echo '<br>';
-                    echo '<label for="">', $r['VALOR'], '</label>';
-                    echo '<input type="radio">';
-                }
-            ?>
             <br>
+            
+            <?php 
+                foreach($razas as $r){
+                    echo form_radio('mascota', $r['CATEGORIA_ID']);
+                    echo form_label($r['VALOR']);
+                    echo '<br>';
+                }    
+            ?>
+            
             <label for="">Imagen</label>
-            <input type="file" id="img" name="img" accept="image/*">
+            <input type="file" id="imagen" name="imagen">
+
+            <input type="submit" value="Registrar">
         </form>
 
     </div>

@@ -3,7 +3,10 @@
 namespace App\Controllers;
 
 use App\Models\CategoriaModel;
+use App\Models\MascotaModel;
 use App\Models\UsuarioModel;
+use App\Models\TurnoModel;
+use App\Models\ServicioModel;
 
 
 /*
@@ -179,7 +182,7 @@ class Login extends BaseController{
             [
                 'correo' => 'required|valid_email',
                 'contraseña' => 'required',
-            ],
+            ]  ,
             [
                 'correo' =>[
                     'required' => 'Ingrese un correo',
@@ -264,18 +267,121 @@ class Login extends BaseController{
         return redirect()->to('/');
     }
 
-    public function registrar_mascota(){
+    public function registrar_mascota_formulario(){
 
         $categoriaModel = new CategoriaModel();
 
         $razas = $categoriaModel->where('TIPO', 'MASCOTA')->findAll();
 
-        $data = ['titulo' => 'nueva mascota', 'razas' => $razas];
+        $data = ['titulo' => 'Registrar mascota', 'razas' => $razas, 'validation' => []];
 
         return view('plantillas/header_view', $data)
                 .view('plantillas/navbar_view')
                 .view('contenido/login/nueva_mascota')
                 .view('plantillas/footer_view');
+    }
+
+    public function registrar_mascota() {
+        $validation = \Config\Services::validation();
+        $request = \Config\Services::request();
+
+        $validation->setRules([
+            'nombre' => 'required',
+            'mascota' => 'required',
+        ],
+        [ 'nombre' =>[
+              'required' => 'El nombre es obligatorio'
+                ],
+          'mascota' =>
+          [
+              'required' => 'Seleccione el tipo de mascota'
+          ],
+        ]);
+
+        if($validation->withRequest($request)->run()){
+            $model = new MascotaModel();
+            $pass = password_hash($this->request->getPost('contraseña'), PASSWORD_BCRYPT);
+
+            $session = session();
+
+            $model->save([
+                'USUARIO_ID' => $session->get('USUARIO_ID'),
+                'NOMBRE'     => $this->request->getPost('nombre'),
+                'TIPO_MASCOTA'   => $this->request->getPost('mascota'),
+            ]);
+
+            return redirect()->to('registrar/mascota');
+        }else{
+
+            $categoriaModel = new CategoriaModel();
+            $razas = $categoriaModel->where('TIPO', 'MASCOTA')->findAll();
+            
+            $data = [
+                'titulo' => 'Registrar mascota',
+                'validation' => $validation->getErrors(),
+                'razas' => $razas,
+            ];
+
+            return view('plantillas/header_view', $data)
+                .view('plantillas/navbar_view')
+                .view('contenido/login/nueva_mascota')
+                .view('plantillas/footer_view');
+        }
+    }
+
+    public function perfil(): string
+    {
+        $categoriaModel = new CategoriaModel();
+        $turnoModel = new TurnoModel();
+        $servicioModel = new ServicioModel();
+        $mascotaModel = new MascotaModel();
+
+        $session = session();
+
+        $mascotas_row = $mascotaModel->where('USUARIO_ID', $session->get('USUARIO_ID'))->findAll();
+        $turnos_row = $turnoModel->where('USUARIO_ID', session()->get('USUARIO_ID'))->findAll();
+        $servicios_row = $servicioModel->findAll();
+
+        $session = session();
+
+        $mascotas = [];
+
+        foreach($mascotas_row as $m){
+            $tipo = $categoriaModel->find($m['TIPO_MASCOTA']);
+            array_push($mascotas, ['nombre' => $m['NOMBRE'], 'tipo' => $tipo['VALOR']]);
+        }
+
+        $servicios = [];
+
+        foreach ($turnos_row as $t) {
+            foreach ($servicios_row as $s) {
+
+                if ($s['SERVICIO_ID'] == $t['SERVICIO_ID']) {
+                    $servicios[$s['SERVICIO_ID']] = $s['DESCRIPCION'];
+                } else {
+                    $servicios[$s['SERVICIO_ID']] = '?';
+                }
+            }
+        }
+
+        $usuario = [
+            'nombre' => $session->get('NOMBRE'),
+            'apellido' => $session->get('APELLIDO'),
+            'imagen' => $session->get('IMAGEN')
+        ];
+
+        $data = [
+            'titulo' => 'Perfil',
+            'usuario' => $usuario,
+            'turnos' => $turnos_row,
+            'servicios' => $servicios,
+            'mascotas' => $mascotas,
+        ];
+
+        return view('plantillas/header_view', $data)
+            . view('plantillas/navbar_view')
+            . view('contenido/perfil')
+            . view('plantillas/footer_view');
     }
 }
 
