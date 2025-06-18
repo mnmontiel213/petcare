@@ -17,15 +17,17 @@
             <h2>Turnos</h2>
             <p>Proximos turnos</p>
             <div class="list-group w-75">
-                <?php 
+                <?php
                     foreach($turnos as $turno): ?>
+                        <?php $s = $turno['servicio']; ?>
+                        
                         <a href="#" class="list-group-item list-group-item-action">
                             <div class="d-flex w-100 justify-content-between">
-                                <h5 class="mb-1"><?= $servicios[$turno['SERVICIO_ID']] ?></h5>
-                                <small> <?= $turno['FECHA']?> </small>
+                                <h5 class="mb-1"><?= $s['descripcion'] ?></h5>
+                                <small> <?= $turno['fecha']?> </small>
                             </div>
-                            <p class="mb-1"> Turno de <?= $servicios[$turno['SERVICIO_ID']]?> para "nombre mascota" </p>
-                            <small> <?= $turno['HORARIO'] ?></small>
+                            <p class="mb-1"> Turno de <?= $s['descripcion']?> para <?=$turno['mascota']?> </p>
+                            <small> <?= $turno['horario'] ?></small>
                         </a>
                 <?php endforeach?>
             </div>

@@ -344,26 +344,29 @@ class Login extends BaseController{
 
         $session = session();
 
+        //lista de mascotas
         $mascotas = [];
-
         foreach($mascotas_row as $m){
             $tipo = $categoriaModel->find($m['TIPO_MASCOTA']);
-            array_push($mascotas, ['nombre' => $m['NOMBRE'], 'tipo' => $tipo['VALOR']]);
+            $mascotas[$m['MASCOTA_ID']] = ['nombre' => $m['NOMBRE'], 'tipo' => $tipo['VALOR']];
         }
 
+        //lista de servicios
         $servicios = [];
+        foreach ($servicios_row as $s) {
+            $servicios[$s['SERVICIO_ID']] = ['nombre' => $s['NOMBRE'], 'descripcion' => $s['DESCRIPCION'], 'categoria' => $s['CATEGORIA_SERVICIO']];
+        }
+        
+        //lista de turnos
+        $turnos = [];
+        foreach($turnos_row as $t){
+            $servicio = $servicios[$t['SERVICIO_ID']];
+            $mascota =  $mascotas[$t['MASCOTA_ID']];
 
-        foreach ($turnos_row as $t) {
-            foreach ($servicios_row as $s) {
-
-                if ($s['SERVICIO_ID'] == $t['SERVICIO_ID']) {
-                    $servicios[$s['SERVICIO_ID']] = $s['DESCRIPCION'];
-                } else {
-                    $servicios[$s['SERVICIO_ID']] = '?';
-                }
-            }
+            array_push($turnos, ['fecha' => $t['FECHA'], 'horario' => $t['HORARIO'], 'servicio' => $servicio, 'mascota' => $mascota['nombre']] );
         }
 
+        //datos del usuario
         $usuario = [
             'nombre' => $session->get('NOMBRE'),
             'apellido' => $session->get('APELLIDO'),
@@ -373,7 +376,7 @@ class Login extends BaseController{
         $data = [
             'titulo' => 'Perfil',
             'usuario' => $usuario,
-            'turnos' => $turnos_row,
+            'turnos' => $turnos,
             'servicios' => $servicios,
             'mascotas' => $mascotas,
         ];
