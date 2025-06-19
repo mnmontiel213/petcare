@@ -95,16 +95,36 @@ class Home extends BaseController
             . view('contenido/terminos')
             . view('plantillas/footer_view');
     }
-
-    public function servicios(): string
+    //servicios
+    public function salud(): string
     {
-        $data['titulo'] = "servicios";
+        $data['titulo'] = "Salud";
         return view('plantillas/header_view', $data)
             . view('plantillas/navbar_view')
-            . view('contenido/servicios')
+            . view('contenido/servicios/servicios')
+            . view('contenido/servicios/salud')
             . view('plantillas/footer_view');
     }
 
+    public function nutricion(): string
+    {
+        $data['titulo'] = "Nutricion";
+        return view('plantillas/header_view', $data)
+            . view('plantillas/navbar_view')
+            . view('contenido/servicios/servicios')
+            . view('contenido/servicios/nutricion')
+            . view('plantillas/footer_view');
+    }
+
+    public function estetica(): string
+    {
+        $data['titulo'] = "Estetica";
+        return view('plantillas/header_view', $data)
+            . view('plantillas/navbar_view')
+            . view('contenido/servicios/servicios')
+            . view('contenido/servicios/estetica')
+            . view('plantillas/footer_view');
+    }
     // En desarrollo
     public function enDesarrollo(): string
     {
@@ -202,18 +222,20 @@ class Home extends BaseController
             . view('plantillas/footer_view');
     }
 
-    public function usuarios_listar(){
+    public function usuarios_listar()
+    {
         $usuarioModel = new UsuarioModel();
         $usuarios = $usuarioModel->findAll();
 
         $data = ['titulo' => 'Usuarios', 'usuarios' => $usuarios];
         return view('plantillas/header_view', $data)
-        .view('plantillas/navbar_view')
-        .view('contenido/usuarios/usuarios_listado')
-        .view('plantillas/footer_view');
+            . view('plantillas/navbar_view')
+            . view('contenido/usuarios/usuarios_listado')
+            . view('plantillas/footer_view');
     }
 
-    public function usuarios_actualizar(){
+    public function usuarios_actualizar()
+    {
         helper('url');
         $request = \Config\Services::request();
         $usuarioModel = new UsuarioModel();
@@ -221,14 +243,14 @@ class Home extends BaseController
         $id = $this->request->getPost('id');
         $mayorista = $this->request->getPost('mayorista');
 
-        if($mayorista){
+        if ($mayorista) {
             $mayorista = 1;
-        }else{
+        } else {
             $mayorista = 0;
         }
-        
+
         $usuarioModel->update($id, ['ES_MAYORISTA' => $mayorista]);
-        
+
         return redirect()->to('carrito');
     }
 }

@@ -9,7 +9,7 @@ use CodeIgniter\Router\RouteCollection;
 //index
 $routes->get('/',                'Home::index');
 $routes->get('principal',        'Home::index');
-$routes->get('contacto',         'Home::contacto');
+// $routes->get('contacto',         'Home::contacto');
 
 //nosotros
 //$routes->get('nosotros_header', 'Home::nosotros');
@@ -20,21 +20,27 @@ $routes->get('nosotros_header/valores', 'Home::valores');
 $routes->get('nosotros_header/contacto', 'Home::contacto');
 
 $routes->get('comercializacion',        'Home::comercializacion');
-$routes->get('servicios',        'Home::servicios');
 $routes->get('terminos',         'Home::terminos');
 $routes->get('catalogo',         'Home::catalogo');
 $routes->get('enDesarrollo',     'Home::enDesarrollo');
+
+// servicios
+$routes->get('servicios',        'Home::servicios');
+$routes->get('servicios/salud',        'Home::salud');
+$routes->get('servicios/nutricion',        'Home::nutricion');
+$routes->get('servicios/estetica',        'Home::estetica');
+
 
 $routes->get('productos',                          'Productos::listar');
 $routes->get('productos/agregar',                  'Productos::agregar', ['filter' => 'admin']);
 $routes->post('productos/registrar_producto',      'Productos::registrar_nuevo');
 
 //consultas
-$routes->get('contactos',         'Consulta::consultas');
+// $routes->get('contactos',         'Consulta::consultas');
 $routes->get('consultas',         'Consulta::consultas');
 $routes->post('enviar_consulta',  'Consulta::enviar_consulta');
 $routes->get('consultas/listar',  'Consulta::listar', ['filter' => 'admin']);
-$routes->post('consulta/eliminar','Consulta::eliminar', ['filter' => 'admin']);
+$routes->post('consulta/eliminar', 'Consulta::eliminar', ['filter' => 'admin']);
 
 //turnos
 $routes->get('turno',                'Turno::turno', ['filter' => 'auth']);

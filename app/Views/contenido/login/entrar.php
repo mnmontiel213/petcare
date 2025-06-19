@@ -3,7 +3,7 @@
     <img src="<?php echo base_url('assets/img/animales/fondo-login.jpg') ?>" class="fondo-login" alt="fondo gato">
     <div class="row justify-content-center align-items-center min-vh-100 seccion-login">
         <div class="col-11 col-sm-8 col-md-6 col-lg-4 p-4 container-form">
-            <h2 class="text-center mb-4">Iniciar Sección</h2>
+            <h2 class="text-center mb-4">Iniciar Sesión</h2>
 
             <?php
             if ($validation) {

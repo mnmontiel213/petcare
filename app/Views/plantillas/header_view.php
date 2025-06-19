@@ -14,7 +14,7 @@
     <link rel="stylesheet" href=" <?php echo base_url("assets/css/nosotros.css"); ?> ">
     <link rel="stylesheet" href=" <?php echo base_url("assets/css/comercializacion.css"); ?> ">
     <link rel="stylesheet" href=" <?php echo base_url("assets/css/productos.css"); ?> ">
-    <link rel="stylesheet" href=" <?php echo base_url("assets/css/salud.css"); ?> ">
+    <link rel="stylesheet" href=" <?php echo base_url("assets/css/servicios.css"); ?> ">
     <link rel="stylesheet" href=" <?php echo base_url("assets/css/terminos.css"); ?> ">
 
     <link rel="stylesheet" href=" <?php echo base_url("assets/css/footer.css"); ?> ">

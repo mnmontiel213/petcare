@@ -34,9 +34,9 @@
                         Servicios
                     </a>
                     <ul class="dropdown-menu">
-                        <li><a class="dropdown-item" href="<?= base_url('servicios') ?>">Baño</a></li>
-                        <li><a class="dropdown-item" href="<?= base_url('servicios') ?>">Vacunación</a></li>
-                        <li><a class="dropdown-item" href="<?= base_url('servicios') ?>">Peluquería</a></li>
+                        <li><a class="dropdown-item" href="<?= base_url('servicios/estetica') ?>">Estética</a></li>
+                        <li><a class="dropdown-item" href="<?= base_url('servicios/nutricion') ?>">Nutrición</a></li>
+                        <li><a class="dropdown-item" href="<?= base_url('servicios/salud') ?>">Atención Médica</a></li>
                     </ul>
                 </li>
 
@@ -48,6 +48,7 @@
                     <ul class="dropdown-menu">
                         <li><a class="dropdown-item" href="<?= base_url('productos') ?>">Alimentos</a></li>
                         <li><a class="dropdown-item" href="<?= base_url('productos') ?>">Accesorios</a></li>
+
                     </ul>
                 </li>
 

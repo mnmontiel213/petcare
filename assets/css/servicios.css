@@ -1,0 +1,316 @@
+/* === Banner Principal === */
+.banner-principal {
+    background-size: cover;
+    background-position: center;
+    height: 400px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.banner-principal .text-center {
+    background-color: rgba(160, 201, 236, 0.6) !important;
+    padding: 2rem;
+    border-radius: 30% 70% !important;
+    position: absolute;
+    z-index: 0;
+}
+
+/* Pomo */
+.promo-card-clean {
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
+    background-color: #fff;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.promo-card-clean:hover {
+    transform: translateY(-5px);
+}
+
+.promo-card-clean img {
+    width: 100% !important;
+    height: 220px !important;
+    object-fit: contain;
+}
+
+.promo-info {
+    padding: 1rem;
+    position: relative;
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.promo-btn {
+    background-color: #1d1c1cb6;
+    border: none;
+    color: #fff;
+    font-weight: bold;
+    border-radius: 50px;
+    padding: 0.5rem 1.25rem;
+    transition: background-color 0.3s;
+    cursor: pointer;
+    align-self: center;
+}
+
+.promo-btn:hover {
+    background-color: rgba(255, 255, 255, 0.8);
+    color: #000;
+}
+
+/* Colores de fondo personalizados */
+.bg-pink {
+    background-color: #EF5DA8;
+}
+
+.bg-blue {
+    background-color: #64B6F7;
+}
+
+.bg-yellow {
+    background-color: #FFD66B;
+}
+
+
+/* === Botón Turno === */
+.btn-turnos {
+    background-color: var(--color-hover);
+    color: white;
+    font-weight: bold;
+    border-radius: 50px;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.btn-turnos:hover {
+    background-color: var(--color-primario);
+    color: black;
+}
+
+/* === Responsive Adjustments === */
+@media (max-width: 768px) {
+    .promo-card-ss {
+        min-height: 220px;
+    }
+
+    .promo-card-ss .promo-content h3,
+    .promo-card-ss .promo-content h4 {
+        font-size: 1.25rem;
+    }
+
+    .promo-card-ss .promo-content p,
+    .promo-card-ss .promo-content small {
+        font-size: 0.9rem;
+    }
+
+    .banner-principal {
+        height: 300px;
+    }
+
+    .banner-principal .text-center h1 {
+        font-size: 1.75rem;
+    }
+
+    .banner-principal .text-center p {
+        font-size: 1rem;
+    }
+}
+
+
+/* ESTETICA */
+.estetica-section {
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+    position: relative;
+    overflow: hidden;
+}
+
+.titulo-estetica {
+    font-size: 2rem;
+    color: black;
+    position: relative;
+    display: inline-block;
+    margin-bottom: 1.5rem;
+}
+
+.titulo-estetica::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: -6px;
+    width: 100%;
+    height: 4px;
+    background-color: #f468b0;
+    border-radius: 2px;
+    animation: subrayado 5s ease forwards;
+}
+
+
+.curved-background {
+    background-color: var(--color-primario);
+    width: 280px;
+    height: 320px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-60%, -50%);
+    border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%;
+    z-index: 1;
+}
+
+.dog-img {
+    max-width: 280px;
+    position: relative;
+    z-index: 2;
+}
+
+.servicios-list li {
+    font-size: 1.1rem;
+    margin-bottom: 1rem;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.numero {
+    display: inline-block;
+    background-color: #f468b0;
+    color: #000;
+    font-weight: bold;
+    border-radius: 50% 50% 50% 50% / 60% 60% 40% 40% ;
+    width: 45px;
+    height: 45px;
+    line-height: 45px;
+    text-align: center;
+    font-size: 1.2rem;
+}
+
+.info-reserva p{
+    font-size: 2rem;
+}
+
+.btn-turnos {
+    background-color: var(--color-hover);
+    color: #fff;
+    padding: 0.6rem 1.5rem;
+    border-radius: 50px;
+    font-weight: bold;
+    transition: background-color 0.3s ease;
+}
+
+.btn-turnos:hover {
+    background-color: var(--color-primario);
+}
+
+/* Nutricion carrucel */
+.carrusel-img {
+    height: 300px;
+    object-fit: cover;
+}
+
+.bg-pp a{
+    background-color: var(--color-primario);
+    padding: 10px 20px;
+    text-decoration: none;
+    color: black;
+    border-radius: 20px;
+    margin-left: 10px;
+}
+
+.bg-pp a:hover {
+    background-color: var(--color-hover);
+    color: white;
+}
+
+.bg-pp p{
+    margin: 5rem !important;
+}
+
+.titulo-nutricion {
+    font-size: 2rem;
+        color: black;
+        position: relative;
+        display: inline-block;
+        margin-bottom: 1.5rem;
+}
+
+.titulo-nutricion::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: -6px;
+    width: 100%;
+    height: 4px;
+    background-color: #f4c168;
+    border-radius: 2px;
+    animation: subrayado 5s ease forwards;
+}
+
+
+.numero-nutricion {
+    display: inline-block;
+    background-color: #f4c168;
+    color: #000;
+    font-weight: bold;
+    border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%;
+    width: 45px;
+    height: 45px;
+    line-height: 45px;
+    text-align: center;
+    font-size: 1.2rem;
+}
+
+
+
+/* === SECCIÓN SALUD / ATENCIÓN VETERINARIA === */
+
+.titulo-salud {
+    font-size: 2rem;
+    color: black;
+    position: relative;
+    display: inline-block;
+    margin-bottom: 1.5rem;
+}
+
+.titulo-salud::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: -6px;
+    width: 100%;
+    height: 4px;
+    background-color: #689ef4;
+    border-radius: 2px;
+    animation: subrayado 5s ease forwards;
+}
+
+@keyframes subrayado {
+    from {
+        width: 0;
+    }
+
+    to {
+        width: 100%;
+    }
+}
+
+.numero-salud {
+    display: inline-block;
+    background-color: #689ef4;
+    color: #000;
+    font-weight: bold;
+    border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%;
+    width: 45px;
+    height: 45px;
+    line-height: 45px;
+    text-align: center;
+    font-size: 1.2rem;
+}
+

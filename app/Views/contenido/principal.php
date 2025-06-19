@@ -77,7 +77,7 @@
     <div class="row g-4">
         <!-- Atención médica -->
         <div class="col-12 col-sm-6 col-lg-3 card-categoria">
-            <a href="<?= base_url('atencion_medica') ?>" class="text-decoration-none">
+            <a href="<?= base_url('servicios/salud') ?>" class="text-decoration-none">
                 <div class="position-relative overflow-hidden rounded shadow servicio-hover">
                     <img src="<?= base_url('assets/img/servicio/medicina.jpg') ?>" class="img-fluid w-100 card-categoria" alt="Atención médica">
                     <div class="position-absolute top-0 start-0 w-100 h-100 d-flex align-items-center justify-content-center bg-dark bg-opacity-50">
@@ -92,7 +92,7 @@
 
         <!-- Peluquería -->
         <div class="col-12 col-sm-6 col-lg-3">
-            <a href="<?= base_url('atencion_medica') ?>" class="text-decoration-none">
+            <a href="<?= base_url('servicios/estetica') ?>" class="text-decoration-none">
                 <div class="position-relative overflow-hidden rounded shadow servicio-hover">
                     <img src="<?= base_url('assets/img/servicio/peluqueria.jpg') ?>" class="img-fluid w-100 card-categoria" alt="Peluquería canina">
                     <div class="position-absolute top-0 start-0 w-100 h-100 d-flex align-items-center justify-content-center bg-dark bg-opacity-50">
