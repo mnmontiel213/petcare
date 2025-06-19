@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Jun 18, 2025 at 07:34 PM
+-- Generation Time: Jun 19, 2025 at 08:49 PM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -45,7 +45,11 @@ INSERT INTO `categoria` (`CATEGORIA_ID`, `VALOR`, `TIPO`) VALUES
 (7, 'SALUD', 'SERVICIO'),
 (8, 'ESTETICA', 'SERVICIO'),
 (11, 'ALIMENTO', 'PRODUCTO'),
-(12, 'ACCESORIO', 'PRODUCTO');
+(12, 'ACCESORIO', 'PRODUCTO'),
+(17, 'EUKANUBA', 'MARCA'),
+(18, 'OLD PRINCE', 'MARCA'),
+(19, 'PERFORMANCE', 'MARCA'),
+(20, 'VITAL CAN', 'MARCA');
 
 -- --------------------------------------------------------
 
@@ -78,16 +82,18 @@ CREATE TABLE `mascotas` (
   `MASCOTA_ID` int(11) NOT NULL,
   `NOMBRE` varchar(128) NOT NULL,
   `TIPO_MASCOTA` int(11) NOT NULL,
-  `USUARIO_ID` int(11) NOT NULL
+  `USUARIO_ID` int(11) NOT NULL,
+  `IMAGEN` varchar(128) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
 
 --
 -- Dumping data for table `mascotas`
 --
 
-INSERT INTO `mascotas` (`MASCOTA_ID`, `NOMBRE`, `TIPO_MASCOTA`, `USUARIO_ID`) VALUES
-(1, 'Fitto', 4, 4),
-(2, 'Dakota', 4, 4);
+INSERT INTO `mascotas` (`MASCOTA_ID`, `NOMBRE`, `TIPO_MASCOTA`, `USUARIO_ID`, `IMAGEN`) VALUES
+(2, 'Dakota', 4, 4, ''),
+(13, 'Rufo', 4, 4, NULL),
+(14, 'Fitto', 4, 4, NULL);
 
 -- --------------------------------------------------------
 
@@ -111,8 +117,16 @@ CREATE TABLE `productos` (
 --
 
 INSERT INTO `productos` (`CODIGO`, `NOMBRE`, `CATEGORIA_MARCA`, `CATEGORIA_PRODUCTO`, `CATEGORIA_MASCOTA`, `PRECIO`, `PESO`, `IMAGEN`) VALUES
-(5324, 'Alimento papu', 5, 11, 4, 1, 1, '1749831090_3917e373719167501da5.png'),
-(1243435, 'Alimento gato la secuela', 5, 11, 3, 1, 1, '1749830111_9026c2f1fce819d4c38f.jpg');
+(62346, 'Alimento Old Prince Para Perro Adulto Mediano', 18, 11, 4, 15390, 3, '1750358590_70e2552f6b394bddd079.webp'),
+(63497, 'Performance Alimento Perro Adulto', 19, 11, 4, 84265, 20, '1750358763_ae239c199f921affd391.webp'),
+(64426, 'Alimento Royal Para Perro Mini Adulto', 5, 11, 4, 31010, 3, '1750358636_7a5ad72118262e091c6c.webp'),
+(73486, 'Alimento Royal Maxi Para Perro Adulto ', 5, 11, 4, 28515, 3, '1750358809_f5207eda3627670310aa.webp'),
+(75348, 'Alimento Purina Para Perro Adulto', 6, 11, 4, 60000, 20, '1750358845_40fe48ca36cbdaed6775.png'),
+(452375, 'Alimento perro adulto', 20, 11, 4, 60480, 20, '1750358397_df8f67650769cbc512c2.png'),
+(643123, 'Alimento Old Prince Perro Mediano', 18, 11, 4, 12600, 3, '1750358689_e96a8f80cd5cbd79c80a.webp'),
+(856345, 'Alimento Royal Mini Para Perro Adulto', 5, 11, 4, 9293, 1, '1750358547_f7b2a5aa2681b1ee558d.webp'),
+(938401, 'Alimento perro grande', 17, 11, 4, 42000, 7, '1750358305_bb10bdffba58db7b10ff.webp'),
+(34597845, 'Alimento Eukanuba para Perro Senior Grande', 17, 11, 4, 68855, 15, '1750358464_0b8058e8470b6c2641ab.webp');
 
 -- --------------------------------------------------------
 
@@ -159,9 +173,9 @@ CREATE TABLE `turnos` (
 --
 
 INSERT INTO `turnos` (`TURNO_ID`, `USUARIO_ID`, `FECHA`, `HORARIO`, `SERVICIO_ID`, `MASCOTA_ID`) VALUES
-(11, 4, '2025-06-25', '10:00:00', 2, 1),
+(11, 4, '2025-06-25', '10:00:00', 2, 13),
 (12, 4, '2025-06-26', '09:00:00', 1, 2),
-(13, 4, '2025-06-27', '11:00:00', 3, 1),
+(13, 4, '2025-06-27', '11:00:00', 3, 14),
 (14, 4, '2025-07-09', '10:00:00', 4, 2);
 
 -- --------------------------------------------------------
@@ -179,17 +193,19 @@ CREATE TABLE `usuarios` (
   `CONTRASEÑA` varchar(512) NOT NULL,
   `DIRECCION` text DEFAULT NULL,
   `ES_MAYORISTA` tinyint(1) DEFAULT NULL,
-  `IMAGEN` varchar(128) DEFAULT NULL
+  `IMAGEN` varchar(128) DEFAULT NULL,
+  `TELEFONO` varchar(32) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Dumping data for table `usuarios`
 --
 
-INSERT INTO `usuarios` (`USUARIO_ID`, `CBU`, `NOMBRE`, `APELLIDO`, `CORREO`, `CONTRASEÑA`, `DIRECCION`, `ES_MAYORISTA`, `IMAGEN`) VALUES
-(3, NULL, 'juanito', 'pere', 'juanitoperez@gmail.com', '$2y$10$YtGEpCedo6QF/gMtvt4xIuFvR.Hm2Ykemh.M5WkpDsdXnqLEkwZQS', NULL, 0, ''),
-(4, 134531, 'admin', 'petcare', 'adminpetcare@gmail.com', '$2y$10$D3aiZcMCMx8kQgVci/YukeWPwJSYA8dtJIj3CCb/4tM5DbikYQH3W', 'MIKASA', 1, ''),
-(5, NULL, 'Matias', 'Montiel', 'petcare@gmail.com', '$2y$10$OIBAt4Ooqxk9TQza5jdKaelrTuwaTPSR0vmYb7h4ZJbh.R0pArByW', NULL, 0, NULL);
+INSERT INTO `usuarios` (`USUARIO_ID`, `CBU`, `NOMBRE`, `APELLIDO`, `CORREO`, `CONTRASEÑA`, `DIRECCION`, `ES_MAYORISTA`, `IMAGEN`, `TELEFONO`) VALUES
+(3, NULL, 'juanito', 'pere', 'juanitoperez@gmail.com', '$2y$10$YtGEpCedo6QF/gMtvt4xIuFvR.Hm2Ykemh.M5WkpDsdXnqLEkwZQS', NULL, 0, '', NULL),
+(4, 134531, 'admin', 'petcare', 'adminpetcare@gmail.com', '$2y$10$D3aiZcMCMx8kQgVci/YukeWPwJSYA8dtJIj3CCb/4tM5DbikYQH3W', 'MIKASA', 1, '', NULL),
+(5, NULL, 'Matias', 'Montiel', 'petcare@gmail.com', '$2y$10$OIBAt4Ooqxk9TQza5jdKaelrTuwaTPSR0vmYb7h4ZJbh.R0pArByW', NULL, 0, NULL, NULL),
+(6, NULL, 'Matias', 'Montiel', 'mnmontiel213@gmail.com', '$2y$10$cCMV6ZPr0wKzxBYY7QKCOevDtXnEodo1.dC24YqKZumR/UzlXww.W', NULL, NULL, '1750290659_c8938caac5a66221c08f.jpg', NULL);
 
 --
 -- Indexes for dumped tables
@@ -199,6 +215,7 @@ INSERT INTO `usuarios` (`USUARIO_ID`, `CBU`, `NOMBRE`, `APELLIDO`, `CORREO`, `CO
 -- Indexes for table `categoria`
 --
 ALTER TABLE `categoria`
+  ADD PRIMARY KEY (`CATEGORIA_ID`),
   ADD KEY `REGISTRO_ID` (`CATEGORIA_ID`);
 
 --
@@ -251,6 +268,12 @@ ALTER TABLE `usuarios`
 --
 
 --
+-- AUTO_INCREMENT for table `categoria`
+--
+ALTER TABLE `categoria`
+  MODIFY `CATEGORIA_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
+
+--
 -- AUTO_INCREMENT for table `consultas`
 --
 ALTER TABLE `consultas`
@@ -260,7 +283,7 @@ ALTER TABLE `consultas`
 -- AUTO_INCREMENT for table `mascotas`
 --
 ALTER TABLE `mascotas`
-  MODIFY `MASCOTA_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `MASCOTA_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 
 --
 -- AUTO_INCREMENT for table `servicios`
@@ -278,7 +301,7 @@ ALTER TABLE `turnos`
 -- AUTO_INCREMENT for table `usuarios`
 --
 ALTER TABLE `usuarios`
-  MODIFY `USUARIO_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `USUARIO_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- Constraints for dumped tables
