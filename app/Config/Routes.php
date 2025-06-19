@@ -14,21 +14,21 @@ $routes->get('principal',        'Home::index');
 //nosotros
 //$routes->get('nosotros_header', 'Home::nosotros');
 $routes->get('nosotros_header/quienes_somos', 'Home::nosotros');
-$routes->get('nosotros_header/equipo', 'Home::equipo');
-$routes->get('nosotros_header/mision', 'Home::mision');
-$routes->get('nosotros_header/valores', 'Home::valores');
-$routes->get('nosotros_header/contacto', 'Home::contacto');
+$routes->get('nosotros_header/equipo',        'Home::equipo');
+$routes->get('nosotros_header/mision',        'Home::mision');
+$routes->get('nosotros_header/valores',       'Home::valores');
+$routes->get('nosotros_header/contacto',      'Home::contacto');
 
-$routes->get('comercializacion',        'Home::comercializacion');
+$routes->get('comercializacion', 'Home::comercializacion');
 $routes->get('terminos',         'Home::terminos');
 $routes->get('catalogo',         'Home::catalogo');
 $routes->get('enDesarrollo',     'Home::enDesarrollo');
 
 // servicios
-$routes->get('servicios',        'Home::servicios');
-$routes->get('servicios/salud',        'Home::salud');
-$routes->get('servicios/nutricion',        'Home::nutricion');
-$routes->get('servicios/estetica',        'Home::estetica');
+$routes->get('servicios',           'Home::servicios');
+$routes->get('servicios/salud',     'Home::salud');
+$routes->get('servicios/nutricion', 'Home::nutricion');
+$routes->get('servicios/estetica',  'Home::estetica');
 
 
 $routes->get('productos',                          'Productos::listar');

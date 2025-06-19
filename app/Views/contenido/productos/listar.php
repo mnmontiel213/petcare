@@ -58,18 +58,25 @@
      
                      <?php
                          if(session('LOGGED')){
-                             echo form_open('carrito/agregar');
-                             echo form_hidden('codigo', $producto['CODIGO']);
-                             echo form_hidden('nombre', $producto['NOMBRE']);
-                             echo form_hidden('precio', $producto['PRECIO']);
-                             if($producto['IMAGEN']){
-                                 echo form_hidden('imagen', $producto['IMAGEN']);                                 
-                             }
-                             echo form_submit('Comprar', 'Agregar al carrito', 'class= "btn btn-primary"');
-                             echo form_close();
-                         }else{
-                             echo '<a href="login/ingresar" class="btn btn-primary"> Ingresar </a>';
-                         }
+                            echo form_open('carrito/update');
+                            echo form_hidden('codigo', $producto['CODIGO']);
+                            echo form_hidden('nombre', $producto['NOMBRE']);
+                            echo form_hidden('precio', $producto['PRECIO']);
+                            
+                            if($producto['IMAGEN']){
+                                echo form_hidden('imagen', $producto['IMAGEN']);                                 
+                            }
+                            
+                            echo "<button type='submit' value='agregar' name='carrito-accion' style='display: contents;'>";
+                            echo "<i class='btn btn-success bi bi-plus-circle' style='font-size: 1rem;'></i>";
+                            echo "</button>";
+                            echo "<button type='submit' value='remover' name='carrito-accion' style='display: contents;'>";
+                            echo "<i class='btn btn-danger bi bi-dash-circle' style='font-size: 1rem;'></i>";
+                            echo "</button>";
+                            echo form_close();
+                        }else{
+                            echo '<a href="login/ingresar" class="btn btn-primary"> Ingresar </a>';
+                        }
                      ?>
                 </div>
             </div>

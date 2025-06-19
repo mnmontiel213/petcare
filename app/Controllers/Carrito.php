@@ -51,6 +51,8 @@ class Carrito extends BaseController{
     }
 
     public function actualizar(){
+        helper('url');
+
         $request = \Config\Services::request();
         $carrito = \Config\Services::cart();
 
@@ -84,19 +86,14 @@ class Carrito extends BaseController{
                     'qty' => ((float)$request->getPost('qty')) + 1,
                 ];
 
-                print_r($producto);
-                
-                //return '?';
-                
                 $carrito->update($producto);                    
             }else if($accion === 'quitar'){
                 // REMOVER COMPLETAMENTE EL PRODUCTO DEL CARRITO
-
                 $carrito->remove($request->getPost('rowid'));
             }
         }
 
-        return redirect()->route('carrito');        
+        return redirect()->route('productos');
     }
 
     public function pagar(){

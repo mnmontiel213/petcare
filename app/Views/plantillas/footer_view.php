@@ -1,4 +1,9 @@
-    <footer class="container-fluid custom-footer">
+   
+
+    <script src="<?php echo base_url("assets/js/bootstrap.bundle.min.js"); ?>"></script>
+    </body>
+
+     <footer class="container-fluid custom-footer">
         <div class="row text-center container-footer">
 
             <div class="col-12 col-sm-6 col-md-3 customs-footer-elements">
@@ -45,10 +50,5 @@
         <img class="custom-footer-img" src=" <?php echo base_url("assets/img/PetCareLogo.png") ?> " alt="">
 
     </footer>
-
-    <script src="<?php echo base_url("assets/js/bootstrap.bundle.min.js"); ?>"></script>
-
-
-    </body>
-
-    </html>
+    
+</html>
