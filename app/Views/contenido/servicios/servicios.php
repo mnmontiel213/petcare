@@ -7,7 +7,7 @@
 </div>
 
 <!-- SECCIÓN PROMOS -->
-<div id="ofertas" class="promo-section py-5">
+<div id="ofertas" class="promo-section pt-5">
     <div class="container">
         <h2 class="text-center mb-5 fw-bold">Ofertas destacadas para tu mascota 🐾</h2>
         <div class="row g-4">

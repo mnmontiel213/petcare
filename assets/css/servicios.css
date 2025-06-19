@@ -215,10 +215,10 @@
     object-fit: cover;
 }
 
+
 .bg-pp a{
     background-color: var(--color-primario);
     padding: 10px 20px;
-    text-decoration: none;
     color: black;
     border-radius: 20px;
     margin-left: 10px;

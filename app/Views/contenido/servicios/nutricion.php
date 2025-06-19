@@ -1,4 +1,4 @@
-<div id="miniCarruselVetcare" class="carousel slide" data-bs-ride="carousel">
+<div id="miniCarruselVetcare" class="carousel slide pt-5" style="background-color: rgba(255, 255, 255, 0.8);" data-bs-ride="carousel">
     <div class="carousel-inner">
         <!-- Imagen 1 -->
         <div class="carousel-item active">
@@ -24,7 +24,7 @@
         <p class="fw-bold">Dirigete a ver los productos que tenemos para tu mascota!!<a href="<?= base_url('productos/productos'); ?>">Ver</a></p>
     </div>
 </div>
-<div class="estetica-section py-5">
+<div class="estetica-section ">
 
     <div class="container">
         <div class="row align-items-center">

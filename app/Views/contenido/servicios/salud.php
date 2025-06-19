@@ -1,5 +1,5 @@
 <!-- SECCIÓN SALUD / ATENCIÓN VETERINARIA -->
-<div class="estetica-section py-5">
+<div class="estetica-section pt-5">
     <div class="container">
 
         <div class="row align-items-center">
