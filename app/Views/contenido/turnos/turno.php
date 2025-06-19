@@ -53,6 +53,20 @@
                     </div>
                 </div>
             </div>
+
+            <div class="container p-2">
+                <h2>Mascotas</h2>
+                <small>Eligue para que mascota es el turno</small>
+               <div class="d-flex">
+                <?php foreach($mascotas as $m): ?>
+                        <label class="list-group-item px-1">
+                                <input class="form-check-input me-1" type="radio" name="mascota" value="<?= $m['id'] ?>">
+                                <?= $m['nombre'] ?>    
+                        </label>
+                    <?php endforeach; ?>
+               </div>
+            </div>
+
             <input type="submit" value="Pedir turno">
         </form>
     </div>

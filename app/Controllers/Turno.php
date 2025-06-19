@@ -5,6 +5,8 @@ namespace App\Controllers;
 use App\Models\CategoriaModel;
 use App\Models\ServicioModel;
 use App\Models\TurnoModel;
+use App\Models\MascotaModel;
+
 use CodeIgniter\HTTP\ResponseInterface;
 
 
@@ -16,7 +18,11 @@ class Turno extends BaseController{
     public function turno(): string{
         $categoriaModel = new CategoriaModel();
         $servicioModel = new ServicioModel();
+        $mascotasModel = new MascotaModel();
 
+        $session = session();
+        
+        $mascotas_row = $mascotasModel->where('USUARIO_ID', $session->get('USUARIO_ID'))->findAll();
         $categorias_row = $categoriaModel->where('TIPO', 'SERVICIO')->findAll(); 
         $servicios_row = $servicioModel->findAll();
 
@@ -31,7 +37,13 @@ class Turno extends BaseController{
             }
         }
 
-        $data = ['titulo' => 'Turnos', 'servicios' => $servicios];
+        $mascotas = [];
+
+        foreach($mascotas_row as $m){
+            array_push($mascotas, ['nombre' => $m['NOMBRE'], 'id' => $m['MASCOTA_ID']]);
+        }
+
+        $data = ['titulo' => 'Turnos', 'servicios' => $servicios, 'mascotas' => $mascotas];
         return view('plantillas/header_view', $data)
                 .view('plantillas/navbar_view')
                 .view('contenido/turnos/turno')
@@ -43,6 +55,7 @@ class Turno extends BaseController{
             'tipo-turno' => 'required',
             'fecha' => 'required',
             'horario' => 'required',
+            'mascota' => 'required',
         ];
 
         $validation = \Config\Services::validation();
@@ -58,7 +71,10 @@ class Turno extends BaseController{
             ], 
         'horario' => [
             'required' => 'seleccione un horario'
-            ], 
+            ],
+        'mascota' => [
+            'required' => 'seleccione una mascota'
+            ],
         ]);
         
         $model = new TurnoModel();     
@@ -73,6 +89,7 @@ class Turno extends BaseController{
                 'FECHA'      => $fecha,
                 'HORARIO'    => $horario,
                 'SERVICIO_ID' => $this->request->getPost('tipo-turno'),
+                'MASCOTA_ID' => $this->request->getPost('mascota'),
             ];
             
             $ingresado = $model->save($data);

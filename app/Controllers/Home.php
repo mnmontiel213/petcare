@@ -180,48 +180,6 @@ class Home extends BaseController
             . view('plantillas/footer_view');
     }
 
-    public function perfil(): string
-    {
-        $turnoModel = new TurnoModel();
-        $servicioModel = new ServicioModel();
-
-        $turnos_row = $turnoModel->where('USUARIO_ID', session()->get('USUARIO_ID'))->findAll();
-        $servicios_row = $servicioModel->findAll();
-
-        $session = session();
-
-        $servicios = [];
-
-        foreach ($turnos_row as $t) {
-            foreach ($servicios_row as $s) {
-
-                if ($s['SERVICIO_ID'] == $t['SERVICIO_ID']) {
-                    $servicios[$s['SERVICIO_ID']] = $s['DESCRIPCION'];
-                } else {
-                    $servicios[$s['SERVICIO_ID']] = '?';
-                }
-            }
-        }
-
-        $usuario = [
-            'nombre' => $session->get('NOMBRE'),
-            'apellido' => $session->get('APELLIDO'),
-            'imagen' => $session->get('IMAGEN')
-        ];
-
-        $data = [
-            'titulo' => 'Perfil',
-            'usuario' => $usuario,
-            'turnos' => $turnos_row,
-            'servicios' => $servicios,
-        ];
-
-        return view('plantillas/header_view', $data)
-            . view('plantillas/navbar_view')
-            . view('contenido/perfil')
-            . view('plantillas/footer_view');
-    }
-
     public function usuarios_listar()
     {
         $usuarioModel = new UsuarioModel();
