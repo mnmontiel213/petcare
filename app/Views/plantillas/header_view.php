@@ -9,6 +9,7 @@
     <link rel="stylesheet" href=" <?php echo base_url("assets/css/style.css"); ?> ">
     <link rel="stylesheet" href=" <?php echo base_url("assets/css/nav.css"); ?> ">
     <link rel="stylesheet" href=" <?php echo base_url("assets/css/login.css"); ?> ">
+    <link rel="stylesheet" href=" <?php echo base_url("assets/css/perfil.css"); ?> ">
 
     <link rel="stylesheet" href=" <?php echo base_url("assets/css/principal.css"); ?> ">
     <link rel="stylesheet" href=" <?php echo base_url("assets/css/nosotros.css"); ?> ">

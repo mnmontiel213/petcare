@@ -15,19 +15,21 @@ use App\Models\ServicioModel;
  *
  */
 
-class Login extends BaseController{
+class Login extends BaseController
+{
 
     /*
      *
      MUESTRA VIEW PARA INGRESO DE USUARIO
      *
      */
-    public function login_ingresar(){
+    public function login_ingresar()
+    {
         $data = ['titulo' => 'Ingresar', 'validation' => [], 'error' => null];
         return view('plantillas/header_view', $data)
-            .view('plantillas/navbar_view')
-            .view('contenido/login/entrar')
-            .view('plantillas/footer_view');
+            . view('plantillas/navbar_view')
+            . view('contenido/login/entrar')
+            . view('plantillas/footer_view');
     }
 
     /*
@@ -35,21 +37,23 @@ class Login extends BaseController{
      MUESTRA VIEW PARA REGISTRO DE USUARIO
      *
      */
-    public function login_registrarse(){
+    public function login_registrarse()
+    {
         $data = ['titulo' => 'Registrarse', 'validation' => null];
         return view('plantillas/header_view', $data)
-            .view('plantillas/navbar_view')
-            .view('contenido/login/registrarse')
-            .view('plantillas/footer_view');
+            . view('plantillas/navbar_view')
+            . view('contenido/login/registrarse')
+            . view('plantillas/footer_view');
     }
 
-    
+
     /*
      *
      CREA UN NUEVO USUARIO
      *
      */
-    public function crear_usuario(){
+    public function crear_usuario()
+    {
         $validation = \Config\Services::validation();
         $request = \Config\Services::request();
 
@@ -62,43 +66,45 @@ class Login extends BaseController{
                 'imagen' => 'is_image[imagen]|max_size[imagen, 4096]|ext_in[imagen,jpg,png,jpeg]',
                 'confirmacion-contraseña' => 'required',
             ],
-            [ 'nombre' =>
-              [
-                  'required' => 'El nombre es obligatorio'
-              ],
-              'apellido' =>
-              [
-                  'required' => 'El apellido es obligatorio'
-              ],
-              'correo' =>
-              [
-                  'required' => 'El correo es obligatorio'
-              ],
-              'contraseña' =>
-              [
-                  'required' => 'La contraseña es obligatoria'
-              ],
-              'confirmacion-contraseña' => [
-                  'required' => 'Confirme la contraseña'
-              ],
-              'imagen' => [
-                  'is_image' => 'El archivo adjunto no es una imagen',
-                  'max_dims'  => 'El archivo es demasiado grande',
-              ]
-            ]);
-        
-        if($validation->withRequest($request)->run()){
+            [
+                'nombre' =>
+                [
+                    'required' => 'El nombre es obligatorio'
+                ],
+                'apellido' =>
+                [
+                    'required' => 'El apellido es obligatorio'
+                ],
+                'correo' =>
+                [
+                    'required' => 'El correo es obligatorio'
+                ],
+                'contraseña' =>
+                [
+                    'required' => 'La contraseña es obligatoria'
+                ],
+                'confirmacion-contraseña' => [
+                    'required' => 'Confirme la contraseña'
+                ],
+                'imagen' => [
+                    'is_image' => 'El archivo adjunto no es una imagen',
+                    'max_dims'  => 'El archivo es demasiado grande',
+                ]
+            ]
+        );
+
+        if ($validation->withRequest($request)->run()) {
             $img = $this->request->getFile("imagen");
             $nombre_aleatorio = null;
 
-            if($img->isValid()){
+            if ($img->isValid()) {
                 $nombre_aleatorio = $img->getRandomName();
-                $img->move(ROOTPATH.'assets/uploads', $nombre_aleatorio);
+                $img->move(ROOTPATH . 'assets/uploads', $nombre_aleatorio);
             }
-            
+
             $model = new UsuarioModel();
             $pass = password_hash($this->request->getPost('contraseña'), PASSWORD_BCRYPT);
-            
+
             $model->save([
                 'NOMBRE'     => $this->request->getPost('nombre'),
                 'APELLIDO'   => $this->request->getPost('apellido'),
@@ -108,21 +114,21 @@ class Login extends BaseController{
             ]);
 
             return redirect()->to('login/ingresar');
-        }else{
+        } else {
 
             // ERROR EN VALIDACION
             $data['titulo'] = 'Registarse';
             $data['validation'] = $validation->getErrors();
 
             return view('plantillas/header_view', $data)
-                .view('plantillas/navbar_view')
-                .view('contenido/login/registrarse')
-                .view('plantillas/footer_view');
+                . view('plantillas/navbar_view')
+                . view('contenido/login/registrarse')
+                . view('plantillas/footer_view');
         }
-
     }
 
-    public function actualizar_cuenta(){
+    public function actualizar_cuenta()
+    {
         helper('url');
 
         $validation = \Config\Services::validation();
@@ -135,27 +141,31 @@ class Login extends BaseController{
                 'cbu' => 'required',
                 'direccion' => 'required'
             ],
-            [ 'cbu' =>
-              [
-                  'required' => 'Ese necesario un CBU'
-              ],
-              'direccion' =>
-              [
-                  'required' => 'Es necesario una direccion'
-              ]
-            ]);
-        
-        if($validation->withRequest($request)->run()){
-            $model = new UsuarioModel();
-            
-            $model->update($session->get('USUARIO_ID'), ['CBU' => $request->getPost('cbu'),
-                                'DIRECCION' => $request->getPost('direccion')]);
-            
-            
-            return redirect()->to('carrito');
-        }else{
+            [
+                'cbu' =>
+                [
+                    'required' => 'Ese necesario un CBU'
+                ],
+                'direccion' =>
+                [
+                    'required' => 'Es necesario una direccion'
+                ]
+            ]
+        );
 
-            foreach( $validation->getErrors() as $e){
+        if ($validation->withRequest($request)->run()) {
+            $model = new UsuarioModel();
+
+            $model->update($session->get('USUARIO_ID'), [
+                'CBU' => $request->getPost('cbu'),
+                'DIRECCION' => $request->getPost('direccion')
+            ]);
+
+
+            return redirect()->to('carrito');
+        } else {
+
+            foreach ($validation->getErrors() as $e) {
                 echo $e;
             }
 
@@ -163,13 +173,14 @@ class Login extends BaseController{
         }
     }
 
-    
+
     /*
      *
      INGRESA A LA SESION DE UN NUEVO USURIO
      *
      */
-    public function ingresar_usuario(){
+    public function ingresar_usuario()
+    {
         $validation = \Config\Services::validation();
         $request = \Config\Services::request();
 
@@ -177,29 +188,29 @@ class Login extends BaseController{
 
         $email = $this->request->getPost('correo');
         $contraseña = $this->request->getPost('contraseña');
-        
+
         $validation->setRules(
             [
                 'correo' => 'required|valid_email',
                 'contraseña' => 'required',
-            ]  ,
+            ],
             [
-                'correo' =>[
+                'correo' => [
                     'required' => 'Ingrese un correo',
                     'valid_email' => 'Correo invalido'
                 ],
-                'contraseña' =>[
+                'contraseña' => [
                     'required' => 'Ingrese la contraseña',
                 ],
             ],
         );
-        
-        if($validation->withRequest($request)->run()){
+
+        if ($validation->withRequest($request)->run()) {
             $model = new UsuarioModel();
             $user_data = $model->where('CORREO', $email)->first();
-            
-            if($user_data){
-                if(password_verify($contraseña, $user_data['CONTRASEÑA'])){
+
+            if ($user_data) {
+                if (password_verify($contraseña, $user_data['CONTRASEÑA'])) {
                     $session_data = [
                         'USUARIO_ID' => $user_data['USUARIO_ID'],
                         'NOMBRE' => $user_data['NOMBRE'],
@@ -213,61 +224,67 @@ class Login extends BaseController{
                         'ADMIN' => FALSE,
                     ];
 
-                    if($user_data['USUARIO_ID'] == 1 or
-                       $user_data['NOMBRE'] == 'admin'){
+                    if (
+                        $user_data['USUARIO_ID'] == 1 or
+                        $user_data['NOMBRE'] == 'admin'
+                    ) {
                         $session_data['ADMIN'] = TRUE;
                     }
-                
+
                     $session->set($session_data);
                     return redirect()->to('perfil');
-                }else{
+                } else {
                     // WRONG PASSWORD
                     $data['titulo'] = 'Ingresar';
                     $data['error'] = 'contraseña incorrecta';
                     $data['validation'] = $validation->getErrors();
-                    
+
                     return view('plantillas/header_view', $data)
-                        .view('plantillas/navbar_view')
-                        .view('contenido/login/entrar')
-                        .view('plantillas/footer_view'); 
+                        . view('plantillas/navbar_view')
+                        . view('contenido/login/entrar')
+                        . view('plantillas/footer_view');
                 }
-            }else{
+            } else {
                 // WRONG EMAIL
                 $data['titulo'] = 'Ingresar';
                 $data['error'] = 'correo incorrecto';
-                $data['validation'] = $validation->getErrors();                
+                $data['validation'] = $validation->getErrors();
 
                 return view('plantillas/header_view', $data)
-                    .view('plantillas/navbar_view')
-                    .view('contenido/login/entrar')
-                    .view('plantillas/footer_view');                 
+                    . view('plantillas/navbar_view')
+                    . view('contenido/login/entrar')
+                    . view('plantillas/footer_view');
             }
-        }else{
+        } else {
             // VALIDATION FAIL
-            $data = ['titulo' => 'Login',
-                     'validation' => $validation->getErrors(),
-                     'error' => null];
-            
+            $data = [
+                'titulo' => 'Login',
+                'validation' => $validation->getErrors(),
+                'error' => null
+            ];
+
             return view('plantillas/header_view', $data)
-                .view('plantillas/navbar_view')
-                .view('contenido/login/entrar')
-                .view('plantillas/footer_view');
+                . view('plantillas/navbar_view')
+                . view('contenido/login/entrar')
+                . view('plantillas/footer_view');
         }
     }
 
-    
+
     /*
      *
      CIERRA LA SESION DEL USUARIO ACTUAL
      * 
      */
-    public function salir_usuario(){
+    public function salir_usuario()
+    {
         $session = session();
         $session->destroy();
         return redirect()->to('/');
     }
 
-    public function registrar_mascota_formulario(){
+    public function registrar_mascota_formulario()
+    {
 
         $categoriaModel = new CategoriaModel();
 
@@ -276,29 +293,33 @@ class Login extends BaseController{
         $data = ['titulo' => 'Registrar mascota', 'razas' => $razas, 'validation' => []];
 
         return view('plantillas/header_view', $data)
-                .view('plantillas/navbar_view')
-                .view('contenido/login/nueva_mascota')
-                .view('plantillas/footer_view');
+            . view('plantillas/navbar_view')
+            . view('contenido/login/nueva_mascota')
+            . view('plantillas/footer_view');
     }
 
-    public function registrar_mascota() {
+    public function registrar_mascota()
+    {
         $validation = \Config\Services::validation();
         $request = \Config\Services::request();
 
-        $validation->setRules([
-            'nombre' => 'required',
-            'mascota' => 'required',
-        ],
-        [ 'nombre' =>[
-              'required' => 'El nombre es obligatorio'
+        $validation->setRules(
+            [
+                'nombre' => 'required',
+                'mascota' => 'required',
+            ],
+            [
+                'nombre' => [
+                    'required' => 'El nombre es obligatorio'
                 ],
-          'mascota' =>
-          [
-              'required' => 'Seleccione el tipo de mascota'
-          ],
-        ]);
+                'mascota' =>
+                [
+                    'required' => 'Seleccione el tipo de mascota'
+                ],
+            ]
+        );
 
-        if($validation->withRequest($request)->run()){
+        if ($validation->withRequest($request)->run()) {
             $model = new MascotaModel();
             $pass = password_hash($this->request->getPost('contraseña'), PASSWORD_BCRYPT);
 
@@ -311,11 +332,11 @@ class Login extends BaseController{
             ]);
 
             return redirect()->to('registrar/mascota');
-        }else{
+        } else {
 
             $categoriaModel = new CategoriaModel();
             $razas = $categoriaModel->where('TIPO', 'MASCOTA')->findAll();
-            
+
             $data = [
                 'titulo' => 'Registrar mascota',
                 'validation' => $validation->getErrors(),
@@ -323,9 +344,9 @@ class Login extends BaseController{
             ];
 
             return view('plantillas/header_view', $data)
-                .view('plantillas/navbar_view')
-                .view('contenido/login/nueva_mascota')
-                .view('plantillas/footer_view');
+                . view('plantillas/navbar_view')
+                . view('contenido/login/nueva_mascota')
+                . view('plantillas/footer_view');
         }
     }
 
@@ -346,7 +367,7 @@ class Login extends BaseController{
 
         //lista de mascotas
         $mascotas = [];
-        foreach($mascotas_row as $m){
+        foreach ($mascotas_row as $m) {
             $tipo = $categoriaModel->find($m['TIPO_MASCOTA']);
             $mascotas[$m['MASCOTA_ID']] = ['nombre' => $m['NOMBRE'], 'tipo' => $tipo['VALOR']];
         }
@@ -356,21 +377,24 @@ class Login extends BaseController{
         foreach ($servicios_row as $s) {
             $servicios[$s['SERVICIO_ID']] = ['nombre' => $s['NOMBRE'], 'descripcion' => $s['DESCRIPCION'], 'categoria' => $s['CATEGORIA_SERVICIO']];
         }
-        
+
         //lista de turnos
         $turnos = [];
-        foreach($turnos_row as $t){
+        foreach ($turnos_row as $t) {
             $servicio = $servicios[$t['SERVICIO_ID']];
             $mascota =  $mascotas[$t['MASCOTA_ID']];
 
-            array_push($turnos, ['fecha' => $t['FECHA'], 'horario' => $t['HORARIO'], 'servicio' => $servicio, 'mascota' => $mascota['nombre']] );
+            array_push($turnos, ['fecha' => $t['FECHA'], 'horario' => $t['HORARIO'], 'servicio' => $servicio, 'mascota' => $mascota['nombre']]);
         }
 
         //datos del usuario
         $usuario = [
             'nombre' => $session->get('NOMBRE'),
             'apellido' => $session->get('APELLIDO'),
-            'imagen' => $session->get('IMAGEN')
+            'imagen' => $session->get('IMAGEN'),
+            'correo' => $session->get('CORREO'),
+            'direccion' => $session->get('DIRECCION'),
+            'cbu' => $session->get('CBU')
         ];
 
         $data = [
@@ -387,5 +411,3 @@ class Login extends BaseController{
             . view('plantillas/footer_view');
     }
 }
-
-?>

@@ -1,0 +1,66 @@
+.perfil-usuario img{
+    width: 200px;
+
+}
+/* PERFIL */
+.info-perfil{
+    width: 30vw;
+    font-size: 2rem;
+    font-weight: 700;
+    display: flex ;
+    justify-content: center;
+    align-items: center;
+    text-transform: uppercase;
+    text-decoration: underline var(--color-primario);
+} 
+
+
+/* AGREGAR MASCOTAS */
+.seccion-mascotas{
+    background-color: #edece4;
+    border-left: 3px dotted brown;
+}
+
+.agregar-mascotas{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.agregar-mascotas h2{
+    font-weight: 700;
+}
+
+.btn-agregar-mascotas{
+    background-color: var(--color-primario);
+    padding: 10px;
+    margin: 5px;
+    border-radius: 100%;
+    font-size: 1.5rem;
+    font-weight: 700;
+}
+
+.btn-agregar-mascotas:hover{
+    background-color: var(--color-hover);
+    color: white;
+}
+
+.coleccion-card{
+    display: flex;
+    flex-direction: column;
+}
+
+.card-mascotas{
+    width: auto;
+    height: 250px;
+    display: flex;
+    flex-direction: row;
+}
+
+.perfil-mascota{
+    width: 200px;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 100%;
+}
