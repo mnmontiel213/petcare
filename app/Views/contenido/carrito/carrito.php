@@ -36,12 +36,7 @@
                                     <p class="card-text">Precio: $<?php echo $p['price']?></p>
                                     <p class="card-text">Cantidad: <?php echo $p['qty']?></p>
 
-                                    <button type='submit' value='agregar' name='carrito-accion' style='display: contents;'>
-                                        <i class="btn btn-success bi bi-plus-circle" style='font-size: 1rem;'></i>
-                                    </button>
-                                    <button type='submit' value='remover' name='carrito-accion' style='display: contents;'>
-                                        <i class="btn btn-danger bi bi-dash-circle" style='font-size: 1rem;'></i>
-                                    </button>
+                                    <a href="<?php echo base_url('productos');?>" class="btn btn-primary">Seguir comprando</a>
                                 </div>
                                 <?php echo form_hidden('rowid', $p['rowid']) ?>
                                 <?php echo form_hidden('name', $p['name']) ?>
@@ -69,7 +64,7 @@
                         <h2>Total: $<?= $total ?></h2>
                         <div class="py-3">
                             <?php echo form_hidden('precio', (string)$total) ?>
-                            <input type="submit" class="btn btn-primary" value="continuar">
+                            <input type="submit" class="btn btn-primary" value="Fianlizar compra">
                         </div>
                     </div>
                 </form>

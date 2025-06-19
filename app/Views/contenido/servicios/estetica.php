@@ -30,7 +30,7 @@
                 <div class="text-center my-5 info-reserva">
                     <p class="lead fw-semibold">¿Ya reservaste tu lugar?</p>
                     <p>No te quedes sin turno. Asegurá la atención que tu mascota merece haciendo click abajo.</p>
-                    <a href="turno" class="btn btn-turnos px-4 py-2 mt-5">Reservá tu turno</a>
+                    <a href="<?php echo base_url('turno') ?>" class="btn btn-turnos px-4 py-2 mt-5">Reservá tu turno</a>
                 </div>
             </div>
             <div class="text-center mt-5">
