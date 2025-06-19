@@ -46,8 +46,8 @@
                         Productos
                     </a>
                     <ul class="dropdown-menu">
-                        <li><a class="dropdown-item" href="<?= base_url('productos') ?>">Alimentos</a></li>
-                        <li><a class="dropdown-item" href="<?= base_url('productos') ?>">Accesorios</a></li>
+                        <li><a class="dropdown-item" href="<?= base_url('productos/alimentos') ?>">Alimentos</a></li>
+                        <li><a class="dropdown-item" href="<?= base_url('productos/accesorios') ?>">Accesorios</a></li>
 
                     </ul>
                 </li>
