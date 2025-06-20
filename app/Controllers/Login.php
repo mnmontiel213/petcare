@@ -392,7 +392,6 @@ class Login extends BaseController
             'nombre' => $session->get('NOMBRE'),
             'apellido' => $session->get('APELLIDO'),
             'imagen' => $session->get('IMAGEN'),
-            'correo' => $session->get('CORREO'),,
             'correo' => $session->get('CORREO'),
             'direccion' => $session->get('DIRECCION'),
             'cbu' => $session->get('CBU')
