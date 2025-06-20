@@ -25,9 +25,7 @@
                         </ul>
                     </li>
                 <?php endif; ?>
-                <li class="nav-item">
-                    <a class="nav-link" href="<?= base_url('comercializacion'); ?>">Comercialización</a>
-                </li>
+
                 <!-- Dropdown Servicios -->
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
@@ -40,21 +38,18 @@
                     </ul>
                 </li>
 
-                <!-- Dropdown Producto -->
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                        Productos
-                    </a>
-                    <ul class="dropdown-menu">
-                        <li><a class="dropdown-item" href="<?= base_url('productos') ?>">Alimentos</a></li>
-                        <li><a class="dropdown-item" href="<?= base_url('productos') ?>">Accesorios</a></li>
-
-                    </ul>
-                </li>
-
                 <!-- Otros ítems -->
                 <li class="nav-item">
+                    <a class="nav-link" href="<?= base_url('productos'); ?>">Producto</a>
+                </li>
+                <li class="nav-item">
                     <a class="nav-link" href="<?= base_url('nosotros_header/quienes_somos'); ?>">Nosotros</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="<?= base_url('comercializacion'); ?>">Comercialización</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="<?= base_url('nosotros_header/contacto'); ?>">Contacto</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="<?= base_url('terminos'); ?>">Terminos</a>

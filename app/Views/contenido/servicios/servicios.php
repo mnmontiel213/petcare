@@ -1,11 +1,3 @@
-<!-- BANNER PRINCIPAL -->
-<div class="banner-principal text-white d-flex align-items-center justify-content-center" style="background-image: url('<?php echo base_url('assets/img/banners/banner-ss.jpg'); ?>'); height: 400px; background-size: cover; background-position: center;">
-    <div class="text-center bg-dark bg-opacity-50 p-4 rounded">
-        <h1 class="fw-bold display-5">Promociones Especiales</h1>
-        <p class="lead">¡Consentí a tu mascota con nuestras ofertas exclusivas!</p>
-    </div>
-</div>
-
 <!-- SECCIÓN PROMOS -->
 <div id="ofertas" class="promo-section pt-5">
     <div class="container">

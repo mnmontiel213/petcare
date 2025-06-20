@@ -1,30 +1,4 @@
-<div id="miniCarruselVetcare" class="carousel slide pt-5" style="background-color: rgba(255, 255, 255, 0.8);" data-bs-ride="carousel">
-    <div class="carousel-inner">
-        <!-- Imagen 1 -->
-        <div class="carousel-item active">
-            <img src="<?php echo base_url('assets/img/banners/banner-royalCanin.png'); ?>" class="d-block w-100 carrusel-img" alt="Promo 1">
-        </div>
-        <!-- Imagen 2 -->
-        <div class="carousel-item">
-            <img src="<?php echo base_url('assets/img/banners/banner-whiskas.webp'); ?>" class="d-block w-100 carrusel-img" alt="Promo 2">
-        </div>
-        <!-- Imagen 3 -->
-        <div class="carousel-item">
-            <img src="<?php echo base_url('assets/img/banners/banner-vitalCan.webp'); ?>" class="d-block w-100 carrusel-img" alt="Promo 3">
-        </div>
-    </div>
-    <!-- Controles -->
-    <button class="carousel-control-prev" type="button" data-bs-target="#miniCarruselVetcare" data-bs-slide="prev">
-        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-    </button>
-    <button class="carousel-control-next" type="button" data-bs-target="#miniCarruselVetcare" data-bs-slide="next">
-        <span class="carousel-control-next-icon" aria-hidden="true"></span>
-    </button>
-    <div class="text-center bg-pp">
-        <p class="fw-bold">Dirigete a ver los productos que tenemos para tu mascota!!<a href="<?= base_url('productos/productos'); ?>">Ver</a></p>
-    </div>
-</div>
-<div class="estetica-section ">
+<div class="estetica-section mt-3 pt-3">
 
     <div class="container">
         <div class="row align-items-center">

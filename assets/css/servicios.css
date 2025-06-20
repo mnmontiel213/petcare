@@ -1,20 +1,4 @@
-/* === Banner Principal === */
-.banner-principal {
-    background-size: cover;
-    background-position: center;
-    height: 400px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
 
-.banner-principal .text-center {
-    background-color: rgba(160, 201, 236, 0.6) !important;
-    padding: 2rem;
-    border-radius: 30% 70% !important;
-    position: absolute;
-    z-index: 0;
-}
 
 /* Pomo */
 .promo-card-clean {
@@ -86,6 +70,7 @@
     font-weight: bold;
     border-radius: 50px;
     transition: background-color 0.3s ease, color 0.3s ease;
+    
 }
 
 .btn-turnos:hover {
