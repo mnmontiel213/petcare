@@ -1,5 +1,6 @@
 <?php
-$imagen = base_url('assets/img/animales/card-gato.jpg');
+    $imagen_gato = base_url('assets/img/animales/card-gato.jpg');
+    $imagen_perro = base_url('assets/img/animales/card-perro.jpg');
 ?>
 
 <div class="container">
@@ -51,7 +52,12 @@ $imagen = base_url('assets/img/animales/card-gato.jpg');
                     <?php
                     foreach ($mascotas as $mascota): ?>
                         <div class="card m-3">
-                            <img src="<?= $imagen ?>" class="card-img-top perfil-mascota" alt="mascotas">
+                            <?php if(strcmp($mascota['tipo'], 'GATO')): ?>
+                                <img src="<?= $imagen_perro ?>" class="card-img-top perfil-mascota" alt="mascotas">
+                            <?php else: ?>
+                                <img src="<?= $imagen_gato ?>" class="card-img-top perfil-mascota" alt="mascotas">
+                            <?php endif; ?>
+
                             <div class="card-body">
                                 <h5 class="card-title"> <?= $mascota['nombre'] ?></h5>
                                 <small> <?= strtolower($mascota['tipo']) ?> </small>
