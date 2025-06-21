@@ -57,43 +57,83 @@ class Carrito extends BaseController{
         $carrito = \Config\Services::cart();
 
         $accion = $request->getPost('carrito-accion');
-        
-        if($accion){
-            if($accion === 'limpiar'){
-                // DESACERSE DE TODO EL CARRITO
-                $carrito->destroy();
-                echo 'limpiar';
-            }else if($accion === 'remover'){
-                // QUITAR UNA UNIDAD DEL PRODUCTO EN EL CARRITO
-                if((float)$request->getPost('qty') > 1){
-                    $producto = [
-                        'rowid' => $request->getPost('rowid'),
-                        'price' => $request->getPost('price'),
-                        'name' => $request->getPost('name'),
-                        'codigo' => $request->getPost('codigo'),
-                        'qty' => ((float)$request->getPost('qty')) - 1,
-                    ];
-                    
-                    $carrito->update($producto);                    
-                }
-            }else if($accion === 'agregar'){
-                // AGREGAR UNA UNIDAD DEL PRODUCTO EN EL CARRITO
-                $producto = [
-                    'rowid' => $request->getPost('rowid'),
-                    'price' => $request->getPost('price'),
-                    'name' => $request->getPost('name'),
-                    'codigo' => $request->getPost('codigo'),
-                    'qty' => ((float)$request->getPost('qty')) + 1,
-                ];
+        $codigo = $request->getPost('codigo');
 
-                $carrito->update($producto);                    
-            }else if($accion === 'quitar'){
-                // REMOVER COMPLETAMENTE EL PRODUCTO DEL CARRITO
-                $carrito->remove($request->getPost('rowid'));
+        echo 'accion a realizar ', $accion;
+        echo '<br>';
+        echo 'producto a modificar ', $codigo;
+
+
+        $rowid = 0;
+        foreach($carrito->contents() as $item){
+            if($item['codigo'] == $codigo){
+                $rowid = $item['rowid'];
+                break;
             }
         }
 
-        return redirect()->route('productos');
+        if($rowid == 0){
+            //el elemento no existe en el carrito
+
+            if($accion == 'agregar'){
+                $producto = [
+                    'id' =>  $carrito->totalitems(),
+                    'name' => $request->getPost('nombre'),
+                    'price' => $request->getPost('precio'),
+                    'qty' => 1,
+                    'codigo' => $request->getPost('codigo'),
+                    'imagen' => $request->getPost('imagen'),
+                ];
+                
+                $carrito->insert($producto);
+            }
+
+        }else{
+            //el elemento existe en el carrito
+            $item = $carrito->contents()[$rowid];
+            if($accion == 'agregar'){
+                $producto = [
+                    'rowid' => $item['rowid'],
+                    'price' => $item['price'],
+                    'name' =>  $item['name'],
+                    'codigo' => $item['codigo'],
+                    'qty' => (float)$item['qty'] + 1,
+                ];
+                
+                $carrito->update($producto); 
+            }else if($accion == 'remover'){
+                $producto = [
+                    'rowid' => $item['rowid'],
+                    'price' => $item['price'],
+                    'name' =>  $item['name'],
+                    'codigo' => $item['codigo'],
+                    'qty' => (float)$item['qty'] - 1,
+                ];
+                
+                if($producto['qty'] == 0){
+                    $carrito->remove($rowid);
+                }else{
+                    $carrito->update($producto); 
+                }
+
+                
+            }else if($accion == 'quitar'){
+                $carrito->remove($rowid);
+            }
+
+        }
+
+        if($carrito->totalitems() > 0){
+            if($accion == 'limpiar'){
+                $carrito->destroy();
+            }
+        }
+
+        $url = previous_url();
+        $url = str_replace('index.php/', '', $url);
+        $url = str_replace('http://localhost/petcare/', '', $url);
+
+        return redirect()->route($url);
     }
 
     public function pagar(){
