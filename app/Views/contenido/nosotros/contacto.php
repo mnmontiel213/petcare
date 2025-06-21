@@ -54,10 +54,10 @@
         <!-- Derecha: Formulario -->
         <div id="formulario" class="formulario-contacto">
             <h2>Escribinos tu consulta</h2>
-            <form action="consultas.php" method="POST">
+            <form action="<?php echo base_url('enviar_consulta') ?>" method="POST">
                 <div class="form-group">
-                    <label for="nombre">Nombre</label>
-                    <input type="text" id="nombre" name="nombre" required>
+                    <label for="nombre">Titulo</label>
+                    <input type="text" id="titulo" name="titulo" required>
                 </div>
 
                 <div class="form-group">
@@ -67,7 +67,7 @@
 
                 <div class="form-group">
                     <label for="mensaje">Consulta</label>
-                    <textarea id="mensaje" name="mensaje" rows="5" required></textarea>
+                    <textarea id="contenido" name="contenido" rows="5" required></textarea>
                 </div>
 
                 <button type="submit">Enviar</button>

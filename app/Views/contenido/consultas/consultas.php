@@ -18,7 +18,7 @@
             echo form_textarea('contenido', '', ['class' => 'form-control', 'placeholder' => '']);
 
             echo form_submit('Enviar', 'enviar', ['class' => 'btn btn-primary']);
-
+            
             echo form_close();
         ?>
         
