@@ -82,11 +82,13 @@
                                     <i class="bi bi-person-circle me-2"></i> Mi perfil
                                 </a>
                             </li>
-                            <li>
-                                <a class="dropdown-item" href="<?= base_url('pedidos') ?>">
-                                    <i class="bi bi-receipt me-2"></i> Mis pedidos
-                                </a>
-                            </li>
+                            <!-- NAIN
+                                <li>
+                                    <a class="dropdown-item" href="<?= base_url('pedidos') ?>">
+                                        <i class="bi bi-receipt me-2"></i> Mis pedidos
+                                    </a>
+                                </li>
+                            -->
                             <li>
                                 <hr class="dropdown-divider">
                             </li>
