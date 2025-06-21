@@ -1,7 +1,7 @@
 
 <?php helper('form') ?>
 
-<div class="container m-auto p-5 rounded-3" style="font-family: 'Montserrat'; background-color: var(--color-primario);">
+<div class="container m-auto p-5 rounded-3 border border-dark-subtle" style="font-family: 'Montserrat'; background-color: var(--color-primario);">
     <div class="container w-50">
     <h2>¡Registrar nueva mascota!</h2>  
         

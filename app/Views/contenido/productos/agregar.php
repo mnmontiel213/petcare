@@ -1,9 +1,11 @@
 
-<div class="w-25">
+<div class="m-auto w-25">
 <?php
      helper('form');
     if($success){
+        echo '<div>';
         echo 'Producto agregado';
+        echo '</div>';
     }
     
 if($validation){
@@ -17,54 +19,48 @@ if($validation){
 ?>
 </div>
 
-<?php echo form_open_multipart("productos/registrar_producto")?>
-    <h2>Ingresar datos del producto</h2>
+<div class="m-auto p-5 rounded-3 border border-dark-subtle" style="background-color: var(--color-secundario)">
+    <?php echo form_open_multipart("productos/registrar_producto")?>
+        <h2>Ingresar datos del producto</h2>
 
-    <label>Nombre</label>
-    <input type="text" name="nombre"></input>
-    <br>
+        <label class="form-check-label">Nombre</label>
+        <input class="form-control w-50" type="text" name="nombre"></input>
 
-    <label>Codigo</label>
-    <input type="text" name="codigo"></input>
-    <br>
-     
-    <h3>Marca</h3>
+        <label class="form-check-label">Codigo</label>
+        <input class="form-control w-50" type="text" name="codigo"></input>
+        
+        <h3>Marca</h3>
+        <?php foreach($categorias['marcas'] as $m){
+            echo form_radio('marca', $m['CATEGORIA_ID'], false, 'class="form-check-input"');
+            echo form_label($m['VALOR'], '', ['class="form-check-label"']);
+            echo '<br>';
+        }    
+        ?>
 
-    <?php foreach($categorias['marcas'] as $m){
-        echo form_radio('marca', $m['CATEGORIA_ID']);
-        echo form_label($m['VALOR']);
-        echo '<br>';
-    }    
-    ?>
+        <label class="form-check-label" for="">Peso</label>
+        <input class="form-control w-50" type="number" name="peso" step="0.1">
+        
+        <label class="form-check-label" for="">Precio</label>
+        <input class="form-control w-50" type="number" name="precio" step="0.1">
 
-    <label for="">Peso</label>
-    <input type="number" name="peso">
-    <br>
-     
-    <label for="">Precio</label>
-    <input type="number" name="precio">
+        <h3>Categoria</h3>
+        <?php foreach($categorias['productos'] as $m){
+            echo form_radio('categoria', $m['CATEGORIA_ID'], false, 'class="form-check-input"');
+            echo form_label($m['VALOR']);        
+            echo '<br>';
+        }    
+        ?>
+        
+        <h3>Mascota</h3>
+        <?php foreach($categorias['mascotas'] as $m){
+            echo form_radio('mascota', $m['CATEGORIA_ID'], false, 'class="form-check-input"');
+            echo form_label($m['VALOR']);
+            echo '<br>';
+        }    
+        ?>
 
-    <h3>Categoria</h3>
-    <?php foreach($categorias['productos'] as $m){
-        echo form_radio('categoria', $m['CATEGORIA_ID']);
-        echo form_label($m['VALOR']);        
-        echo '<br>';
-    }    
-    ?>
-    
-    <h3>Mascota</h3>
-    <?php foreach($categorias['mascotas'] as $m){
-        echo form_radio('mascota', $m['CATEGORIA_ID']);
-        echo form_label($m['VALOR']);
-        echo '<br>';
-    }    
-    ?>
-
-    <br>
-    <label for="">imagen</label>
-    <br>
-    <input type="file" name="imagen" size="20">
-    <br>
-    <br>    
-    <input type="submit" value="registrar">
-<?php form_close(); ?>
+        <label class="form-check-label" for="">imagen</label> <br>
+        <input type="file" name="imagen" size="20">  <br>
+        <input class="btn btn-primary" type="submit" value="registrar">
+    <?php form_close(); ?>
+</div>
