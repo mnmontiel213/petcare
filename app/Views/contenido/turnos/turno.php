@@ -32,7 +32,7 @@
                 </div>
                 <div class="col">
                     <h2>Fecha</h2>
-                    <input type="date" name="fecha" value="<?php echo date("Y-m-d")?>" 
+                    <input class="form-control" type="date" name="fecha" value="<?php echo date("Y-m-d")?>" 
                                                    min="<?php echo date("Y-m-d")?>" 
                                                    max="<?php echo date("Y-m-d", strtotime("+1 Months"))?>">
 
@@ -67,7 +67,7 @@
                </div>
             </div>
 
-            <input type="submit" value="Pedir turno">
+            <input class="btn btn-success" type="submit" value="Pedir turno">
         </form>
     </div>
 </div>

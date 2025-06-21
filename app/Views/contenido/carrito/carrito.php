@@ -52,7 +52,9 @@
                     </div>
                 <?php endforeach; ?>
             <?php else :?>
-                <p>No hay elementos en el carrito</p>
+                <div class="alert alert-info">
+                    <p>No hay elementos en el carrito</p>
+                </div>
             <?php endif; ?>
         </div>
         

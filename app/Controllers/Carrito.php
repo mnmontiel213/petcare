@@ -57,7 +57,7 @@ class Carrito extends BaseController{
         $carrito = \Config\Services::cart();
 
         $accion = $request->getPost('carrito-accion');
-
+        
         if($accion){
             if($accion === 'limpiar'){
                 // DESACERSE DE TODO EL CARRITO
