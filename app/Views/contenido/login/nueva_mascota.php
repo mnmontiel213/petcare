@@ -1,46 +1,38 @@
 
 <?php helper('form') ?>
 
-<div>
-    <?php 
-        foreach($validation as $e){
-            echo $e;
-            echo '<br>';
-        }
-    ?>
-
-    <h2>¡Registrar nueva mascota!</h2>
-    <div class="container w-25">
+<div class="container">
+    <div class="container w-50">
+    <h2>¡Registrar nueva mascota!</h2>  
         
         <form action="mascota" method="post">
+            <label class="form-label" for="">Nombre</label>
+            <input class="form-control" type="text" name="nombre">
+            <?php if(isset($validation['nombre'])): ?>
+                <div class="alert alert-danger w-50 my-3">
+                    <?= $validation['nombre'] ?>
+                </div>
+            <?php endif; ?>
 
+            <label class="form-label w-25" for="">Mascota</label>
+            <div class="d-flex justify-content-evenly">
+                <?php
+                    foreach($razas as $r){
+                        echo '<div>';
+                        echo form_radio('mascota', $r['CATEGORIA_ID']);
+                        echo form_label($r['VALOR'], '', ["class='form-label'"]);
+                        echo '</div>';
+                    }    
+                ?>
+            </div>
             <?php if(isset($validation['mascota'])): ?>
-                <label for="">Nombre pls</label>
-                <br>
-                <input type="text" name="nombre">
-            <?php else: ?>
-                <label for="">Nombre</label>
-                <br>
-                <input type="text" name="nombre">
-            <?php endif ?>
-            <br>
-            <br>
-            <label for="">Mascota</label>
-            <br>
-            
-            <?php 
-                foreach($razas as $r){
-                    echo form_radio('mascota', $r['CATEGORIA_ID']);
-                    echo form_label($r['VALOR']);
-                    echo '<br>';
-                }    
-            ?>
-            
-            <label for="">Imagen</label>
-            <input type="file" id="imagen" name="imagen">
+                <div class="alert alert-danger w-50 my-3">
+                    <?= $validation['mascota'] ?>
+                </div>
+            <?php endif; ?>
 
-            <input type="submit" value="Registrar">
+
+            <input type="submit" value="Registrar" class="btn btn-primary">
         </form>
-
     </div>
 </div>
