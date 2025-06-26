@@ -11,8 +11,11 @@
             echo form_label('Titulo', 'titulo', ['class' => 'form-label']);
             echo form_input('titulo', '', ['class' => 'form-control', 'placeholder' => '']);
 
-            echo form_label('Correo', 'correo', ['class' => 'form-label']);
-            echo form_input('correo', '', ['class' => 'form-control', 'placeholder' => '']);
+            if(session()->get('LOGGED')){
+                echo 'lheeee';
+                echo form_label('Correo', 'correo', ['class' => 'form-label']);
+                echo form_input('correo', '', ['class' => 'form-control', 'placeholder' => '']);
+            }
 
             echo form_label('Contenido', 'contenido', ['class' => 'form-label']);
             echo form_textarea('contenido', '', ['class' => 'form-control', 'placeholder' => '']);

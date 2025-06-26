@@ -20,8 +20,6 @@ class Consulta extends BaseController{
 
     public function enviar_consulta(): RedirectResponse | ResponseInterface
     {
-        print_r($_POST);
-        
         $rules = [
             'titulo' => 'required',
             'correo' => 'required',
@@ -29,11 +27,18 @@ class Consulta extends BaseController{
         ];
 
         if($this->validate($rules)){
+            $session = session();
+            $usuario_id = $session->get('USUARIO_ID');
+            if(!$session->get('LOGGED')){
+                $usuario_id = 0;
+            }
+
             $consulta = new ConsultaModel();
             $consulta->save([
                 'TITULO' => $this->request->getVar('titulo'),
                 'CORREO' => $this->request->getVar('correo'),
                 'CONTENIDO' => $this->request->getVar('contenido'),
+                'USUARIO_ID' => $usuario_id,
             ]);
 
             session()->setFlashdata('success', 'Su consulta se envio');

@@ -60,15 +60,19 @@
                     <input type="text" id="titulo" name="titulo" required>
                 </div>
 
-                <div class="form-group">
-                    <label for="correo">Correo electrónico</label>
-                    <input type="email" id="correo" name="correo" required>
-                </div>
-
+                <?php if(!session()->get('LOGGED')): ?>
+                    <div class="form-group">
+                        <label for="correo">Correo electrónico</label>
+                        <input type="email" id="correo" name="correo" required>
+                    </div>
+                <?php endif; ?>
+                
                 <div class="form-group">
                     <label for="mensaje">Consulta</label>
                     <textarea id="contenido" name="contenido" rows="5" required></textarea>
                 </div>
+
+                
 
                 <button type="submit">Enviar</button>
             </form>
