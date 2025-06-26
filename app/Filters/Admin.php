@@ -8,8 +8,8 @@ use CodeIgniter\HTTP\ResponseInterface;
 class Admin implements FilterInterface{
 
     public function before(RequestInterface $request, $arguments = null){
-        if(!session()->get('LOGGED') && session()->get('NOMBRE') != 'admin'){
-            return redirect()->to('/login');
+        if(!session()->get('LOGGED') || session()->get('USUARIO_ID') != 1){
+            return redirect()->to('/login/ingresar');
         }
     }
 

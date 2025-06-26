@@ -131,7 +131,7 @@ class Carrito extends BaseController{
 
         $url = previous_url();
         $url = str_replace('index.php/', '', $url);
-        $url = str_replace('http://localhost/petcare/', '', $url);
+        $url = str_replace('http://localhost/proyecto/', '', $url);
 
         return redirect()->route($url);
     }
