@@ -39,7 +39,7 @@ class Login extends BaseController
      */
     public function login_registrarse()
     {
-        $data = ['titulo' => 'Registrarse', 'validation' => null];
+        $data = ['titulo' => 'Registrarse', 'validation' => []];
         return view('plantillas/header_view', $data)
             . view('plantillas/navbar_view')
             . view('contenido/login/registrarse')
@@ -191,16 +191,20 @@ class Login extends BaseController
 
         $validation->setRules(
             [
-                'correo' => 'required|valid_email',
-                'contraseña' => 'required',
+                'correo' => 'required|valid_email|min_length[10]|max_length[64]',
+                'contraseña' => 'required|min_length[10]|max_length[64]',
             ],
             [
                 'correo' => [
                     'required' => 'Ingrese un correo',
-                    'valid_email' => 'Correo invalido'
+                    'valid_email' => 'El valor ingresado no es un correo valido',
+                    'min_length' => 'El correo es demasiado corto para ser valido',
+                    'max_length' => 'El correo es demasiado largo',
                 ],
                 'contraseña' => [
                     'required' => 'Ingrese la contraseña',
+                    'min_length' => 'La contraseña es demasiado corta',
+                    'max_length' => 'La contraseña es demasiado larga',
                 ],
             ],
         );
@@ -234,6 +238,7 @@ class Login extends BaseController
                     $session->set($session_data);
                     return redirect()->to('perfil');
                 } else {
+                    echo 'contraseña incorrecta';
                     // WRONG PASSWORD
                     $data['titulo'] = 'Ingresar';
                     $data['error'] = 'contraseña incorrecta';
@@ -245,10 +250,12 @@ class Login extends BaseController
                         . view('plantillas/footer_view');
                 }
             } else {
-                // WRONG EMAIL
+                // WRONG EMAILs
                 $data['titulo'] = 'Ingresar';
-                $data['error'] = 'correo incorrecto';
+                $data['error'] = 'correo desconocido';
                 $data['validation'] = $validation->getErrors();
+
+                echo $data['error'];
 
                 return view('plantillas/header_view', $data)
                     . view('plantillas/navbar_view')
