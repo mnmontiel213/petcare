@@ -24,7 +24,7 @@
 
             <?php
             helper('form');
-
+            
             echo form_open('login/ingresar_usuario', ['method' => 'post']);
 
             echo form_label('Correo', 'correo', ['class' => 'form-label']);
@@ -36,6 +36,7 @@
                 'placeholder' => 'example@gmail.com',
                 'type' => 'email'
             ]);
+
 
             echo form_label('Contraseña', 'contraseña', ['class' => 'form-label']);
             echo form_password([

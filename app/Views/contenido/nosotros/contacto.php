@@ -54,28 +54,72 @@
         <!-- Derecha: Formulario -->
         <div id="formulario" class="formulario-contacto">
             <h2>Escribinos tu consulta</h2>
-            <form action="<?php echo base_url('enviar_consulta') ?>" method="POST">
-                <div class="form-group">
-                    <label for="nombre">Titulo</label>
-                    <input type="text" id="titulo" name="titulo" required>
-                </div>
-
-                <?php if(!session()->get('LOGGED')): ?>
-                    <div class="form-group">
-                        <label for="correo">Correo electrónico</label>
-                        <input type="email" id="correo" name="correo" required>
-                    </div>
-                <?php endif; ?>
+            <!-- <form action="<?php echo base_url('enviar_consulta') ?>" method="POST"> -->
                 
-                <div class="form-group">
-                    <label for="mensaje">Consulta</label>
-                    <textarea id="contenido" name="contenido" rows="5" required></textarea>
-                </div>
+                <?php
+                    helper('form');
+                    $completar = count($validation) > 0;
+                    $clase_titulo = isset($validation['titulo']) ? 'form-control is-invalid' : "";
+                    $clase_correo = isset($validation['correo']) ? 'form-control is-invalid' : "";
+                    $clase_contenido = isset($validation['contenido']) ? 'form-control is-invalid' : "";
 
+                    echo form_open('enviar_consulta');
+
+                    echo form_label('Titulo', 'titulo', ['class' => 'form-label']);
+                    echo form_input([
+                        'name' => 'titulo',
+                        'id' => 'titulo',
+                        'value' => $completar ? set_value('titulo') : '',
+                        'class' => $clase_titulo,
+                        'placeholder' => 'Horarios',
+                        'type' => 'text',
+                        'autocomplete' => 'off',
+                    ]);
+                    if(isset($validation['titulo'])){
+                        echo '<p class="invalid-feedback">', $validation['titulo'] ,'</p>';
+                    }
+                    
+                    if(!session()->get('LOGGED')){
+                        echo form_label('Correo', 'correo', ['class' => 'form-label']);
+                        echo form_input([
+                            'name' => 'correo',
+                            'id' => 'correo',
+                            'value' => $completar ? set_value('correo') : '',
+                            'class' => $clase_correo,
+                            'placeholder' => 'correo@gmail.com',
+                            'type' => 'email',
+                            'autocomplete' => 'off',
+                        ]);
+                        if(isset($validation['correo'])){
+                            echo '<p class="invalid-feedback">', $validation['correo'] ,'</p>';
+                        }
+                    }
+
+                    echo form_label('Contenido', 'contenido', ['class' => 'form-label']);
+                    echo form_textarea([
+                        'name' => 'contenido',
+                        'id' => 'contenido',
+                        'value' => $completar ? set_value('contenido') : '',
+                        'class' => $clase_contenido,
+                        'placeholder' => '',
+                        'type' => 'text',
+                        'autocomplete' => 'off',
+                    ]);
+                    if(isset($validation['contenido'])){
+                        echo '<p class="invalid-feedback">', $validation['contenido'] ,'</p>';
+                    }
+
+                    echo form_submit([
+                        'name' => 'Enviar',
+                        'id' => 'Enviar',
+                        'value' => 'Enviar',
+                        'class' => 'btn btn-success w-25 my-4',
+                    ]);
+
+                    echo form_close();
+                ?>
                 
-
-                <button type="submit">Enviar</button>
-            </form>
+            <!-- </form> -->
         </div>
 
     </div>

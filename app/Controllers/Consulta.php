@@ -18,15 +18,35 @@ class Consulta extends BaseController{
             .view('plantillas/footer_view');
     }
 
-    public function enviar_consulta(): RedirectResponse | ResponseInterface
+    public function enviar_consulta(): string
     {
-        $rules = [
-            'titulo' => 'required',
-            'correo' => 'required',
-            'contenido' => 'required',
-        ];
+        $validation = \Config\Services::validation();
+        $request = \Config\Services::request();
 
-        if($this->validate($rules)){
+        $data['titulo'] = "Contacto";
+        $data['validation'] = [];
+
+        $validation->setRules(
+            [
+                'titulo' => 'required',
+                'correo' => 'required|valid_email',
+                'contenido' => 'required',
+            ],
+            [
+                'titulo' => [
+                    'required' => 'Ingrese un titulo para la consulta',
+                ],
+                'correo' =>[
+                    'required' => 'Ingrese un correo',
+                    'valid_email' => 'Correo invalido'
+                ],
+                'contenido' => [
+                    'required' => 'Ingrese el motivo de la consulta',
+                ],
+            ]
+        );
+
+        if($validation->withRequest($request)->run()){
             $session = session();
             $usuario_id = $session->get('USUARIO_ID');
             if(!$session->get('LOGGED')){
@@ -40,12 +60,24 @@ class Consulta extends BaseController{
                 'CONTENIDO' => $this->request->getVar('contenido'),
                 'USUARIO_ID' => $usuario_id,
             ]);
+            
+            $data['titulo'] = "Contacto";
 
-            session()->setFlashdata('success', 'Su consulta se envio');
-            return $this->response->redirect(base_url('/'));
+            return view('plantillas/header_view', $data)
+                    .view('plantillas/navbar_view')
+                    .view('contenido/nosotros/nosotros_header')
+                    .view('contenido/nosotros/contacto')
+                    .view('plantillas/footer_view');
+        }else{
+            $data['titulo'] = "Contacto";
+            $data['validation'] = $validation->getErrors();
+
+            return view('plantillas/header_view', $data)
+                    .view('plantillas/navbar_view')
+                    .view('contenido/nosotros/nosotros_header')
+                    .view('contenido/nosotros/contacto')
+                    .view('plantillas/footer_view');
         }
-
-        return redirect()->to('/');
     }
 
     public function eliminar(){

@@ -238,7 +238,7 @@ class Login extends BaseController
                     $data['titulo'] = 'Ingresar';
                     $data['error'] = 'contraseña incorrecta';
                     $data['validation'] = $validation->getErrors();
-
+                    
                     return view('plantillas/header_view', $data)
                         . view('plantillas/navbar_view')
                         . view('contenido/login/entrar')
