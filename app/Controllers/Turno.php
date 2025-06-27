@@ -15,7 +15,7 @@ Logica de los usuarios y sus registros
 */
 class Turno extends BaseController{
 
-    public function turno(): string{
+    public function turno($validation = []): string{
         $categoriaModel = new CategoriaModel();
         $servicioModel = new ServicioModel();
         $mascotasModel = new MascotaModel();
@@ -25,7 +25,7 @@ class Turno extends BaseController{
         $mascotas_row = $mascotasModel->where('USUARIO_ID', $session->get('USUARIO_ID'))->findAll();
         $categorias_row = $categoriaModel->where('TIPO', 'SERVICIO')->findAll(); 
         $servicios_row = $servicioModel->findAll();
-
+        
         $servicios = [];
 
         foreach($categorias_row as $c){
@@ -38,12 +38,11 @@ class Turno extends BaseController{
         }
 
         $mascotas = [];
-
         foreach($mascotas_row as $m){
             array_push($mascotas, ['nombre' => $m['NOMBRE'], 'id' => $m['MASCOTA_ID']]);
         }
 
-        $data = ['titulo' => 'Turnos', 'servicios' => $servicios, 'mascotas' => $mascotas];
+        $data = ['titulo' => 'Turnos', 'servicios' => $servicios, 'mascotas' => $mascotas, 'validation' => $validation];
         return view('plantillas/header_view', $data)
                 .view('plantillas/navbar_view')
                 .view('contenido/turnos/turno')
@@ -94,16 +93,9 @@ class Turno extends BaseController{
             
             $ingresado = $model->save($data);
 
-            if($ingresado){
-                session()->setFlashdata('success', 'se registro su turno con exito!');
-                return $this->response->redirect(base_url('perfil'));
-            }else{
-                session()->setFlashdata('failed', 'hubo un problema al registrar el turno');
-                return $this->response->redirect(base_url('/'));
-            }
+            redirect()->to('perfil');
         }else{
-            session()->setFlashdata('failed', 'fallo de validacion');
-            return $this->response->redirect(base_url('/'));
+            return Turno::turno($validation->getErrors());
         }
     }
 }

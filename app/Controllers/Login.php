@@ -192,7 +192,7 @@ class Login extends BaseController
         $validation->setRules(
             [
                 'correo' => 'required|valid_email|min_length[10]|max_length[64]',
-                'contraseña' => 'required|min_length[10]|max_length[64]',
+                'contraseña' => 'required|min_length[5]|max_length[64]',
             ],
             [
                 'correo' => [
