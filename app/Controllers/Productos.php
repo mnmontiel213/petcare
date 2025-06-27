@@ -130,6 +130,7 @@ class Productos extends BaseController{
                 'precio' => 'required',
                 'categoria' => 'required',
                 'mascota' => 'required',
+                'stock' => 'required',
                 //'imagen' => 'is_image[imagen]|max_size[imagen, 4096]|ext_in[imagen,jpg,png,jpeg]|uploaded[imagen]',
                 'imagen' => 'is_image[imagen]'
             ],
@@ -148,6 +149,9 @@ class Productos extends BaseController{
                 ],
                 'mascota' => [
                     'required' => 'Ingrese la mascota a la que va diriguido el producto'
+                ],
+                'stock' => [
+                    'required' => 'Ingrese el stock del producto'
                 ],
                 'peso' =>[
                     'required' => 'Ingrese el peso'
@@ -179,6 +183,7 @@ class Productos extends BaseController{
                 'CATEGORIA_MASCOTA' => $this->request->getPost('mascota'),
                 'CATEGORIA_MARCA' => $this->request->getPost('marca'),
                 'IMAGEN' => $nombre_aleatorio,
+                'STOCK ' => $this->request->getPost('stock'),
             ];
 
             $model->save($datos);

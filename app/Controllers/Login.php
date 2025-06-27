@@ -238,7 +238,6 @@ class Login extends BaseController
                     $session->set($session_data);
                     return redirect()->to('perfil');
                 } else {
-                    echo 'contraseña incorrecta';
                     // WRONG PASSWORD
                     $data['titulo'] = 'Ingresar';
                     $data['error'] = 'contraseña incorrecta';
@@ -254,8 +253,6 @@ class Login extends BaseController
                 $data['titulo'] = 'Ingresar';
                 $data['error'] = 'correo desconocido';
                 $data['validation'] = $validation->getErrors();
-
-                echo $data['error'];
 
                 return view('plantillas/header_view', $data)
                     . view('plantillas/navbar_view')

@@ -9,7 +9,6 @@
             <?php
                 helper('form');
 
-                $completar = count($validation) > 0;
                 $clase_correo = isset($validation['correo']) ? 'form-control is-invalid' : "form-control";
                 $clase_contraseña = isset($validation['contraseña']) ? 'form-control is-invalid' : "form-control";
 
@@ -19,7 +18,7 @@
                 echo form_input([
                     'name' => 'correo',
                     'id' => 'correo',
-                    'value' => $completar ? set_value('correo') : '',
+                    'value' => set_value('correo'),
                     'class' => $clase_correo,
                     'placeholder' => 'example@gmail.com',
                     'type' => 'email',
@@ -33,7 +32,7 @@
                 echo form_password([
                     'name' => 'contraseña',
                     'id' => 'contraseña',
-                    'value' => $completar ? set_value('contraseña') : '',
+                    'value' => set_value('contraseña'),
                     'class' => $clase_contraseña,
                     'autocomplete' => 'off',
                 ]);

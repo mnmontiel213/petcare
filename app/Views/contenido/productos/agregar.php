@@ -43,6 +43,9 @@ if($validation){
         <label class="form-check-label" for="">Precio</label>
         <input class="form-control w-50" type="number" name="precio" step="0.1">
 
+        <label class="form-check-label" for="">Stock</label>
+        <input class="form-control w-50" type="number" name="stock">
+
         <h3>Categoria</h3>
         <?php foreach($categorias['productos'] as $m){
             echo form_radio('categoria', $m['CATEGORIA_ID'], false, 'class="form-check-input"');
