@@ -40,14 +40,18 @@
 
                 <!-- Otros ítems -->
                 <li class="nav-item">
-                    <a class="nav-link" href="<?= base_url('productos'); ?>">Producto</a>
+                    <a class="nav-link" href="<?= base_url('productos'); ?>">Productos</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="<?= base_url('nosotros_header/quienes_somos'); ?>">Nosotros</a>
                 </li>
+                
+                <!-- COMERCIALIZACION 
                 <li class="nav-item">
                     <a class="nav-link" href="<?= base_url('comercializacion'); ?>">Comercialización</a>
-                </li>
+                </li> 
+                -->
+
                 <li class="nav-item">
                     <a class="nav-link" href="<?= base_url('nosotros_header/contacto'); ?>">Contacto</a>
                 </li>
@@ -59,16 +63,18 @@
                 <!-- BLOQUE DE USUARIO, CARRITO Y CERRAR SESIÓN -->
                 <?php if ($session->get('LOGGED')): ?>
                     <!-- Ícono de carrito -->
-                    <li class="nav-item">
-                        <a class="nav-link position-relative" href="<?= base_url('carrito') ?>">
-                            <i class="bi bi-cart"></i>
-                            <?php if ($session->get('carrito_cantidad') > 0): ?>
-                                <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
-                                    <?= $session->get('carrito_cantidad') ?>
-                                </span>
-                            <?php endif; ?>
-                        </a>
-                    </li>
+                     <?php if(!$session->get('ADMIN') ): ?>
+                        <li class="nav-item">
+                            <a class="nav-link position-relative" href="<?= base_url('carrito') ?>">
+                                <i class="bi bi-cart"></i>
+                                <?php if ($session->get('carrito_cantidad') > 0): ?>
+                                    <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
+                                        <?= $session->get('carrito_cantidad') ?>
+                                    </span>
+                                <?php endif; ?>
+                            </a>
+                        </li>
+                    <?php endif; ?>
 
                     <!-- Dropdown del usuario -->
                     <li class="nav-item dropdown">

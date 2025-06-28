@@ -225,7 +225,7 @@ class Login extends BaseController
                         'DIRECCION' => $user_data['DIRECCION'],
                         'ES_MAYORISTA' => $user_data['ES_MAYORISTA'],
                         'LOGGED' => TRUE,
-                        'ADMIN' => FALSE,
+                        'ADMIN' => $user_data['USUARIO_ID'] == 1 ? TRUE : FALSE,
                     ];
 
                     if (

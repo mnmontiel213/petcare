@@ -132,7 +132,7 @@ class Productos extends BaseController{
                 'mascota' => 'required',
                 'stock' => 'required',
                 //'imagen' => 'is_image[imagen]|max_size[imagen, 4096]|ext_in[imagen,jpg,png,jpeg]|uploaded[imagen]',
-                'imagen' => 'is_image[imagen]'
+                'imagen' => 'is_image[imagen]|uploaded[imagen]'
             ],
             [
                 'nombre' =>[
@@ -160,7 +160,7 @@ class Productos extends BaseController{
                     'required' => 'Ingrese el precio'
                 ],
                 'imagen' =>[
-                    //'uploaded' => 'Es necesario una imagen para el producto',
+                    'uploaded' => 'Es necesario una imagen para el producto',
                     'is_image' => 'El archivo adjunto no es una imagen',
                     //'max_size' => 'La imagen es muy grande, maximo 4mb',
                     //'ext_in'   => 'La imagen solo puede ser PNG, JPG o JPEG',
