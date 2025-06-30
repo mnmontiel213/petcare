@@ -1,11 +1,4 @@
 <!-- Pedir turno -->
-<?php 
-    foreach($validation as $v){
-        print_r($v);
-        echo '<br>';
-    }
-?>
-
 <div>
     <div class="container w-50 p-3">
         <h2 class="text-center">Tomar turno</h2>

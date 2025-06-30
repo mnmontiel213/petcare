@@ -93,9 +93,39 @@ class Turno extends BaseController{
             
             $ingresado = $model->save($data);
 
-            redirect()->to('perfil');
+            return redirect()->to('perfil');
         }else{
-            return Turno::turno($validation->getErrors());
+            $categoriaModel = new CategoriaModel();
+            $servicioModel = new ServicioModel();
+            $mascotasModel = new MascotaModel();
+
+            $session = session();
+            
+            $mascotas_row = $mascotasModel->where('USUARIO_ID', $session->get('USUARIO_ID'))->findAll();
+            $categorias_row = $categoriaModel->where('TIPO', 'SERVICIO')->findAll(); 
+            $servicios_row = $servicioModel->findAll();
+            
+            $servicios = [];
+
+            foreach($categorias_row as $c){
+                $servicios[$c['VALOR']] = [];
+                foreach($servicios_row as $s){
+                    if($s['CATEGORIA_SERVICIO'] == $c['CATEGORIA_ID']){
+                        array_push($servicios[$c['VALOR']], $s);
+                    }
+                }
+            }
+
+            $mascotas = [];
+            foreach($mascotas_row as $m){
+                array_push($mascotas, ['nombre' => $m['NOMBRE'], 'id' => $m['MASCOTA_ID']]);
+            }
+
+            $data = ['titulo' => 'Turnos', 'servicios' => $servicios, 'mascotas' => $mascotas, 'validation' => $validation->getErrors()];
+            return view('plantillas/header_view', $data)
+                    .view('plantillas/navbar_view')
+                    .view('contenido/turnos/turno')
+                    .view('plantillas/footer_view');
         }
     }
 }
