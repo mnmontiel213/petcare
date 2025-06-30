@@ -62,6 +62,7 @@
                     
                     <?php if(session('LOGGED') && session('ADMIN')): ?>
                     <div class="">
+                        <!-- MODIFICAR PRODUCTO -->
                         <form action="productos/modificar" method="GET">
                             <input name="codigo" value="<?=$producto['CODIGO']?>" hidden="true">
                             <button type="submit" class="btn btn-sm">
@@ -71,7 +72,7 @@
                     </div>
                     <?php endif; ?>
 
-                    <!-- Imagen -->
+                    <!-- IMAGEN -->
                     <?php
                     $imgSrc = $producto['IMAGEN']
                         ? base_url('assets/uploads/' . $producto['IMAGEN'])

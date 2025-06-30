@@ -15,28 +15,59 @@
             ?>
 
             <div class="d-flex flex-column justify-content-center align-items-center p-5 perfil-usuario">
-                <img src="<?php echo base_url('assets/uploads/');
-                            echo $usuario['imagen'] ?>" alt="" class="rounded-circle">
-                <p class="mt-3 info-perfil"><?= $usuario['nombre'] ?> <?= $usuario['apellido'] ?> </p>
+                <form action="<?php echo base_url('perfil/actualizar/'); ?>" method="GET">                    
+                    <img src="<?php echo base_url('assets/uploads/'); echo $usuario['imagen'] ?>" alt="" class="rounded-circle">
+                    <button type="submit" class="btn btn-sm">
+                        <i class="bi bi-pencil-square font h2"></i>
+                    </button>
+                    <p class="mt-3 info-perfil"><?= $usuario['nombre'] ?> <?= $usuario['apellido'] ?> </p>
+                </form>
             </div>
 
             <div class="p-5">
                 <h2>Turnos</h2>
                 <p>Proximos turnos</p>
-                <div class="list-group w-75">
-                    <?php
-                    foreach ($turnos as $turno): ?>
-                        <?php $s = $turno['servicio']; ?>
+                <p class="d-inline-flex gap-1">
+                    <a class="btn btn-primary" data-bs-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
+                        Mostrar
+                    </a>
+                </p>
+                <div class="collapse" id="collapseExample">
+                    <div class="list-group w-75">
+                        <?php
+                        foreach ($turnos as $turno): ?>
+                            <?php $s = $turno['servicio']; ?>
 
-                        <a href="#" class="list-group-item list-group-item-action">
-                            <div class="d-flex w-100 justify-content-between">
-                                <h5 class="mb-1"><?= $s['descripcion'] ?></h5>
-                                <small> <?= $turno['fecha'] ?> </small>
+                            <a href="#" class="list-group-item list-group-item-action">
+                                <div class="d-flex w-100 justify-content-between">
+                                    <h5 class="mb-1"><?= $s['descripcion'] ?></h5>
+                                    <small> <?= $turno['fecha'] ?> </small>
+                                </div>
+                                <p class="mb-1"> Turno de <?= $s['descripcion'] ?> para <?= $turno['mascota'] ?> </p>
+                                <small> <?= $turno['horario'] ?></small>
+                            </a>
+                        <?php endforeach ?>
+                    </div>
+                </div>
+                <div>
+                    <h2>Historial de compra</h2>
+                    <?php foreach($historial_compra as $p): ?>
+                        <div class="card mb-3" style="max-width: 540px;">
+                            <div class="row g-0">
+                                <div class="col-md-4">
+                                    <img src="<?php echo base_url('assets/uploads/' . $p['imagen']) ?>" class="img-fluid rounded-start" alt="...">
+                                </div>
+                                <div class="col-md-8">
+                                    <div class="card-body">
+                                        <h5 class="card-title"><?= $p['nombre'] ?></h5>
+                                        <small>Fecha de compra: <?= $p['fecha'] ?></small>
+                                        <br>
+                                        <small>Cantidad: <?= $p['cantidad'] ?></small>
+                                    </div>
+                                </div>
                             </div>
-                            <p class="mb-1"> Turno de <?= $s['descripcion'] ?> para <?= $turno['mascota'] ?> </p>
-                            <small> <?= $turno['horario'] ?></small>
-                        </a>
-                    <?php endforeach ?>
+                        </div>
+                    <?php endforeach; ?>
                 </div>
             </div>
         </div>
@@ -71,24 +102,7 @@
     </div>
     <div class="row">
         <div class="col">
-            <h2>Historial de compra</h2>
-            <?php foreach($historial_compra as $p): ?>
-                <div class="card mb-3" style="max-width: 540px;">
-                    <div class="row g-0">
-                        <div class="col-md-4">
-                            <img src="<?php echo base_url('assets/uploads/' . $p['imagen']) ?>" class="img-fluid rounded-start" alt="...">
-                        </div>
-                        <div class="col-md-8">
-                            <div class="card-body">
-                                <h5 class="card-title"><?= $p['nombre'] ?></h5>
-                                <small>Fecha de compra: <?= $p['fecha'] ?></small>
-                                <br>
-                                <small>Cantidad: <?= $p['cantidad'] ?></small>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            <?php endforeach; ?>
+            
 
         </div>
     </div>

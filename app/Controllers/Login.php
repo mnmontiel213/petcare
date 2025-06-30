@@ -128,53 +128,6 @@ class Login extends BaseController
         }
     }
 
-    public function actualizar_cuenta()
-    {
-        helper('url');
-
-        $validation = \Config\Services::validation();
-        $request = \Config\Services::request();
-
-        $session = session();
-
-        $validation->setRules(
-            [
-                'cbu' => 'required',
-                'direccion' => 'required'
-            ],
-            [
-                'cbu' =>
-                [
-                    'required' => 'Ese necesario un CBU'
-                ],
-                'direccion' =>
-                [
-                    'required' => 'Es necesario una direccion'
-                ]
-            ]
-        );
-
-        if ($validation->withRequest($request)->run()) {
-            $model = new UsuarioModel();
-
-            $model->update($session->get('USUARIO_ID'), [
-                'CBU' => $request->getPost('cbu'),
-                'DIRECCION' => $request->getPost('direccion')
-            ]);
-
-
-            return redirect()->to('carrito');
-        } else {
-
-            foreach ($validation->getErrors() as $e) {
-                echo $e;
-            }
-
-            echo 'faltaron weas mijo';
-        }
-    }
-
-
     /*
      *
      INGRESA A LA SESION DE UN NUEVO USURIO
@@ -450,5 +403,92 @@ class Login extends BaseController
             . view('plantillas/navbar_view')
             . view('contenido/perfil')
             . view('plantillas/footer_view');
+    }
+
+    public function actualizar_formulario(): string{
+        $usuarioModel = new UsuarioModel();
+        $usuario = $usuarioModel->where('USUARIO_ID', session('USUARIO_ID'))->findAll();
+
+        $data = ['titulo' => 'Modificar cuenta', 'validation' => [], 'usuario' => $usuario[0]];
+
+        return view('plantillas/header_view', $data)
+            .view('plantillas/navbar_view')
+            .view('contenido/login/cuenta_completar')
+            .view('plantillas/footer_view'); 
+    }
+
+
+    public function actualizar_cuenta()
+    {
+        $validation = \Config\Services::validation();
+        $request = \Config\Services::request();
+
+        $session = session();
+
+        $validation->setRules(
+            [
+                'nombre' => 'required',
+                'apellido' => 'required',
+                'correo' => 'required',
+                'cbu' => 'required',
+                'direccion' => 'required',
+                'telefono' => 'required',
+            ],
+            [
+                'nombre' =>
+                [
+                    'required' => 'El nombre es obligatorio'
+                ],
+                'apellido' =>
+                [
+                    'required' => 'El apellido es obligatorio'
+                ],
+                'correo' =>
+                [
+                    'required' => 'El correo es obligatorio'
+                ],
+                'telefono' =>
+                [
+                    'required' => 'El telefono es obligatorio'
+                ],
+                'cbu' =>
+                [
+                    'required' => 'El cbu es obligatorio'
+                ],
+                'direccion' =>
+                [
+                    'required' => 'La direccion es obligatoria'
+                ],
+            ]
+        );
+
+        if ($validation->withRequest($request)->run()) {
+            $model = new UsuarioModel();
+
+            $model->update($session->get('USUARIO_ID'), [
+                'NOMBRE' => $request->getPost('nombre'),
+                'APELLIDO' => $request->getPost('apellido'),
+                'CORREO' => $request->getPost('correo'),
+                'TELEFONO' => $request->getPost('telefono'),
+                'CBU' => $request->getPost('cbu'),
+                'DIRECCION' => $request->getPost('direccion')
+            ]);
+
+            $session->set('NOMBRE', $request->getPost('nombre'));
+            $session->set('APELLIDO', $request->getPost('apellido'));
+            $session->set('CORREO', $request->getPost('apellido'));
+
+            return redirect()->to('perfil');
+        } else {
+            $usuarioModel = new UsuarioModel();
+            $usuario = $usuarioModel->where('USUARIO_ID', session('USUARIO_ID'))->findAll();
+            
+            $data = ['titulo' => 'Modificar cuenta', 'validation' => $validation->getErrors(), 'usuario' => $usuario[0]];
+
+            return view('plantillas/header_view', $data)
+                .view('plantillas/navbar_view')
+                .view('contenido/login/cuenta_completar')
+                .view('plantillas/footer_view'); 
+        }
     }
 }

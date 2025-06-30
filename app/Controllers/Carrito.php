@@ -173,7 +173,7 @@ class Carrito extends BaseController{
                     .view('contenido/carrito/carrito')
                     .view('plantillas/footer_view'); 
         }else{
-            $data = ['titulo' => 'Completar cuenta', 'validation' => []];
+            $data = ['titulo' => 'Completar cuenta', 'validation' => ['cbu' => 'Ingrese un CBU valido'], 'usuario' => $user_data];
 
             return view('plantillas/header_view', $data)
                 .view('plantillas/navbar_view')

@@ -56,14 +56,14 @@ $routes->get('login/salir',             'Login::salir_usuario');
 $routes->get('salir',                   'Login::salir');
 $routes->post('login/crear_usuario',    'Login::crear_usuario');
 $routes->post('login/ingresar_usuario', 'Login::ingresar_usuario');
-$routes->post('login/cuenta_actualizar', 'Login::actualizar_cuenta');
 
+$routes->get('usuarios/listar', 'Home::usuarios_listar', ['filter' => 'admin']);
 
 //perfil del usuario
 $routes->get('perfil', 'Login::perfil', ['filter' => 'auth']);
-$routes->get('usuarios/listar', 'Home::usuarios_listar', ['filter' => 'admin']);
+$routes->get('perfil/actualizar', 'Login::actualizar_formulario', ['filter' => 'auth']);
+$routes->post('perfil/actualizar', 'Login::actualizar_cuenta', ['filter' => 'auth']);
 
-$routes->post('usuarios/actualizar', 'Home::usuarios_actualizar', ['filter' => 'admin']);
 $routes->get('registrar/mascota', 'Login::registrar_mascota_formulario', ['filter' => 'auth']);
 $routes->post('registrar/mascota', 'Login::registrar_mascota', ['filter' => 'auth']);
 
