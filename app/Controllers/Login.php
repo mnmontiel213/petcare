@@ -4,6 +4,7 @@ namespace App\Controllers;
 
 use App\Models\CategoriaModel;
 use App\Models\MascotaModel;
+use App\Models\ProductoModel;
 use App\Models\UsuarioModel;
 use App\Models\TurnoModel;
 use App\Models\ServicioModel;
@@ -226,6 +227,7 @@ class Login extends BaseController
                         'ES_MAYORISTA' => $user_data['ES_MAYORISTA'],
                         'LOGGED' => TRUE,
                         'ADMIN' => $user_data['USUARIO_ID'] == 1 ? TRUE : FALSE,
+                        'HISTORIAL_COMPRA' => $user_data['HISTORIAL_COMPRA'],
                     ];
 
                     if (
@@ -289,7 +291,6 @@ class Login extends BaseController
 
     public function registrar_mascota_formulario()
     {
-
         $categoriaModel = new CategoriaModel();
 
         $razas = $categoriaModel->where('TIPO', 'MASCOTA')->findAll();
@@ -325,8 +326,6 @@ class Login extends BaseController
 
         if ($validation->withRequest($request)->run()) {
             $model = new MascotaModel();
-            $pass = password_hash($this->request->getPost('contraseña'), PASSWORD_BCRYPT);
-
             $session = session();
 
             $model->save([
@@ -337,7 +336,6 @@ class Login extends BaseController
 
             return redirect()->to('registrar/mascota');
         } else {
-
             $categoriaModel = new CategoriaModel();
             $razas = $categoriaModel->where('TIPO', 'MASCOTA')->findAll();
 
@@ -366,8 +364,6 @@ class Login extends BaseController
         $mascotas_row = $mascotaModel->where('USUARIO_ID', $session->get('USUARIO_ID'))->findAll();
         $turnos_row = $turnoModel->where('USUARIO_ID', session()->get('USUARIO_ID'))->findAll();
         $servicios_row = $servicioModel->findAll();
-
-        $session = session();
 
         //lista de mascotas
         $mascotas = [];
@@ -398,8 +394,48 @@ class Login extends BaseController
             'imagen' => $session->get('IMAGEN'),
             'correo' => $session->get('CORREO'),
             'direccion' => $session->get('DIRECCION'),
-            'cbu' => $session->get('CBU')
+            'cbu' => $session->get('CBU'),
+            'historial_compra' => $session->get('HISTORIAL_COMPRA'),
         ];
+
+        $lista_productos_str = [];
+        $lista_tkns = [];
+
+        $str = $usuario['historial_compra'];
+        $tkn_producto = strtok($str, ';');
+    
+        while($tkn_producto !== false){
+
+            array_push($lista_tkns, $tkn_producto);
+            $tkn_producto = strtok(";");
+        }
+
+        foreach($lista_tkns as $tkn){
+            $data_tkn = strtok($tkn, "-");                    
+            $prod['codigo'] = $data_tkn;
+
+            $data_tkn = strtok("-");
+            $prod['cantidad'] = $data_tkn;
+
+            $data_tkn = strtok("-");
+            $prod['fecha'] = $data_tkn;
+
+            array_push($lista_productos_str, $prod);
+        }
+
+        $productos_historial = [];
+        foreach($lista_productos_str as $p){
+            $productoModel = new ProductoModel();
+            $producto = $productoModel->find($p['codigo']);
+
+            array_push($productos_historial, [
+                'codigo' => $p['codigo'],
+                'cantidad' => $p['cantidad'],
+                'fecha' => $p['fecha'],
+                'nombre' => $producto['NOMBRE'],
+                'imagen' => $producto['IMAGEN'],
+            ]);
+        }
 
         $data = [
             'titulo' => 'Perfil',
@@ -407,6 +443,7 @@ class Login extends BaseController
             'turnos' => $turnos,
             'servicios' => $servicios,
             'mascotas' => $mascotas,
+            'historial_compra' => $productos_historial,
         ];
 
         return view('plantillas/header_view', $data)

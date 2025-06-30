@@ -1,4 +1,5 @@
 
+
 <div class="m-auto p-3 rounded-3 border border-dark-subtle" style="background-color: var(--color-secundario)">
     <?php
         helper('form');
@@ -8,12 +9,12 @@
         $clase_marca     = isset($validation['marca']) ? 'form-check-input is-invalid' : "form-check-input";
         $clase_peso      = isset($validation['peso']) ? 'form-control is-invalid' : "form-control";
         $clase_precio    = isset($validation['precio']) ? 'form-control is-invalid' : "form-control";
-        $clase_stock    = isset($validation['stock']) ? 'form-control is-invalid' : "form-control";
+        $clase_stock     = isset($validation['stock']) ? 'form-control is-invalid' : "form-control";
         $clase_categoria = isset($validation['categoria']) ? 'form-check-input is-invalid' : "form-check-input";
         $clase_mascota   = isset($validation['mascota']) ? 'form-check-input is-invalid' : "form-check-input";
         $clase_imagen    = isset($validation['imagen']) ? 'form-control is-invalid' : "form-control";
 
-        echo form_open_multipart('productos/registrar_producto');
+        echo form_open_multipart('productos/modificar');
 
         echo '<div class="row">';
         echo '<div class="col">';
@@ -23,7 +24,7 @@
         echo form_input([
             'name' => 'nombre',
             'id' => 'nombre',
-            'value' => set_value('nombre'),
+            'value' => $producto['NOMBRE'],
             'class' => $clase_nombre,
             'placeholder' => '',
             'type' => 'text',
@@ -38,7 +39,7 @@
         echo form_input([
             'name' => 'codigo',
             'id' => 'codigo',
-            'value' => set_value('codigo'),
+            'value' => $producto['CODIGO'],
             'class' => $clase_codigo,
             'placeholder' => '',
             'type' => 'text',
@@ -50,10 +51,7 @@
 
         //MARCA
         echo '<h3>Marca</h3>';
-        $marca_seleccion = -1;
-        if(isset($_POST['marca'])){
-            $marca_seleccion = $_POST['marca'];
-        }
+        $marca_seleccion = $producto['CATEGORIA_MARCA'];
 
         foreach($categorias['marcas'] as $m){
             echo form_radio([
@@ -78,7 +76,7 @@
         echo form_input([
             'name' => 'peso',
             'id' => 'peso',
-            'value' => set_value('peso'),
+            'value' => $producto['PESO'],
             'class' => $clase_peso,
             'placeholder' => '',
             'type' => 'number',
@@ -94,7 +92,7 @@
         echo form_input([
             'name' => 'precio',
             'id' => 'precio',
-            'value' => set_value('precio'),
+            'value' => $producto['PRECIO'],
             'class' => $clase_precio,
             'placeholder' => '',
             'type' => 'number',
@@ -110,7 +108,7 @@
         echo form_input([
             'name' => 'stock',
             'id' => 'stock',
-            'value' => set_value('stock'),
+            'value' => $producto['STOCK'],
             'class' => $clase_stock,
             'placeholder' => '',
             'type' => 'number',
@@ -123,10 +121,8 @@
 
         //CATEGORIA
         echo '<h3>Categoria</h3>';
-        $categoria_seleccion = -1;
-        if(isset($_POST['categoria'])){
-            $categoria_seleccion = $_POST['categoria'];
-        }
+        $categoria_seleccion = $producto['CATEGORIA_PRODUCTO'];
+
         foreach($categorias['productos'] as $m){
             echo form_radio([
                 'name' => 'categoria',
@@ -144,10 +140,8 @@
 
         //MASCOTA
         echo '<h3>Mascota</h3>';
-        $mascota_seleccion = -1;
-        if(isset($_POST['mascota'])){
-            $mascota_seleccion = $_POST['mascota'];
-        }
+        $mascota_seleccion = $producto['CATEGORIA_MASCOTA'];
+
         foreach($categorias['mascotas'] as $m){
             echo form_radio([
                 'name' => 'mascota',

@@ -4,9 +4,9 @@
 ?>
 
 <div class="container">
+
     <div class="row">
         <div class="col">
-
             <?php
             // SI EL USUARIO NO TIENE UNA IMAGEN ASOCIADA, ASIGNAR UNA POR DEFECTO
             if ($usuario['imagen'] == null) {
@@ -69,4 +69,28 @@
 
         </div>
     </div>
+    <div class="row">
+        <div class="col">
+            <h2>Historial de compra</h2>
+            <?php foreach($historial_compra as $p): ?>
+                <div class="card mb-3" style="max-width: 540px;">
+                    <div class="row g-0">
+                        <div class="col-md-4">
+                            <img src="<?php echo base_url('assets/uploads/' . $p['imagen']) ?>" class="img-fluid rounded-start" alt="...">
+                        </div>
+                        <div class="col-md-8">
+                            <div class="card-body">
+                                <h5 class="card-title"><?= $p['nombre'] ?></h5>
+                                <small>Fecha de compra: <?= $p['fecha'] ?></small>
+                                <br>
+                                <small>Cantidad: <?= $p['cantidad'] ?></small>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            <?php endforeach; ?>
+
+        </div>
+    </div>
+
 </div>

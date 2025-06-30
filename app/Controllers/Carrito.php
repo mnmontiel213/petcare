@@ -3,6 +3,7 @@
 namespace App\Controllers;
 
 
+use App\Models\ProductoModel;
 use App\Models\UsuarioModel;
 use App\Controllers\BaseController;
 use Codeigniter\HTTP\RedirectResponse;
@@ -62,7 +63,6 @@ class Carrito extends BaseController{
         echo 'accion a realizar ', $accion;
         echo '<br>';
         echo 'producto a modificar ', $codigo;
-
 
         $rowid = 0;
         foreach($carrito->contents() as $item){
@@ -131,7 +131,7 @@ class Carrito extends BaseController{
 
         $url = previous_url();
         $url = str_replace('index.php/', '', $url);
-        $url = str_replace('http://localhost/proyecto/', '', $url);
+        $url = str_replace('http://localhost/petcare/', '', $url);
 
         return redirect()->route($url);
     }
@@ -144,8 +144,29 @@ class Carrito extends BaseController{
         $user_data = $usuarioModel->find($session->get('USUARIO_ID'));
         
         if($user_data['CBU']){
-            $carrito->destroy();
+            
+            // ACTUALIZAR HISTORIAL DE COMPRA
+            $listado = $user_data['HISTORIAL_COMPRA'];
+            foreach($carrito->contents() as $c){
+                $listado = $listado . $c['codigo'] . '-' . $c['qty'] . '-' . date("d/m/Y") . ';';
+            }
+            $usuarioModel->update($user_data['USUARIO_ID'], ['HISTORIAL_COMPRA' => $listado]);
+            
+            $session->set(['HISTORIAL_COMPRA' => $listado] );
 
+            // ACTUALIZAR STOCK DE PRODUCTOS
+            foreach($carrito->contents() as $c){
+                $productoModel = new ProductoModel();
+                $prod = $productoModel->find($c['codigo']);
+
+                $stock = $prod['STOCK'] - $c['qty'];
+
+                if($stock >= 0){
+                    $productoModel->update($prod['CODIGO'], ['STOCK' => $stock]);
+                }                
+            }
+
+            $carrito->destroy();
             $data = ['titulo' => 'carrito', 'productos' => [], 'total' => 0, 'compra_finalizada' => true];
             return view('plantillas/header_view', $data)
                     .view('plantillas/navbar_view')
@@ -153,6 +174,7 @@ class Carrito extends BaseController{
                     .view('plantillas/footer_view'); 
         }else{
             $data = ['titulo' => 'Completar cuenta', 'validation' => []];
+
             return view('plantillas/header_view', $data)
                 .view('plantillas/navbar_view')
                 .view('contenido/login/cuenta_completar')

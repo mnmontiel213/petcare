@@ -1,7 +1,7 @@
 <nav class="navbar navbar-expand-lg">
     <div class="container-fluid px-0">
-        <a class="navbar-brand" href="<?= base_url('principal'); ?>">
-            <img src="<?= base_url('assets/img/PetCareLogo.png') ?>" alt="Logo" style="width: 120px;">
+        <a class="navbar-brand nav-logo" href="<?= base_url('principal'); ?>">
+            <img src="<?= base_url('assets/img/PetCareLogo.png') ?>" alt="Logo" style="width: 55%;">
         </a>
 
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown"
