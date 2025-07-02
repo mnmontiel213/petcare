@@ -34,8 +34,6 @@
                 <p>Total: <?= $total ?></p>
             </div>
 
-            
-
         <?php else: ?>
             <div class="col">
                 <?php

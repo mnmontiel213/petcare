@@ -111,28 +111,33 @@
                                 ?>
                                 <?php if(!session('ADMIN')): ?>
                                     <div class="d-flex justify-content-between mt-2">
-                                        <!-- AGREGAR UNIDAD -->
-                                        <?php if($stock - $en_carrito >= 0): ?>
-                                            <button type="submit" value="agregar" name="carrito-accion" class="btn btn-sm btn-success">
-                                                <i class="bi bi-plus-circle"></i>
-                                            </button>
-                                        <?php endif; ?>
-
-                                        <!-- QUITAR UNIDAD -->
-                                        <?php if($stock - $en_carrito <= 0): ?>
-                                            <button type="submit" value="remover" name="carrito-accion" class="btn btn-sm btn-danger">
-                                            <i class="bi bi-dash-circle"></i>
-                                        </button>
-                                        <?php endif; ?>
+                                        <div class="row m-auto">
+                                            <div class="col">
+                                                <!-- AGREGAR UNIDAD -->
+                                                <?php if($stock > 0): ?>
+                                                    <button type="submit" value="agregar" name="carrito-accion" class="btn btn-sm btn-success">
+                                                        <i class="bi bi-plus-circle"></i>
+                                                    </button>
+                                                <?php endif; ?>
+                                            </div>
+                                            <div class="col">
+                                                <!-- QUITAR UNIDAD -->
+                                                <?php if($en_carrito > 0): ?>
+                                                    <button type="submit" value="remover" name="carrito-accion" class="btn btn-sm btn-danger">
+                                                        <i class="bi bi-dash-circle"></i>
+                                                    </button>
+                                                <?php endif; ?>
+                                            </div>
+                                        </div>
                                     </div>
                                 <?php endif;?>
                                 <div>
-                                    <?php if($stock - $en_carrito < 0): ?>  
+                                    <?php if($stock == 0): ?>  
                                         <p class="text-center text-danger">stock: <?=$stock?></p>
                                     <?php else: ?>
                                         <p class="text-center text-muted">stock: <?=$stock?></p>
                                     <?php endif; ?>
-
+                                    
                                     <?php if($en_carrito > 0): ?>
                                         <p class="text-center text-success">en carrito: <?=$en_carrito?></p>
                                     <?php endif; ?>
