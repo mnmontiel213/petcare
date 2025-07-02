@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Jul 02, 2025 at 04:26 PM
+-- Generation Time: Jul 02, 2025 at 07:29 PM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -137,13 +137,13 @@ CREATE TABLE `productos` (
 --
 
 INSERT INTO `productos` (`CODIGO`, `NOMBRE`, `CATEGORIA_MARCA`, `CATEGORIA_PRODUCTO`, `CATEGORIA_MASCOTA`, `PRECIO`, `PESO`, `IMAGEN`, `STOCK`) VALUES
-(1287, 'Pelota con Sonido', 21, 12, 4, 6201, 555.1, '1750364559_de8fec2d130e34ff549d.webp', 7),
-(3755, 'Polera Corderito Verde', 23, 12, 4, 13000, 0, '1750364508_daaca2b72488c19c754d.webp', 45),
-(12484, 'Alimento Royal Control Urinario', 5, 11, 3, 31995, 1, '1750364764_5f4d45a5872948e96186.webp', 50),
-(34154, 'Rascador Con Patas', 21, 12, 3, 17900, 0, '1750365456_f313c498898d0da20420.webp', 50),
+(1287, 'Pelota con Sonido', 21, 12, 4, 6201, 555.1, '1750364559_de8fec2d130e34ff549d.webp', 5),
+(3755, 'Polera Corderito Verde', 23, 12, 4, 13000, 0, '1750364508_daaca2b72488c19c754d.webp', 44),
+(12484, 'Alimento Royal Control Urinario', 5, 11, 3, 31995, 1, '1750364764_5f4d45a5872948e96186.webp', 48),
+(34154, 'Rascador Con Patas', 21, 12, 3, 17900, 0, '1750365456_f313c498898d0da20420.webp', 49),
 (42127, 'Alimento Purina Esterelizado Pollo', 6, 11, 3, 11200, 1, '1750364795_4a5c11e528e906181297.webp', 43),
-(45267, 'Juguete Pelota Arcoiris', 21, 12, 3, 950, 0, '1750365592_7e97abb1d55a5f687789.webp', 48),
-(45498, 'Rollo Bolsita', 22, 12, 4, 3200, 0, '1750364465_cb1ac0ff8f3db952de88.webp', 50),
+(45267, 'Juguete Pelota Arcoiris', 21, 12, 3, 950, 0, '1750365592_7e97abb1d55a5f687789.webp', 46),
+(45498, 'Rollo Bolsita', 22, 12, 4, 3200, 0, '1750364465_cb1ac0ff8f3db952de88.webp', 49),
 (45521, 'Juguete Pelota Ovilla de Lana', 21, 12, 3, 6600, 0, '1750365619_81dc66a0ed7a9a0e9ef9.webp', 50),
 (48742, 'Alimento Old Prince Complete ', 18, 11, 3, 2000, 3, '1750364866_3720ca41d1002a31cebe.png', 50),
 (53211, 'Alimento Purina Excellent Pollo y Arroz', 6, 11, 3, 264000, 3, '1750364725_2e6828ac5884a049f497.webp', 50),
@@ -255,7 +255,50 @@ CREATE TABLE `usuarios` (
 
 INSERT INTO `usuarios` (`USUARIO_ID`, `CBU`, `NOMBRE`, `APELLIDO`, `CORREO`, `CONTRASEÑA`, `DIRECCION`, `ES_MAYORISTA`, `IMAGEN`, `TELEFONO`, `HISTORIAL_COMPRA`) VALUES
 (1, NULL, 'Administrador', 'Petcare', 'petcare@gmail.com', '$2y$10$knUYf63gsHyHKrqUil.zY.2DXSGmnkZ32AI4bTRTBgx8QhsvztJTm', NULL, NULL, '1750386854_f74782e9cf3ee535afa8.png', NULL, ''),
-(2, 34345, 'Nahuel', 'Gonzalez', 'nahuelgz@gmail.com', '$2y$10$SQdNUx7WzotKgp9EKF37zeyGle2YjNNu3OhY4wANBvKUUJc4q42/6', 'las cuebas', NULL, '1750387287_516fb8ffb9a435eac8c0.jpg', NULL, '1287-1-30/06/2025;');
+(2, 34345, 'Nahuel', 'Gonzalez', 'nahuelgz@gmail.com', '$2y$10$SQdNUx7WzotKgp9EKF37zeyGle2YjNNu3OhY4wANBvKUUJc4q42/6', 'las cuebas', NULL, '1750387287_516fb8ffb9a435eac8c0.jpg', NULL, '1287-1-30/06/2025;1287-1-02/07/2025;12484-1-02/07/2025;3755-1-02/07/2025;34154-1-02/07/2025;45267-1-02/07/2025;45498-1-02/07/2025;');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `ventas`
+--
+
+CREATE TABLE `ventas` (
+  `VENTA_ID` int(11) NOT NULL,
+  `USUARIO_ID` int(11) NOT NULL,
+  `FECHA` date NOT NULL,
+  `TOTAL` double NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `ventas`
+--
+
+INSERT INTO `ventas` (`VENTA_ID`, `USUARIO_ID`, `FECHA`, `TOTAL`) VALUES
+(6, 2, '2025-07-02', 39146);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `venta_info`
+--
+
+CREATE TABLE `venta_info` (
+  `VENTA_PRODUCTO_ID` int(11) NOT NULL,
+  `VENTA_ID` int(11) NOT NULL,
+  `PRODUCTO_ID` int(11) NOT NULL,
+  `CANTIDAD` int(11) NOT NULL,
+  `PRECIO` double NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `venta_info`
+--
+
+INSERT INTO `venta_info` (`VENTA_PRODUCTO_ID`, `VENTA_ID`, `PRODUCTO_ID`, `CANTIDAD`, `PRECIO`) VALUES
+(9, 6, 1287, 1, 6201),
+(10, 6, 12484, 1, 31995),
+(11, 6, 45267, 1, 950);
 
 --
 -- Indexes for dumped tables
@@ -314,6 +357,21 @@ ALTER TABLE `usuarios`
   ADD UNIQUE KEY `CBU` (`CBU`);
 
 --
+-- Indexes for table `ventas`
+--
+ALTER TABLE `ventas`
+  ADD PRIMARY KEY (`VENTA_ID`),
+  ADD KEY `USUARIO_ID` (`USUARIO_ID`);
+
+--
+-- Indexes for table `venta_info`
+--
+ALTER TABLE `venta_info`
+  ADD PRIMARY KEY (`VENTA_PRODUCTO_ID`),
+  ADD KEY `COMPRA_ID` (`VENTA_ID`),
+  ADD KEY `PRODUCTO_ID` (`PRODUCTO_ID`);
+
+--
 -- AUTO_INCREMENT for dumped tables
 --
 
@@ -352,6 +410,28 @@ ALTER TABLE `turnos`
 --
 ALTER TABLE `usuarios`
   MODIFY `USUARIO_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+
+--
+-- AUTO_INCREMENT for table `ventas`
+--
+ALTER TABLE `ventas`
+  MODIFY `VENTA_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+
+--
+-- AUTO_INCREMENT for table `venta_info`
+--
+ALTER TABLE `venta_info`
+  MODIFY `VENTA_PRODUCTO_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+
+--
+-- Constraints for dumped tables
+--
+
+--
+-- Constraints for table `venta_info`
+--
+ALTER TABLE `venta_info`
+  ADD CONSTRAINT `venta_info_ibfk_1` FOREIGN KEY (`VENTA_ID`) REFERENCES `ventas` (`VENTA_ID`) ON DELETE CASCADE ON UPDATE NO ACTION;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
