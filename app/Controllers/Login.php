@@ -8,6 +8,8 @@ use App\Models\ProductoModel;
 use App\Models\UsuarioModel;
 use App\Models\TurnoModel;
 use App\Models\ServicioModel;
+use App\Models\VentainfoModel;
+use App\Models\VentaModel;
 
 
 /*
@@ -351,6 +353,8 @@ class Login extends BaseController
             'historial_compra' => $session->get('HISTORIAL_COMPRA'),
         ];
 
+        /*
+        
         $lista_productos_str = [];
         $lista_tkns = [];
 
@@ -388,6 +392,48 @@ class Login extends BaseController
                 'nombre' => $producto['NOMBRE'],
                 'imagen' => $producto['IMAGEN'],
             ]);
+        } 
+        */
+
+        //historial_compra
+        $productos_historial = [];
+
+        $productoModel = new ProductoModel();
+        $ventasModel = new VentaModel();
+        $ventainfoModel = new VentainfoModel();
+
+        $compras_usuario = [];
+
+        if(session('ADMIN')){
+            $compras_usuario = $ventasModel->findAll();
+        }else{
+            $compras_usuario = $ventasModel->where('USUARIO_ID', session('USUARIO_ID'))->findAll();
+        }
+
+        foreach($compras_usuario as $c){
+            $compra_info = $ventainfoModel->where('VENTA_ID', $c['VENTA_ID'])->findAll();
+            $productos = [];
+
+            foreach($compra_info as $compra){
+                $producto = $productoModel->where('CODIGO', $compra['PRODUCTO_ID'])->first();
+                
+                array_push($productos, 
+                ['codigo' => $producto['CODIGO'],
+                'nombre' => $producto['NOMBRE'],
+                'precio' => $compra['PRECIO'],
+                'cantidad' => $compra['CANTIDAD'],
+                'imagen'   => $producto['IMAGEN'],
+                ]);
+            }
+
+            $cantidad = count($productos);
+            $productos_historial[$c['VENTA_ID']] = [
+                'usuario' => $c['USUARIO_ID'],
+                'fecha' => $c['FECHA'],
+                'total' => $c['TOTAL'],
+                'cantidad_prods' => $cantidad,
+                'productos' => $productos,
+            ];
         }
 
         $data = [

@@ -3,9 +3,12 @@
 namespace App\Controllers;
 
 
+use App\Models\ComprainfoModel;
 use App\Models\ProductoModel;
 use App\Models\UsuarioModel;
 use App\Controllers\BaseController;
+use App\Models\VentainfoModel;
+use App\Models\VentaModel;
 use Codeigniter\HTTP\RedirectResponse;
 use Codeigniter\HTTP\ResponseInterface;
 
@@ -59,10 +62,6 @@ class Carrito extends BaseController{
 
         $accion = $request->getPost('carrito-accion');
         $codigo = $request->getPost('codigo');
-
-        echo 'accion a realizar ', $accion;
-        echo '<br>';
-        echo 'producto a modificar ', $codigo;
 
         $rowid = 0;
         foreach($carrito->contents() as $item){
@@ -145,14 +144,32 @@ class Carrito extends BaseController{
         
         if($user_data['CBU']){
             
-            // ACTUALIZAR HISTORIAL DE COMPRA
-            $listado = $user_data['HISTORIAL_COMPRA'];
+            // MODIFICACION EN BASE DE DATOS
+            $ventaModel = new VentaModel();
+            $ventainfoModel = new VentainfoModel();
+
+            $total_venta = 0;
             foreach($carrito->contents() as $c){
-                $listado = $listado . $c['codigo'] . '-' . $c['qty'] . '-' . date("d/m/Y") . ';';
+                $total_venta += $c['price'];
             }
-            $usuarioModel->update($user_data['USUARIO_ID'], ['HISTORIAL_COMPRA' => $listado]);
-            
-            $session->set(['HISTORIAL_COMPRA' => $listado] );
+            $datos_venta = [
+                'USUARIO_ID' => session('USUARIO_ID'),
+                'FECHA'      => date("Y/m/d"),
+                'TOTAL'      => $total_venta,   
+            ];
+
+            $venta_id = $ventaModel->insert($datos_venta);
+
+            foreach($carrito->contents() as $c){
+                $datos_venta_info = [
+                    'VENTA_ID'    => $venta_id,
+                    'PRODUCTO_ID' => $c['codigo'],
+                    'CANTIDAD'    => $c['qty'],
+                    'PRECIO'      => $c['price'], 
+                ];
+
+                $ventainfoModel->insert($datos_venta_info);
+            }
 
             // ACTUALIZAR STOCK DE PRODUCTOS
             foreach($carrito->contents() as $c){
