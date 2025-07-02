@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Jun 27, 2025 at 08:28 PM
+-- Generation Time: Jul 02, 2025 at 04:26 PM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -109,7 +109,10 @@ INSERT INTO `mascotas` (`MASCOTA_ID`, `NOMBRE`, `TIPO_MASCOTA`, `USUARIO_ID`, `I
 (3, 'Geronimo', 3, 2, NULL),
 (4, 'Cleopatra', 3, 2, NULL),
 (5, 'Firulais', 4, 1, NULL),
-(6, 'Axel', 3, 1, NULL);
+(6, 'Axel', 3, 1, NULL),
+(7, 'Fifufo', 3, 1, NULL),
+(8, 'DON GATO', 3, 4, NULL),
+(9, 'charmander', 4, 2, NULL);
 
 -- --------------------------------------------------------
 
@@ -134,31 +137,31 @@ CREATE TABLE `productos` (
 --
 
 INSERT INTO `productos` (`CODIGO`, `NOMBRE`, `CATEGORIA_MARCA`, `CATEGORIA_PRODUCTO`, `CATEGORIA_MASCOTA`, `PRECIO`, `PESO`, `IMAGEN`, `STOCK`) VALUES
-(1287, 'Pelota con Sonido', 21, 12, 4, 6390, 0, '1750364559_de8fec2d130e34ff549d.webp', 0),
-(3755, 'Polera Corderito Verde', 23, 12, 4, 13000, 0, '1750364508_daaca2b72488c19c754d.webp', 0),
-(12484, 'Alimento Royal Control Urinario', 5, 11, 3, 31995, 1, '1750364764_5f4d45a5872948e96186.webp', 0),
-(34154, 'Rascador Con Patas', 21, 12, 3, 17900, 0, '1750365456_f313c498898d0da20420.webp', 0),
-(42127, 'Alimento Purina Esterelizado Pollo', 6, 11, 3, 11200, 1, '1750364795_4a5c11e528e906181297.webp', 0),
-(45267, 'Juguete Pelota Arcoiris', 21, 12, 3, 950, 0, '1750365592_7e97abb1d55a5f687789.webp', 0),
-(45498, 'Rollo Bolsita', 22, 12, 4, 3200, 0, '1750364465_cb1ac0ff8f3db952de88.webp', 0),
-(45521, 'Juguete Pelota Ovilla de Lana', 21, 12, 3, 6600, 0, '1750365619_81dc66a0ed7a9a0e9ef9.webp', 0),
-(48742, 'Alimento Old Prince Complete ', 18, 11, 3, 2000, 3, '1750364866_3720ca41d1002a31cebe.png', 0),
-(53211, 'Alimento Purina Excellent Pollo y Arroz', 6, 11, 3, 264000, 3, '1750364725_2e6828ac5884a049f497.webp', 0),
-(53280, 'Alimento Old Prince Gato Adulto', 18, 11, 3, 54800, 7, '1750365067_c3edd6bf74fb8b7b3a7a.png', 0),
-(53774, 'Alimento Purina ProPlan Pollor y Arroz', 6, 11, 3, 16000, 1, '1750364944_86ab45abf66c5c9d2152.png', 0),
+(1287, 'Pelota con Sonido', 21, 12, 4, 6201, 555.1, '1750364559_de8fec2d130e34ff549d.webp', 7),
+(3755, 'Polera Corderito Verde', 23, 12, 4, 13000, 0, '1750364508_daaca2b72488c19c754d.webp', 45),
+(12484, 'Alimento Royal Control Urinario', 5, 11, 3, 31995, 1, '1750364764_5f4d45a5872948e96186.webp', 50),
+(34154, 'Rascador Con Patas', 21, 12, 3, 17900, 0, '1750365456_f313c498898d0da20420.webp', 50),
+(42127, 'Alimento Purina Esterelizado Pollo', 6, 11, 3, 11200, 1, '1750364795_4a5c11e528e906181297.webp', 43),
+(45267, 'Juguete Pelota Arcoiris', 21, 12, 3, 950, 0, '1750365592_7e97abb1d55a5f687789.webp', 48),
+(45498, 'Rollo Bolsita', 22, 12, 4, 3200, 0, '1750364465_cb1ac0ff8f3db952de88.webp', 50),
+(45521, 'Juguete Pelota Ovilla de Lana', 21, 12, 3, 6600, 0, '1750365619_81dc66a0ed7a9a0e9ef9.webp', 50),
+(48742, 'Alimento Old Prince Complete ', 18, 11, 3, 2000, 3, '1750364866_3720ca41d1002a31cebe.png', 50),
+(53211, 'Alimento Purina Excellent Pollo y Arroz', 6, 11, 3, 264000, 3, '1750364725_2e6828ac5884a049f497.webp', 50),
+(53280, 'Alimento Old Prince Gato Adulto', 18, 11, 3, 54800, 7, '1750365067_c3edd6bf74fb8b7b3a7a.png', 50),
+(53774, 'Alimento Purina ProPlan Pollor y Arroz', 6, 11, 3, 16000, 1, '1750364944_86ab45abf66c5c9d2152.png', 50),
 (53775, 'Alimento Purina Excellent Gato Bebé', 6, 11, 3, 10700, 1, '1750365100_09bbc41813edc1b64a8f.webp', 0),
-(62346, 'Alimento Old Prince Para Perro Adulto Mediano', 18, 11, 4, 15390, 3, '1750358590_70e2552f6b394bddd079.webp', 0),
-(63497, 'Performance Alimento Perro Adulto', 19, 11, 4, 84265, 20, '1750358763_ae239c199f921affd391.webp', 0),
-(64234, 'Alimento Old Prince Novel Esterelizado', 18, 11, 3, 69400, 7, '1750365139_301718b50be692d1a30f.webp', 0),
-(64313, 'Juguete Torre De Pelotas', 21, 12, 3, 18900, 0, '1750365428_10a9f0e9606e829adfd7.png', 0),
-(64423, 'Pelota erizo', 22, 12, 4, 5390, 0, '1750364421_0c120bc9e96af85c775f.png', 0),
-(64426, 'Alimento Royal Para Perro Mini Adulto', 5, 11, 4, 31010, 3, '1750358636_7a5ad72118262e091c6c.webp', 0),
-(69420, 'Alimento Performance Gato Adulto', 19, 11, 3, 55600, 7, '1750365175_3707d0bcf3c76c64fb20.webp', 0),
-(73486, 'Alimento Royal Maxi Para Perro Adulto ', 5, 11, 4, 28515, 3, '1750358809_f5207eda3627670310aa.webp', 0),
-(75348, 'Alimento Purina Para Perro Adulto', 6, 11, 4, 60000, 20, '1750358845_40fe48ca36cbdaed6775.png', 0),
-(86334, 'Polera Corderito Blanco', 22, 12, 4, 12000, 0, '1750364536_f81e88e41a9e75ff456d.webp', 0),
-(87312, 'Juguete Hueso Chifle', 22, 12, 4, 2780, 0, '1750364319_5f1223185536afa10f9b.png', 0),
-(87352, 'Juguete Cañita Con Pluma', 24, 12, 3, 4830, 0, '1750365541_a52f1d0791db3fd0106a.webp', 0),
+(62346, 'Alimento Old Prince Para Perro Adulto Mediano', 18, 11, 4, 15390, 3, '1750358590_70e2552f6b394bddd079.webp', 49),
+(63497, 'Performance Alimento Perro Adulto', 19, 11, 4, 84265, 20, '1750358763_ae239c199f921affd391.webp', 50),
+(64234, 'Alimento Old Prince Novel Esterelizado', 18, 11, 3, 69400, 7, '1750365139_301718b50be692d1a30f.webp', 50),
+(64313, 'Juguete Torre De Pelotas', 21, 12, 3, 18900, 0, '1750365428_10a9f0e9606e829adfd7.png', 50),
+(64423, 'Pelota erizo', 22, 12, 4, 5390, 0, '1750364421_0c120bc9e96af85c775f.png', 50),
+(64426, 'Alimento Royal Para Perro Mini Adulto', 5, 11, 4, 31010, 3, '1750358636_7a5ad72118262e091c6c.webp', 50),
+(69420, 'Alimento Performance Gato Adulto', 19, 11, 3, 55600, 7, '1750365175_3707d0bcf3c76c64fb20.webp', 50),
+(73486, 'Alimento Royal Maxi Para Perro Adulto ', 5, 11, 4, 28515, 3, '1750358809_f5207eda3627670310aa.webp', 50),
+(75348, 'Alimento Purina Para Perro Adulto', 6, 11, 4, 60000, 20, '1750358845_40fe48ca36cbdaed6775.png', 50),
+(86334, 'Polera Corderito Blanco', 22, 12, 4, 12000, 0, '1750364536_f81e88e41a9e75ff456d.webp', 50),
+(87312, 'Juguete Hueso Chifle', 22, 12, 4, 2780, 0, '1750364319_5f1223185536afa10f9b.png', 50),
+(87352, 'Juguete Cañita Con Pluma', 24, 12, 3, 4830, 0, '1750365541_a52f1d0791db3fd0106a.webp', 50),
 (90214, 'Juguete hueso', 21, 12, 4, 7680, 0, '1750364400_de4079bb2f24cac03f8b.webp', 0),
 (91021, 'Transportador', 22, 12, 4, 490000, 0, '1750364281_0a44fb0a057b867017ae.webp', 0),
 (95671, 'Rascador Cuadrado', 22, 12, 3, 189000, 0, '1750365397_151c45f398d541d48d91.webp', 0),
@@ -169,6 +172,7 @@ INSERT INTO `productos` (`CODIGO`, `NOMBRE`, `CATEGORIA_MARCA`, `CATEGORIA_PRODU
 (452375, 'Alimento perro adulto', 20, 11, 4, 60480, 20, '1750358397_df8f67650769cbc512c2.png', 0),
 (532712, 'Juguete Cañita ', 22, 12, 3, 7000, 0, '1750365368_a41d5575276bd9787463.webp', 0),
 (535362, 'Alimento Royal Control de Peso', 5, 11, 3, 27980, 1, '1750364834_5bdb29b0c842001a5e84.webp', 0),
+(563452, 'Prod1.png', 5, 11, 4, 5, 900, '1751135833_13532ffd8a7a5f7f2c10.png', 900),
 (643123, 'Alimento Old Prince Perro Mediano', 18, 11, 4, 12600, 3, '1750358689_e96a8f80cd5cbd79c80a.webp', 0),
 (856345, 'Alimento Royal Mini Para Perro Adulto', 5, 11, 4, 9293, 1, '1750358547_f7b2a5aa2681b1ee558d.webp', 0),
 (938401, 'Alimento perro grande', 17, 11, 4, 42000, 7, '1750358305_bb10bdffba58db7b10ff.webp', 0),
@@ -222,7 +226,8 @@ INSERT INTO `turnos` (`TURNO_ID`, `USUARIO_ID`, `FECHA`, `HORARIO`, `SERVICIO_ID
 (1, 1, '2025-06-26', '10:00:00', 5, 1),
 (2, 2, '2025-06-30', '10:00:00', 5, 4),
 (3, 2, '2025-07-17', '11:00:00', 6, 2),
-(4, 2, '2025-06-23', '09:00:00', 3, 3);
+(4, 2, '2025-06-23', '09:00:00', 3, 3),
+(8, 2, '2025-07-23', '11:00:00', 1, 9);
 
 -- --------------------------------------------------------
 
@@ -240,17 +245,17 @@ CREATE TABLE `usuarios` (
   `DIRECCION` text DEFAULT NULL,
   `ES_MAYORISTA` tinyint(1) DEFAULT NULL,
   `IMAGEN` varchar(128) DEFAULT NULL,
-  `TELEFONO` varchar(32) DEFAULT NULL
+  `TELEFONO` varchar(32) DEFAULT NULL,
+  `HISTORIAL_COMPRA` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Dumping data for table `usuarios`
 --
 
-INSERT INTO `usuarios` (`USUARIO_ID`, `CBU`, `NOMBRE`, `APELLIDO`, `CORREO`, `CONTRASEÑA`, `DIRECCION`, `ES_MAYORISTA`, `IMAGEN`, `TELEFONO`) VALUES
-(1, NULL, 'Administrador', 'Petcare', 'petcare@gmail.com', '$2y$10$knUYf63gsHyHKrqUil.zY.2DXSGmnkZ32AI4bTRTBgx8QhsvztJTm', NULL, NULL, '1750386854_f74782e9cf3ee535afa8.png', NULL),
-(2, 34345, 'Nahuel', 'Gonzalez', 'nahuelgz@gmail.com', '$2y$10$SQdNUx7WzotKgp9EKF37zeyGle2YjNNu3OhY4wANBvKUUJc4q42/6', 'las cuebas', NULL, '1750387287_516fb8ffb9a435eac8c0.jpg', NULL),
-(3, NULL, 'Javier', 'Garcia', 'javiergarcia@gmail.com', '$2y$10$Ni7mLnxux8/FzOiChwAob.WjdaWjYQX0kKX3MfM.RRyUEgnkfooDG', NULL, NULL, NULL, NULL);
+INSERT INTO `usuarios` (`USUARIO_ID`, `CBU`, `NOMBRE`, `APELLIDO`, `CORREO`, `CONTRASEÑA`, `DIRECCION`, `ES_MAYORISTA`, `IMAGEN`, `TELEFONO`, `HISTORIAL_COMPRA`) VALUES
+(1, NULL, 'Administrador', 'Petcare', 'petcare@gmail.com', '$2y$10$knUYf63gsHyHKrqUil.zY.2DXSGmnkZ32AI4bTRTBgx8QhsvztJTm', NULL, NULL, '1750386854_f74782e9cf3ee535afa8.png', NULL, ''),
+(2, 34345, 'Nahuel', 'Gonzalez', 'nahuelgz@gmail.com', '$2y$10$SQdNUx7WzotKgp9EKF37zeyGle2YjNNu3OhY4wANBvKUUJc4q42/6', 'las cuebas', NULL, '1750387287_516fb8ffb9a435eac8c0.jpg', NULL, '1287-1-30/06/2025;');
 
 --
 -- Indexes for dumped tables
@@ -328,7 +333,7 @@ ALTER TABLE `consultas`
 -- AUTO_INCREMENT for table `mascotas`
 --
 ALTER TABLE `mascotas`
-  MODIFY `MASCOTA_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `MASCOTA_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- AUTO_INCREMENT for table `servicios`
@@ -340,13 +345,13 @@ ALTER TABLE `servicios`
 -- AUTO_INCREMENT for table `turnos`
 --
 ALTER TABLE `turnos`
-  MODIFY `TURNO_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `TURNO_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT for table `usuarios`
 --
 ALTER TABLE `usuarios`
-  MODIFY `USUARIO_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `USUARIO_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
