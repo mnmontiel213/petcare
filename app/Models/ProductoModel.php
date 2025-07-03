@@ -10,7 +10,7 @@ class ProductoModel extends Model{
     protected $primaryKey       = 'CODIGO';
     protected $useAutoIncrement = false;
     protected $returnType       = 'array';
-    protected $allowedFields    = ['CODIGO', 'NOMBRE', 'CATEGORIA_MARCA', 'CATEGORIA_PRODUCTO', 'CATEGORIA_MASCOTA', 'PRECIO', 'PESO', 'IMAGEN', 'STOCK'];
+    protected $allowedFields    = ['CODIGO', 'NOMBRE', 'CATEGORIA_MARCA', 'CATEGORIA_PRODUCTO', 'CATEGORIA_MASCOTA', 'PRECIO', 'PESO', 'IMAGEN', 'STOCK', 'HABILITADO'];
 }
 
 ?>

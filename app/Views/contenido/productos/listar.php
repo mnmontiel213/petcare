@@ -57,24 +57,45 @@
     <div class="col-lg-9 col-md-12">
         <div class="productos-grid">
             <?php foreach ($productos as $producto): ?>
+                
+                <?php if($producto['HABILITADO'] == 0 && !session('ADMIN')): ?>
+                    <?php continue; ?>
+                <?php endif; ?>
 
                 <div class="card card-producto">
                     
-                    <?php if(session('LOGGED') && session('ADMIN')): ?>
-                    <div class="">
-                        <!-- MODIFICAR PRODUCTO -->
-                        <form action="productos/modificar" method="GET">
-                            <input name="codigo" value="<?=$producto['CODIGO']?>" hidden="true">
-                            <button type="submit" class="btn btn-sm">
-                                <i class="bi bi-pencil-square font h2"></i>
-                            </button>
-                        </form>
-                    </div>
+                    <?php if(session('ADMIN')): ?>
+                        <div class="d-flex justify-content-between">
+                            <!-- MODIFICAR PRODUCTO -->
+                            <form action="productos/modificar" method="GET">
+                                <input name="codigo" value="<?=$producto['CODIGO']?>" hidden="true">
+                                <button type="submit" class="btn bt-sm">
+                                    <i class="bi bi-pencil-square font h2"></i>
+                                </button>
+                            </form>
+                            
+                            <!-- HABILITAR O DESHABILITAR PRODUCTO -->
+                            <?php if($producto['HABILITADO']): ?>
+                                <form action="productos/deshabilitar" method="GET">
+                                    <input name="codigo" value="<?=$producto['CODIGO']?>" hidden="true">
+                                    <button type="submit" class="btn btn-lg">
+                                        <i class="bi bi-eye-slash-fill"></i>
+                                    </button>
+                                </form>
+                            <?php else: ?>
+                                <form action="productos/habilitar" method="GET">
+                                <input name="codigo" value="<?=$producto['CODIGO']?>" hidden="true">
+                                <button type="submit" class="btn btn-lg">
+                                    <i class="bi bi-eye-fill"></i>
+                                </button>
+                            </form>
+                            <?php endif;?>
+                        </div>
                     <?php endif; ?>
 
                     <!-- IMAGEN -->
                     <?php
-                    $imgSrc = $producto['IMAGEN']
+                        $imgSrc = $producto['IMAGEN']
                         ? base_url('assets/uploads/' . $producto['IMAGEN'])
                         : base_url('assets/img/productos/prod1.png');
                     ?>

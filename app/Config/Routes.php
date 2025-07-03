@@ -30,13 +30,16 @@ $routes->get('servicios/salud',     'Home::salud');
 $routes->get('servicios/nutricion', 'Home::nutricion');
 $routes->get('servicios/estetica',  'Home::estetica');
 
-
+// productos
 $routes->get('productos',                          'Productos::listar');
 $routes->get('productos/agregar',                  'Productos::agregar', ['filter' => 'admin']);
 $routes->post('productos/registrar_producto',      'Productos::registrar_nuevo', ['filter' => 'admin']);
 
 $routes->get('productos/modificar', 'Productos::formulario_modificar', ['filter' => 'admin']);
 $routes->post('productos/modificar', 'Productos::modificar', ['filter' => 'admin']);
+
+$routes->get('productos/habilitar', 'Productos::habilitar', ['filter' => 'admin']);
+$routes->get('productos/deshabilitar', 'Productos::deshabilitar', ['filter' => 'admin']);
 
 //consultas
 // $routes->get('contactos',         'Consulta::consultas');

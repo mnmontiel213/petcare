@@ -187,6 +187,7 @@ class Productos extends BaseController{
                 'CATEGORIA_MARCA' => $this->request->getPost('marca'),
                 'IMAGEN' => $nombre_aleatorio,
                 'STOCK ' => $this->request->getPost('stock'),
+                'HABILITADO' => 1,
             ];
 
             $model->save($datos);
@@ -376,5 +377,29 @@ class Productos extends BaseController{
             .view('contenido/productos/modificar')
             .view('plantillas/footer_view');            
         }
+    }
+
+    public function deshabilitar(){
+
+        $productoModel = new ProductoModel();
+        $producto = $productoModel->where('CODIGO', $this->request->getGet('codigo'))->first();
+
+        $producto['HABILITADO'] = 0;
+        
+        $productoModel->save($producto);
+
+        return redirect()->to('productos');
+    }
+
+    public function habilitar(){
+
+        $productoModel = new ProductoModel();
+        $producto = $productoModel->where('CODIGO', $this->request->getGet('codigo'))->first();
+
+        $producto['HABILITADO'] = 1;
+        
+        $productoModel->save($producto);
+
+        return redirect()->to('productos');
     }
 }
