@@ -13,25 +13,48 @@
                 <?php $total= 0; ?>
                 <table class="table">
                     <thead>
-                        <th>Usuario ID</th>
+                        <th>Venta ID</th>
+                        <th>Usuario</th>
                         <th>Fecha compra</th>
-                        <th>C.Productos</th>
                         <th>Total</th>
+                        <th>Mas..</th>
                     </thead>
                     <tbody class="table-group-divider">
                         <?php foreach($historial_compra as $compras): ?>
                             <tr>
-                                <td><?= $compras['usuario'] ?></td>
-                                <td><?= $compras['fecha'] ?></td>
-                                <td><?= $compras['cantidad_prods']?></td>
-                                <td><?= $compras['total'] ?></td>
+                                <td><?= $compras['id'] ?></td>
+                                <td><?= $compras['usuario']['nombre'] . ' ' . $compras['usuario']['apellido']  ?></td>
+                                <td><?= $compras['fecha']?></td>
+                                <td>$<?= $compras['total'] ?></td>
 
                                 <?php $total += $compras['total']; ?>
+                                <td>
+                                    <p class="d-inline-flex gap-1">
+                                        <a class="btn btn-primary" data-bs-toggle="collapse" href="<?= '#collapse' . $compras['id'] ?>" role="button" aria-expanded="false" aria-controls="<?= 'collapse' . $compras['id'] ?>">
+                                            Mostrar Productos...
+                                        </a>
+                                    </p>
+                                    
+                                    <div class="collapse" id="<?= 'collapse' . $compras['id'] ?>">
+                                        <?php foreach($compras['productos'] as $p): ?>
+                                            <div class="d-flex">
+                                                <div class="card card-body">
+                                                    <!-- <img src="<?php echo base_url('assets/uploads/') . $p['imagen'] ?>" class="card-img-top w-25" alt="..."> -->
+                                                    <h5 class="card-title"><?= $p['nombre'] ?></h5>
+                                                    <ul class="list-group list-group-flush">
+                                                        <li class="list-group-item">Precio: $<?= $p['precio'] ?></li>
+                                                        <li class="list-group-item">Unidades: <?= $p['cantidad'] ?></li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                        <?php endforeach; ?>
+                                    </div>
+                                </td>
                             </tr>
                         <?php endforeach;?>
                     </tbody>
                 </table>
-                <p>Total: <?= $total ?></p>
+                <h2>Total: $<?= $total ?></h2>
             </div>
 
         <?php else: ?>

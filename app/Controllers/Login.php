@@ -316,134 +316,143 @@ class Login extends BaseController
 
         $session = session();
 
-        $mascotas_row = $mascotaModel->where('USUARIO_ID', $session->get('USUARIO_ID'))->findAll();
-        $turnos_row = $turnoModel->where('USUARIO_ID', session()->get('USUARIO_ID'))->findAll();
-        $servicios_row = $servicioModel->findAll();
+        $data = [];
 
-        //lista de mascotas
-        $mascotas = [];
-        foreach ($mascotas_row as $m) {
-            $tipo = $categoriaModel->find($m['TIPO_MASCOTA']);
-            $mascotas[$m['MASCOTA_ID']] = ['nombre' => $m['NOMBRE'], 'tipo' => $tipo['VALOR']];
-        }
+        if(!session('ADMIN')){
 
-        //lista de servicios
-        $servicios = [];
-        foreach ($servicios_row as $s) {
-            $servicios[$s['SERVICIO_ID']] = ['nombre' => $s['NOMBRE'], 'descripcion' => $s['DESCRIPCION'], 'categoria' => $s['CATEGORIA_SERVICIO']];
-        }
-
-        //lista de turnos
-        $turnos = [];
-        foreach ($turnos_row as $t) {
-            $servicio = $servicios[$t['SERVICIO_ID']];
-            $mascota =  $mascotas[$t['MASCOTA_ID']];
-
-            array_push($turnos, ['fecha' => $t['FECHA'], 'horario' => $t['HORARIO'], 'servicio' => $servicio, 'mascota' => $mascota['nombre']]);
-        }
-
-        //datos del usuario
-        $usuario = [
-            'nombre' => $session->get('NOMBRE'),
-            'apellido' => $session->get('APELLIDO'),
-            'imagen' => $session->get('IMAGEN'),
-            'correo' => $session->get('CORREO'),
-            'direccion' => $session->get('DIRECCION'),
-            'cbu' => $session->get('CBU'),
-            'historial_compra' => $session->get('HISTORIAL_COMPRA'),
-        ];
-
-        /*
-        
-        $lista_productos_str = [];
-        $lista_tkns = [];
-
-        $str = $usuario['historial_compra'];
-        $tkn_producto = strtok($str, ';');
+            $mascotas_row = $mascotaModel->where('USUARIO_ID', $session->get('USUARIO_ID'))->findAll();
+            $turnos_row = $turnoModel->where('USUARIO_ID', session()->get('USUARIO_ID'))->findAll();
+            $servicios_row = $servicioModel->findAll();
     
-        while($tkn_producto !== false){
-
-            array_push($lista_tkns, $tkn_producto);
-            $tkn_producto = strtok(";");
-        }
-
-        foreach($lista_tkns as $tkn){
-            $data_tkn = strtok($tkn, "-");                    
-            $prod['codigo'] = $data_tkn;
-
-            $data_tkn = strtok("-");
-            $prod['cantidad'] = $data_tkn;
-
-            $data_tkn = strtok("-");
-            $prod['fecha'] = $data_tkn;
-
-            array_push($lista_productos_str, $prod);
-        }
-
-        $productos_historial = [];
-        foreach($lista_productos_str as $p){
+            //lista de mascotas
+            $mascotas = [];
+            foreach ($mascotas_row as $m) {
+                $tipo = $categoriaModel->find($m['TIPO_MASCOTA']);
+                $mascotas[$m['MASCOTA_ID']] = ['nombre' => $m['NOMBRE'], 'tipo' => $tipo['VALOR']];
+            }
+    
+            //lista de servicios
+            $servicios = [];
+            foreach ($servicios_row as $s) {
+                $servicios[$s['SERVICIO_ID']] = ['nombre' => $s['NOMBRE'], 'descripcion' => $s['DESCRIPCION'], 'categoria' => $s['CATEGORIA_SERVICIO']];
+            }
+    
+            //lista de turnos
+            $turnos = [];
+            foreach ($turnos_row as $t) {
+                $servicio = $servicios[$t['SERVICIO_ID']];
+                $mascota =  $mascotas[$t['MASCOTA_ID']];
+    
+                array_push($turnos, ['fecha' => $t['FECHA'], 'horario' => $t['HORARIO'], 'servicio' => $servicio, 'mascota' => $mascota['nombre']]);
+            }
+    
+            //datos del usuario
+            $usuario = [
+                'nombre' => $session->get('NOMBRE'),
+                'apellido' => $session->get('APELLIDO'),
+                'imagen' => $session->get('IMAGEN'),
+                'correo' => $session->get('CORREO'),
+                'direccion' => $session->get('DIRECCION'),
+                'cbu' => $session->get('CBU'),
+                'historial_compra' => $session->get('HISTORIAL_COMPRA'),
+            ];
+    
+            //historial_compra
+            $productos_historial = [];
+    
             $productoModel = new ProductoModel();
-            $producto = $productoModel->find($p['codigo']);
-
-            array_push($productos_historial, [
-                'codigo' => $p['codigo'],
-                'cantidad' => $p['cantidad'],
-                'fecha' => $p['fecha'],
-                'nombre' => $producto['NOMBRE'],
-                'imagen' => $producto['IMAGEN'],
-            ]);
-        } 
-        */
-
-        //historial_compra
-        $productos_historial = [];
-
-        $productoModel = new ProductoModel();
-        $ventasModel = new VentaModel();
-        $ventainfoModel = new VentainfoModel();
-
-        $compras_usuario = [];
-
-        if(session('ADMIN')){
-            $compras_usuario = $ventasModel->findAll();
-        }else{
+            $ventasModel = new VentaModel();
+            $ventainfoModel = new VentainfoModel();
+    
+            $compras_usuario = [];
+    
             $compras_usuario = $ventasModel->where('USUARIO_ID', session('USUARIO_ID'))->findAll();
-        }
+            
+            foreach($compras_usuario as $c){
+                $compra_info = $ventainfoModel->where('VENTA_ID', $c['VENTA_ID'])->findAll();
+                $productos = [];
+    
+                foreach($compra_info as $compra){
+                    $producto = $productoModel->where('CODIGO', $compra['PRODUCTO_ID'])->first();
+                    
+                    array_push($productos, 
+                    ['codigo' => $producto['CODIGO'],
+                    'nombre' => $producto['NOMBRE'],
+                    'precio' => $compra['PRECIO'],
+                    'cantidad' => $compra['CANTIDAD'],
+                    'imagen'   => $producto['IMAGEN'],
+                    ]);
+                }
+    
+                $cantidad = count($productos);
+                $productos_historial[$c['VENTA_ID']] = [
+                    'usuario' => $c['USUARIO_ID'],
+                    'fecha' => $c['FECHA'],
+                    'total' => $c['TOTAL'],
+                    'cantidad_prods' => $cantidad,
+                    'productos' => $productos,
+                ];
+            }
+    
+            //data perfil usuario
+            $data = [
+                'titulo' => 'Perfil',
+                'usuario' => $usuario,
+                'turnos' => $turnos,
+                'servicios' => $servicios,
+                'mascotas' => $mascotas,
+                'historial_compra' => $productos_historial,
+            ];
+        }else{
+            $ventaModel = new VentaModel();
 
-        foreach($compras_usuario as $c){
-            $compra_info = $ventainfoModel->where('VENTA_ID', $c['VENTA_ID'])->findAll();
-            $productos = [];
+            $ventas_row = $ventaModel->findAll();
+            $compras = [];
 
-            foreach($compra_info as $compra){
-                $producto = $productoModel->where('CODIGO', $compra['PRODUCTO_ID'])->first();
+            //tomamos todas las ventas e iteramos
+            foreach($ventas_row as $vr){
                 
-                array_push($productos, 
-                ['codigo' => $producto['CODIGO'],
-                'nombre' => $producto['NOMBRE'],
-                'precio' => $compra['PRECIO'],
-                'cantidad' => $compra['CANTIDAD'],
-                'imagen'   => $producto['IMAGEN'],
-                ]);
+                //tomamos al usuario que realizo la compra
+                $usuarioModel = new UsuarioModel();
+                $usuario = $usuarioModel->where('USUARIO_ID', $vr['USUARIO_ID'])->first();
+                
+                //tomamos la informacion de compras individuales
+                $ventasinfoModel = new VentainfoModel();
+                $ventasInfo = $ventasinfoModel->where('VENTA_ID', $vr['VENTA_ID'])->findAll();
+                
+                //agregamos a un array de manera conveniente
+                $productos = [];
+                foreach($ventasInfo as $vi){
+                    $productoModel = new ProductoModel();
+                    $producto = $productoModel->where('CODIGO', $vi['PRODUCTO_ID'])->first();
+
+                    array_push($productos, [
+                        'nombre' => $producto['NOMBRE'],
+                        'precio' => $producto['PRECIO'],
+                        'cantidad' => $vi['CANTIDAD'],
+                        'imagen' => $producto['IMAGEN']]);
+                }
+
+                //se compone array con los datos de
+                //la compra
+                //el usuario
+                //productos
+                $venta_data = [
+                    'id' => $vr['VENTA_ID'],
+                    'usuario' => ['id' => $usuario['USUARIO_ID'], 'nombre' => $usuario['NOMBRE'], 'apellido' => $usuario['APELLIDO']],
+                    'total' => $vr['TOTAL'],
+                    'fecha' => $vr['FECHA'],
+                    'productos' => $productos,
+                ];
+
+                array_push($compras, $venta_data);
             }
 
-            $cantidad = count($productos);
-            $productos_historial[$c['VENTA_ID']] = [
-                'usuario' => $c['USUARIO_ID'],
-                'fecha' => $c['FECHA'],
-                'total' => $c['TOTAL'],
-                'cantidad_prods' => $cantidad,
-                'productos' => $productos,
+            $data = [
+                'titulo' => 'administrador',
+                'historial_compra' => $compras,
             ];
         }
-
-        $data = [
-            'titulo' => 'Perfil',
-            'usuario' => $usuario,
-            'turnos' => $turnos,
-            'servicios' => $servicios,
-            'mascotas' => $mascotas,
-            'historial_compra' => $productos_historial,
-        ];
 
         return view('plantillas/header_view', $data)
             . view('plantillas/navbar_view')
