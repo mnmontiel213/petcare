@@ -46,6 +46,7 @@ $routes->get('productos/deshabilitar', 'Productos::deshabilitar', ['filter' => '
 $routes->get('consultas',         'Consulta::consultas');
 $routes->post('enviar_consulta',  'Consulta::enviar_consulta');
 $routes->get('consultas/listar',  'Consulta::listar', ['filter' => 'admin']);
+$routes->post('consultas/marcar_visto', 'Consulta::marcar_visto', ['filter' => 'admin']);
 $routes->post('consulta/eliminar', 'Consulta::eliminar', ['filter' => 'admin']);
 
 //turnos

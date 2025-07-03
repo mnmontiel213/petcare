@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Jul 03, 2025 at 08:02 PM
+-- Generation Time: Jul 03, 2025 at 08:37 PM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -63,18 +63,20 @@ INSERT INTO `categoria` (`CATEGORIA_ID`, `VALOR`, `TIPO`) VALUES
 
 CREATE TABLE `consultas` (
   `CONSULTA_ID` int(11) NOT NULL,
-  `TITULO` varchar(128) NOT NULL,
+  `MOTIVO` varchar(128) NOT NULL,
   `CORREO` text NOT NULL,
   `CONTENIDO` text NOT NULL,
-  `USUARIO_ID` int(11) NOT NULL
+  `VISTO` tinyint(1) NOT NULL DEFAULT 0,
+  `NOMBRE` varchar(32) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Dumping data for table `consultas`
 --
 
-INSERT INTO `consultas` (`CONSULTA_ID`, `TITULO`, `CORREO`, `CONTENIDO`, `USUARIO_ID`) VALUES
-(1, 'Horarios', 'matias@gmail.com', 'Buenas queria consultar los horarios para castraciones. Gracias.', 0);
+INSERT INTO `consultas` (`CONSULTA_ID`, `MOTIVO`, `CORREO`, `CONTENIDO`, `VISTO`, `NOMBRE`) VALUES
+(2, 'Alimento', 'ariel@com.ar', 'Necesito alimento especial para aves, será que tengan?\r\n', 0, 'ariel'),
+(3, 'Analisis', 'estevanberr@gmail.com', 'Hacen analisis de sangre y orina?', 1, 'Estevan');
 
 -- --------------------------------------------------------
 
@@ -309,8 +311,7 @@ ALTER TABLE `categoria`
 -- Indexes for table `consultas`
 --
 ALTER TABLE `consultas`
-  ADD PRIMARY KEY (`CONSULTA_ID`),
-  ADD KEY `USUARIO_ID` (`USUARIO_ID`);
+  ADD PRIMARY KEY (`CONSULTA_ID`);
 
 --
 -- Indexes for table `mascotas`
@@ -379,7 +380,7 @@ ALTER TABLE `categoria`
 -- AUTO_INCREMENT for table `consultas`
 --
 ALTER TABLE `consultas`
-  MODIFY `CONSULTA_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `CONSULTA_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `mascotas`

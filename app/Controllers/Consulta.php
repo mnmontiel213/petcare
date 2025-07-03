@@ -28,13 +28,17 @@ class Consulta extends BaseController{
 
         $validation->setRules(
             [
-                'titulo' => 'required',
+                'nombre' => 'required',
                 'correo' => 'required|valid_email',
                 'contenido' => 'required',
+                'motivo' => 'required',
             ],
             [
-                'titulo' => [
-                    'required' => 'Ingrese un titulo para la consulta',
+                'nombre' => [
+                    'required' => 'Ingrese su nombre para la consulta',
+                ],
+                'motivo' => [
+                    'required' => 'Ingrese el motivo de la consulta',
                 ],
                 'correo' =>[
                     'required' => 'Ingrese un correo',
@@ -55,7 +59,8 @@ class Consulta extends BaseController{
 
             $consulta = new ConsultaModel();
             $consulta->save([
-                'TITULO' => $this->request->getVar('titulo'),
+                'NOMBRE' => $this->request->getVar('nombre'),
+                'MOTIVO' => $this->request->getVar('motivo'),
                 'CORREO' => $this->request->getVar('correo'),
                 'CONTENIDO' => $this->request->getVar('contenido'),
                 'USUARIO_ID' => $usuario_id,
@@ -100,5 +105,17 @@ class Consulta extends BaseController{
             .view('plantillas/navbar_view')
             .view('contenido/consultas/consultas_listado')
             .view('plantillas/footer_view');
+    }
+
+    public function marcar_visto() {
+
+        $consultaModel = new ConsultaModel();
+        $consulta = $consultaModel->where('CONSULTA_ID', $this->request->getPost('id'))->first();
+
+        $consulta['VISTO'] = TRUE;
+
+        $consultaModel->save($consulta);
+
+        return redirect()->to('consultas/listar');
     }
 }

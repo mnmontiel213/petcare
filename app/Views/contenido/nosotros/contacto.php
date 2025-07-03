@@ -59,19 +59,20 @@
                 <?php
                     helper('form');
                     $completar = count($validation) > 0;
-                    $clase_titulo = isset($validation['titulo']) ? 'form-control is-invalid' : "";
+                    $clase_nombre = isset($validation['nombre']) ? 'form-control is-invalid' : "";
+                    $clase_motivo = isset($validation['motivo']) ? 'form-control is-invalid' : "";
                     $clase_correo = isset($validation['correo']) ? 'form-control is-invalid' : "";
                     $clase_contenido = isset($validation['contenido']) ? 'form-control is-invalid' : "";
 
                     echo form_open('enviar_consulta');
 
-                    echo form_label('Titulo', 'titulo', ['class' => 'form-label']);
+                    echo form_label('Nombre', 'nombre', ['class' => 'form-label']);
                     echo form_input([
-                        'name' => 'titulo',
-                        'id' => 'titulo',
-                        'value' => $completar ? set_value('titulo') : '',
-                        'class' => $clase_titulo,
-                        'placeholder' => 'Horarios',
+                        'name' => 'nombre',
+                        'id' => 'nombre',
+                        'value' => $completar ? set_value('nombre') : '',
+                        'class' => $clase_nombre,
+                        'placeholder' => '',
                         'type' => 'text',
                         'autocomplete' => 'off',
                     ]);
@@ -79,20 +80,32 @@
                         echo '<p class="invalid-feedback">', $validation['titulo'] ,'</p>';
                     }
                     
-                    if(!session()->get('LOGGED')){
-                        echo form_label('Correo', 'correo', ['class' => 'form-label']);
-                        echo form_input([
-                            'name' => 'correo',
-                            'id' => 'correo',
-                            'value' => $completar ? set_value('correo') : '',
-                            'class' => $clase_correo,
-                            'placeholder' => 'correo@gmail.com',
-                            'type' => 'email',
-                            'autocomplete' => 'off',
-                        ]);
-                        if(isset($validation['correo'])){
-                            echo '<p class="invalid-feedback">', $validation['correo'] ,'</p>';
-                        }
+                    echo form_label('Motivo', 'motivo', ['class' => 'form-label']);
+                    echo form_input([
+                        'name' => 'motivo',
+                        'id' => 'motivo',
+                        'value' => $completar ? set_value('motivo') : '',
+                        'class' => $clase_motivo,
+                        'placeholder' => '',
+                        'type' => 'text',
+                        'autocomplete' => 'off',
+                    ]);
+                    if(isset($validation['titulo'])){
+                        echo '<p class="invalid-feedback">', $validation['titulo'] ,'</p>';
+                    }
+
+                    echo form_label('Correo', 'correo', ['class' => 'form-label']);
+                    echo form_input([
+                        'name' => 'correo',
+                        'id' => 'correo',
+                        'value' => $completar ? set_value('correo') : '',
+                        'class' => $clase_correo,
+                        'placeholder' => '',
+                        'type' => 'email',
+                        'autocomplete' => 'off',
+                    ]);
+                    if(isset($validation['correo'])){
+                        echo '<p class="invalid-feedback">', $validation['correo'] ,'</p>';
                     }
 
                     echo form_label('Contenido', 'contenido', ['class' => 'form-label']);
