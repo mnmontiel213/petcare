@@ -62,32 +62,42 @@ class Login extends BaseController
 
         $validation->setRules(
             [
-                'nombre' => 'required',
-                'apellido' => 'required',
-                'correo' => 'required',
-                'contraseña' => 'required',
+                'nombre' => 'required|min_length[3]|max_length[28]',
+                'apellido' => 'required|min_length[3]|max_length[28]',
+                'correo' => 'required|min_length[3]|max_length[28]',
+                'contraseña' => 'required|min_length[6]|max_length[24]',
                 'imagen' => 'is_image[imagen]|max_size[imagen, 4096]|ext_in[imagen,jpg,png,jpeg]',
-                'confirmacion-contraseña' => 'required',
+                'confirmacion-contraseña' => 'required|min_length[6]|max_length[24]',
             ],
             [
                 'nombre' =>
                 [
-                    'required' => 'El nombre es obligatorio'
+                    'required' => 'El nombre es obligatorio',
+                    'min_length[3]' => 'El nombre es demasiado corto',
+                    'max_length[3]' => 'El nombre es muy largo',
                 ],
                 'apellido' =>
                 [
-                    'required' => 'El apellido es obligatorio'
+                    'required' => 'El apellido es obligatorio',
+                    'min_length[3]' => 'El apellido es demasiado corto',
+                    'max_length[3]' => 'El apellido es muy largo',
                 ],
                 'correo' =>
                 [
-                    'required' => 'El correo es obligatorio'
+                    'required' => 'El correo es obligatorio',
+                    'min_length[3]' => 'El correo es demasiado corto',
+                    'max_length[3]' => 'El correo es muy largo',
                 ],
                 'contraseña' =>
                 [
-                    'required' => 'La contraseña es obligatoria'
+                    'required' => 'La contraseña es obligatoria',
+                    'min_length' => 'La contraseña es demasiado corta',
+                    'max_length' => 'La contraseña es demasiado larga',
                 ],
                 'confirmacion-contraseña' => [
-                    'required' => 'Confirme la contraseña'
+                    'required' => 'Confirme la contraseña',
+                    'min_length' => 'La contraseña es demasiado corta',
+                    'max_length' => 'La contraseña es demasiado larga',
                 ],
                 'imagen' => [
                     'is_image' => 'El archivo adjunto no es una imagen',
@@ -97,6 +107,18 @@ class Login extends BaseController
         );
 
         if ($validation->withRequest($request)->run()) {
+
+            if(strcmp($this->request->getPost('contraseña'), $this->request->getPost('confirmacion-contraseña')) != 0){
+                // CONTRASEÑAS DIFERENTES
+                $data['titulo'] = 'Registarse';
+                $data['validation'] = ['confirmacion-contraseña' => 'Las contraseñas son diferentes'];
+
+                return view('plantillas/header_view', $data)
+                    . view('plantillas/navbar_view')
+                    . view('contenido/login/registrarse')
+                    . view('plantillas/footer_view');
+            }
+
             $img = $this->request->getFile("imagen");
             $nombre_aleatorio = null;
 

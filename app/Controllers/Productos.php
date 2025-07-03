@@ -126,23 +126,26 @@ class Productos extends BaseController{
 
         $validation->setRules(
             [
-                'nombre' => 'required',
-                'codigo' => 'required',
+                'nombre' => 'required|min_length[5]|max_length[32]',
+                'codigo' => 'required|min_length[12]|max_length[24]',
                 'marca'  => 'required',
                 'peso'   => 'required',
                 'precio' => 'required',
                 'categoria' => 'required',
                 'mascota' => 'required',
                 'stock' => 'required',
-                //'imagen' => 'is_image[imagen]|max_size[imagen, 4096]|ext_in[imagen,jpg,png,jpeg]|uploaded[imagen]',
-                'imagen' => 'is_image[imagen]|uploaded[imagen]'
+                'imagen' => 'is_image[imagen]',
             ],
             [
                 'nombre' =>[
-                    'required' => 'Ingrese un nombre'
+                    'required' => 'Ingrese un nombre',
+                    'min_length' => 'El nombre es muy corto',
+                    'max_length' => 'El nombre es demasiado largo',
                 ],
                 'codigo' => [
-                    'required' => 'Ingrese el codigo del producto'
+                    'required' => 'Ingrese el codigo del producto',
+                    'min_length' => 'El nombre es muy corto',
+                    'max_length' => 'El nombre es demasiado largo',
                 ],
                 'marca' => [
                     'required' => 'Ingrese la marca del producto'
@@ -269,23 +272,26 @@ class Productos extends BaseController{
 
         $validation->setRules(
             [
-                'nombre' => 'required',
-                'codigo' => 'required',
+                'nombre' => 'required|min_length[5]|max_length[32]',
+                'codigo' => 'required|min_length[12]|max_length[24]',
                 'marca'  => 'required',
                 'peso'   => 'required',
                 'precio' => 'required',
                 'categoria' => 'required',
                 'mascota' => 'required',
                 'stock' => 'required',
-                //'imagen' => 'is_image[imagen]|max_size[imagen, 4096]|ext_in[imagen,jpg,png,jpeg]|uploaded[imagen]',
-                'imagen' => 'is_image[imagen]'
+                'imagen' => 'is_image[imagen]',
             ],
             [
                 'nombre' =>[
-                    'required' => 'Ingrese un nombre'
+                    'required' => 'Ingrese un nombre',
+                    'min_length' => 'El nombre es muy corto',
+                    'max_length' => 'El nombre es demasiado largo',
                 ],
                 'codigo' => [
-                    'required' => 'Ingrese el codigo del producto'
+                    'required' => 'Ingrese el codigo del producto',
+                    'min_length' => 'El codigo es muy corto',
+                    'max_length' => 'El codigo es demasiado largo',
                 ],
                 'marca' => [
                     'required' => 'Ingrese la marca del producto'
@@ -307,8 +313,6 @@ class Productos extends BaseController{
                 ],
                 'imagen' =>[
                     'is_image' => 'El archivo adjunto no es una imagen',
-                    //'max_size' => 'La imagen es muy grande, maximo 4mb',
-                    //'ext_in'   => 'La imagen solo puede ser PNG, JPG o JPEG',
                 ]
             ]);
 
