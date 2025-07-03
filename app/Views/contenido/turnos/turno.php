@@ -63,7 +63,10 @@
                             'min' => date("Y-m-d"),
                             'max' => date("Y-m-d", strtotime("+1 Months")),
                             'class' => $clase_fecha,
-                        ])
+                        ]);
+                        if(isset($validation['fecha'])){
+                            echo '<small class="text-danger">', $validation['fecha'] ,'</small>';
+                        }
                     ?>
 
                     <h2>Horario</h2>
@@ -94,6 +97,11 @@
                             11:00
                         </label>
                     </div>
+                    <?php 
+                        if(isset($validation['horario'])){
+                            echo '<small class="text-danger">', $validation['horario'] ,'</small>';
+                        }
+                    ?>
                 </div>
             </div>
 
@@ -107,7 +115,6 @@
 
                     if(isset($_POST['mascota'])){
                         $mascota_seleccionada = $_POST['mascota'];
-                        echo $mascota_seleccionada;
                     }
                 ?>
                 <h2>Mascotas</h2>
