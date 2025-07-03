@@ -107,7 +107,7 @@
 
         <!-- Alimentos -->
         <div class="col-12 col-sm-6 col-lg-3">
-            <a href="<?= base_url('atencion_medica') ?>" class="text-decoration-none">
+            <a href="<?= base_url('productos') ?>" class="text-decoration-none">
                 <div class="position-relative overflow-hidden rounded shadow servicio-hover">
                     <img src="<?= base_url('assets/img/productos/alimentos.jpg') ?>" class="img-fluid w-100 card-categoria" alt="Alimentos para mascotas">
                     <div class="position-absolute top-0 start-0 w-100 h-100 d-flex align-items-center justify-content-center bg-dark bg-opacity-50">
@@ -122,7 +122,7 @@
 
         <!-- Accesorios -->
         <div class="col-12 col-sm-6 col-lg-3">
-            <a href="<?= base_url('atencion_medica') ?>" class="text-decoration-none">
+            <a href="<?= base_url('productos') ?>" class="text-decoration-none">
                 <div class="position-relative overflow-hidden rounded shadow servicio-hover">
                     <img src="<?= base_url('assets/img/productos/accesorio.avif') ?>" class="img-fluid w-100 card-categoria" alt="Accesorios para mascotas">
                     <div class="position-absolute top-0 start-0 w-100 h-100 d-flex align-items-center justify-content-center bg-dark bg-opacity-50">
