@@ -64,8 +64,10 @@
                     <h2>Total: $<?= $total ?></h2>
                 </div>
 
+                <hr>
                 <!-- ************************************  TURNOS  ************************************ -->
                 <div>
+                    
                     <h2 class="py-4">Proximos turnos</h2>
                     <div class="list-group m-4">
                         <?php foreach($turnos as $turno): ?>
@@ -77,17 +79,19 @@
                                     $clase_alerta = "border border-danger";
                                 }
                                 ?>
-                            <div class="<?php echo 'list-group-item list-group-item-action' . $clase_alerta ?> bg-dark">
+                            <div class="<?php echo 'list-group-item list-group-item-action' . $clase_alerta ?> bg-dark-subtle">
                                 <div class="d-flex w-100 justify-content-between">
-                                    <h5 class="mb-1 text-light"><?= $turno['servicio'] . ' para ' . $turno['mascota']['nombre'] ?></h5>
+                                    <h5 class="mb-1 text-dark"><?= $turno['servicio'] . ' para ' . $turno['mascota']['nombre'] ?></h5>
                                     <?php if($turno['cuanto_falta'] == 0): ?>
                                         <small class="text-danger fw-bold">Hoy</small>
                                     <?php else: ?>
-                                        <small class="text-light">Faltan <?= $turno['cuanto_falta'] ?> dias</small>
+                                        <small class="text-dark">Faltan <?= $turno['cuanto_falta'] ?> dias</small>
                                     <?php endif; ?>
                                 </div>
-                                <p class="mb-1 text-light">Turno a pedido de <?= $turno['usuario']['nombre'] . ' ' . $turno['usuario']['apellido'] ?></p>
-                                <small class="text-light">Hora: <?= $turno['horario'] ?>am</small>
+                                <p class="mb-1 text-dark">Turno a pedido de <?= $turno['usuario']['nombre'] . ' ' . $turno['usuario']['apellido'] ?></p>
+                                <small class="text-dark">Hora: <?= $turno['horario'] ?>am</small>
+                                <br>
+                                <small class="text-dark">Fecha: <?= $turno['fecha'] ?></small>
                             </div>
                         <?php endforeach; ?>
                    </div>

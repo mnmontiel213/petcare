@@ -479,9 +479,8 @@ class Login extends BaseController
             //
 
             $turnos_row = $turnoModel->findAll();
-            
-            usort($turnos_row, function ($a, $b){ return strtotime($b['FECHA']) - strtotime($a['FECHA']) ; });
-            usort($turnos_row, function ($a, $b){ return str_replace(':00:00', '',$b['HORARIO']) - str_replace(':00:00', '',$a['HORARIO']); });
+            usort($turnos_row, function ($a, $b){ return strtotime($a['FECHA']) - strtotime($b['FECHA']) ; });
+            //usort($turnos_row, function ($a, $b){ return str_replace(':00:00', '',$a['HORARIO']) - str_replace(':00:00', '',$b['HORARIO']); });
 
             $turnos = [];
             foreach($turnos_row as $t){
@@ -494,7 +493,7 @@ class Login extends BaseController
                 $falta = $date_diff->d;
 
                 //osea digamos que la fecha no es anterior a la actual
-                if($date_diff->invert == 0){
+                if($date_diff->invert == 1){
                     $datos = [
                         'usuario' => [
                             'nombre' => $usuario['NOMBRE'],
@@ -506,11 +505,9 @@ class Login extends BaseController
                         'servicio' => $servicio['DESCRIPCION'],
                         'fecha' => $t['FECHA'],
                         'horario' => str_replace(':00', '', $t['HORARIO']),
-                        'cuanto_falta' => $date_diff->invert == 1 ? -1 : $falta,
+                        'cuanto_falta' => $falta,
                     ];
                     array_push($turnos, $datos);
-    
-                    print_r($datos); echo '<br>';
                 }
             }
 
