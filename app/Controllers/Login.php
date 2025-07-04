@@ -506,6 +506,7 @@ class Login extends BaseController
                         'fecha' => $t['FECHA'],
                         'horario' => str_replace(':00', '', $t['HORARIO']),
                         'cuanto_falta' => $falta,
+                        'realizado' => $t['REALIZADO'],
                     ];
                     array_push($turnos, $datos);
                 }

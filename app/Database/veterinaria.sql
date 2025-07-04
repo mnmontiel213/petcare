@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Jul 03, 2025 at 08:37 PM
+-- Generation Time: Jul 04, 2025 at 05:18 AM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -131,7 +131,7 @@ CREATE TABLE `productos` (
 --
 
 INSERT INTO `productos` (`CODIGO`, `NOMBRE`, `CATEGORIA_MARCA`, `CATEGORIA_PRODUCTO`, `CATEGORIA_MASCOTA`, `PRECIO`, `PESO`, `IMAGEN`, `STOCK`, `HABILITADO`) VALUES
-(1287, 'Pelota con Sonido', 21, 12, 4, 6201, 555.1, '1750364559_de8fec2d130e34ff549d.webp', 3, 0),
+(1287, 'Pelota con Sonido', 21, 12, 4, 6201, 555.1, '1750364559_de8fec2d130e34ff549d.webp', 3, 1),
 (3755, 'Polera Corderito Verde', 23, 12, 4, 13000, 0, '1750364508_daaca2b72488c19c754d.webp', 41, 0),
 (12484, 'Alimento Royal Control Urinario', 5, 11, 3, 31995, 1, '1750364764_5f4d45a5872948e96186.webp', 46, 1),
 (34154, 'Rascador Con Patas', 21, 12, 3, 17900, 0, '1750365456_f313c498898d0da20420.webp', 49, 1),
@@ -209,20 +209,24 @@ CREATE TABLE `turnos` (
   `FECHA` date NOT NULL,
   `HORARIO` time NOT NULL,
   `SERVICIO_ID` int(11) NOT NULL,
-  `MASCOTA_ID` int(11) DEFAULT NULL
+  `MASCOTA_ID` int(11) DEFAULT NULL,
+  `REALIZADO` tinyint(1) NOT NULL DEFAULT 0
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Dumping data for table `turnos`
 --
 
-INSERT INTO `turnos` (`TURNO_ID`, `USUARIO_ID`, `FECHA`, `HORARIO`, `SERVICIO_ID`, `MASCOTA_ID`) VALUES
-(1, 1, '2025-06-26', '10:00:00', 5, 1),
-(2, 2, '2025-06-30', '10:00:00', 5, 4),
-(3, 2, '2025-07-17', '11:00:00', 6, 2),
-(4, 2, '2025-06-23', '09:00:00', 3, 3),
-(8, 2, '2025-07-23', '11:00:00', 1, 9),
-(9, 2, '2025-07-16', '10:00:00', 1, 3);
+INSERT INTO `turnos` (`TURNO_ID`, `USUARIO_ID`, `FECHA`, `HORARIO`, `SERVICIO_ID`, `MASCOTA_ID`, `REALIZADO`) VALUES
+(1, 1, '2025-06-26', '10:00:00', 5, 1, 0),
+(2, 2, '2025-06-30', '10:00:00', 5, 4, 0),
+(3, 2, '2025-07-07', '11:00:00', 6, 2, 0),
+(4, 2, '2025-07-05', '09:00:00', 3, 3, 0),
+(8, 2, '2025-07-23', '11:00:00', 1, 9, 0),
+(9, 2, '2025-07-03', '10:00:00', 1, 3, 0),
+(10, 2, '2025-07-04', '11:00:00', 4, 2, 0),
+(11, 1, '2025-07-14', '11:00:00', 2, 1, 0),
+(12, 2, '2025-07-30', '10:00:00', 1, 3, 0);
 
 -- --------------------------------------------------------
 
@@ -398,13 +402,13 @@ ALTER TABLE `servicios`
 -- AUTO_INCREMENT for table `turnos`
 --
 ALTER TABLE `turnos`
-  MODIFY `TURNO_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `TURNO_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 --
 -- AUTO_INCREMENT for table `usuarios`
 --
 ALTER TABLE `usuarios`
-  MODIFY `USUARIO_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `USUARIO_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT for table `ventas`
