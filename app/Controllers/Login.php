@@ -426,6 +426,10 @@ class Login extends BaseController
                 'historial_compra' => $productos_historial,
             ];
         }else{
+            //
+            // VENTAS
+            //
+
             $ventaModel = new VentaModel();
 
             $ventas_row = $ventaModel->findAll();
@@ -470,9 +474,52 @@ class Login extends BaseController
                 array_push($compras, $venta_data);
             }
 
+            //
+            // TURNOS
+            //
+
+            $turnos_row = $turnoModel->findAll();
+            
+            usort($turnos_row, function ($a, $b){ return strtotime($b['FECHA']) - strtotime($a['FECHA']) ; });
+            usort($turnos_row, function ($a, $b){ return str_replace(':00:00', '',$b['HORARIO']) - str_replace(':00:00', '',$a['HORARIO']); });
+
+            $turnos = [];
+            foreach($turnos_row as $t){
+                $usuario = $usuarioModel->where('USUARIO_ID', $t['USUARIO_ID'])->first();
+                $mascota = $mascotaModel->where('MASCOTA_ID', $t['MASCOTA_ID'])->first();
+                $servicio = $servicioModel->where('SERVICIO_ID', $t['SERVICIO_ID'])->first();
+                //$categoria = $categoriaModel->where('SERVICIO_ID', $t['SERVICIO_ID'])->first();
+
+                $date_diff = date_diff(date_create($t['FECHA']), date_create());
+                $falta = $date_diff->d;
+
+                //osea digamos que la fecha no es anterior a la actual
+                if($date_diff->invert == 0){
+                    $datos = [
+                        'usuario' => [
+                            'nombre' => $usuario['NOMBRE'],
+                            'apellido' => $usuario['APELLIDO']
+                        ],
+                        'mascota' => [
+                            'nombre' => $mascota['NOMBRE'],
+                        ],
+                        'servicio' => $servicio['DESCRIPCION'],
+                        'fecha' => $t['FECHA'],
+                        'horario' => str_replace(':00', '', $t['HORARIO']),
+                        'cuanto_falta' => $date_diff->invert == 1 ? -1 : $falta,
+                    ];
+                    array_push($turnos, $datos);
+    
+                    print_r($datos); echo '<br>';
+                }
+            }
+
+
+
             $data = [
                 'titulo' => 'administrador',
                 'historial_compra' => $compras,
+                'turnos' => $turnos,
             ];
         }
 

@@ -9,52 +9,91 @@
         <?php if(session('ADMIN')):?>
             <div class="container m-auto p-auto">
                 <h1 class="text-center">Administrador</h1>
-                <h2>Ventas</h2>
-                <?php $total= 0; ?>
-                <table class="table">
-                    <thead>
-                        <th>Venta ID</th>
-                        <th>Usuario</th>
-                        <th>Fecha compra</th>
-                        <th>Total</th>
-                        <th>Mas..</th>
-                    </thead>
-                    <tbody class="table-group-divider">
-                        <?php foreach($historial_compra as $compras): ?>
-                            <tr>
-                                <td><?= $compras['id'] ?></td>
-                                <td><?= $compras['usuario']['nombre'] . ' ' . $compras['usuario']['apellido']  ?></td>
-                                <td><?= $compras['fecha']?></td>
-                                <td>$<?= $compras['total'] ?></td>
 
-                                <?php $total += $compras['total']; ?>
-                                <td>
-                                    <p class="d-inline-flex gap-1">
-                                        <a class="btn btn-primary" data-bs-toggle="collapse" href="<?= '#collapse' . $compras['id'] ?>" role="button" aria-expanded="false" aria-controls="<?= 'collapse' . $compras['id'] ?>">
-                                            Mostrar Productos...
-                                        </a>
-                                    </p>
-                                    
-                                    <div class="collapse" id="<?= 'collapse' . $compras['id'] ?>">
-                                        <?php foreach($compras['productos'] as $p): ?>
-                                            <div class="d-flex">
-                                                <div class="card card-body">
-                                                    <!-- <img src="<?php echo base_url('assets/uploads/') . $p['imagen'] ?>" class="card-img-top w-25" alt="..."> -->
-                                                    <h5 class="card-title"><?= $p['nombre'] ?></h5>
-                                                    <ul class="list-group list-group-flush">
-                                                        <li class="list-group-item">Precio: $<?= $p['precio'] ?></li>
-                                                        <li class="list-group-item">Unidades: <?= $p['cantidad'] ?></li>
-                                                    </ul>
+
+
+
+                <!-- ************************************  VENTAS ************************************ -->
+
+                <div class="container">
+                <h2>Ventas</h2>
+                    <?php $total= 0; ?>
+                    <table class="table">
+                        <thead>
+                            <th>Venta ID</th>
+                            <th>Usuario</th>
+                            <th>Fecha compra</th>
+                            <th>Total</th>
+                            <th>Mas..</th>
+                        </thead>
+                        <tbody class="table-group-divider">
+                            <?php foreach($historial_compra as $compras): ?>
+                                <tr>
+                                    <td><?= $compras['id'] ?></td>
+                                    <td><?= $compras['usuario']['nombre'] . ' ' . $compras['usuario']['apellido']  ?></td>
+                                    <td><?= $compras['fecha']?></td>
+                                    <td>$<?= $compras['total'] ?></td>
+
+                                    <?php $total += $compras['total']; ?>
+                                    <td>
+                                        <p class="d-inline-flex gap-1">
+                                            <a class="btn btn-primary" data-bs-toggle="collapse" href="<?= '#collapse' . $compras['id'] ?>" role="button" aria-expanded="false" aria-controls="<?= 'collapse' . $compras['id'] ?>">
+                                                Mostrar Productos...
+                                            </a>
+                                        </p>
+                                        
+                                        <div class="collapse" id="<?= 'collapse' . $compras['id'] ?>">
+                                            <?php foreach($compras['productos'] as $p): ?>
+                                                <div class="d-flex">
+                                                    <div class="card card-body">
+                                                        <!-- <img src="<?php echo base_url('assets/uploads/') . $p['imagen'] ?>" class="card-img-top w-25" alt="..."> -->
+                                                        <h5 class="card-title"><?= $p['nombre'] ?></h5>
+                                                        <ul class="list-group list-group-flush">
+                                                            <li class="list-group-item">Precio: $<?= $p['precio'] ?></li>
+                                                            <li class="list-group-item">Unidades: <?= $p['cantidad'] ?></li>
+                                                        </ul>
+                                                    </div>
                                                 </div>
-                                            </div>
-                                        <?php endforeach; ?>
-                                    </div>
-                                </td>
-                            </tr>
-                        <?php endforeach;?>
-                    </tbody>
-                </table>
-                <h2>Total: $<?= $total ?></h2>
+                                            <?php endforeach; ?>
+                                        </div>
+                                    </td>
+                                </tr>
+                            <?php endforeach;?>
+                        </tbody>
+                    </table>
+                    <h2>Total: $<?= $total ?></h2>
+                </div>
+
+                <!-- ************************************  TURNOS  ************************************ -->
+                <div>
+                    <h2 class="py-4">Proximos turnos</h2>
+                    <div class="list-group m-4">
+                        <?php foreach($turnos as $turno): ?>
+                            <?php  
+                                $clase_alerta = "";
+                                if($turno['cuanto_falta'] <= 3 && $turno['cuanto_falta'] > 0){
+                                    $clase_alerta = "border border-warning";
+                                }elseif($turno['cuanto_falta'] == 0){   
+                                    $clase_alerta = "border border-danger";
+                                }
+                                ?>
+                            <div class="<?php echo 'list-group-item list-group-item-action' . $clase_alerta ?> bg-dark">
+                                <div class="d-flex w-100 justify-content-between">
+                                    <h5 class="mb-1 text-light"><?= $turno['servicio'] . ' para ' . $turno['mascota']['nombre'] ?></h5>
+                                    <?php if($turno['cuanto_falta'] == 0): ?>
+                                        <small class="text-danger fw-bold">Hoy</small>
+                                    <?php else: ?>
+                                        <small class="text-light">Faltan <?= $turno['cuanto_falta'] ?> dias</small>
+                                    <?php endif; ?>
+                                </div>
+                                <p class="mb-1 text-light">Turno a pedido de <?= $turno['usuario']['nombre'] . ' ' . $turno['usuario']['apellido'] ?></p>
+                                <small class="text-light">Hora: <?= $turno['horario'] ?>am</small>
+                            </div>
+                        <?php endforeach; ?>
+                   </div>
+                </div>
+
+                
             </div>
 
         <?php else: ?>
